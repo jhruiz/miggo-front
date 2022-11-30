@@ -1,0 +1,65 @@
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+<img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+</div>
+
+<div class="card" id="content-usuarios">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12">
+                <h4>
+                    <i class="nav-icon fas fa-user"></i>
+                    Nuevo usuario                                   
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        
+        <form method="POST" action="" enctype="multipart/form-data">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="nombre" class="form-control" placeholder="Nombre">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="identificacion" class="form-control" placeholder="Identificación">
+            </div>    
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" id="email" class="form-control" placeholder="Email">
+            </div>    
+            
+            <!-- card de documentos -->      
+            <div class="col-sm-12">
+                <!-- checkbox -->
+                <div class="form-group clearfix" id="input-documentos"></div>       
+            </div>  
+
+            <!-- card de perfiles -->      
+            <div class="col-sm-12">
+                <!-- checkbox -->
+                <div class="form-group clearfix" id="check-perfiles"></div>       
+            </div>  
+
+            <div class="col-12 float-right">
+                <button type="button" class="btn btn-primary float-right" onclick="crearUsuario()">Guardar</button>
+            </div> 
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="../../build/js/Usuarios/add.js"></script>
