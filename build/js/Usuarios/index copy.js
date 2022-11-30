@@ -5,6 +5,8 @@ var urlC = 'http://localhost/miggo-accountant-back/public/api';
  */
 function sincronizarUsuarios() {
 
+    alert('here');
+
     $('.preloader').show();
 
     $.ajax({
@@ -13,6 +15,9 @@ function sincronizarUsuarios() {
         success: function(respuesta) {
 
             $('.preloader').hide("slow");
+        
+            console.log(url);
+
                         
             // Valida si la respuesta es correcta para generar el data table
             if ( respuesta.estado ) {

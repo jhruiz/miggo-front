@@ -1,4 +1,4 @@
-var urlC = 'https://cotoolsback.cotools.co/public/';
+var urlC = 'http://localhost/miggo-accountant-back/public/api';
 
 //Instancia un arreglo que contendra los nombre de los documentos  
 var archivosCli = [];
