@@ -8,7 +8,7 @@ var infoMenu = function() {
         {
             'load' : '../items/index.html',
             'icon' : 'nav-icon fas fa-boxes',
-            'tittle' : 'Productos'
+            'tittle' : 'PXXXXXXXX'
         },
         {
             'load' : '../categorias/index.html',
@@ -18,7 +18,7 @@ var infoMenu = function() {
         {
             'load' : '../pedidos/index.html',
             'icon' : 'nav-icon fas fa-people-carry',
-            'tittle' : 'Pedidos'
+            'tittle' : 'Pedidos 23'
         },
         {
             'load' : 'logout',
@@ -35,12 +35,31 @@ var infoMenu = function() {
  */
 var clicMenu = function() {
 
+    console.log('HERE clic menu');
+
+
     var url = $(this).data('load');    
  
     //Valida si la opcion seleccionada es para salir del sistema
     if(url == 'logout'){
         localStorage.clear();
-        window.location.href = "https://admin.cotools.co/";        
+        console.log('logout');
+
+                $.ajax({
+                    method: "GET",
+                    url: 'http://localhost/miggo-accountant-back/public/api/logout',
+                    success: function(respuesta) {
+                        console.log(respuesta.message);
+                       // $('#content-data').html(respuesta.message);         
+                    },
+                    error: function() {
+                        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                        sweetMessage('error', mensaje);
+                    }
+                }) 
+                
+            window.location.href = "http://localhost/miggo-front/";   //TODO: logout    
+
     } else {
         $.ajax({
             method: "GET",
@@ -63,11 +82,12 @@ var loadPrincipalMenu = function() {
     let menu = infoMenu();
     var htmlMenu = '';
 
+    console.log('HERE');
     menu.forEach(element => {
         htmlMenu += '<li class="nav-item">';
         htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
         htmlMenu += '<i class="' + element.icon + '"></i>';
-        htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
+        htmlMenu += '<p>&nbsp; &nbsp;' + element.icon + '</p>';
         htmlMenu += '</a>';
         htmlMenu += '</li>';
     });
@@ -78,5 +98,6 @@ var loadPrincipalMenu = function() {
 };
 
 $( document ).ready(function() {
-    loadPrincipalMenu();    
+    loadPrincipalMenu(); 
+    console.log('document ready');   
 });
