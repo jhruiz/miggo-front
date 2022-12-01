@@ -1,4 +1,4 @@
-var url_api = 'http://localhost/miggo-accountant-back/public/api/login?';
+var url_api = 'http://localhost:85/miggo-accountant-back/public/api/login?';
 
 //window.CSRF_TOKEN = '{{ csrf_token() }}';
 
