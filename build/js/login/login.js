@@ -1,6 +1,4 @@
 
-//window.CSRF_TOKEN = '{{ csrf_token() }}';
-
 var loginFunction = function() {  
 
     var email = $('#email').val();

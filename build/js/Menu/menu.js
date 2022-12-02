@@ -1,56 +1,68 @@
+var url_api = 'http://localhost:85/miggo-accountant-back/public/api';
+
+//https://es.stackoverflow.com/questions/300866/chequear-si-existe-una-posicion-en-un-array-bidimensional
+
 var infoMenu = function() {
+
+    var htmlMenu = '';
+    var arrMenu = [];
+    var arre_cloudmenu = [];
+    var nuevoArray = new Array();
+
 
     $.ajax({
         method: "GET",
-        url: '',//URL del menu
+        url: url_api+'/cloudmenus?sort_by=cloudmenu_id',
         success: function(respuesta) {
-            console.log(respuesta.message);
-           // $('#content-data').html(respuesta.message);         
+
+            //********************************** */
+            $.each(respuesta.data, function (key, item) {
+
+            console.log('cloudmenu_id'+item.cloudmenu_id);
+            console.log('orden'+item.orden);
+
+                if($.inArray(item.cloudmenu_id , nuevoArray, false)){
+                      nuevoArray.push(item);
+
+                }else if($.inArray(item.cloudmenu_id , nuevoArray, true)){
+
+
+                }
+
+               arrMenu.push({
+                    'load' : item.url,
+                    'icon' : item.imagen,
+                    'tittle' : item.descripcion
+                    });
+                
+                }); 
+                
+                arrMenu.forEach(element => {
+                    htmlMenu += '<li class="nav-item">';
+                    htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
+                    htmlMenu += '<i class="' + element.icon + '"></i>';
+                    htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
+                    htmlMenu += '</a>';
+                    htmlMenu += '</li>';
+                });
+            
+                //console.log(element);
+            
+                $('#li-menu').html(htmlMenu);
+                $('.load-menu').click(clicMenu);
+                
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
         }
     }) 
-
-    let arrMenu = [
-        {
-            'load' : '../usuarios/index.html',
-            'icon' : 'nav-icon fas fa-users',
-            'tittle' : 'Usuarios'
-        },
-        {
-            'load' : '../items/index.html',
-            'icon' : 'nav-icon fas fa-boxes',
-            'tittle' : 'PXXXXXXXX'
-        },
-        {
-            'load' : '../categorias/index.html',
-            'icon' : 'nav-icon fas fa-object-group',
-            'tittle' : 'Categorias'
-        },
-        {
-            'load' : '../pedidos/index.html',
-            'icon' : 'nav-icon fas fa-people-carry',
-            'tittle' : 'Pedidos 23'
-        },
-        {
-            'load' : 'logout',
-            'icon' : 'fas fa-power-off',
-            'tittle': 'Cerrar sesión'
-        }
-    ];
-
-    return arrMenu;
-};
+}
 
 /**
  * Carga el contenido de la ruta seleccinada en el div dispuesto en la pagina main
  */
 var clicMenu = function() {
-
-    console.log('HERE clic menu');
-
 
     var url = $(this).data('load');    
  
@@ -91,22 +103,26 @@ var clicMenu = function() {
  * Crea el html del menu
  */
 var loadPrincipalMenu = function() {
-    let menu = infoMenu();
+    arrMenu = infoMenu();
     var htmlMenu = '';
 
-    menu.forEach(element => {
-        htmlMenu += '<li class="nav-item">';
-        htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
-        htmlMenu += '<i class="' + element.icon + '"></i>';
-        htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
-        htmlMenu += '</a>';
-        htmlMenu += '</li>';
-    });
 
-    //console.log(element);
+    console.log(arrMenu);
+   
 
-    $('#li-menu').html(htmlMenu);
-    $('.load-menu').click(clicMenu);
+    // arrMenu.forEach(element => {
+    //     htmlMenu += '<li class="nav-item">';
+    //     htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
+    //     htmlMenu += '<i class="' + element.icon + '"></i>';
+    //     htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
+    //     htmlMenu += '</a>';
+    //     htmlMenu += '</li>';
+    // });
+
+    // //console.log(element);
+
+    // $('#li-menu').html(htmlMenu);
+    // $('.load-menu').click(clicMenu);
     
 };
 
