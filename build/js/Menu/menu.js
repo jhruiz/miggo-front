@@ -1,47 +1,53 @@
-var url_api = 'http://localhost:85/miggo-accountant-back/public/api';
-
-//https://es.stackoverflow.com/questions/300866/chequear-si-existe-una-posicion-en-un-array-bidimensional
 
 var infoMenu = function() {
 
     var htmlMenu = '';
-    var arrMenu = [];
+    var arrMenu = [0,0];
+
+
     var arre_cloudmenu = [];
     var nuevoArray = new Array();
 
 
     $.ajax({
         method: "GET",
-        url: url_api+'/cloudmenus?sort_by=cloudmenu_id',
+        url: url_back+'cloudmenus',
         success: function(respuesta) {
 
-            //********************************** */
-            $.each(respuesta.data, function (key, item) {
 
-            console.log('cloudmenu_id'+item.cloudmenu_id);
-            console.log('orden'+item.orden);
+            $.each(respuesta, function (key ,item) {
+                    arrMenu[key] = ({
+                        'load' : item.url,
+                        'icon' : item.imagen,
+                        'tittle' : item.descripcion
+                        });
 
-                if($.inArray(item.cloudmenu_id , nuevoArray, false)){
-                      nuevoArray.push(item);
+                    $.each(item.hijos, function (k ,i) {
+                                    arrMenu[key][k] = {
+                                        'load' : i[1],
+                                        'icon' : i[2],
+                                        'tittle' : i[0]
+                                        };
+                        }); 
+            }); 
 
-                }else if($.inArray(item.cloudmenu_id , nuevoArray, true)){
-
-
-                }
-
-               arrMenu.push({
-                    'load' : item.url,
-                    'icon' : item.imagen,
-                    'tittle' : item.descripcion
-                    });
-                
-                }); 
                 
                 arrMenu.forEach(element => {
                     htmlMenu += '<li class="nav-item">';
                     htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
                     htmlMenu += '<i class="' + element.icon + '"></i>';
                     htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
+                    htmlMenu += '<ul class="nav flex-column">';
+                        // element.forEach(hijos => {
+                        //     console.log(hijos);
+                        //     // htmlMenu += '<li class="nav-item">';
+                        //     // htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + hijos.load + '">';
+                        //     // htmlMenu += '<i class="' + hijos.icon + '"></i>';
+                        //     // htmlMenu += '<p>&nbsp; &nbsp;' + hijos.tittle + '</p>';
+                        //     // htmlMenu += '</li>';
+                        // });
+                        
+                    htmlMenu += '</ul>';
                     htmlMenu += '</a>';
                     htmlMenu += '</li>';
                 });
@@ -128,5 +134,4 @@ var loadPrincipalMenu = function() {
 
 $( document ).ready(function() {
     loadPrincipalMenu(); 
-    console.log('document ready');   
 });
