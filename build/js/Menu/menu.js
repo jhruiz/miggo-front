@@ -13,33 +13,33 @@ var infoMenu = function() {
         }
     }) 
 
-    // let arrMenu = [
-    //     {
-    //         'load' : '../usuarios/index.html',
-    //         'icon' : 'nav-icon fas fa-users',
-    //         'tittle' : 'Usuarios'
-    //     },
-    //     {
-    //         'load' : '../items/index.html',
-    //         'icon' : 'nav-icon fas fa-boxes',
-    //         'tittle' : 'PXXXXXXXX'
-    //     },
-    //     {
-    //         'load' : '../categorias/index.html',
-    //         'icon' : 'nav-icon fas fa-object-group',
-    //         'tittle' : 'Categorias'
-    //     },
-    //     {
-    //         'load' : '../pedidos/index.html',
-    //         'icon' : 'nav-icon fas fa-people-carry',
-    //         'tittle' : 'Pedidos 23'
-    //     },
-    //     {
-    //         'load' : 'logout',
-    //         'icon' : 'fas fa-power-off',
-    //         'tittle': 'Cerrar sesión'
-    //     }
-    // ];
+    let arrMenu = [
+        {
+            'load' : '../usuarios/index.html',
+            'icon' : 'nav-icon fas fa-users',
+            'tittle' : 'Usuarios'
+        },
+        {
+            'load' : '../items/index.html',
+            'icon' : 'nav-icon fas fa-boxes',
+            'tittle' : 'PXXXXXXXX'
+        },
+        {
+            'load' : '../categorias/index.html',
+            'icon' : 'nav-icon fas fa-object-group',
+            'tittle' : 'Categorias'
+        },
+        {
+            'load' : '../pedidos/index.html',
+            'icon' : 'nav-icon fas fa-people-carry',
+            'tittle' : 'Pedidos 23'
+        },
+        {
+            'load' : 'logout',
+            'icon' : 'fas fa-power-off',
+            'tittle': 'Cerrar sesión'
+        }
+    ];
 
     return arrMenu;
 };
@@ -59,7 +59,7 @@ var clicMenu = function() {
         localStorage.clear();
                 $.ajax({
                     method: "GET",
-                    url: 'http://localhost/miggo-accountant-back/public/api/logout',
+                    url: url_back + 'logout',
                     success: function(respuesta) {
                         console.log(respuesta.message);
                        // $('#content-data').html(respuesta.message);         
@@ -70,7 +70,7 @@ var clicMenu = function() {
                     }
                 }) 
                 
-            window.location.href = "http://localhost/miggo-front/";   //TODO: logout    
+            window.location.href = url_front;   //TODO: logout    
 
     } else {
         $.ajax({
