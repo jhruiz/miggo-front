@@ -5,58 +5,36 @@ var infoMenu = function() {
     var arrMenu = [0,0];
 
 
-    var arre_cloudmenu = [];
-    var nuevoArray = new Array();
+
 
 
     $.ajax({
         method: "GET",
         url: url_back+'/cloudmenus',
         success: function(respuesta) {
-
-            console.log('esta es la respuesta del menu ->', respuesta);
-
-            //********************************** */
-
             $.each(respuesta, function (key ,item) {
-                    arrMenu[key] = ({
-                        'load' : item.url,
-                        'icon' : item.imagen,
-                        'tittle' : item.descripcion
-                        });
 
-                    $.each(item.hijos, function (k ,i) {
-                                    arrMenu[key][k] = {
-                                        'load' : i[1],
-                                        'icon' : i[2],
-                                        'tittle' : i[0]
-                                        };
-                        }); 
-            }); 
+                    htmlMenu += '<li class="nav-item dropdown">';
+                    htmlMenu += '<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-load="">';
+                    htmlMenu += '<i class="' + item.imagen + '"></i>';
+                    htmlMenu += '<p >&nbsp; &nbsp;' + item.descripcion + '</p>';
+                    htmlMenu += '<ul class="dropdown-menu">';
 
-                
-                arrMenu.forEach(element => {
-                    htmlMenu += '<li class="nav-item">';
-                    htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
-                    htmlMenu += '<i class="' + element.icon + '"></i>';
-                    htmlMenu += '<p>&nbsp; &nbsp;' + element.tittle + '</p>';
-                    htmlMenu += '<ul class="nav flex-column">';
-                        // element.forEach(hijos => {
-                        //     console.log(hijos);
-                        //     // htmlMenu += '<li class="nav-item">';
-                        //     // htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + hijos.load + '">';
-                        //     // htmlMenu += '<i class="' + hijos.icon + '"></i>';
-                        //     // htmlMenu += '<p>&nbsp; &nbsp;' + hijos.tittle + '</p>';
-                        //     // htmlMenu += '</li>';
-                        // });
-                        
+                        $.each(item.hijos, function (k ,i) {
+                            htmlMenu += '<li class="dropdown-item">';
+                            htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + i.url + '">';
+                            htmlMenu += '<i class="' + i.imagen + '"></i>';
+                            htmlMenu += '<p>&nbsp; &nbsp;' + i.descripcion + '</p>';
+                            htmlMenu += '</a>';
+                            htmlMenu += '</li>';
+
+                            }); 
+
                     htmlMenu += '</ul>';
                     htmlMenu += '</a>';
                     htmlMenu += '</li>';
-                });
-            
-                //console.log(element);
-            
+            }); 
+
                 $('#li-menu').html(htmlMenu);
                 $('.load-menu').click(clicMenu);
                 
@@ -115,11 +93,6 @@ var loadPrincipalMenu = function() {
 
     // arrMenu = infoMenu();
     // var htmlMenu = '';
-
-
-    // console.log(arrMenu);
-   
-
     // arrMenu.forEach(element => {
     //     htmlMenu += '<li class="nav-item">';
     //     htmlMenu += '<a href="#" class="nav-link load-menu" data-load="' + element.load + '">';
