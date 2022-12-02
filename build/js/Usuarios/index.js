@@ -1,5 +1,3 @@
-var urlC = 'http://localhost/miggo-accountant-back/public/api';
-
 /**
  * Funcion para sincronizar usuarios desde datax al front de admin cotools
  */
@@ -9,7 +7,7 @@ function sincronizarUsuarios() {
 
     $.ajax({
         method: "GET",
-        url: urlC + "/users",
+        url: url_back + "/users",
         success: function(respuesta) {
 
             $('.preloader').hide("slow");
