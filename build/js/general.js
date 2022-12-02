@@ -5,7 +5,7 @@ var Toast = Swal.mixin({
     timer: 3000
 });
 
- toastr.options = {
+toastr.options = {
     "closeButton": false,
     "debug": false,
     "newestOnTop": false,
@@ -25,7 +25,7 @@ var Toast = Swal.mixin({
 
 
 var sweetMessage = function(icono, mensaje){
-    toastr[icono](mensaje)
+    this.toastr[icono](mensaje)
     // Toast.fire({
     //     icon: icono,
     //     title: mensaje

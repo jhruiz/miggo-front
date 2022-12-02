@@ -1,7 +1,3 @@
-var url_api = 'http://localhost:85/miggo-accountant-back/public/api';
-
-//https://es.stackoverflow.com/questions/300866/chequear-si-existe-una-posicion-en-un-array-bidimensional
-
 var infoMenu = function() {
 
     var htmlMenu = '';
@@ -12,8 +8,10 @@ var infoMenu = function() {
 
     $.ajax({
         method: "GET",
-        url: url_api+'/cloudmenus?sort_by=cloudmenu_id',
+        url: url_back+'/cloudmenus',
         success: function(respuesta) {
+
+            console.log('esta es la respuesta del menu ->', respuesta);
 
             //********************************** */
             $.each(respuesta.data, function (key, item) {
@@ -103,11 +101,12 @@ var clicMenu = function() {
  * Crea el html del menu
  */
 var loadPrincipalMenu = function() {
-    arrMenu = infoMenu();
-    var htmlMenu = '';
+
+    // arrMenu = infoMenu();
+    // var htmlMenu = '';
 
 
-    console.log(arrMenu);
+    // console.log(arrMenu);
    
 
     // arrMenu.forEach(element => {
@@ -127,6 +126,5 @@ var loadPrincipalMenu = function() {
 };
 
 $( document ).ready(function() {
-    loadPrincipalMenu(); 
-    console.log('document ready');   
+    loadPrincipalMenu();  
 });
