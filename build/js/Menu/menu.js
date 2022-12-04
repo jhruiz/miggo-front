@@ -6,43 +6,42 @@ var infoMenu = function() {
 
     $.ajax({
         method: "GET",
-        url: url_back+'/cloudmenus',
+        url: url_back+'cloudmenus',
         success: function(respuesta) {
-            $.each(respuesta, function (key ,item) {
 
+            var htmlMenu = "";
+            $.each(respuesta, function (key, item) {
+
+                console.log('este es el item', item);
+
+                htmlMenu += '<li class="nav-item">';
+                htmlMenu += '<a href="#" class="nav-link">';
+                htmlMenu += '<i class="' + item.imagen + '"></i>';
+                htmlMenu += '<p style="margin-left:10px;">';
+                htmlMenu += item.descripcion
+                htmlMenu += '<i class="right fas fa-angle-right"></i>';
+                htmlMenu += '</p>';
+                htmlMenu += '</a>';
+                htmlMenu += '<ul class="nav nav-treeview">';
+
+                $.each( item.hijos, function(k, i) {
 
                     htmlMenu += '<li class="nav-item">';
-                    htmlMenu += '<a href="#" class="nav-link active">';
-                    htmlMenu += '<i class="' + item.imagen + '"></i>';
-                    htmlMenu += '<p >&nbsp; &nbsp;' + item.descripcion + '</p>';
-                    htmlMenu += '<ul class="nav nav-treeview" style="display: none;">';
-
-                        $.each(item.hijos, function (k ,i) {
-                            htmlMenu += '<li class="dropdown-item">';
-                            htmlMenu += '<a href="#" data-load="' + i.url + '">';
-                            htmlMenu += '<i class="' + i.imagen + '"></i>';
-                            // htmlMenu += '<p>&nbsp; &nbsp;' + i.descripcion + '</p>';
-                            htmlMenu +=  i.descripcion;
-                            htmlMenu += '</a>';
-                            htmlMenu += '</li>';
-
-                            }); 
-
-                    htmlMenu += '</ul>';
+                    htmlMenu += '<a href="' + url_front + i.url + '" class="nav-link" style="margin-left:15px;">';
+                    htmlMenu += '<i class="far fa-circle nav-icon"></i>';
+                    htmlMenu += '<p>' + i.descripcion + '</p>';
                     htmlMenu += '</a>';
                     htmlMenu += '</li>';
 
-            }); 
+                });
 
-            htmlMenu += '<li class="nav-item">';
-            htmlMenu += '<a href="#" class="nav-link active" data-load="logout">';
-            htmlMenu += '<i class="fas fa-power-off"></i>';
-            htmlMenu += '<p >&nbsp; &nbsp;Cerrar sesión</p>';
-            htmlMenu += '</a>';
-            htmlMenu += '</li>';
+                htmlMenu += '</ul>';
+                htmlMenu += '</li>';
 
-                $('#li-menu').html(htmlMenu);
-                $('.load-menu').click(clicMenu);
+            });
+
+            $('#main-menu').html(htmlMenu);
+
                 
         },
         error: function() {
