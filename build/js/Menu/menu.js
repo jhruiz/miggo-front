@@ -1,8 +1,7 @@
-
+/**
+ * Funcion para obtener y renderizar el menu principal
+ */
 var infoMenu = function() {
-
-    var htmlMenu = '';
-    var arrMenu = [0,0];
 
     $.ajax({
         method: "GET",
@@ -11,9 +10,6 @@ var infoMenu = function() {
 
             var htmlMenu = "";
             $.each(respuesta, function (key, item) {
-
-                console.log('este es el item', item);
-
                 htmlMenu += '<li class="nav-item">';
                 htmlMenu += '<a href="#" class="nav-link">';
                 htmlMenu += '<i class="' + item.imagen + '"></i>';
@@ -54,10 +50,7 @@ var infoMenu = function() {
 var clicMenu = function() {
 
     var url = $(this).data('load'); 
-    
-    console.log(url);
-    alert('here');
- 
+
     //Valida si la opcion seleccionada es para salir del sistema
     if(url == 'logout'){
         localStorage.clear();
