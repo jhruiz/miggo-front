@@ -1,3 +1,7 @@
+var load_content = function(url){
+    $('#main_content').load(url_front + url);
+}
+
 /**
  * Funcion para obtener y renderizar el menu principal
  */
@@ -23,7 +27,8 @@ var infoMenu = function() {
                 $.each( item.hijos, function(k, i) {
 
                     htmlMenu += '<li class="nav-item">';
-                    htmlMenu += '<a href="' + url_front + i.url + '" class="nav-link" style="margin-left:15px;">';
+                    htmlMenu += '<a onclick="load_content(\'' + i.url + '\')" class="nav-link" style="margin-left:15px;">';
+                    // htmlMenu += '<a href="' + url_front + i.url + '" class="nav-link" style="margin-left:15px;">';
                     htmlMenu += '<i class="far fa-circle nav-icon"></i>';
                     htmlMenu += '<p>' + i.descripcion + '</p>';
                     htmlMenu += '</a>';
