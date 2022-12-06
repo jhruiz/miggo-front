@@ -52,43 +52,39 @@ var infoMenu = function() {
     }) 
 }
 
-var clicMenu = function() {
 
-    var url = $(this).data('load'); 
 
-    //Valida si la opcion seleccionada es para salir del sistema
+var clicLogout = function() {
+
+    // var url = $(this).data('load'); 
+    var url = 'logout';
+
+    //para salir del sistema
     if(url == 'logout'){
         localStorage.clear();
                 $.ajax({
                     method: "GET",
-                    url: url_back + 'logout',
+                    url: url_back + url,
+                    data: { 
+                        "access_token" : localStorage.access_token,
+                        "token_type" : "Bearer" 
+                    },
+                    dataType: "application/json",
                     success: function(respuesta) {
-                        console.log(respuesta.message);
-                       // $('#content-data').html(respuesta.message);         
+                        console.log(respuesta.message);//no llega al mensaje se sale antes
                     },
                     error: function() {
                         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                         sweetMessage('error', mensaje);
                     }
                 }) 
-                
-            window.location.href = url_front;
-
-    } else {
-        $.ajax({
-            method: "GET",
-            url: url,
-            success: function(respuesta) {
-                $('#content-data').html(respuesta);         
-            },
-            error: function() {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
-          }) 
-    }
+             window.location.href = home;
+    } 
 }
 
 $( document ).ready(function() {
     infoMenu(); 
+
+    $("#clicLogout").on("click",clicLogout);
+
 });

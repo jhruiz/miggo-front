@@ -1,6 +1,4 @@
-/**
- * Funcion para sincronizar usuarios desde datax al front de admin cotools
- */
+
 function sincronizarUsuarios() {
 
     $('.preloader').show();
