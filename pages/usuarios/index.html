@@ -23,7 +23,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Crear Usuario</a></li>
+              <li class="breadcrumb-item" id="crear"><a href="#">Crear Usuario</a></li>
               <li class="breadcrumb-item active">Tabla de Usuarios</li>
             </ol>
           </div>
@@ -117,34 +117,36 @@
 
 var infoTable = function(){
 
-  // var url = 'empresas/'+ localStorage.empresa_id+'/users';
-  var url = 'empresas/'+1+'/users';
+  var url = 'empresas/'+ localStorage.empresa_id+'/users';
 
+  console.log(url);
 
       $.ajax({
               method: "GET",
               url: url_back + url,
-              // data: { 
-              //     "access_token" : localStorage.access_token,
-              //     "token_type" : "Bearer" 
-              // },
+              headers: { 
+                  Authorization: 'Bearer ' + localStorage.access_token
+              },
+              dataType: 'json',
               success: function(respuesta) {
+                  alert(localStorage.access_token);
+                // console.log(respuesta);
+                      var htmlTable = "";
+                      $.each(respuesta.data, function (key, item) {
 
-                var htmlTable = "";
-                $.each(respuesta.data, function (key, item) {
+                      console.log(item.persona.nombres == null || item.persona.nombres == '' ? 'vacio' : item.persona.nombres);
+                      console.log(item.persona.id);
 
-                console.log(item);
+                      htmlTable += '<tr>';
 
-                htmlTable += '<tr>';
+                      htmlTable += '<th>' + (item.persona.nombres == null || item.persona.nombres == '' ? 'vacio' : item.persona.nombres) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + (item.persona.apellidos == null || item.persona.apellidos == '' ? 'vacio' : item.persona.apellidos) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + (item.persona.identificacion == null || item.persona.identificacion == '' ? 'vacio' : item.persona.identificacion) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + item.email + '</th>';
+                      htmlTable += '<th>' + (item.persona.celular == null || item.persona.celular == '' ? 'vacio' : item.persona.celular) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '</tr>';
 
-                htmlTable += '<th>' + item.persona.nombres+ '</th>';
-                htmlTable += '<th>' + item.persona.apellidos + '</th>';
-                htmlTable += '<th>' + item.persona.identificacion + '</th>';
-                htmlTable += '<th>' + item.email + '</th>';
-                htmlTable += '<th>' + item.persona.celular + '</th>';
-                htmlTable += '</tr>';
-
-                });
+                      });
 
                 // console.log(htmlTable);
 
@@ -152,7 +154,7 @@ var infoTable = function(){
 
               },
               error: function() {
-                  var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                  var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
                   sweetMessage('error', mensaje);
               }
           }) 
@@ -160,8 +162,19 @@ var infoTable = function(){
 }
 
 
+var renderUsuario = function() {
+
+  var url ='usuarios/add.html';
+//   var load_content = function(url){
+    $('#main_content').load(url_front + url);
+// }
+
+}
+
 $( document ).ready(function() {
     infoTable(); 
+    $("#crear").on("click",renderUsuario);
+
 });
 
 

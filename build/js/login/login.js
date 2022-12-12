@@ -18,7 +18,7 @@ var loginFunction = function() {
                 //Almacena la información del usuario en el local storage
                 localStorage.setItem('email', respuesta.data.email);
                 localStorage.setItem('id', respuesta.data.id);
-                localStorage.setItem('id', respuesta.data.empresa_id);
+                localStorage.setItem('empresa_id', respuesta.data.empresa_id);
                 localStorage.setItem('access_token', respuesta.access_token);
                 localStorage.setItem('date', new Date());            
 

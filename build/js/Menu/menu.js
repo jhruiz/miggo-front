@@ -61,15 +61,17 @@ var clicLogout = function() {
 
     //para salir del sistema
     if(url == 'logout'){
-        localStorage.clear();
                 $.ajax({
                     method: "GET",
                     url: url_back + url,
-                    data: { 
-                        "access_token" : localStorage.access_token,
-                        "token_type" : "Bearer" 
+                    // data: { 
+                    //     "access_token" : localStorage.access_token,
+                    //     "token_type" : "Bearer" 
+                    // },
+                    headers: { 
+                        Authorization: 'Bearer ' + localStorage.access_token
                     },
-                    dataType: "application/json",
+                    dataType: "json",
                     success: function(respuesta) {
                         console.log(respuesta.message);//no llega al mensaje se sale antes
                     },
@@ -78,7 +80,8 @@ var clicLogout = function() {
                         sweetMessage('error', mensaje);
                     }
                 }) 
-             window.location.href = home;
+            localStorage.clear();
+            window.location.href = home;
     } 
 }
 

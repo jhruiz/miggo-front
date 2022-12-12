@@ -69,7 +69,7 @@ function editarUsuario(data) {
  * @param {*} data 
  * @returns 
  */
-var organizarDatos = function( data ) {
+var organizarDatos = function( data ) {  //TODO: revisar este codigo
     var arrUsuarios = [];
 
     // se recorre la respuesta y se genera un array de arrays.
