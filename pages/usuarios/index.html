@@ -51,7 +51,7 @@
                     <th>Apellido</th>
                     <th>Identificacion</th>
                     <th>Email</th>
-                    <th>Celular</th>
+                    <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody id="main-table">
@@ -71,7 +71,7 @@
                     <th>Apellido</th>
                     <th>Identificacion</th>
                     <th>Email</th>
-                    <th>Celular</th>
+                    <th>Acciones</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -119,7 +119,7 @@ var infoTable = function(){
 
   var url = 'empresas/'+ localStorage.empresa_id+'/users';
 
-  console.log(url);
+  // console.log(url);
 
       $.ajax({
               method: "GET",
@@ -134,16 +134,17 @@ var infoTable = function(){
                       var htmlTable = "";
                       $.each(respuesta.data, function (key, item) {
 
-                      console.log(item.persona.nombres == null || item.persona.nombres == '' ? 'vacio' : item.persona.nombres);
-                      console.log(item.persona.id);
+                      // console.log(item.persona.nombres == null || item.persona.nombres == '' ? 'vacio' : item.persona.nombres);
+                      // console.log(item.persona.id);
 
                       htmlTable += '<tr>';
-
-                      htmlTable += '<th>' + (item.persona.nombres == null || item.persona.nombres == '' ? 'vacio' : item.persona.nombres) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
-                      htmlTable += '<th>' + (item.persona.apellidos == null || item.persona.apellidos == '' ? 'vacio' : item.persona.apellidos) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
-                      htmlTable += '<th>' + (item.persona.identificacion == null || item.persona.identificacion == '' ? 'vacio' : item.persona.identificacion) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + (item.persona.nombres == null || item.persona.nombres == '' ? ' ' : item.persona.nombres) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + (item.persona.apellidos == null || item.persona.apellidos == '' ? ' ' : item.persona.apellidos) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th>' + (item.persona.identificacion == null || item.persona.identificacion == '' ? ' ' : item.persona.identificacion) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
                       htmlTable += '<th>' + item.email + '</th>';
-                      htmlTable += '<th>' + (item.persona.celular == null || item.persona.celular == '' ? 'vacio' : item.persona.celular) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
+                      htmlTable += '<th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ item.persona.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ item.persona.id +')">Eliminar</button></th>';
+
+                      // htmlTable += '<th>' + (item.persona.celular == null || item.persona.celular == '' ? ' ' : item.persona.celular) + '</th>';//TODO: insertar mostrar vacio la columna que no tenga nada
                       htmlTable += '</tr>';
 
                       });
@@ -169,6 +170,14 @@ var renderUsuario = function() {
     $('#main_content').load(url_front + url);
 // }
 
+}
+
+function eliminarUsuario(id){//mensaje de desea borrar y eliminar
+  alert('eliminar'+id);
+}
+
+function editarUsuario(id){//render al editar
+  alert('render' + id);
 }
 
 $( document ).ready(function() {
