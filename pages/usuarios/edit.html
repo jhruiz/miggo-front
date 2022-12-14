@@ -3,70 +3,400 @@
 <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 </div>
 
-<div class="card">
+<div class="card" id="content-usuarios">
     <div class="card-header">
         <div class="row">
             <div class="col-12">
                 <h4>
                     <i class="nav-icon fas fa-user"></i>
-                    Editar usuario                                   
+                    Editar Usuario                                   
                 </h4>
             </div>
         </div>
     </div>
 
     <div class="card-body">
-
-        <input id="usuarioId" name="usuarioId" type="hidden" value="">
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="nombre" class="form-control" placeholder="Nombre">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="identificacion" class="form-control" placeholder="Identificación">
-        </div>    
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="text" id="email" class="form-control" placeholder="Email">
-        </div>
         
-        <div class="col-sm-12">
-            <!-- combo states -->
-            <div class=""></div>
-            <div class="form-group" id="cmb-states">
+        <form method="POST" action="" enctype="multipart/form-data">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombres">  <code>&nbsp;*</code>
             </div>
-        </div>
-        
-        <div class="col-sm-12">
-            <!-- checkbox -->
-            <div class="form-group clearfix" id="check-perfiles"></div>       
-        </div>  
 
-        <div class="col-sm-12">
-            <div class="form-group clearfix" id="radio-documentos"></div>
-        </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="apellidos" class="form-control" placeholder="Apellidos">  <code>&nbsp;*</code>
+            </div>
 
-        <div class="col-sm-12">
-            <div id="view-documents"></div>
-        </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="tipo_identificacion" class="form-control" placeholder="Tipo Identificacion"> <code>&nbsp;*</code>
+            </div> 
 
-        <div class="col-12 float-right">
-            <button type="button" class="btn btn-primary float-right" onclick="actualizarUsuario()">Guardar</button>
-        </div> 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="identificacion" class="form-control" placeholder="Identificación">  <code>&nbsp;*</code>
+            </div>   
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" id="email" class="form-control" placeholder="Email">  <code>&nbsp;*</code>
+            </div>  
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="new-password"> <code>&nbsp;*</code>
+            </div>  
+
+            <div class="form-group">
+              <label for="exampleSelectBorder">Perfil<code> &nbsp;*</code></label>
+              <select class="custom-select form-control-border" id="select-perfiles">
+                <!-- <option>Value 1</option> -->
+
+              </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..."></textarea>
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="rut" class="form-control" placeholder="RUT">
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="celular" class="form-control" placeholder="Celular">
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="telefono" class="form-control" placeholder="Teléfono">
+            </div>
+
+            <div class="form-group">
+                <label>Cumpleaños:</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                      <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Departamento</label>
+                <select class="custom-select rounded-0" id="select-departamento">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Ciudad</label>
+                <select class="custom-select rounded-0" id="select-ciudad">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
+              </div>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="username" class="form-control" placeholder="Username">
+            </div> 
+
+              <div class="form-group">
+                <label for="customFile">Custom File</label>
+
+                <div class="custom-file">
+                  <!-- <input type="file" id="imagen" class="custom-file-input" id="customFile" onchange="validarArchivo(this)"> -->
+                  <label class="custom-file-label" for="customFile">Elija la Foto</label>
+                </div>
+              </div>
+
+            <div class="col-12 float-right">
+                <button type="button" class="btn btn-primary float-right" onclick="actualizarUsuario()">Guardar</button>
+            </div> 
+
+        </form>
 
     </div>
 
 </div>
 
-<script src="../../build/js/Usuarios/edit.js"></script>
+<script>
+
+
+function actualizarUsuario() {
+
+// var nombre =$('#username').val();
+var email =$('#email').val();
+var password =$('#password').val();
+
+console.log('empresa id'+ localStorage.empresa_id);
+
+// $.ajax({
+//     method: "PUT",
+//     url: url_back + "users",
+//     headers: { 
+//         Authorization: 'Bearer ' + localStorage.access_token
+//     },
+//     dataType: "json",
+//     data: {
+//         empresa_id: localStorage.empresa_id,
+//         email: email, 
+//         password: password, 
+//         identificacion: identificacion, 
+//         nombres: nombres, 
+//         apellidos: apellidos
+//     },//enviar todo los datos al back y alla en store user crear de una vez la persona
+//     success: function(respuesta) {
+
+//         alert('here');
+//         if(respuesta){
+//             var mensaje = 'Usuario creado de forma correcta.';
+//             sweetMessage('success', mensaje); 
+//             $('#main_content').load(url_front + 'Usuarios/index.html');
+//         } else {
+//                 sweetMessage('warning', respuesta);                
+//         }
+//     },
+//     error: function(respuesta) {
+
+//         $.each(respuesta.message, function (key, item) {
+//                 console.log(item)
+//                 // sweetMessage('warning', item);                
+//             });
+//         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+//         sweetMessage('error', mensaje);
+//     }
+// });
+}
+
+
+var infoUsuario = function(){
+
+    url_show = 'users'; //traer el id de la url o enviar desde el index data
+    alert(localStorage.empresa_id);
+
+
+    $.ajax({
+              method: "GET",
+              url: url_back + url_show,
+              headers: { 
+                  Authorization: 'Bearer ' + localStorage.access_token
+              },
+              dataType: 'json',
+              success: function(respuesta) {
+                //   alert(localStorage.access_token);
+                  alert(localStorage.empresa_id);
+                // console.log(respuesta);
+   
+                // console.log(htmlTable);
+
+              },
+              error: function() {
+                  var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                  sweetMessage('error', mensaje);
+              }
+          }) 
+  
+
+
+};
+
+// function obtenerPerfiles() {
+
+//     url = 'perfiles';
+
+//     $.ajax({
+//         method: "GET",
+//         url: url_back + url,
+//         dataType: "json",
+//         success: function(respuesta) {
+//              crearPerfiles(respuesta.data);
+//         },
+//         error: function() {
+//             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+//             sweetMessage('error', mensaje);
+//         }
+//       })     
+// }
+
+
+// /**
+//  * Genera el html con los perfiles configurados en la base de datos
+//  */
+//  var crearPerfiles = function(data) {
+//     var htmlPerfiles = '<option value="">Seleccione..</option>';
+//         $.each(data, function (key, item) {
+//             htmlPerfiles += '<option value="'+ item.id+'">';
+//             htmlPerfiles += item.description;
+//             htmlPerfiles += '</option>';
+//         });
+//     $('#select-perfiles').html(htmlPerfiles);
+// }
+
+
+// function obtenerDepartamentos() {
+
+// url = 'paises/'+localStorage.empresa_id+'/departamentos';
+
+// $.ajax({
+//     method: "GET",
+//     url: url_back + url,
+//     dataType: "json",
+//     success: function(respuesta) {
+//          crearDepartamentos(respuesta.data);
+//     },
+//     error: function() {
+//         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+//         sweetMessage('error', mensaje);
+//     }
+//   })     
+// }
+
+
+// /**
+//  * Genera el html con los departamentos configurados en la base de datos
+//  */
+//  var crearDepartamentos = function(data) {
+//     var htmlDepartamentos = '<option value="">Seleccione..</option>';
+//         $.each(data, function (key, item) {
+//             htmlDepartamentos += '<option value="'+ item.id+'">';
+//             htmlDepartamentos += item.descripcion;
+//             htmlDepartamentos += '</option>';
+//         });
+//     $('#select-departamento').html(htmlDepartamentos);
+// }
+
+// var crearCiudades = function(data) {
+//     var htmlCiudades = '<option value="">Seleccione..</option>';
+//         $.each(data, function (key, item) {
+//             htmlCiudades += '<option value="'+ item.id+'">';
+//             htmlCiudades += item.descripcion;
+//             htmlCiudades += '</option>';
+//         });
+//     $('#select-ciudad').html(htmlCiudades);
+// }
+
+
+// /**
+//  * Valida que el archivo cargado sea valido
+//  */
+//  function validarArchivo(datos) {
+    
+//     var dataFI = $('#imagen').prop('files')[0];
+
+//     // valida el tamaño del archivo
+//     if(dataFI.size > 1000000) {
+//         var mensaje = 'El tamaño máximo del archivo es 1MB.';
+//         sweetMessage('warning', mensaje);
+//         $('#imagen').val('');
+//     }
+
+//     // valida el formato del archivo
+//     if((dataFI.name.split('.')['1'].toLowerCase() != 'jpg') && (dataFI.name.split('.')['1'].toLowerCase() != 'jpeg')) {
+//         console.log(dataFI.name.split('.')['1'].toLowerCase());
+//         var mensaje = 'Solo se permiten archivos en formato jpg o jpeg';
+//         sweetMessage('warning', mensaje);
+//         $('#imagen').val('');
+//     }
+// }
+
+// var validarFormulario = function(){ //TODO: validacion basica centralizar la validacion y metodos
+
+//     var email = $('#email').val();
+//     var nombres = $('#nombres').val();
+//     var apellidos = $('#apellidos').val();
+//     var identificacion = $('#identificacion').val();
+//     var identificacion = $('#tipo_identificacion').val();
+//     var password = $('#password').val();
+//     var perfil = $('#select-perfiles').val();
+
+//     if((apellidos != '') && (nombres != '') && (email != '') && (tipo_identificacion != '') && (identificacion != '') && (password != '') && (perfil != '')){
+//         crearUsuario();
+//     } else{
+//         var mensaje = 'Los valores marcados con (*) son obligatorios';
+//         sweetMessage('warning', mensaje);
+//     }
+
+// };
+
+
+// $(function () {
+// //Date picker
+// $('#reservationdate').datetimepicker({
+//     format: 'L'
+// });
+// })
+
+
+
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+
+    infoUsuario();
+
+
+    
+//     obtenerPerfiles();
+//     obtenerDepartamentos();
+
+
+//     $('#select-departamento').on('change',function(){
+//         var departamento_id = $(this).val();
+//         var url_d ='departamentos/'+departamento_id+'/ciudades';
+//         if(departamento_id){
+//             $.ajax({
+//                 type:"GET",
+//                 url: url_back + url_d,
+//                 success:function(respuesta){
+//                     crearCiudades(respuesta.data);
+//                 }
+//             }); 
+//         }else if($(this).val() == ''){
+//              $('#select-ciudad').val('');
+//         }
+//     });
+
+
+//     $('#guardar').click(validarFormulario);
+
+});
+
+
+
+
+
+</script>
+
+<!-- bootstrap color picker -->
+<!-- <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script> -->
+<!-- <script src="../../build/js/Usuarios/add.js"></script> -->
