@@ -1,31 +1,4 @@
-
-
-function obtenerUsuario(id){
-
-    var url_edit = 'usuarios/edit.html';
-    var url = 'users/'+ id;
-    
-    $.ajax({
-        method: "GET",
-        url: url_back + url,
-        headers: { 
-                      Authorization: 'Bearer ' + localStorage.access_token
-                  },
-        dataType: "json",
-        success: function(respuesta) {
-            console.log(respuesta);
-//              $('#select-ciudad').val('');
-
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-      })  
-
-
-}
-
+var urlC = 'https://cotoolsback.cotools.co/public/';
 
 /**
  * Obtiene los perfiles seleccionados
@@ -45,33 +18,33 @@ function obtenerUsuario(id){
 /**
  * Actualiza la información del usuario
  */
-// function actualizarUsuario() {
-//     var perfiles = perfilesSeleccionados();
-//     var estado = $('#estadosUsuario').val();
-//     var usuarioId = $('#usuarioId').val();
-//     var email = $('#email').val();
+function actualizarUsuario() {
+    var perfiles = perfilesSeleccionados();
+    var estado = $('#estadosUsuario').val();
+    var usuarioId = $('#usuarioId').val();
+    var email = $('#email').val();
 
-//     $.ajax({
-//         method: "GET",
-//         async: false,
-//         url: urlC + "update-user",
-//         data: { id: usuarioId, estado: estado, perfiles: perfiles, email: email },
-//         success: function(respuesta) {       
-//             // Valida si la respuesta es correcta
-//             if ( respuesta.estado ) {
-//                 var mensaje = 'Usuario actualizado correctamente';
-//                 sweetMessage('success', mensaje);
-//             } else {
-//                 sweetMessage('warning', respuesta.mensaje);
-//             }
+    $.ajax({
+        method: "GET",
+        async: false,
+        url: urlC + "update-user",
+        data: { id: usuarioId, estado: estado, perfiles: perfiles, email: email },
+        success: function(respuesta) {       
+            // Valida si la respuesta es correcta
+            if ( respuesta.estado ) {
+                var mensaje = 'Usuario actualizado correctamente';
+                sweetMessage('success', mensaje);
+            } else {
+                sweetMessage('warning', respuesta.mensaje);
+            }
             
-//         },
-//         error: function() {
-//             var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-//             sweetMessage('error', mensaje);
-//         }
-//     });    
-// }
+        },
+        error: function() {
+            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
+            sweetMessage('error', mensaje);
+        }
+    });    
+}
 
 /**
  * Setea la información del usuario con los datos obtenidos desde API
@@ -170,34 +143,34 @@ var obtenerPerfiles = function(){
     })
 }
 
-// /**
-//  * Obtiene la informacion de un usuario específico
-//  */
-//  var obtenerUsuario = function() {
-//     var usuarioId = $('#usuarioId').val();
+/**
+ * Obtiene la informacion de un usuario específico
+ */
+ var obtenerUsuario = function() {
+    var usuarioId = $('#usuarioId').val();
 
-//     $.ajax({
-//         method: "GET",
-//         url: urlC + "get-user",
-//         data: { usuarioId: usuarioId }, 
-//         success: function(respuesta) {  
+    $.ajax({
+        method: "GET",
+        url: urlC + "get-user",
+        data: { usuarioId: usuarioId }, 
+        success: function(respuesta) {  
             
-//             $('.preloader').hide("slow");
+            $('.preloader').hide("slow");
             
-//             // Valida si la respuesta es correcta para generar el data table
-//             if ( respuesta.estado ) {
-//                 setDatosUsuario(respuesta.data);
-//             } else {
-//                 sweetMessage('warning', respuesta.mensaje);
-//             }
+            // Valida si la respuesta es correcta para generar el data table
+            if ( respuesta.estado ) {
+                setDatosUsuario(respuesta.data);
+            } else {
+                sweetMessage('warning', respuesta.mensaje);
+            }
             
-//         },
-//         error: function() {
-//             var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-//             sweetMessage('error', mensaje);
-//         }
-//     })
-// }
+        },
+        error: function() {
+            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
+            sweetMessage('error', mensaje);
+        }
+    })
+}
 
 /**
  * Permite visualizar cada documento
@@ -273,9 +246,8 @@ var obtenerDocumentos = function() {
 }
 
 $( document ).ready(function() {
-// //     // obtenerEstados();
-// //     // obtenerPerfiles();
-// //     // obtenerDocumentos();
-// //     // obtenerUsuario();
-// alert('edit'+ valor1);
+    obtenerEstados();
+    obtenerPerfiles();
+    obtenerDocumentos();
+    obtenerUsuario();
 });

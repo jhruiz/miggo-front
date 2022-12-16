@@ -3,9 +3,7 @@
   <div class="card-header">
       <h2 class="card-title"><b>Usuarios</b></h2>
       
-      <button class="btn btn-success btn-sm float-right" type="submit">
-          <i class="fas fa fa-plus" aria-hidden="true"></i>
-      </button>
+
   </div>
 
 
@@ -25,7 +23,11 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item" id="crear"><a href="#">Crear Usuario</a></li>
+            <li class="breadcrumb-item active">
+              <button class="btn btn-success btn-sm float-right" type="submit">
+                <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
+              </button>
+            </li>
             <li class="breadcrumb-item active">Tabla de Usuarios</li>
           </ol>
         </div>
@@ -91,7 +93,7 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
         arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
       
 
-        arrUsuario.push('<th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>');
+        arrUsuario.push('<button type="button" class="btn btn-block btn-warning btn-sm" onclick="verUsuario('+ element.id +')">Ver</button><th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>');
 
 
         arrUsuarios.push(arrUsuario);
@@ -218,15 +220,21 @@ var url_index = 'usuarios/index.html';
 }
 
 function editarUsuario(id){//render al editar
-url_edit = 'usuarios/edit.html';
 
-alert('render' + id);
-$('#main_content').load(url_front + url_edit);
+  var url_edit = 'usuarios/edit.html';
 
+  $('#main_content').load(url_front + url_edit);
+    localStorage.setItem('editar', id);
 }
+
+function verUsuario(id){
+  alert('modal'+1);
+}
+
 
 $( document ).ready(function() {
 
+  alert(localStorage.access_token);
   var saludo = 'Hola '+ localStorage.nombres;
   $('#saludos').text(saludo);
 
@@ -237,3 +245,5 @@ $( document ).ready(function() {
 
 
 </script>
+
+<!-- <script src="../../build/js/Usuarios/edit.js"></script> -->

@@ -33,12 +33,13 @@
                 <input type="text" id="apellidos" class="form-control" placeholder="Apellidos">  <code>&nbsp;*</code>
             </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <input type="text" id="tipo_identificacion" class="form-control" placeholder="Tipo Identificacion"> <code>&nbsp;*</code>
-            </div> 
+            <div class="form-group">
+                <label for="exampleSelectBorder">Tipo Identificacion<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-tipodocumento">
+                  <!-- <option>Value 1</option> -->
+  
+                </select>
+              </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -131,7 +132,7 @@
             </div> 
 
               <div class="form-group">
-                <label for="customFile">Custom File</label>
+                <label for="customFile">Foto</label>
 
                 <div class="custom-file">
                   <input type="file" id="imagen" class="custom-file-input" id="customFile" onchange="validarArchivo(this)">
@@ -155,13 +156,21 @@
 
 function crearUsuario() {
 
-
-// var nombre =$('#username').val();
 var email =$('#email').val();
 var password =$('#password').val();
-
-
-console.log('empresa id'+ localStorage.empresa_id);
+var username =$('#username').val();
+var nombres = $('#nombres').val();
+var apellidos = $('#apellidos').val();
+var tipoidentificacione_id = $('#select-identificacion').val();
+var identificacion = $('#identificacion').val();
+var perfile_id = $('#select-perfiles').val();
+var direccion = $('#direccion').val();
+var rut = $('#rut').val();
+var celular = $('#celular').val();
+var telefono = $('#telefono').val();
+var cumpleanios = $('#cumpleanios').val();
+var ciudade_id = $('#select-ciudad').val();
+var imagen = $('#imagen').val();
 
 $.ajax({
     method: "POST",
@@ -172,17 +181,27 @@ $.ajax({
     dataType: "json",
     data: {
         empresa_id: localStorage.empresa_id,
+        creador_id:localStorage.id,
         email: email, 
         password: password, 
+        username: username, 
+        perfile_id: perfile_id, 
+        tipoidentificacione_id: tipoidentificacione_id, 
         identificacion: identificacion, 
         nombres: nombres, 
-        apellidos: apellidos
+        apellidos: apellidos,
+        direccion: direccion,
+        rut: rut,
+        celular: celular,
+        telefono: telefono,
+        cumpleanios: cumpleanios,
+        ciudade_id: ciudade_id,
+        imagen: imagen
     },//enviar todo los datos al back y alla en store user crear de una vez la persona
     success: function(respuesta) {
 
-        alert('here');
         if(respuesta){
-            var mensaje = 'Usuario creado de forma correcta.';
+            var mensaje = 'Usuario creado de forma correcta: '+ respuesta.data.persona.nombres;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'Usuarios/index.html');
         } else {
@@ -201,38 +220,32 @@ $.ajax({
 });
 }
 
-function obtenerPerfiles() {
 
-    url = 'perfiles';
+//***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
 
+var tipoidentificaciones = function(){
+    url_ide= 'tipoidentificaciones';
     $.ajax({
-        method: "GET",
-        url: url_back + url,
-        dataType: "json",
-        success: function(respuesta) {
-             crearPerfiles(respuesta.data);
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-      })     
-}
+    method: "GET",
+    url: url_back + url_ide,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-tipodocumento').html(crearHtml(respuesta.data));
 
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
 
 /**
- * Genera el html con los perfiles configurados en la base de datos
+ * Genera el html con los departamentos configurados en la base de datos
  */
- var crearPerfiles = function(data) {
-    var htmlPerfiles = '<option value="">Seleccione..</option>';
-        $.each(data, function (key, item) {
-            htmlPerfiles += '<option value="'+ item.id+'">';
-            htmlPerfiles += item.description;
-            htmlPerfiles += '</option>';
-        });
-    $('#select-perfiles').html(htmlPerfiles);
-}
-
 
 function obtenerDepartamentos() {
 
@@ -241,9 +254,15 @@ url = 'paises/'+localStorage.empresa_id+'/departamentos';
 $.ajax({
     method: "GET",
     url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
     dataType: "json",
     success: function(respuesta) {
-         crearDepartamentos(respuesta.data);
+
+        $('#select-departamento').html(crearHtml(respuesta.data));
+
+        //  crearDepartamentos(respuesta.data);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -252,30 +271,39 @@ $.ajax({
   })     
 }
 
+function obtenerPerfiles() {
 
-/**
- * Genera el html con los departamentos configurados en la base de datos
- */
- var crearDepartamentos = function(data) {
-    var htmlDepartamentos = '<option value="">Seleccione..</option>';
-        $.each(data, function (key, item) {
-            htmlDepartamentos += '<option value="'+ item.id+'">';
-            htmlDepartamentos += item.descripcion;
-            htmlDepartamentos += '</option>';
-        });
-    $('#select-departamento').html(htmlDepartamentos);
+url = 'perfiles';
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        //  crearPerfiles(respuesta.data);
+        $('#select-perfiles').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
 }
 
-var crearCiudades = function(data) {
-    var htmlCiudades = '<option value="">Seleccione..</option>';
+var crearHtml = function(data) {
+    var html = '<option value="">Seleccione..</option>';
         $.each(data, function (key, item) {
-            htmlCiudades += '<option value="'+ item.id+'">';
-            htmlCiudades += item.descripcion;
-            htmlCiudades += '</option>';
+            html += '<option value="'+ item.id+'">';
+            html += item.descripcion;
+            html += '</option>';
         });
-    $('#select-ciudad').html(htmlCiudades);
+    return html;
 }
 
+//***************************************************validaciones*******************
 
 /**
  * Valida que el archivo cargado sea valido
@@ -330,8 +358,9 @@ var validarFormulario = function(){ //TODO: validacion basica centralizar la val
 $( document ).ready(function() {
     $('.preloader').hide("slow");
 
-    obtenerPerfiles();
     obtenerDepartamentos();
+    obtenerPerfiles();
+    tipoidentificaciones();
 
 
     $('#select-departamento').on('change',function(){
@@ -341,8 +370,13 @@ $( document ).ready(function() {
             $.ajax({
                 type:"GET",
                 url: url_back + url_d,
+                headers: { 
+                      Authorization: 'Bearer ' + localStorage.access_token
+                },
+                dataType: "json",
                 success:function(respuesta){
-                    crearCiudades(respuesta.data);
+
+                  $('#select-ciudad').html(crearHtml(respuesta.data));
                 }
             }); 
         }else if($(this).val() == ''){

@@ -15,8 +15,7 @@ var loginFunction = function() {
 
             console.log(respuesta);
 
-            if (respuesta) {
-
+            if (respuesta.data) {
                 //Almacena la información del usuario en el local storage
                 localStorage.setItem('email', respuesta.data.email);//TODO: guardar el nombre para mostrarlo en todas las paginas
                 localStorage.setItem('id', respuesta.data.id);
@@ -31,7 +30,7 @@ var loginFunction = function() {
                 // window.location.href = window.location+'main/main.html';
                 window.location.href =  url_front + 'main/main.html';
             } else {
-                sweetMessage('warning', respuesta.mensaje);
+                sweetMessage('warning', respuesta.message);
             }
             
         },
@@ -66,6 +65,7 @@ var enviarCorreo = function() {
             
         },
         error: function(data) {
+            console.log(data);
             var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
             sweetMessage('error', mensaje);
         }
