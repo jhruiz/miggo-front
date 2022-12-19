@@ -3,7 +3,7 @@
   <div class="card-header">
       <h2 class="card-title"><b>Usuarios</b></h2>
       
-
+      <!-- <a id="manual-ajax">second example</a> -->
   </div>
 
 
@@ -24,8 +24,8 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item active">
-              <button class="btn btn-success btn-sm float-right" type="submit">
-                <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
+              <button class="btn btn-success btn-sm float-right" type="submit" id="crear">
+                <i class="fas fa fa-plus" aria-hidden="true"></i>
               </button>
             </li>
             <li class="breadcrumb-item active">Tabla de Usuarios</li>
@@ -75,6 +75,7 @@
 
 </div>
 
+
 <script>
 
 var organizarDatos = function( data ) {  //TODO: revisar este codigo
@@ -93,7 +94,8 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
         arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
       
 
-        arrUsuario.push('<button type="button" class="btn btn-block btn-warning btn-sm" onclick="verUsuario('+ element.id +')">Ver</button><th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>');
+        // arrUsuario.push('<button type="button" class="btn btn-block btn-warning btn-sm" onclick="verUsuario('+ element.id +')">Ver</button><th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>');
+        arrUsuario.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="fas fa fa-times" aria-hidden="true"></i></button><button class="btn btn-primary btn-sm float-right" type="submit" onclick="editarUsuario('+ element.id +')"><i class="fas fa fa-pencil-alt" aria-hidden="true"></i></button><button class="btn btn-warning btn-sm float-right" type="submit" id="manual-ajax" onclick="verUsuario('+ element.id +')"><i class="fas fa fa-scroll" aria-hidden="true"></i></button>');
 
 
         arrUsuarios.push(arrUsuario);
@@ -228,7 +230,27 @@ function editarUsuario(id){//render al editar
 }
 
 function verUsuario(id){
-  alert('modal'+1);
+
+  alert('modal'+id);
+
+
+  // event.preventDefault();
+  // this.blur(); // Manually remove focus from clicked link.
+  $.get(url_front + 'usuarios/ajax.html' , function(html) {
+    // $(html).appendTo('body').modal();
+    $(html).appendTo('body').modal({
+            width: 80,
+            height: 50,
+            top: 50,
+            
+            // overflow: scroll,
+            fadeDelay: 0.50
+            });
+  });
+
+    console.log('despues del modal' + id);
+
+
 }
 
 
@@ -240,6 +262,7 @@ $( document ).ready(function() {
 
   infoTable(); 
   $("#crear").on("click",renderUsuario);
+
 
 });
 

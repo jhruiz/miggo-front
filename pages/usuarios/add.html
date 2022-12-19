@@ -197,7 +197,7 @@ $.ajax({
         cumpleanios: cumpleanios,
         ciudade_id: ciudade_id,
         imagen: imagen
-    },//enviar todo los datos al back y alla en store user crear de una vez la persona
+    },
     success: function(respuesta) {
 
         if(respuesta){
@@ -209,13 +209,16 @@ $.ajax({
         }
     },
     error: function(respuesta) {
-
-        $.each(respuesta.message, function (key, item) {
-                console.log(item)
-                // sweetMessage('warning', item);                
+        if(respuesta.responseJSON.error.message){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
             });
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
     }
 });
 }

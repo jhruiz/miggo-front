@@ -156,14 +156,40 @@
 
 function actualizarUsuario() {
 
+var email = $('#email').val();
+var password = $('#password').val();
+var username =$('#username').val();
 var nombres = $('#nombres').val();
 var apellidos = $('#apellidos').val();
 var tipoidentificacione_id = $('#select-identificacion').val();
 var identificacion = $('#identificacion').val();
-var email = $('#email').val();
-var password = $('#password').val();
 var perfile_id = $('#select-perfiles').val();
+var direccion = $('#direccion').val();
+var rut = $('#rut').val();
+var celular = $('#celular').val();
+var telefono = $('#telefono').val();
+var cumpleanios = $('#cumpleanios').val();
+var ciudade_id = $('#select-ciudad').val();
+var imagen = $('#imagen').val();
 
+
+var miData = {
+                email: email, 
+                password: password, 
+                username: username, 
+                perfile_id: perfile_id, 
+                tipoidentificacione_id: tipoidentificacione_id, 
+                identificacion: identificacion, 
+                nombres: nombres, 
+                apellidos: apellidos,
+                direccion: direccion,
+                rut: rut,
+                celular: celular,
+                telefono: telefono,
+                cumpleanios: cumpleanios,
+                ciudade_id: ciudade_id,
+                imagen: imagen
+          };
 
 $.ajax({
     method: "PUT",
@@ -172,36 +198,35 @@ $.ajax({
         Authorization: 'Bearer ' + localStorage.access_token
     },
     dataType: "json",
-    data: {
-        email: email, 
-        password: password, 
-        nombres: nombres, //persona
-        apellidos: apellidos, //persona
-        tipoidentificacione_id: tipoidentificacione_id, //persona
-        identificacion: identificacion, //persona
-        perfile_id: perfile_id
-    },//enviar todo los datos al back y alla en store user crear de una vez la persona
+    // data: JSON.stringify(miData),
+    data: miData,
     success: function(respuesta) {
 
-
-        alert('actualiza');
-        // localStorage.editar = '';
-        // if(respuesta){
-        //     var mensaje = 'Usuario creado de forma correcta.';
-        //     sweetMessage('success', mensaje); 
-        //     $('#main_content').load(url_front + 'Usuarios/index.html');
-        // } else {
-        //         sweetMessage('warning', respuesta);                
-        // }
+        localStorage.editar = '';
+        if(respuesta){
+            var mensaje = 'Usuario actualizado de forma correcta nombres.: '+ respuesta.data.persona.nombres;
+            sweetMessage('success', mensaje); 
+            $('#main_content').load(url_front + 'Usuarios/index.html');
+        } else {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+            console.log(respuesta);               
+        }
     },
     error: function(respuesta) {
 
-        $.each(respuesta.message, function (key, item) {
-                console.log(item)
-                // sweetMessage('warning', item);                
+        if(respuesta.responseJSON.error.message){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
             });
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+ 
+
     }
 });
 }
@@ -264,7 +289,6 @@ var obtenerTipoidentificacione = function(id){
     },
     dataType: "json",
     success: function(respuesta) {
-        console.log(respuesta);
             var htmlTipo = '';
             htmlTipo += '<option value="'+ respuesta.data.id+'">';
             htmlTipo += respuesta.data.descripcion;
@@ -444,7 +468,6 @@ $.ajax({
         $('#apellidos').val(respuesta.data.persona.apellidos);
         $('#identificacion').val(respuesta.data.persona.identificacion);
         $('#email').val(respuesta.data.email);
-        $('#password').val(respuesta.data.password);
         $('#direccion').val(respuesta.data.persona.direccion);
         $('#rut').val(respuesta.data.persona.rut);
         $('#celular').val(respuesta.data.persona.celular);
