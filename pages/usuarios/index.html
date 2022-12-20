@@ -2,24 +2,7 @@
 
   <div class="card-header">
       <h2 class="card-title"><b>Usuarios
-
-        <i class="fa-duotone fa-telescope"></i>
-        <i class="fa-duotone fa-nfc-magnifying-glass"></i>
-        <i class="fa-duotone fa-magnifying-glass-arrow-right"></i>
-        <i class="fa-sharp fa-solid fa-user-magnifying-glass"></i>
-        <i class="fa-brands fa-searchengin"></i>
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <i class="fa-regular fa-magnifying-glass"></i>
-        <i class="fa-light fa-magnifying-glass"></i>
-        <i class="fa-thin fa-magnifying-glass"></i>
-        <i class="fa-duotone fa-magnifying-glass"></i>
-
-
-
       </b></h2>
-      
-
-
   </div>
 
 
@@ -111,10 +94,9 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
         ];
 
         arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
-      
 
         // arrUsuario.push('<button type="button" class="btn btn-block btn-warning btn-sm" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong">Ver</button><th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>'); 
-        arrUsuario.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="fas fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarUsuario('+ element.id +')"><i class="fas fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search"></i></button>'); 
+        arrUsuario.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarUsuario('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>'); 
 
         arrUsuarios.push(arrUsuario);
     });
