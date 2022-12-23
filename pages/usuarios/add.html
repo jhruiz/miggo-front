@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body-form">
         
         <form method="POST" id="form" action="" enctype="multipart/form-data">
 
@@ -187,15 +187,15 @@ var password =$('#password').val();
 var username =$('#username').val();
 var nombres = $('#nombres').val();
 var apellidos = $('#apellidos').val();
-var tipoidentificacione_id = $('#select-identificacion').val();
+var tipoidentificacione_id = $('#select-identificacion').val()? $('#select-identificacion').val() : ''; 
 var identificacion = $('#identificacion').val();
-var perfile_id = $('#select-perfiles').val();
+var perfile_id = $('#select-perfiles').val()? $('#select-perfiles').val(): ''; 
 var direccion = $('#direccion').val();
 var rut = $('#rut').val();
 var celular = $('#celular').val();
 var telefono = $('#telefono').val();
 var cumpleanios = $('#cumpleanios').val();
-var ciudade_id = $('#select-ciudad').val();
+var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
 
 
@@ -216,36 +216,12 @@ formData.append("telefono", telefono);
 formData.append("cumpleanios", cumpleanios);
 formData.append("ciudade_id", ciudade_id);
 formData.append("imagen", imagen);
-// formData.append('_method', 'POST');
 
+// const output = document.getElementById('output');
 
-const output = document.getElementById('output');
-
-for (const [key, value] of formData) {
-  output.textContent += `${key}: ${value}\n`;
-}
-
-
-// var miData = {
-//                 empresa_id: localStorage.empresa_id,
-//                 creador_id:localStorage.id,
-//                 email: email, 
-//                 password: password, 
-//                 username: username, 
-//                 perfile_id: perfile_id, 
-//                 tipoidentificacione_id: tipoidentificacione_id, 
-//                 identificacion: identificacion, 
-//                 nombres: nombres, 
-//                 apellidos: apellidos,
-//                 direccion: direccion,
-//                 rut: rut,
-//                 celular: celular,
-//                 telefono: telefono,
-//                 cumpleanios: cumpleanios,
-//                 ciudade_id: ciudade_id,
-//                 imagen: imagen
-//           };
-
+// for (const [key, value] of formData) {
+//   output.textContent += `${key}: ${value}\n`;
+// }
 
 $.ajax({
     method: "POST",
@@ -260,8 +236,6 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-        // console.log(respuesta);
-        // alert('imagen');
         if(respuesta){
             var mensaje = 'Usuario creado de forma correcta: '+ respuesta.data.persona.nombres;
             sweetMessage('success', mensaje); 
@@ -272,7 +246,7 @@ $.ajax({
     },
     error: function(respuesta) {
         // console.log(respuesta);
-        if(respuesta.responseJSON.error.message){
+        if(respuesta.responseJSON.error){
             $.each(respuesta.responseJSON.error.message, function (key, item) {
                 var mensaje = item[0];
                 sweetMessage('error', mensaje);

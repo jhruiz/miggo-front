@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="card-body">
+    <div class="card-body-form">
         
         
         <form id="form"  method="PUT" action="" enctype="multipart/form-data">
@@ -152,7 +152,7 @@
                 </div>
 
               <div class="form-group">
-                <label for="imagen">Elija la Foto</label>
+                <label for="imagen">selecione para editar la Foto</label>
               <div class="custom-file">
                 <!-- <input class="form-control" type="file" id="imagen" onchange="validarArchivo(this)"> -->
                 <input class="form-control" type="file" id="imagen">
@@ -184,9 +184,9 @@ var password = $('#password').val();
 var username =$('#username').val();
 var nombres = $('#nombres').val();
 var apellidos = $('#apellidos').val();
-var tipoidentificacione_id = $('#select-identificacion').val();
+var tipoidentificacione_id = $('#select-identificacion').val()? $('#select-identificacion').val() : ''; 
 var identificacion = $('#identificacion').val();
-var perfile_id = $('#select-perfiles').val();
+var perfile_id = $('#select-perfiles').val()? $('#select-perfiles').val(): ''; 
 var direccion = $('#direccion').val();
 var rut = $('#rut').val();
 var celular = $('#celular').val();
@@ -194,7 +194,6 @@ var telefono = $('#telefono').val();
 var cumpleanios = $('#cumpleanios').val();
 var ciudade_id = $('#select-ciudad').val() ? $('#select-ciudad').val() : '';
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
-
 
 formData.append("email", email);
 formData.append("password", password);
@@ -219,25 +218,6 @@ formData.append('_method', 'PUT');
 //   output.textContent += `${key}: ${value}\n`;
 // }
 
-
-// var miData = {
-//                 email: email, 
-//                 password: password, 
-//                 username: username, 
-//                 perfile_id: perfile_id, 
-//                 tipoidentificacione_id: tipoidentificacione_id, 
-//                 identificacion: identificacion, 
-//                 nombres: nombres, 
-//                 apellidos: apellidos,
-//                 direccion: direccion,
-//                 rut: rut,
-//                 celular: celular,
-//                 telefono: telefono,
-//                 cumpleanios: cumpleanios,
-//                 ciudade_id: ciudade_id,
-//                 imagen: imagen
-//           };
-
 $.ajax({
     method: "POST",
     url: url_back + "users/"+localStorage.editar,
@@ -253,11 +233,9 @@ $.ajax({
     // async: false,
     success: function(respuesta) {
 
-        // console.log(respuesta);
-        // alert('imagen');
-
         localStorage.editar = '';
         if(respuesta){
+            console.log(respuesta);
             var mensaje = 'Usuario actualizado de forma correcta nombres.: '+ respuesta.data.persona.nombres;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'Usuarios/index.html');
@@ -269,9 +247,8 @@ $.ajax({
     },
     error: function(respuesta) {
 
-        // console.log(respuesta);
-
-        if(respuesta.responseJSON.error.message){
+        console.log(respuesta.responseJSON.error);
+        if(respuesta.responseJSON.error){
             $.each(respuesta.responseJSON.error.message, function (key, item) {
                 var mensaje = item[0];
                 sweetMessage('error', mensaje);
@@ -531,7 +508,14 @@ $.ajax({
         $('#telefono').val(respuesta.data.persona.telefono);
         $('#cumpleanios').val(respuesta.data.persona.cumpleanios);
         $('#username').val(respuesta.data.username);
-        // $('#imagen').val(respuesta.data.persona.imagen); // previsualizar
+
+        if(respuesta.data.imagen){
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_img + 'users/'+ respuesta.data.imagen;
+            ul.appendChild(imagen);
+          }
 
         if(respuesta.data.persona.ciudade_id){
             obtenerCiudad(respuesta.data.persona.ciudade_id);
@@ -556,8 +540,6 @@ $.ajax({
     }
   })  
 }
-
-
 
 
 $( document ).ready(function() {
@@ -609,7 +591,8 @@ $(function() {
 
 
 document.getElementById("imagen").onchange = function(){
-  const ul = document.getElementById("mostrarImagen");
+  var ul = document.getElementById("mostrarImagen");
+  ul.innerHTML = '';
   const imagen = document.createElement("img");
   const read = new FileReader();
   const file = this.files;
@@ -619,6 +602,7 @@ document.getElementById("imagen").onchange = function(){
     const url = result;
     imagen.width = 200;
     imagen.src = url;
+    console.log(url);
     ul.appendChild(imagen);
   }
   

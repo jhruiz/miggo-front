@@ -261,18 +261,9 @@ $.ajax({
         $('#telefono').val(respuesta.data.persona.telefono);
         $('#cumpleanios').val(respuesta.data.persona.cumpleanios);
         $('#username').val(respuesta.data.username);
-        // $('#imagen').val(respuesta.data.persona.imagen); // previsualizar
 
           if(respuesta.data.imagen){
-            // $("#imagen").attr("src","../usuarios/"+ respuesta.data.imagen);
-            // $("#imagen").attr("src","../usuarios/"+ 'user-04.jpg');
-
-            // $("#imagen").attr('src','http://localhost:85/miggo-accountant-back/public/images/img_api/users/'+ respuesta.data.imagen);
-            $("#imagen").attr('src', url_img + 'users/'+ respuesta.data.imagen);
-
-
-
-
+              $("#imagen").attr('src', url_img + 'users/'+ respuesta.data.imagen);
           }else{
             $("#imagen").attr("src","../usuarios/"+ 'defecto.jpg');
           }
