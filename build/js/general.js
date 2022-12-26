@@ -45,6 +45,3 @@ var numberFormater = function(number) {
 var validarLogin = function() {
     //Valida el estado de login de un usuario
 }
-
-
-

@@ -23,19 +23,19 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                 </div>
-                <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" required>  <code>&nbsp;*</code>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombres">  <code>&nbsp;*</code>
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                 </div>
-                <input type="text" id="apellidos" class="form-control input-texto-espacio" placeholder="Apellidos" required>  <code>&nbsp;*</code>
+                <input type="text" id="apellidos" class="form-control" placeholder="Apellidos">  <code>&nbsp;*</code>
             </div>
 
             <div class="form-group">
                 <label for="exampleSelectBorder">Tipo Identificacion<code> &nbsp;*</code></label>
-                <select class="custom-select form-control-border" id="select-identificacion" required>
+                <select class="custom-select form-control-border" id="select-identificacion">
                   <!-- <option>Value 1</option> -->
   
                 </select>
@@ -45,43 +45,29 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="identificacion" class="form-control input-numero" placeholder="Identificación" required>  <code>&nbsp;*</code>
+                <input type="text" id="identificacion" class="form-control" placeholder="Identificación">  <code>&nbsp;*</code>
             </div>   
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                 </div>
-                <input type="text" id="email" class="form-control" placeholder="E-mail" required>  <code>&nbsp;*</code>
+                <input type="text" id="email" class="form-control" placeholder="Email">  <code>&nbsp;*</code>
             </div>  
             
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                 </div>
-                <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="new-password" required> <code>&nbsp;*</code>
+                <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="new-password"> <code>&nbsp;*</code>
             </div>  
 
             <div class="form-group">
               <label for="exampleSelectBorder">Perfil<code> &nbsp;*</code></label>
-              <select class="custom-select form-control-border" id="select-perfiles" required>
+              <select class="custom-select form-control-border" id="select-perfiles">
                 <!-- <option>Value 1</option> -->
 
               </select>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <input type="text" id="celular" class="form-control input-numero" placeholder="Celular">
-            </div> 
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono">
             </div>
 
             <div class="input-group mb-3">
@@ -95,15 +81,31 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="rut" class="form-control input-numero" placeholder="RUT">
+                <input type="text" id="rut" class="form-control" placeholder="RUT">
             </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="celular" class="form-control" placeholder="Celular">
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="telefono" class="form-control" placeholder="Teléfono">
+            </div>
+
+
 
               <!-- Date -->
         <div class="form-group">
             <label>Fecha de Nacimiento:</label>
-              <div class="input-group date" id="cumpleanio" data-target-input="nearest">
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio"/>
-                  <div class="input-group-append" data-target="#cumpleanio" data-toggle="datetimepicker">
+              <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                  <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                   </div>
               </div>
@@ -112,9 +114,9 @@
                  <!-- Date and time -->
         <!-- <div class="form-group">
             <label>Date and time:</label>
-              <div class="input-group date" id="cumpleaniotime" data-target-input="nearest">
-                  <input type="text" class="form-control datetimepicker-input" data-target="#cumpleaniotime"/>
-                  <div class="input-group-append" data-target="#cumpleaniotime" data-toggle="datetimepicker">
+              <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime"/>
+                  <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                   </div>
               </div>
@@ -141,11 +143,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="username" class="form-control input-texto-alfanumerico" placeholder="Username">
+                <input type="text" id="username" class="form-control" placeholder="Username">
             </div> 
 
             <output id="output"></output>
 
+            <h3>Previsualizacón de imagen</h3>
              <div id="mostrarImagen" stye="display:flex;">
               
               </div>
@@ -154,11 +157,13 @@
             <div class="form-group">
                 <label for="imagen">Elija la Foto</label>
               <div class="custom-file">
+                <!-- <input class="form-control" type="file" id="imagen" onchange="validarArchivo(this)"> -->
                 <input class="form-control" type="file" id="imagen">
               </div>
             </div>
 
             <div class="col-12 float-right">
+                <!-- <button type="button" class="btn btn-primary float-right" onclick="crearUsuario()">Guardar</button> -->
                 <button type="submit" id="guardar" class="btn btn-primary float-right">Guardar</button>
             </div> 
 
@@ -339,12 +344,60 @@ var crearHtml = function(data) {
     return html;
 }
 
+//***************************************************validaciones*******************
+
+/**
+ * Valida que el archivo cargado sea valido
+ */
+ function validarArchivo(datos) {
+    
+    var dataFI = $('#imagen').prop('files')[0];
+
+    // valida el tamaño del archivo
+    if(dataFI.size > 1000000) {
+        var mensaje = 'El tamaño máximo del archivo es 1MB.';
+        sweetMessage('warning', mensaje);
+        $('#imagen').val('');
+    }
+
+    // valida el formato del archivo
+    if((dataFI.name.split('.')['1'].toLowerCase() != 'jpg') && (dataFI.name.split('.')['1'].toLowerCase() != 'jpeg')) {
+        console.log(dataFI.name.split('.')['1'].toLowerCase());
+        var mensaje = 'Solo se permiten archivos en formato jpg o jpeg';
+        sweetMessage('warning', mensaje);
+        $('#imagen').val('');
+    }
+}
+
+// var validarFormulario = function(){ //TODO: validacion basica centralizar la validacion y metodos
+
+//     var email = $('#email').val();
+//     var nombres = $('#nombres').val();
+//     var apellidos = $('#apellidos').val();
+//     var identificacion = $('#identificacion').val();
+//     var identificacion = $('#tipo_identificacion').val();
+//     var password = $('#password').val();
+//     var perfil = $('#select-perfiles').val();
+
+//     if((apellidos != '') && (nombres != '') && (email != '') && (tipo_identificacion != '') && (identificacion != '') && (password != '') && (perfil != '')){
+//         crearUsuario();
+//     } else{
+//         var mensaje = 'Los valores marcados con (*) son obligatorios';
+//         sweetMessage('warning', mensaje);
+//     }
+
+// };
+
+
+
+
 $( document ).ready(function() {
     $('.preloader').hide("slow");
 
     obtenerDepartamentos();
     obtenerPerfiles();
     tipoidentificaciones();
+
 
     $('#select-departamento').on('change',function(){
         var departamento_id = $(this).val();
@@ -367,49 +420,46 @@ $( document ).ready(function() {
         }
     });
 
-    $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
-    $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
+
+    // $('#guardar').click(validarFormulario);
+
 });
 
 
 $(function() {
     //Date picker
- $("#cumpleanio").datetimepicker({
-        locale: "es",
-        format: "YYYY-MM-DD",  
-        //  defaultDate:"2012/01/01",
-        maxDate: new Date("2010-01-01"),//TODO: fijar fecha automatica menos 15 años 
-        minDate: '1950-01-01',
-        timepicker:false,
-        autoclose: true,
-        showButtonPanel: true
- });
+    $('#reservationdate').datetimepicker({
+        // format: 'LT'
+        // format: 'L'
+        format:"YYYY/MM/DD"
+    });
+
     // //Date and time picker
-    // $('#cumpleaniotime').datetimepicker({ icons: { time: 'far fa-clock' } });
+    // $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
 });
 
 
-document.getElementById("imagen").onchange = function(e){
-    if(validarImagen(e)){
-        const ul = document.getElementById("mostrarImagen");
-        ul.innerHTML = '';
-        const imagen = document.createElement("img");
-        const read = new FileReader();
-        const file = this.files;
-        
-        read.onload = function(){
-            const result = this.result;
-            const url = result;
-            imagen.width = 200;
-            imagen.src = url;
-            ul.appendChild(imagen);
-        }
-        read.readAsDataURL(file[0]);
-    }
+document.getElementById("imagen").onchange = function(){
+  const ul = document.getElementById("mostrarImagen");
+  const imagen = document.createElement("img");
+  const read = new FileReader();
+  const file = this.files;
+  
+  read.onload = function(){
+    const result = this.result;
+    const url = result;
+    imagen.width = 200;
+    imagen.src = url;
+    ul.appendChild(imagen);
+  }
+  
+  read.readAsDataURL(file[0]);
 }
+
 
 </script>
 
-<!-- validaciones -->
-<script src="../../build/js/validaciones.js"></script>
+<!-- bootstrap color picker -->
+<!-- <script src="../../build/js/Usuarios/add.js"></script> -->
 
