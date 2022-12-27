@@ -42,9 +42,16 @@ var numberFormater = function(number) {
     return formatter.format(number).toString();
 }
 
+//******************************** REDIRECCIONA AL LOGIN************************* */
 var validarLogin = function() {
-    //Valida el estado de login de un usuario
+  if (!localStorage.hasOwnProperty('access_token')) {
+      var mensaje = 'Se presentó un error. Por favor, inicie sesion para continuar.';
+      sweetMessage('error', mensaje);
+      window.location.href = home;
+  }
 }
 
-
+//******************************** MOSTRAR NOMBRE DEL USUARIO************************* */
+var saludo = 'Hola '+ localStorage.nombres;
+$('#saludos').text(saludo);
 
