@@ -25,7 +25,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item active">
-              <button class="btn btn-success btn-sm float-right" type="submit">
+              <button class="btn btn-success btn-sm" type="submit">
                 <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
               </button>
             </li>
@@ -88,11 +88,11 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
     // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrTipovehiculo = [
-            element.id,
+            // element.id,
             element.descripcion,
         ];
 
-        arrTipovehiculo.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarTipovehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarTipovehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verTipovehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>'); 
+        arrTipovehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verTipovehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTipovehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarTipovehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
 
         arrTipovehiculos.push(arrTipovehiculo);
     });
@@ -106,11 +106,19 @@ var generarDataTable = function( dataSet ) {
   $("#example1").DataTable({
     data: dataSet,
     columns: [
-            { title: "Id" },
+            // { title: "Id" },
             { title: "Descripcion" },
             { title: "Acciones" },
             ],
-    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "responsive": true, "lengthChange": true, "autoWidth": false,
+    "paging": true, "ordering": true, "info": true,
+    lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All'],
+        ],
+        "language": {
+                url:"../../build/config/languagedatatable.json"
+          },
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 

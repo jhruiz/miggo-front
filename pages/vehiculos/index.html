@@ -96,7 +96,7 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
 
         ];
 
-        arrVehiculo.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarVehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarVehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verVehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>'); 
+        arrVehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verVehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarVehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarVehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
 
         arrVehiculos.push(arrVehiculo);
     });
@@ -117,7 +117,15 @@ var generarDataTable = function( dataSet ) {
             { title: "Marca Vehiculo" },
             { title: "Acciones" },
             ],
-    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "responsive": true, "lengthChange": true, "autoWidth": false,
+    "paging": true, "ordering": true, "info": true,
+      lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All'],
+        ],
+        "language": {
+                url:"../../build/config/languagedatatable.json"
+          },
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 

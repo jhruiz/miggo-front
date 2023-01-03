@@ -88,12 +88,12 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
     // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrPartevehiculo = [
-            element.id,
+            // element.id,
             element.descripcion,
             element.extra,
         ];
 
-        arrPartevehiculo.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarPartevehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarPartevehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verPartevehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>'); 
+        arrPartevehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verPartevehiculo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>   &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarPartevehiculo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarPartevehiculo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
 
         arrPartevehiculos.push(arrPartevehiculo);
     });
@@ -107,12 +107,20 @@ var generarDataTable = function( dataSet ) {
   $("#example1").DataTable({
     data: dataSet,
     columns: [
-            { title: "Id" },
+            // { title: "Id" },
             { title: "Descripcion" },
             { title: "Extra" },
             { title: "Acciones" },
             ],
-    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "responsive": true, "lengthChange": true, "autoWidth": false,
+    "paging": true, "ordering": true, "info": true,
+      lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All'],
+        ],
+        "language": {
+                url:"../../build/config/languagedatatable.json"
+          },
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 

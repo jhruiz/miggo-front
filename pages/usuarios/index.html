@@ -97,8 +97,7 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
 
         arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
 
-        // arrUsuario.push('<button type="button" class="btn btn-block btn-warning btn-sm" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong">Ver</button><th><button type="button" class="btn btn-block bg-gradient-info btn-sm" onclick="editarUsuario('+ element.id +')">Editar</button><button type="button" class="btn btn-block bg-gradient-danger btn-sm" onclick="eliminarUsuario('+ element.id +')">Eliminar</button></th>'); 
-        arrUsuario.push('<button class="btn btn-danger btn-sm float-right" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm float-right" type="submit" onclick="editarUsuario('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-success btn-sm float-right" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button>'); 
+        arrUsuario.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarUsuario('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
 
         arrUsuarios.push(arrUsuario);
     });
@@ -150,7 +149,15 @@ var generarDataTable = function( dataSet ) {
             { title: "Estatus" },
             { title: "Acciones" },
             ],
-    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "responsive": true, "lengthChange": true, "autoWidth": false,
+    "paging": true, "ordering": true, "info": true,  "scrollX": true,
+      lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, 'All'],
+        ],
+        "language": {
+                url:"../../build/config/languagedatatable.json"
+          },
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 

@@ -64,16 +64,12 @@ var clicLogout = function() {
                 $.ajax({
                     method: "GET",
                     url: url_back + url,
-                    // data: { 
-                    //     "access_token" : localStorage.access_token,
-                    //     "token_type" : "Bearer" 
-                    // },
                     headers: { 
                         Authorization: 'Bearer ' + localStorage.access_token
                     },
                     dataType: "json",
                     success: function(respuesta) {
-                        console.log(respuesta.message);//no llega al mensaje se sale antes
+                        console.log(respuesta.message);
                     },
                     error: function() {
                         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
