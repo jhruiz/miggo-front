@@ -93,10 +93,9 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
             data.count[i],
 
         ];
-
         i++;
         // arrTipovehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verTipovehiculosP('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTipovehiculosP('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarTipovehiculosP('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
-        arrTipovehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verTipovehiculosP('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTipovehiculosP('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> </div>'); 
+        arrTipovehiculo.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verTipovehiculosP('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTipovehiculosP('+ element.id + ')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> </div>'); 
 
         arrTipovehiculos.push(arrTipovehiculo);
     });
@@ -195,6 +194,7 @@ var url = 'alltipovehiculopartes';
 
 function editarTipovehiculosP(id){//render al editar
   var url_edit = 'tipovehiculoPartevehiculo/edit.html';
+
   $('#main_content').load(url_front + url_edit);
     localStorage.setItem('editar', id);
 }
@@ -213,7 +213,10 @@ $( document ).ready(function() {
   validarLogin();
 
   infoTable(); 
-  $("#crear").on("click",renderVehiculo);
+  // $("#crear").on("click",renderVehiculo);
+
+  var saludos = 'Hola '+ localStorage.nombres;
+  $('#saludos').text(saludos);
 
 });
 
