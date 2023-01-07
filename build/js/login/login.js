@@ -19,7 +19,7 @@ var loginFunction = function() {
                 //Almacena la información del usuario en el local storage
                 localStorage.setItem('email', respuesta.data.email);//TODO: guardar el nombre para mostrarlo en todas las paginas
                 localStorage.setItem('id', respuesta.data.id);
-                // localStorage.setItem('nombres', respuesta.data.tercero.nombres);
+                localStorage.setItem('nombres', respuesta.data.tercero.nombres);
                 localStorage.setItem('empresa_id', respuesta.data.empresa_id);
                 localStorage.setItem('empresa', respuesta.data.empresa.nombre);
                 localStorage.setItem('access_token', respuesta.access_token);

@@ -234,7 +234,7 @@ $.ajax({
         localStorage.editar = '';
         if(respuesta){
             console.log(respuesta);
-            var mensaje = 'Usuario actualizado de forma correcta nombres.: '+ respuesta.data.persona.nombres;
+            var mensaje = 'Usuario actualizado de forma correcta nombres.: '+ respuesta.data.tercero.nombres;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'Usuarios/index.html');
         } else {
@@ -263,7 +263,7 @@ $.ajax({
 });
 
 
-//***************************************************trae valores de persona y usuario si ya exiten (perfil,ciudad,tipodocumento)*******************
+//***************************************************trae valores de tercero y usuario si ya exiten (perfil,ciudad,tipodocumento)*******************
 var obtenerCiudad = function(id){
     url_ciu= 'ciudades/' + id;
     $.ajax({
@@ -442,15 +442,15 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#nombres').val(respuesta.data.persona.nombres);
-        $('#apellidos').val(respuesta.data.persona.apellidos);
-        $('#identificacion').val(respuesta.data.persona.identificacion);
+        $('#nombres').val(respuesta.data.tercero.nombres);
+        $('#apellidos').val(respuesta.data.tercero.apellidos);
+        $('#identificacion').val(respuesta.data.tercero.identificacion);
         $('#email').val(respuesta.data.email);
-        $('#direccion').val(respuesta.data.persona.direccion);
-        $('#rut').val(respuesta.data.persona.rut);
-        $('#celular').val(respuesta.data.persona.celular);
-        $('#telefono').val(respuesta.data.persona.telefono);
-        $('#cumpleanios').val(respuesta.data.persona.cumpleanios);
+        $('#direccion').val(respuesta.data.tercero.direccion);
+        $('#rut').val(respuesta.data.tercero.rut);
+        $('#celular').val(respuesta.data.tercero.celular);
+        $('#telefono').val(respuesta.data.tercero.telefono);
+        $('#cumpleanios').val(respuesta.data.tercero.cumpleanios);
         $('#username').val(respuesta.data.username);
 
         if(respuesta.data.imagen){
@@ -461,8 +461,8 @@ $.ajax({
             ul.appendChild(imagen);
           }
 
-        if(respuesta.data.persona.ciudade_id){
-            obtenerCiudad(respuesta.data.persona.ciudade_id);
+        if(respuesta.data.tercero.ciudade_id){
+            obtenerCiudad(respuesta.data.tercero.ciudade_id);
         }
         if(respuesta.data.perfile_id){
             obtenerPerfil(respuesta.data.perfile_id);
@@ -470,8 +470,8 @@ $.ajax({
             obtenerPerfiles();
         }
 
-        if(respuesta.data.persona.tipoidentificacione_id){
-            obtenerTipoidentificacione(respuesta.data.persona.tipoidentificacione_id);
+        if(respuesta.data.tercero.tipoidentificacione_id){
+            obtenerTipoidentificacione(respuesta.data.tercero.tipoidentificacione_id);
         }else{
             obtenerTipoidentificaciones();
         }
