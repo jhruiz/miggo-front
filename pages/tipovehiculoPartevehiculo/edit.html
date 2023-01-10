@@ -31,11 +31,10 @@
 
  
                             <div class="form-group mb-2">
-                              <label for="select-tipovehiculo" class="sr-only">Tipo Vehiculo</label>
-                              <select class="form-control" id="select-tipovehiculo" required>
-                                <option selected>tipovehiculo...</option>
-                                <option>...</option>
-                              </select>
+                              <br>
+                              <br>
+                              <h4 id="tipovehiculo"></h4>
+
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
                               <label for="select-partevehiculo" class="sr-only">Parte Vehiculo</label>
@@ -45,7 +44,7 @@
                               </select>
                             </div>
 
-                          <button type="submit" class="btn btn-primary mb-2">Vincular</button>
+                          <button type="button" id="vincular" class="btn btn-primary mb-2">Vincular</button>
               
                           <!-- <output id="output"></output> -->
               
@@ -65,7 +64,7 @@
   
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title" id="saludo">Lista de Partes del tipo vehiculo: </h3>
+                <h3 class="card-title" id="saludo">Lista de Partes: </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -102,10 +101,62 @@
   
   <script>
   
+//***************************************************tipo vehiculo, parte vehiculo*******************
+
+var obtenertipovehiculo = function(){
+    url_tipo= 'tipovehiculos/' + localStorage.editar;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_tipo,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+      $('#tipovehiculo').text("Agregando las partes "+respuesta.data.descripcion +" :");
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+function obtenerpartevehiculos() {
+
+url = 'partevehiculos';
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,  
+     headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-partevehiculo').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
+}
+
+var crearHtml = function(data) {
+    var html = '<option value="">Seleccione..</option>';
+        $.each(data, function (key, item) {
+            html += '<option value="'+ item.id+'">';
+            html += item.descripcion;
+            html += '</option>';
+        });
+    return html;
+}
+
   var organizarDatos = function( data ) {  //TODO: revisar este codigo
       var arrTipovehiculos = [];
-   console.log(data);
-   var i = 0;
+      var i = 0;
       // se recorre la respuesta y se genera un array de arrays.
       data.forEach(element => {
           arrTipovehiculo = [
@@ -208,17 +259,41 @@
       return false;
     }
   }
+
+  $("#vincular").on('click',function(e){
+
+    var parte = $('#select-partevehiculo').val();
+    var url = 'tipovehiculos/'+ localStorage.editar +'/partevehiculos/'+parte;
+    var url_edit = 'tipovehiculoPartevehiculo/edit.html';
   
- 
+  $.ajax({
+          method: "PUT",
+          url: url_back + url,
+          headers: { 
+              Authorization: 'Bearer ' + localStorage.access_token
+          },
+          dataType: 'json',
+          success: function(respuesta) {
+            var mensaje = 'se agrego exitosamente la parte: ' + respuesta.data.descripcion;
+            sweetMessage('success', mensaje);
+            $('#main_content').load(url_front + url_edit);    
+          },
+          error: function() {
+              var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
+              sweetMessage('error', mensaje);
+          }
+      })
+});
+  
   
   $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
   
     infoTable(); 
+    obtenerpartevehiculos();
+    obtenertipovehiculo();
 
-    // var saludo = 'Tipo Vehiculo '+ localStorage.editar;
-    // $('#saludo').html(saludo);
     var saludos = 'Hola '+ localStorage.nombres;
     $('#saludos').text(saludos);
 
