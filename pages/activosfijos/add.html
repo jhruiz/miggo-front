@@ -1,0 +1,547 @@
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+<img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+</div>
+
+<div class="card" id="content-activosfijos">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12">
+                <h4>
+                    <i class="nav-icon fas fa-user"></i>
+                    Nuevo Activo Fijo                                   
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body-form">
+        
+        <form method="POST" id="form" action="" enctype="multipart/form-data">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" required>  <code>&nbsp;*</code>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox"  id="alquilable">
+                <label for="alquilable">Alquilable</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="codigo" class="form-control input-texto-espacio" placeholder="Codigo" required>  <code>&nbsp;*</code>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Centro de costos<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-centrocosto">
+                    <!-- <select class="custom-select form-control-border" id="select-centrocosto" required> -->
+                  <!-- <option>Value 1</option> -->
+  
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleSelectBorder">Nivel del Centro de Costos<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-nivelcentrocosto">
+                    <!-- <select class="custom-select form-control-border" id="select-nivelcentrocosto" required> -->
+                  <!-- <option>Value 1</option> -->
+  
+                </select>
+              </div>
+
+                            <!-- Date -->
+        <div class="form-group">
+            <label>Fecha de Adquisicion:</label>
+              <div class="input-group date" id="adquisicionfecha" data-target-input="nearest">
+                  <input type="text" id="adquisicionfechas" class="form-control datetimepicker-input" data-target="#adquisicionfecha"/>
+                  <div class="input-group-append" data-target="#adquisicionfecha" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciarmesescompra" class="form-control input-numero" placeholder="Depreciar Meses Compra" required>  <code>&nbsp;*</code>
+        </div> 
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciaraniocompra" class="form-control input-numero" placeholder="Depreciar Años Compra" required>  <code>&nbsp;*</code>
+        </div>  
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciarmeses" class="form-control input-numero" placeholder="Depreciar Meses" required>  <code>&nbsp;*</code>
+        </div> 
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciaranio" class="form-control input-numero" placeholder="Depreciar Años" required>  <code>&nbsp;*</code>
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="salvamento" class="form-control input-numero" placeholder="Salvamento" required>  <code>&nbsp;*</code>
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="residuo" class="form-control input-numero" placeholder="Residuo" required>  <code>&nbsp;*</code>
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones ..."></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="costohora" class="form-control input-numero" placeholder="Costo Hora" required>  <code>&nbsp;*</code>
+        </div> 
+        
+        <div class="form-group">
+            <label for="exampleSelectBorder">Departamento<code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-departamento" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Ciudad<code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-ciudad" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Tipo Activos fijos<code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-tiposactivosfijo" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Cuenta PUC<code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-puc" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Estado Activo<code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-estadoactivo" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="responsable">Responsable: </label>
+            <input class="form-control input-texto-alfanumerico" id="responsable" placeholder="El nombre o identificacion Empleado">
+          </div>
+
+           <input type="text" id='tercero_id' hidden>
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Grupo Activo Fijo <code> &nbsp;*</code></label>
+            <select class="custom-select form-control-border" id="select-gruposactivosfijo" required>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+            
+        <output id="output"></output>
+
+        <div id="mostrarImagen" stye="display:flex;">
+        
+        </div>
+
+
+        <div class="form-group">
+            <label for="imagen">Elija la Foto</label>
+            <div class="custom-file">
+            <input class="form-control" type="file" id="imagen">
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div> 
+
+        </form>
+    </div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+  
+
+$("#form").submit(function(e) {
+e.preventDefault();   
+
+
+const form = document.getElementById('form');
+const formData = new FormData(form);
+
+var nombre =$('#nombre').val();
+var codigo =$('#codigo').val();
+var direccion = $('#direccion').val();
+var alquilable =$('#alquilable').val();
+var centrocosto_id = $('#select-centrocosto').val()? $('#select-centrocosto').val() : ''; 
+// var nivelcentrocosto = $('#select-nivelcentrocosto').val()? $('#select-nivelcentrocosto').val() : ''; 
+// var nivelcentrocosto = $('#nivelcentrocosto').val();
+var adquisicionfecha = $('#adquisicionfecha').val();
+var depreciarmesescompra = $('#depreciarmesescompra').val();
+var depreciaraniocompra = $('#depreciaraniocompra').val();
+var salvamento = $('#salvamento').val();
+var depreciaranio = $('#depreciaranio').val();
+var depreciarmeses = $('#depreciarmeses').val();
+var residuo = $('#residuo').val();
+var observaciones = $('#observaciones').val();
+var costohora = $('#costohora').val();
+var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
+var tiposactivosfijo_id = $('#select-tiposactivosfijo').val()? $('#select-tiposactivosfijo').val() : ''; 
+var puc_id = $('#select-puc').val()? $('#select-puc').val() : ''; 
+var estadoactivo_id = $('#select-estadoactivo').val()? $('#select-estadoactivo').val() : ''; 
+var responsable_id = $('#tercero_id').val(); 
+var gruposactivosfijo_id = $('#select-gruposactivosfijo').val()? $('#select-gruposactivosfijo').val() : ''; 
+var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
+
+
+// formData.append("empresa_id", localStorage.empresa_id);
+formData.append("creador_id", localStorage.id);
+formData.append("nombre", nombre);
+formData.append("codigo", codigo);
+formData.append("direccion", direccion);
+formData.append("alquilable", alquilable);
+// formData.append("centrocosto_id", centrocosto_id);
+// formData.append("nivelcentrocosto", nivelcentrocosto);//el nombre del nivel
+formData.append("adquisicionfecha", adquisicionfecha);
+formData.append("depreciarmesescompra", depreciarmesescompra);
+formData.append("depreciaraniocompra", depreciaraniocompra);
+formData.append("salvamento", salvamento);
+formData.append("depreciaranio", depreciaranio);
+formData.append("depreciarmeses", depreciarmeses);
+formData.append("residuo", residuo);
+formData.append("observaciones", observaciones);
+formData.append("costohora", costohora);
+formData.append("ciudade_id", ciudade_id);
+formData.append("tiposactivosfijo_id", tiposactivosfijo_id);
+formData.append("puc_id", puc_id);
+formData.append("estadoactivo_id", estadoactivo_id);
+formData.append("responsable_id", responsable_id);
+formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
+formData.append("imagen", imagen);
+
+const output = document.getElementById('output');
+
+for (const [key, value] of formData) {
+  output.textContent += `${key}: ${value}\n`;
+}
+
+$.ajax({
+    method: "POST",
+    url: url_back + "activosfijos",
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,//formData
+    processData: false,//formData
+    success: function(respuesta) {
+        alert('dentro');
+
+        if(respuesta){
+            var mensaje = 'activo fijo creado de forma correcta: ';
+            // var mensaje = 'activo fijo creado de forma correcta: '+ respuesta.data.tercero.nombres;
+            sweetMessage('success', mensaje); 
+            $('#main_content').load(url_front + 'activosfijos/index.html');
+        } else {
+                sweetMessage('warning', respuesta);                
+        }
+    },
+    error: function(respuesta) {
+        // console.log(respuesta);
+        if(respuesta.responseJSON.error){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
+            });
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    }
+});
+});
+
+
+//***************************************************autocompletar*******************
+
+$( "#responsable" ).autocomplete({
+        source: function( request, response ) {
+            var url_empl = 'empresas/'+ localStorage.empresa_id+ '/empleados?search='+$('#responsable').val();
+
+           // Fetch data
+           $.ajax({
+             method: "GET",
+             url: url_back + url_empl,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                // console.log(respuesta);
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#responsable').val(ui.item.label); // display the selected text
+          $('#tercero_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
+
+
+//***************************************************trae valores masivos de estadoactivo,gruposactivosfijos,tiposactivosfijos*******************
+
+var tiposactivosfijos = function(){
+    url_ide= 'tiposactivosfijos';
+    $.ajax({
+    method: "GET",
+    url: url_back + url_ide,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-tiposactivosfijo').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerPucs = function(){
+    var url_puc= 'pucs';
+    $.ajax({
+    method: "GET",
+    url: url_back + url_puc,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-puc').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerGruposactivosfijos = function(){
+    var url = 'empresas/'+ localStorage.empresa_id+'/gruposactivosfijos';
+
+    $.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+
+        $('#select-gruposactivosfijo').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+function obtenerDepartamentos() {
+
+url = 'paises/'+ 170 +'/departamentos';
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+
+        $('#select-departamento').html(crearHtml(respuesta.data));
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
+}
+
+function obtenerEstadoActivo() {
+
+url = 'estadoactivos';
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-estadoactivo').html(crearHtml(respuesta.data));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
+}
+
+var crearHtml = function(data) {
+    var html = '<option value="">Seleccione..</option>';
+        $.each(data, function (key, item) {
+            html += '<option value="'+ item.id+'">';
+            html += item.descripcion;
+            html += '</option>';
+        });
+    return html;
+}
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+    validarLogin();
+
+
+    obtenerDepartamentos();
+    obtenerEstadoActivo();
+    tiposactivosfijos();
+    obtenerPucs();
+    obtenerGruposactivosfijos();
+
+    $('#select-departamento').on('change',function(){
+        var departamento_id = $(this).val();
+        var url_d ='departamentos/'+departamento_id+'/ciudades';
+        if(departamento_id){
+            $.ajax({
+                type:"GET",
+                url: url_back + url_d,
+                headers: { 
+                      Authorization: 'Bearer ' + localStorage.access_token
+                },
+                dataType: "json",
+                success:function(respuesta){
+
+                  $('#select-ciudad').html(crearHtml(respuesta.data));
+                }
+            }); 
+        }else if($(this).val() == ''){
+             $('#select-ciudad').val('');
+        }
+    });
+
+    // $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
+    $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
+});
+
+
+$(function() {
+    //Date picker
+ $("#adquisicionfecha").datetimepicker({
+        locale: "es",
+        format: "YYYY-MM-DD",  
+        //  defaultDate:"2012/01/01",
+        maxDate: new Date("2010-01-01"),//TODO: fijar fecha automatica menos 15 años 
+        minDate: '1950-01-01',
+        timepicker:false,
+        autoclose: true,
+        showButtonPanel: true
+ });
+    // //Date and time picker
+    // $('#adquisicionfechatime').datetimepicker({ icons: { time: 'far fa-clock' } });
+});
+
+
+document.getElementById("imagen").onchange = function(e){
+    if(validarImagen(e)){
+        const ul = document.getElementById("mostrarImagen");
+        ul.innerHTML = '';
+        const imagen = document.createElement("img");
+        const read = new FileReader();
+        const file = this.files;
+        
+        read.onload = function(){
+            const result = this.result;
+            const url = result;
+            imagen.width = 200;
+            imagen.src = url;
+            ul.appendChild(imagen);
+        }
+        read.readAsDataURL(file[0]);
+    }
+}
+
+</script>
+
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>
+
