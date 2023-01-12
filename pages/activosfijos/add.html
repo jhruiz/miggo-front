@@ -23,7 +23,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                 </div>
-                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" required>  <code>&nbsp;*</code>
+                <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Codigo" required>  <code>&nbsp;*</code>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="nombre" class="form-control input-texto-alfanumerico" placeholder="Nombre" required>  <code>&nbsp;*</code>
             </div>
 
             <div class="form-group">
@@ -31,11 +38,55 @@
                 <label for="alquilable">Alquilable</label>
             </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+            <div class="form-group">
+                <label for="exampleSelectBorder">Grupo Activo Fijo <code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-gruposactivosfijo" required>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+            <label>Fecha de Nacimiento:</label>
+                <div class="input-group date" id="adquisicionfecha" data-target-input="nearest">
+                    <input type="text" id="adquisicionfechas" class="form-control datetimepicker-input" data-target="#adquisicionfecha" required/>
+                    <div class="input-group-append" data-target="#adquisicionfecha" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
                 </div>
-                <input type="text" id="codigo" class="form-control input-texto-espacio" placeholder="Codigo" required>  <code>&nbsp;*</code>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Estado Activo<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-estadoactivo" required>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Tipo Activos fijos<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-tiposactivosfijo" required>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Departamento<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-departamento" required>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="exampleSelectBorder">Ciudad<code> &nbsp;*</code></label>
+                <select class="custom-select form-control-border" id="select-ciudad" required>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
             </div>
 
             <div class="input-group mb-3">
@@ -63,57 +114,46 @@
                 </select>
               </div>
 
-                            <!-- Date -->
-        <div class="form-group">
-            <label>Fecha de Adquisicion:</label>
-              <div class="input-group date" id="adquisicionfecha" data-target-input="nearest">
-                  <input type="text" id="adquisicionfechas" class="form-control datetimepicker-input" data-target="#adquisicionfecha"/>
-                  <div class="input-group-append" data-target="#adquisicionfecha" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                  </div>
-              </div>
-          </div>
-
           <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="depreciarmesescompra" class="form-control input-numero" placeholder="Depreciar Meses Compra" required>  <code>&nbsp;*</code>
+            <input type="text" id="depreciarmesescompra" class="form-control input-numero" placeholder="Depreciar Meses Compra">  
         </div> 
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="depreciaraniocompra" class="form-control input-numero" placeholder="Depreciar Años Compra" required>  <code>&nbsp;*</code>
+            <input type="text" id="depreciaraniocompra" class="form-control input-numero" placeholder="Depreciar Años Compra">  
         </div>  
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="depreciarmeses" class="form-control input-numero" placeholder="Depreciar Meses" required>  <code>&nbsp;*</code>
+            <input type="text" id="depreciarmeses" class="form-control input-numero" placeholder="Depreciar Meses">  
         </div> 
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="depreciaranio" class="form-control input-numero" placeholder="Depreciar Años" required>  <code>&nbsp;*</code>
+            <input type="text" id="depreciaranio" class="form-control input-numero" placeholder="Depreciar Años">  
         </div> 
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="salvamento" class="form-control input-numero" placeholder="Salvamento" required>  <code>&nbsp;*</code>
+            <input type="text" id="salvamento" class="form-control input-numero" placeholder="Salvamento">  
         </div> 
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="residuo" class="form-control input-numero" placeholder="Residuo" required>  <code>&nbsp;*</code>
+            <input type="text" id="residuo" class="form-control input-numero" placeholder="Residuo">  
         </div> 
 
         <div class="input-group mb-3">
@@ -127,49 +167,16 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="costohora" class="form-control input-numero" placeholder="Costo Hora" required>  <code>&nbsp;*</code>
+            <input type="text" id="costohora" class="form-control input-numero-decimal2" placeholder="Costo Hora">  
         </div> 
-        
-        <div class="form-group">
-            <label for="exampleSelectBorder">Departamento<code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-departamento" required>
-                <!-- <option>Value 1</option> -->
-
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleSelectBorder">Ciudad<code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-ciudad" required>
-                <!-- <option>Value 1</option> -->
-
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleSelectBorder">Tipo Activos fijos<code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-tiposactivosfijo" required>
-                <!-- <option>Value 1</option> -->
-
-            </select>
-        </div>
 
         <div class="form-group">
             <label for="exampleSelectBorder">Cuenta PUC<code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-puc" required>
+            <select class="custom-select form-control-border" id="select-puc">
                 <!-- <option>Value 1</option> -->
 
             </select>
         </div>
-
-        <div class="form-group">
-            <label for="exampleSelectBorder">Estado Activo<code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-estadoactivo" required>
-                <!-- <option>Value 1</option> -->
-
-            </select>
-        </div>
-
 
         <div class="form-group">
             <label for="responsable">Responsable: </label>
@@ -178,13 +185,7 @@
 
            <input type="text" id='tercero_id' hidden>
 
-        <div class="form-group">
-            <label for="exampleSelectBorder">Grupo Activo Fijo <code> &nbsp;*</code></label>
-            <select class="custom-select form-control-border" id="select-gruposactivosfijo" required>
-                <!-- <option>Value 1</option> -->
 
-            </select>
-        </div>
             
         <output id="output"></output>
 
@@ -221,18 +222,18 @@
 $("#form").submit(function(e) {
 e.preventDefault();   
 
+console.log($('#adquisicionfechas').val());
 
 const form = document.getElementById('form');
 const formData = new FormData(form);
 
-var nombre =$('#nombre').val();
-var codigo =$('#codigo').val();
+var nombre = $('#nombre').val();
+var codigo = $('#codigo').val();
 var direccion = $('#direccion').val();
-var alquilable =$('#alquilable').val();
+var alquilable = $('#alquilable').val()? 1 : 0;
 var centrocosto_id = $('#select-centrocosto').val()? $('#select-centrocosto').val() : ''; 
-// var nivelcentrocosto = $('#select-nivelcentrocosto').val()? $('#select-nivelcentrocosto').val() : ''; 
-// var nivelcentrocosto = $('#nivelcentrocosto').val();
-var adquisicionfecha = $('#adquisicionfecha').val();
+var nivelcentrocosto = $('#select-nivelcentrocosto').val()? $('#select-nivelcentrocosto').val() : ''; 
+var adquisicionfecha = $('#adquisicionfechas').val();
 var depreciarmesescompra = $('#depreciarmesescompra').val();
 var depreciaraniocompra = $('#depreciaraniocompra').val();
 var salvamento = $('#salvamento').val();
@@ -250,14 +251,15 @@ var gruposactivosfijo_id = $('#select-gruposactivosfijo').val()? $('#select-grup
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
 
 
+
 // formData.append("empresa_id", localStorage.empresa_id);
 formData.append("creador_id", localStorage.id);
 formData.append("nombre", nombre);
 formData.append("codigo", codigo);
 formData.append("direccion", direccion);
 formData.append("alquilable", alquilable);
-// formData.append("centrocosto_id", centrocosto_id);
-// formData.append("nivelcentrocosto", nivelcentrocosto);//el nombre del nivel
+formData.append("centrocosto_id", centrocosto_id);
+formData.append("nivelcentrocosto", nivelcentrocosto);//el nombre del nivel
 formData.append("adquisicionfecha", adquisicionfecha);
 formData.append("depreciarmesescompra", depreciarmesescompra);
 formData.append("depreciaraniocompra", depreciaraniocompra);
@@ -275,11 +277,11 @@ formData.append("responsable_id", responsable_id);
 formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
 formData.append("imagen", imagen);
 
-const output = document.getElementById('output');
+// const output = document.getElementById('output');
 
-for (const [key, value] of formData) {
-  output.textContent += `${key}: ${value}\n`;
-}
+// for (const [key, value] of formData) {
+//   output.textContent += `${key}: ${value}\n`;
+// }
 
 $.ajax({
     method: "POST",
@@ -292,7 +294,6 @@ $.ajax({
     contentType: false,//formData
     processData: false,//formData
     success: function(respuesta) {
-        alert('dentro');
 
         if(respuesta){
             var mensaje = 'activo fijo creado de forma correcta: ';
@@ -499,7 +500,6 @@ $( document ).ready(function() {
         }
     });
 
-    // $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
 });
 
@@ -516,8 +516,6 @@ $(function() {
         autoclose: true,
         showButtonPanel: true
  });
-    // //Date and time picker
-    // $('#adquisicionfechatime').datetimepicker({ icons: { time: 'far fa-clock' } });
 });
 
 

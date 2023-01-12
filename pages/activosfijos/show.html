@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Ver usuario</h5>
+            Ver Activo Fijo</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -19,7 +19,7 @@
       <div class="row">
           <div class="col-12">
               <h4>
-                  <!-- <img id="imagen" src="../usuarios/user-04.jpg" /> -->
+                  <!-- <img id="imagen" src="../Activo Fijoss/user-04.jpg" /> -->
                   <img id="imagen" src="" />
               </h4>
           </div>
@@ -31,112 +31,175 @@
         
     <form method="PUT" action="" enctype="multipart/form-data">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="nombres" class="form-control" placeholder="Nombres" disabled> 
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" disabled> 
-        </div>
-
-        <div class="form-group">
-            <label for="exampleSelectBorder">Tipo Identificacion</label>
-            <select class="custom-select form-control-border" id="select-identificacion" disabled aria-readonly="true">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-          </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="identificacion" class="form-control" placeholder="Identificación" disabled> 
-        </div>   
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="text" id="email" class="form-control" placeholder="Email" disabled> 
-        </div>   
-
-        <div class="form-group">
-          <label for="exampleSelectBorder">Perfil</label>
-          <select class="custom-select form-control-border" id="select-perfiles" disabled>
-            <!-- <option>Value 1</option> -->
-
-          </select>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="rut" class="form-control" placeholder="RUT" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="celular" class="form-control" placeholder="Celular" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="telefono" class="form-control" placeholder="Teléfono" disabled>
-        </div>
-
-        <div class="form-group">
-            <label>Cumpleaños:</label>
-              <div class="input-group date">
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" disabled>
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-              </div>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleSelectRounded0">Ciudad</label>
-            <select class="custom-select rounded-0" id="select-ciudad" disabled>
-              <!-- <option>Value 1</option> -->
-
-            </select>
-          </div>
         
+       <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="codigo" class="form-control input-texto-espacio" placeholder="Codigo" disabled>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                </div>
+                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" disabled>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox"  id="alquilable">
+                <label for="alquilable">Alquilable</label>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Grupo Activo Fijo </label>
+                <select class="custom-select form-control-border" id="select-gruposactivosfijo" disabled>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+            <label>Fecha de Nacimiento:</label>
+                <div class="input-group date" id="adquisicionfecha" data-target-input="nearest">
+                    <input type="text" id="adquisicionfechas" class="form-control datetimepicker-input" data-target="#adquisicionfecha" disabled/>
+                    <div class="input-group-append" data-target="#adquisicionfecha" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Estado Activo</label>
+                <select class="custom-select form-control-border" id="select-estadoactivo" disabled>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Tipo Activos fijos</label>
+                <select class="custom-select form-control-border" id="select-tiposactivosfijo" disabled>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Departamento</label>
+                <select class="custom-select form-control-border" id="select-departamento" disabled>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="exampleSelectBorder">Ciudad</label>
+                <select class="custom-select form-control-border" id="select-ciudad" disabled>
+                    <!-- <option>Value 1</option> -->
+    
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectBorder">Centro de costos</label>
+                    <select class="custom-select form-control-border" id="select-centrocosto" disabled>
+                  <!-- <option>Value 1</option> -->
+  
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleSelectBorder">Nivel del Centro de Costos</label>
+                    <select class="custom-select form-control-border" id="select-nivelcentrocosto" disabled>
+                  <!-- <option>Value 1</option> -->
+  
+                </select>
+              </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciarmesescompra" class="form-control input-numero" placeholder="Depreciar Meses Compra" disabled>  
+        </div> 
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="depreciaraniocompra" class="form-control input-numero" placeholder="Depreciar Años Compra" disabled>  
+        </div>  
+
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
-            <input type="text" id="username" class="form-control" placeholder="Username" disabled>
+            <input type="text" id="depreciarmeses" class="form-control input-numero" placeholder="Depreciar Meses" disabled>  
         </div> 
 
-          <div class="form-group">
-            <label for="customFile">Custom File</label>
-
-            <div class="custom-file">
-              <input type="file" id="imagen" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Elija la Foto</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
             </div>
+            <input type="text" id="depreciaranio" class="form-control input-numero" placeholder="Depreciar Años" disabled>  
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="salvamento" class="form-control input-numero" placeholder="Salvamento" disabled>  
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="residuo" class="form-control input-numero" placeholder="Residuo" disabled>  
+        </div> 
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones ..." disabled></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            </div>
+            <input type="text" id="costohora" class="form-control input-numero" placeholder="Costo Hora" disabled>  
+        </div> 
+
+        <div class="form-group">
+            <label for="exampleSelectBorder">Cuenta PUC</label>
+            <select class="custom-select form-control-border" id="select-puc" disabled>
+                <!-- <option>Value 1</option> -->
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="responsable">Responsable: </label>
+            <input class="form-control input-texto-alfanumerico" id="responsable" placeholder="El nombre o identificacion Empleado" disabled>
           </div>
 
+           <input type="text" id='tercero_id' hidden>
+
+
+            
         <div class="col-12 float-right">
-            <button type="button" id="actualizar" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
         </div> 
 
     </form>
@@ -166,7 +229,29 @@
   <script>
 
 
-//***************************************************trae valores de tercero y usuario si ya exiten (perfil,ciudad,tipodocumento)*******************
+//***************************************************trae valores de tercero y Activosfijos si ya exiten (grupo,ciudad,tipoactivo,estadoactivo)*******************
+
+var obtenerTercero = function(id){
+    url_ter= 'terceros/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_ter,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#responsable').val(respuesta.data.nombres);
+            $('#tercero_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+
 var obtenerCiudad = function(id){
     url_ciu= 'ciudades/' + id;
     $.ajax({
@@ -178,9 +263,11 @@ var obtenerCiudad = function(id){
     dataType: "json",
     success: function(respuesta) {
             var htmlCiudades = '';
-            htmlCiudades += '<option value="'+ respuesta.data.id+'">';
-            htmlCiudades += respuesta.data.descripcion;
-            htmlCiudades += '</option>';
+            if (respuesta.data.id) {
+                htmlCiudades += '<option value="'+ respuesta.data.id+'">';
+                htmlCiudades += respuesta.data.descripcion;
+                htmlCiudades += '</option>';
+            }
             $('#select-ciudad').html(htmlCiudades);
     },
     error: function() {
@@ -190,21 +277,22 @@ var obtenerCiudad = function(id){
   })  
 }
 
-var obtenerPerfil = function(id){
-    url_perf= 'perfiles/'+id;
+var obtenerGrupo = function(id){
+    url_gru= 'gruposactivosfijos/'+id;
     $.ajax({
     method: "GET",
-    url: url_back + url_perf,
+    url: url_back + url_gru,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
     dataType: "json",
     success: function(respuesta) {
-            var htmlPerfil = '';
-            htmlPerfil += '<option value="'+ respuesta.data.id+'">';
-            htmlPerfil += respuesta.data.descripcion;
-            htmlPerfil += '</option>';
-            $('#select-perfiles').html(htmlPerfil);
+            var htmlGrupo = '';
+            htmlGrupo += '<option value="'+ respuesta.data.id+'">';
+            htmlGrupo += respuesta.data.descripcion;
+            htmlGrupo += '</option>';
+            $('#select-gruposactivosfijo').html(htmlGrupo);
+
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -213,11 +301,34 @@ var obtenerPerfil = function(id){
   })  
 }
 
-var obtenerTipoidentificacione = function(id){
-    url_tipo= 'tipoidentificaciones/'+id;
+var obtenerEstadoActivo = function(id){
+    url_est= 'estadoactivos/'+id;
     $.ajax({
     method: "GET",
-    url: url_back + url_tipo,
+    url: url_back + url_est,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlEstado = '';
+            htmlEstado += '<option value="'+ respuesta.data.id+'">';
+            htmlEstado += respuesta.data.descripcion;
+            htmlEstado += '</option>';
+            $('#select-estadoactivo').html(htmlEstado);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerTipoactivo = function(id){
+    url_ti= 'tiposactivosfijos/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_ti,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -227,7 +338,30 @@ var obtenerTipoidentificacione = function(id){
             htmlTipo += '<option value="'+ respuesta.data.id+'">';
             htmlTipo += respuesta.data.descripcion;
             htmlTipo += '</option>';
-            $('#select-identificacion').html(htmlTipo);
+            $('#select-tiposactivosfijo').html(htmlTipo);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerPuc = function(id){
+    url_puc= 'pucs/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_puc,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlPuc = '';
+            htmlPuc += '<option value="'+ respuesta.data.id+'">';
+            htmlPuc += respuesta.data.descripcion;
+            htmlPuc += '</option>';
+            $('#select-puc').html(htmlPuc);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -238,9 +372,9 @@ var obtenerTipoidentificacione = function(id){
 
 //*************************************************************************************************************************
 
-function obtenerUsuario(id){
+function obtenerActivosfijos(id){
 
-var url = 'users/'+ id;
+var url = 'activosfijos/'+ id;
 
 $.ajax({
     method: "GET",
@@ -251,33 +385,53 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#nombres').val(respuesta.data.tercero.nombres);
-        $('#apellidos').val(respuesta.data.tercero.apellidos);
-        $('#identificacion').val(respuesta.data.tercero.identificacion);
-        $('#email').val(respuesta.data.email);
-        $('#direccion').val(respuesta.data.tercero.direccion);
-        $('#rut').val(respuesta.data.tercero.rut);
-        $('#celular').val(respuesta.data.tercero.celular);
-        $('#telefono').val(respuesta.data.tercero.telefono);
-        $('#cumpleanios').val(respuesta.data.tercero.cumpleanios);
-        $('#username').val(respuesta.data.username);
+      localStorage.ver = '';
+      respuesta.data.alquilable == 1 ? $('#alquilable').prop( "checked", true ) : $('#alquilable').prop( "checked", false );
+
+        $('#codigo').val(respuesta.data.codigo);
+        $('#nombre').val(respuesta.data.nombre);
+        $('#direccion').val(respuesta.data.direccion);
+        // $('#select-centrocosto').val();
+        $('#nivelcentrocosto').val(respuesta.data.nivelcentrocosto);
+        $('#adquisicionfechas').val(respuesta.data.adquisicionfecha);
+        $('#depreciarmesescompra').val(respuesta.data.depreciaraniocompra);
+        $('#depreciaraniocompra').val(respuesta.data.depreciarmesescompra);
+        $('#salvamento').val(respuesta.data.salvamento);
+        $('#depreciaranio').val(respuesta.data.depreciaranio);
+        $('#depreciarmeses').val(respuesta.data.depreciarmeses);
+        $('#residuo').val(respuesta.data.residuo);
+        $('#observaciones').val(respuesta.data.observaciones);
+        $('#costohora').val(respuesta.data.costohora);
 
           if(respuesta.data.imagen){
-              $("#imagen").attr('src', url_img + 'users/'+ respuesta.data.imagen);
+              $("#imagen").attr('src', url_img + 'activosfijos/'+ respuesta.data.imagen);
           }else{
-            $("#imagen").attr("src","../usuarios/"+ 'defecto.jpg');
+            $("#imagen").attr("src","../activosfijos/"+ 'defecto.jpg');
           }
 
-        if(respuesta.data.tercero.ciudade_id){
-            obtenerCiudad(respuesta.data.tercero.ciudade_id);
+        if(respuesta.data.ciudade_id){
+            obtenerCiudad(respuesta.data.ciudade_id);
         }
-        if(respuesta.data.perfile_id){
-            obtenerPerfil(respuesta.data.perfile_id);
+        if(respuesta.data.responsable_id){
+            obtenerTercero(respuesta.data.responsable_id);
         }
 
-        if(respuesta.data.tercero.tipoidentificacione_id){
-            obtenerTipoidentificacione(respuesta.data.tercero.tipoidentificacione_id);
+        if(respuesta.data.gruposactivosfijo_id){
+            obtenerGrupo(respuesta.data.gruposactivosfijo_id);
         }
+
+        if(respuesta.data.estadoactivo_id){
+            obtenerEstadoActivo(respuesta.data.estadoactivo_id);
+        }
+        
+        if(respuesta.data.tiposactivosfijo_id){
+            obtenerTipoactivo(respuesta.data.tiposactivosfijo_id);
+        }
+
+        if(respuesta.data.puc_id){
+            obtenerPuc(respuesta.data.puc_id);
+        }
+
 
     },
     error: function() {
@@ -293,6 +447,6 @@ $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
 
-    obtenerUsuario(localStorage.ver);
+    obtenerActivosfijos(localStorage.ver);
 });
   </script>
