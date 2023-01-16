@@ -1,49 +1,49 @@
-<!-- Preloader -->
-<div class="preloader flex-column justify-content-center align-items-center">
-<img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-</div>
-
-<!-- <div class="card" id="content-usuarios"> -->
-<div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-12">
-                <h4>
-                    <i class="nav-icon fas fa-user"></i>
-                    Editar Tipo Activo Fijo                             
-                </h4>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="ModalLong2" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">
+            <i class="nav-icon fas fa-user"></i>
+            Editar </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </div>
 
-    <div class="card-body-form">
-        
-        
-        <form id="form"  method="PUT" action="" enctype="multipart/form-data">
+        <div class="modal-body">
+<!--  -->
 
+<div class="card">
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
-                </div>
-                <input type="text" id="descripcion" class="form-control" placeholder="Tipo Activo Fijo" required>  <code>&nbsp;*</code>
-            </div>
+  <div class="card-body">
+      
+      
+      <form  method="PUT" id="form" action="" enctype="multipart/form-data">
 
 
-            <output id="output"></output>
+      </form>
 
-
-            <div class="col-12 float-right">
-                <button type="submit" id="actualizar" class="btn btn-primary float-right">Actualizar</button>
-            </div> 
-
-        </form>
-
-    </div>
+  </div>
 
 </div>
+</div>
 
-<script>
+
+
+
+<!--  -->
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
+          <!-- <button type="button" class="btn btn-primary">Enviar</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <script>
 
 
 $("#form").submit(function(e) {
@@ -52,9 +52,45 @@ e.preventDefault();
 const form = document.getElementById('form');
 const formData = new FormData(form);
 
-var descripcion = $('#descripcion').val();
+ var edit= localStorage.editar;
+ var url= localStorage.url;
 
-formData.append("descripcion", descripcion);
+ switch (url) {
+    case 'centrocostos':
+        var nombre = $('#nombre').val();
+        var descripcion = $('#descripcion').val();
+        formData.append("nombre", nombre);
+        formData.append("descripcion", descripcion);
+        break;
+
+    case 'divisiones':
+        var codigo = $('#codigo').val();
+        var nombre = $('#nombre').val();
+        var puc_id = $('#select-puc').val();
+        formData.append("codigo", codigo);
+        formData.append("nombre", nombre);
+        formData.append("puc_id", puc_id);
+        break;
+
+    case 'secciones':
+        var codigo = $('#codigo').val();
+        var nombre = $('#nombre').val();
+        formData.append("codigo", codigo);
+        formData.append("nombre", nombre);
+        break;
+
+    case 'dependencias':
+        var codigo = $('#codigo').val();
+        var nombre = $('#nombre').val();
+        formData.append("codigo", codigo);
+        formData.append("nombre", nombre);
+        break;
+        
+    default:
+        break;
+ }
+
+
 formData.append('_method', 'PUT');
 
 // const output = document.getElementById('output');
@@ -65,7 +101,7 @@ formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "tiposactivosfijos/"+localStorage.editar,
+    url: url_back + url +"/"+localStorage.editar,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -77,10 +113,13 @@ $.ajax({
 
         localStorage.editar = '';
         if(respuesta){
-            console.log(respuesta);
-            var mensaje = 'Tipo Activo Fijos se actualizado de forma correcta.: '+ respuesta.data.descripcion;
+            // $('#ModalLong').modal('hide');
+            // $('ModalLong').removeClass('show')
+            $('.modal-backdrop').remove();
+
+            var mensaje = 'se actualizado de forma correcta '+ url +'.: '+ respuesta.data.nombre;
             sweetMessage('success', mensaje); 
-            $('#main_content').load(url_front + 'tiposactivosfijos/index.html');
+            $('#main_content').load(url_front + 'centrocostos/index.html');
         } else {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
@@ -106,9 +145,9 @@ $.ajax({
 
 
 
-function obtenerTipoactivosfijo(id){
+function obtenerCentrocosto(id, url_centro){
 
-var url = 'tiposactivosfijos/'+ id;
+var url = url_centro +'/'+ id;
 
 $.ajax({
     method: "GET",
@@ -118,7 +157,8 @@ $.ajax({
               },
     dataType: "json",
     success: function(respuesta) {
-        $('#descripcion').val(respuesta.data.descripcion);
+        // $('#nombre').val(respuesta.data.nombre);
+        switchEditar(url_centro, respuesta.data);
 
     },
     error: function() {
@@ -129,10 +169,177 @@ $.ajax({
 }
 
 
-$( document ).ready(function() {
+function switchEditar(url, data){ //TODO: required 
+
+    bottones = '';
+    bottones += '<div class="col-12 float-right">';
+    bottones += '<button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>&nbsp;';
+    bottones += '<button type="submit" id="form" class="btn btn-primary float-right">Actualizar</button></div>'; 
+        
+
+    switch (url) {
+        case 'centrocostos':
+            html = '';
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="nombre" class="form-control" placeholder="Nombre"></div>';
+          
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="descripcion" class="form-control" placeholder="Descripcion"></div>';
+         
+            html += bottones;
+            $('#form').html(html);
+            $('#nombre').val(data.nombre);
+            $('#descripcion').val(data.descripcion);
+            break;
+
+        case 'divisiones':
+            html = '';
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="codigo" class="form-control" placeholder="Codigo de La Division"></div>';
+
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="nombre" class="form-control" placeholder="Nombre"></div>';
+          
+            html += '<div class="form-group">';
+            html += '<label for="SelectBorder">Cuenta PUC</label>';
+            html += '<select class="custom-select form-control-border" id="select-puc"></select></div>';
+         
+            html += bottones;
+            $('#form').html(html);
+            $('#codigo').val(data.codigo);
+            $('#nombre').val(data.nombre);
+                if(data.puc_id){
+                    obtenerPuc(data.puc_id);
+                }else{
+                    obtenerPucs();
+                }
+                
+            break;
+
+        case 'secciones':
+            html = '';
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="codigo" class="form-control" placeholder="Codigo de La Secciones"></div>';
+
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="nombre" class="form-control" placeholder="Nombre"></div>';
+
+            html += bottones;
+            $('#form').html(html);
+            $('#codigo').val(data.codigo);
+            $('#nombre').val(data.nombre);
+            break;
+
+        case 'dependencias':
+            html = '';
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="codigo" class="form-control" placeholder="Codigo de La Dependencias"></div>';
+
+            html += '<div class="input-group mb-3">';
+            html += '<div class="input-group-prepend">';
+            html += '<span class="input-group-text"><i class="fas fa-signature"></i></span></div>';
+            html += '<input type="text" id="nombre" class="form-control" placeholder="Nombre"></div>';
+
+            html += bottones;
+            $('#form').html(html);
+            $('#codigo').val(data.codigo);
+            $('#nombre').val(data.nombre);
+            break;
+
+        default:
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde. switch';
+            sweetMessage('error', mensaje);
+            break;
+    }
+
+}
+
+//******************************************************* Trae la cuenta Puc si existe********************************************************
+var obtenerPuc = function(id){
+    url_puc= 'pucs/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_puc,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlEstado = '';
+            htmlEstado += '<option value="'+ respuesta.data.id+'">';
+            htmlEstado += respuesta.data.descripcion;
+            htmlEstado += '</option>';
+            obtenerPucs(htmlEstado, id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+
+//******************************************************* trae todas las cuentas pucs ********************************************************
+var obtenerPucs = function(base = null, id = null){
+    var url_puc= 'pucs';
+    $.ajax({
+    method: "GET",
+    url: url_back + url_puc,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+        $('#select-puc').html(crearHtmlshow(respuesta.data, base, id));
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var crearHtmlshow = function(data, base = null, id = null) {
+    if (base) {
+            var html = base;
+            $.each(data, function (key, item) {
+                if(id != item.id){
+                    html += '<option value="'+ item.id+'">';
+                    html += item.descripcion;
+                    html += '</option>';
+                }
+            });
+        return html;
+    } else {
+            var html = '<option value="">Seleccione..</option>';
+            $.each(data, function (key, item) {
+                html += '<option value="'+ item.id+'">';
+                html += item.descripcion;
+                html += '</option>';
+            });
+        return html;
+    }
+}
+
+$(document).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerTipoactivosfijo(localStorage.editar);
+      obtenerCentrocosto(localStorage.editar, localStorage.url);
 
     $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou# 0123456789._-');
 });
