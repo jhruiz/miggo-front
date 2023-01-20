@@ -45,8 +45,20 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="identificacion" class="form-control input-numero" placeholder="Identificación" required>  <code>&nbsp;*</code>
-            </div>   
+                <input type="text" id="identificacion" class="form-control input-numero" placeholder="Numero de Identificación" required>  <code>&nbsp;*</code>
+            </div>  
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <input type="text" id="verificado" class="form-control" disabled>
+              </div>
+          
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <button type="button" id="calculo" class="form-control">calcular digito de verificacion</button>
+              </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -163,6 +175,18 @@
             </div> 
 
         </form>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            </div>
+            <input type="text" id="documento" class="form-control" placeholder="Digito de verificacion">
+          </div>
+      
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            </div>
+            <button type="button" id="calculo" class="form-control">calcular</button>
+          </div>
 
     </div>
 
@@ -338,9 +362,12 @@ var crearHtml = function(data) {
     return html;
 }
 
+
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
+
+    $("#calculo").on("click",calcularDigito); //TODO: Digito de verificacion
 
 
     obtenerDepartamentos();
@@ -409,8 +436,10 @@ document.getElementById("imagen").onchange = function(e){
     }
 }
 
+
 </script>
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
+
 

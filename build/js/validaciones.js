@@ -97,3 +97,45 @@ function validarImagen(datos) {
 return true;
 
 }
+
+function calcularDigito(){
+    var arreglo,x,y,documentoElementos,i,documento,dv1;
+    documento=document.getElementById("identificacion").value;
+    if(isNaN(documento)){
+      alert('Recuerde escribir el número de cédula o NIT sin puntos.');
+    }else{
+        arreglo=[];
+        x=0;
+        y=0;
+        documentoElementos=documento.length;
+        arreglo[1]=3;
+        arreglo[2]=7;
+        arreglo[3]=13;
+        arreglo[4]=17;
+        arreglo[5]=19;
+        arreglo[6]=23;
+        arreglo[7]=29;
+        arreglo[8]=37;
+        arreglo[9]=41;
+        arreglo[10]=43;
+        arreglo[11]=47;
+        arreglo[12]=53;
+        arreglo[13]=59;
+        arreglo[14]=67;
+        arreglo[15]=71;
+          for(i=0;i<documentoElementos;i++){
+            y=(documento.substr(i,1));
+            x+=(y*arreglo[documentoElementos-i]);
+          }
+          y=x%11;
+            if(y>1){
+              dv1=11-y;
+            }else{
+              dv1=y;
+            }
+      // console.log(dv1);
+    //   alert(dv1);
+      $('#verificado').val(dv1);
+
+    }
+}
