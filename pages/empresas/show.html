@@ -31,109 +31,296 @@
         
     <form method="PUT" action="" enctype="multipart/form-data">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="nombres" class="form-control" placeholder="Nombres" disabled> 
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-signature"></i></span>
         </div>
+        <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" disabled>  
+    </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" disabled> 
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-signature"></i></span>
         </div>
+        <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social" disabled>  
+    </div>
 
-        <div class="form-group">
-            <label for="exampleSelectBorder">Tipo Identificacion</label>
-            <select class="custom-select form-control-border" id="select-identificacion" disabled aria-readonly="true">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-          </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="identificacion" class="form-control" placeholder="Identificación" disabled> 
-        </div>   
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="text" id="email" class="form-control" placeholder="Email" disabled> 
-        </div>   
-
-        <div class="form-group">
-          <label for="exampleSelectBorder">Perfil</label>
-          <select class="custom-select form-control-border" id="select-perfiles" disabled>
-            <!-- <option>Value 1</option> -->
-
-          </select>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
         </div>
+        <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" disabled> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+    </div>   
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="rut" class="form-control" placeholder="RUT" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="celular" class="form-control" placeholder="Celular" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="telefono" class="form-control" placeholder="Teléfono" disabled>
+    <!-- <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
         </div>
+        <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+    </div>   -->
 
-        <div class="form-group">
-            <label>Cumpleaños:</label>
-              <div class="input-group date">
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" disabled>
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
+    </div> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <input type="text" id="telefono1" class="form-control input-numero" placeholder="Teléfono 1" disabled>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <input type="text" id="telefono2" class="form-control input-numero" placeholder="Teléfono 2" disabled>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        </div>
+        <input type="text" id="email" class="form-control" placeholder="Email" disabled>  
+    </div>  
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        </div>
+        <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" disabled>  
+    </div> 
+
+    <!--  -->
+
+                <!-- iCheck -->
+                <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Marque las casillas con que cumple la Empresa</h3>
+                    </div>
+                    <div class="card-body">
+                      <!-- Minimal style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary d-inline">
+                              <input type="checkbox" disabled id="autoretenedor">
+                              <label for="autoretenedor">
+                                Autoretenedor
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" disabled id="ica">
+                              <label for="ica">
+                                ICA
+                              </label>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <!-- Minimal red style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-danger d-inline">
+                              <input type="checkbox" disabled id="renta">
+                              <label for="renta">
+                                RENTA
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="icheck-danger d-inline">
+                                <input type="checkbox" disabled id="aut">
+                                <label for="aut">
+                                  AUT
+                                </label>
+                              </div>
+                        </div>
+                      </div>
+                      <!-- Minimal red style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" disabled id="ecommerce">
+                              <label for="ecommerce">
+                                Ecommerce
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- checkbox -->
+                            <div class="form-group clearfix">
+                                <div class="icheck-success d-inline">
+                                    <input type="checkbox" disabled id="pucedit">
+                                    <label for="pucedit">
+                                    Generar y Cambiar sus PUC
+                                    </label>
+                                </div>
+                                </div>
+
+                             <input type="text" id="msgpuc" class="form-control" hidden>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <!-- Many more skins available. -->
+                    </div>
+                  </div>
+                  <!-- /.card -->
+    
+    <!-- Date -->
+      <div id="divf" class="form-group" style="display: none;">
+        <label>Fecha de Resolucion:</label>
+          <div class="input-group date" id="fecharesolucione" data-target-input="nearest">
+              <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesoluciones" disabled/>
+              <div class="input-group-append" data-target="#fecharesoluciones" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
           </div>
+      </div>
 
-          <div class="form-group">
-            <label for="exampleSelectRounded0">Ciudad</label>
-            <select class="custom-select rounded-0" id="select-ciudad" disabled>
-              <!-- <option>Value 1</option> -->
+      <div id="div" class="input-group mb-3" style="display: none;">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        </div>
+        <input type="text" id="resolucionautoretenedor" class="form-control" placeholder="Resolucion Autoretenedor" disabled> 
+    </div> 
 
-            </select>
-          </div>
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Tipo Sociedades </label>
+        <select class="custom-select rounded-0" id="select-tiposociedade" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Tipo Contribuyente </label>
+        <select class="custom-select rounded-0" id="select-tipocontribuyente" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Regimen </label>
+        <select class="custom-select rounded-0" id="select-regimene" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="responsable">Codigo CIIU: </label>
+        <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU" disabled>
+      </div>
+
+      <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
+
+
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Personeria </label>
+        <select class="custom-select rounded-0" id="select-personeria" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <input type="text" id="telefono1" class="form-control input-numero" placeholder="Telefono 1" disabled>
+    </div> 
+
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <input type="text" id="telefono2" class="form-control input-numero" placeholder="Telefono 2" disabled>
+    </div> 
+
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Departamento</label>
+        <select class="custom-select rounded-0" id="select-departamento" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleSelectRounded0">Ciudad</label>
+        <select class="custom-select rounded-0" id="select-ciudad" disabled>
+          <!-- <option>Value 1</option> -->
+
+        </select>
+      </div>
+
+    <!-- <output id="output"></output>
+
+       <div id="mostrarImagen" stye="display:flex;">
         
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="username" class="form-control" placeholder="Username" disabled>
-        </div> 
+        </div>
 
-          <div class="form-group">
-            <label for="customFile">Custom File</label>
+      <div class="form-group">
+        <label for="imagen">selecione para editar la Imagen</label>
+      <div class="custom-file">
+        <input class="form-control" type="file" id="imagen">
+      </div>
+    </div> -->
 
-            <div class="custom-file">
-              <input type="file" id="imagen" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Elija la Foto</label>
-            </div>
-          </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <textarea id="texto1" class="form-control" rows="3" placeholder="Informacion de la Empresa 1" disabled></textarea>
+    </div> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <textarea id="texto2" class="form-control" rows="3" placeholder="Informacion de la Empresa 2" disabled></textarea>
+    </div> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <textarea id="texto3" class="form-control" rows="3" placeholder="Informacion de la Empresa 3" disabled></textarea>
+    </div> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+        </div>
+        <textarea id="texto4" class="form-control" rows="3" placeholder="Informacion de la Empresa 4" disabled></textarea>
+    </div> 
 
         <div class="col-12 float-right">
             <button type="button" id="actualizar" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
@@ -190,21 +377,18 @@ var obtenerCiudad = function(id){
   })  
 }
 
-var obtenerPerfil = function(id){
-    url_perf= 'perfiles/'+id;
+var obtenerCiiu = function(id){
+    url_ci= 'ciiuclases/' + id;
     $.ajax({
     method: "GET",
-    url: url_back + url_perf,
+    url: url_back + url_ci,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
     dataType: "json",
     success: function(respuesta) {
-            var htmlPerfil = '';
-            htmlPerfil += '<option value="'+ respuesta.data.id+'">';
-            htmlPerfil += respuesta.data.descripcion;
-            htmlPerfil += '</option>';
-            $('#select-perfiles').html(htmlPerfil);
+            $('#ciiu').val(respuesta.data.codigo+'-'+respuesta.data.descripcion);
+            $('#ciiu_id').val(respuesta.data.id);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -213,8 +397,9 @@ var obtenerPerfil = function(id){
   })  
 }
 
-var obtenerTipoidentificacione = function(id){
-    url_tipo= 'tipoidentificaciones/'+id;
+
+var obtenertipocontribuyente = function(id){
+    url_tipo= 'tipocontribuyentes/'+id;
     $.ajax({
     method: "GET",
     url: url_back + url_tipo,
@@ -227,7 +412,7 @@ var obtenerTipoidentificacione = function(id){
             htmlTipo += '<option value="'+ respuesta.data.id+'">';
             htmlTipo += respuesta.data.descripcion;
             htmlTipo += '</option>';
-            $('#select-identificacion').html(htmlTipo);
+            $('#select-tipocontribuyente').html(htmlTipo);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -235,6 +420,76 @@ var obtenerTipoidentificacione = function(id){
     }
   })  
 }
+
+var obtenerRegimene = function(id){
+    url_re= 'regimenes/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_re,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlRegi = '';
+            htmlRegi += '<option value="'+ respuesta.data.id+'">';
+            htmlRegi += respuesta.data.descripcion;
+            htmlRegi += '</option>';
+            $('#select-regimene').html(htmlRegi);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerPersoneria = function(id){
+    url_re= 'personerias/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_re,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlPersoneria = '';
+            htmlPersoneria += '<option value="'+ respuesta.data.id+'">';
+            htmlPersoneria += respuesta.data.descripcion;
+            htmlPersoneria += '</option>';
+            $('#select-personeria').html(htmlPersoneria);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerTiposociedade = function(id){
+    url_re= 'tiposociedades/'+id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_re,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var htmlTipo = '';
+            htmlTipo += '<option value="'+ respuesta.data.id+'">';
+            htmlTipo += respuesta.data.descripcion;
+            htmlTipo += '</option>';
+            $('#select-tiposociedade').html(htmlTipo);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
 
 //*************************************************************************************************************************
 
@@ -251,33 +506,76 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#nombres').val(respuesta.data.tercero.nombres);
-        $('#apellidos').val(respuesta.data.tercero.apellidos);
-        $('#identificacion').val(respuesta.data.tercero.identificacion);
-        $('#email').val(respuesta.data.email);
-        $('#direccion').val(respuesta.data.tercero.direccion);
-        $('#rut').val(respuesta.data.tercero.rut);
-        $('#celular').val(respuesta.data.tercero.celular);
-        $('#telefono').val(respuesta.data.tercero.telefono);
-        $('#cumpleanios').val(respuesta.data.tercero.cumpleanios);
-        $('#username').val(respuesta.data.username);
+        // console.log(respuesta.data);
 
-          if(respuesta.data.imagen){
+        respuesta.data.ica == 1 ? $('#ica').prop( "checked", true ) : $('#ica').prop( "checked", false );
+        respuesta.data.renta == 1 ? $('#renta').prop( "checked", true ) : $('#renta').prop( "checked", false );
+        respuesta.data.aut == 1 ? $('#aut').prop( "checked", true ) : $('#aut').prop( "checked", false );
+        respuesta.data.ecommerce == 1 ? $('#ecommerce').prop( "checked", true ) : $('#ecommerce').prop( "checked", false );
+        respuesta.data.pucedit == 1 ? $('#pucedit').prop( "checked", true ) : $('#pucedit').prop( "checked", false );
+
+
+        $('#nombre').val(respuesta.data.nombre);
+        $('#razonsocial').val(respuesta.data.razonsocial);
+        $('#identificacion').val(respuesta.data.nit);
+        $('#verificado').val(respuesta.data.digitoverificacion);
+        $('#direccion').val(respuesta.data.direccion);
+        $('#telefono1').val(respuesta.data.telefono1);
+        $('#telefono2').val(respuesta.data.telefono2);
+        $('#email').val(respuesta.data.email);
+        $('#representantelegal').val(respuesta.data.representantelegal);
+        $('#texto1').val(respuesta.data.texto1);
+        $('#texto2').val(respuesta.data.texto2);
+        $('#texto3').val(respuesta.data.texto3);
+        $('#texto4').val(respuesta.data.texto4);
+        // $('#moneda').val(respuesta.data.moneda);
+        $('#fecharesolucione').val(respuesta.data.fechaResolucion);
+        $('#resolucionautoretenedor').val(respuesta.data.resolucionautoretenedor);
+        $('#msgpuc').val(respuesta.data.msgpuc); 
+
+
+
+        // $('#empresa_id').val(respuesta.data.empresa_id);
+
+        respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
+
+        if($('input[id=autoretenedor]').is(':checked')){
+            $("#div").show();
+            $("#divf").show();
+        }
+
+        if(respuesta.data.imagen){ //TODO: backend imagen  revisar
               $("#imagen").attr('src', url_img + 'empresas/'+ respuesta.data.imagen);
           }else{
             $("#imagen").attr("src","../empresas/"+ 'defecto.jpg');
           }
 
-        if(respuesta.data.tercero.ciudade_id){
-            obtenerCiudad(respuesta.data.tercero.ciudade_id);
-        }
-        if(respuesta.data.perfile_id){
-            obtenerPerfil(respuesta.data.perfile_id);
+
+
+        if(respuesta.data.ciudade_id){
+            obtenerCiudad(respuesta.data.ciudade_id);
         }
 
-        if(respuesta.data.tercero.tipoidentificacione_id){
-            obtenerTipoidentificacione(respuesta.data.tercero.tipoidentificacione_id);
+        if(respuesta.data.ciiuclase_id){
+            obtenerCiiu(respuesta.data.ciiuclase_id);
         }
+
+        if(respuesta.data.tipocontribuyente_id){
+            obtenertipocontribuyente(respuesta.data.tipocontribuyente_id);
+        }
+
+        if(respuesta.data.regimene_id){
+            obtenerRegimene(respuesta.data.regimene_id);
+        }
+
+        if(respuesta.data.personeria_id){
+            obtenerPersoneria(respuesta.data.personeria_id);
+        }
+
+        if(respuesta.data.tiposociedade_id){
+            obtenerTiposociedade(respuesta.data.tiposociedade_id);
+        }
+
 
     },
     error: function() {
