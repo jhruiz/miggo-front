@@ -335,6 +335,7 @@ var renta =$('#renta').val()? 1 : 0;
 var aut =$('#aut').val()? 1 : 0;
 var ecommerce =$('#ecommerce').val()? 1 : 0;
 var pucedit =$('#pucedit').val()? 1 : 0;
+var autoretenedor =$('#autoretenedor').val()? 1 : 0;
 
 var nombre = $('#nombre').val();
 var razonsocial = $('#razonsocial').val();
@@ -361,12 +362,12 @@ var personeria_id = $('#select-personeria').val()? $('#select-personeria').val()
 var tiposociedade_id = $('#select-tiposociedade').val()? $('#select-tiposociedade').val() : ''; 
 
 
-
 formData.append("ica", ica);
 formData.append("renta", renta);
 formData.append("aut", aut);
 formData.append("ecommerce", ecommerce);
 formData.append("pucedit", pucedit);
+formData.append("autoretenedor", autoretenedor);
 formData.append("nombre", nombre);
 formData.append("razonsocial", razonsocial);
 formData.append("nit", nit);
@@ -767,6 +768,7 @@ $.ajax({
         respuesta.data.aut == 1 ? $('#aut').prop( "checked", true ) : $('#aut').prop( "checked", false );
         respuesta.data.ecommerce == 1 ? $('#ecommerce').prop( "checked", true ) : $('#ecommerce').prop( "checked", false );
         respuesta.data.pucedit == 1 ? $('#pucedit').prop( "checked", true ) : $('#pucedit').prop( "checked", false );
+        respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
 
 
         $('#nombre').val(respuesta.data.nombre);
@@ -872,7 +874,7 @@ $('#pucedit').click(function(){
 
 
 
-$( document ).ready(function() {
+$( document ).ready(function() {  // TODO: agregar resolucion CRUD, msgpuc en localstorage (login), dolar en local storage, agregar disable si modifica sus cuentas puc check, nivel centro de costo local storage   
     $('.preloader').hide("slow");
       validarLogin();
 

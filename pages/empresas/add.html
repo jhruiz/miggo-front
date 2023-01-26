@@ -17,84 +17,35 @@
 
     <div class="card-body-form">
         
-        <form method="POST" id="form" action="" enctype="multipart/form-data">
+        <form id="form"  method="PUT" action="" enctype="multipart/form-data">
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                 </div>
-                <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" required>  <code>&nbsp;*</code>
+                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" required>  <code>&nbsp;*</code>
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                 </div>
-                <input type="text" id="apellidos" class="form-control input-texto-espacio" placeholder="Apellidos" required>  <code>&nbsp;*</code>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleSelectBorder">Tipo Identificacion<code> &nbsp;*</code></label>
-                <select class="custom-select form-control-border" id="select-identificacion" required>
-                  <!-- <option>Value 1</option> -->
-  
-                </select>
-              </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <input type="text" id="identificacion" class="form-control input-numero" placeholder="Numero de Identificación" required>  <code>&nbsp;*</code>
-            </div>  
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                </div>
-                <input type="text" id="verificado" class="form-control" disabled>
-              </div>
-          
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                </div>
-                <button type="button" id="calculo" class="form-control">calcular digito de verificacion</button>
-              </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                </div>
-                <input type="text" id="email" class="form-control" placeholder="E-mail" required>  <code>&nbsp;*</code>
-            </div>  
-            
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                </div>
-                <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="new-password" required> <code>&nbsp;*</code>
-            </div>  
-
-            <div class="form-group">
-              <label for="exampleSelectBorder">Perfil<code> &nbsp;*</code></label>
-              <select class="custom-select form-control-border" id="select-perfiles" required>
-                <!-- <option>Value 1</option> -->
-
-              </select>
+                <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social" required>  <code>&nbsp;*</code>
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="celular" class="form-control input-numero" placeholder="Celular">
-            </div> 
+                <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" required> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+            </div>   
 
-            <div class="input-group mb-3">
+            <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono">
-            </div>
+                <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+            </div>   -->
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -107,32 +58,201 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <input type="text" id="rut" class="form-control input-numero" placeholder="RUT">
+                <input type="text" id="telefono1" class="form-control input-numero" placeholder="Teléfono 1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="telefono2" class="form-control input-numero" placeholder="Teléfono 2">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" id="email" class="form-control" placeholder="Email" required>  <code>&nbsp;*</code>
+            </div>  
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" required>  <code>&nbsp;*</code>
             </div> 
 
-              <!-- Date -->
-        <div class="form-group">
-            <label>Fecha de Nacimiento:</label>
-              <div class="input-group date" id="cumpleanio" data-target-input="nearest">
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio"/>
-                  <div class="input-group-append" data-target="#cumpleanio" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            <!--  -->
+
+                        <!-- iCheck -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                              <h3 class="card-title">Marque las casillas con que cumple la Empresa</h3>
+                            </div>
+                            <div class="card-body">
+                              <!-- Minimal style -->
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <!-- checkbox -->
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-primary d-inline">
+                                      <input type="checkbox" id="autoretenedor">
+                                      <label for="autoretenedor">
+                                        Autoretenedor
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                  <!-- checkbox -->
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                      <input type="checkbox" id="ica">
+                                      <label for="ica">
+                                        ICA
+                                      </label>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                              <!-- Minimal red style -->
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <!-- checkbox -->
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-danger d-inline">
+                                      <input type="checkbox" id="renta">
+                                      <label for="renta">
+                                        RENTA
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="icheck-danger d-inline">
+                                        <input type="checkbox" id="aut">
+                                        <label for="aut">
+                                          AUT
+                                        </label>
+                                      </div>
+                                </div>
+                              </div>
+                              <!-- Minimal red style -->
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <!-- checkbox -->
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                      <input type="checkbox" id="ecommerce">
+                                      <label for="ecommerce">
+                                        Ecommerce
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <!-- checkbox -->
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-success d-inline">
+                                            <input type="checkbox" id="pucedit">
+                                            <label for="pucedit">
+                                            Generar y Cambiar sus PUC
+                                            </label>
+                                        </div>
+                                        </div>
+
+                                     <input type="text" id="msgpuc" class="form-control" hidden>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                              <!-- Many more skins available. -->
+                            </div>
+                          </div>
+                          <!-- /.card -->
+            
+            <!-- Date -->
+              <div id="divf" class="form-group" style="display: none;">
+                <label>Fecha de Resolucion:</label>
+                  <div class="input-group date" id="fecharesolucione" data-target-input="nearest">
+                      <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesoluciones"/>
+                      <div class="input-group-append" data-target="#fecharesoluciones" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
                   </div>
               </div>
-          </div>
 
-                 <!-- Date and time -->
-        <!-- <div class="form-group">
-            <label>Date and time:</label>
-              <div class="input-group date" id="cumpleaniotime" data-target-input="nearest">
-                  <input type="text" class="form-control datetimepicker-input" data-target="#cumpleaniotime"/>
-                  <div class="input-group-append" data-target="#cumpleaniotime" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                  </div>
+              <div id="div" class="input-group mb-3" style="display: none;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" id="resolucionautoretenedor" class="form-control" placeholder="Resolucion Autoretenedor"> 
+            </div> 
+
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Tipo Sociedades <code> &nbsp;*</code></label>
+                <select class="custom-select rounded-0" id="select-tiposociedade">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
               </div>
-          </div> -->
 
-<!--  -->
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Tipo Contribuyente <code> &nbsp;*</code></label>
+                <select class="custom-select rounded-0" id="select-tipocontribuyente">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Regimen <code> &nbsp;*</code></label>
+                <select class="custom-select rounded-0" id="select-regimene">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
+              </div>
+    
+
+              <div class="form-group">
+                <label for="responsable">Codigo CIIU: </label>
+                <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU">
+              </div>
+
+              <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
+
+
+              <div class="form-group">
+                <label for="exampleSelectRounded0">Personeria <code> &nbsp;*</code></label>
+                <select class="custom-select rounded-0" id="select-personeria">
+                  <!-- <option>Value 1</option> -->
+
+                </select>
+              </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="telefono1" class="form-control input-numero" placeholder="Telefono 1">
+            </div> 
+
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="telefono2" class="form-control input-numero" placeholder="Telefono 2">
+            </div> 
+
               <div class="form-group">
                 <label for="exampleSelectRounded0">Departamento</label>
                 <select class="custom-select rounded-0" id="select-departamento">
@@ -148,45 +268,54 @@
 
                 </select>
               </div>
-            
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <input type="text" id="username" class="form-control input-texto-alfanumerico" placeholder="Username">
-            </div> 
 
             <output id="output"></output>
 
-             <div id="mostrarImagen" stye="display:flex;">
-              
-              </div>
+               <div id="mostrarImagen" stye="display:flex;">
+                
+                </div>
 
-
-            <div class="form-group">
-                <label for="imagen">Elija la Foto</label>
+              <div class="form-group">
+                <label for="imagen">selecione para editar la Imagen</label>
               <div class="custom-file">
                 <input class="form-control" type="file" id="imagen">
               </div>
             </div>
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="texto1" class="form-control" rows="3" placeholder="Informacion de la Empresa 1"></textarea>
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="texto2" class="form-control" rows="3" placeholder="Informacion de la Empresa 2"></textarea>
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="texto3" class="form-control" rows="3" placeholder="Informacion de la Empresa 3"></textarea>
+            </div> 
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="texto4" class="form-control" rows="3" placeholder="Informacion de la Empresa 4"></textarea>
+            </div> 
+
             <div class="col-12 float-right">
                 <button type="submit" id="guardar" class="btn btn-primary float-right">Guardar</button>
             </div> 
 
-        </form>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            </div>
-            <input type="text" id="documento" class="form-control" placeholder="Digito de verificacion">
-          </div>
-      
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            </div>
-            <button type="button" id="calculo" class="form-control">calcular</button>
-          </div>
+        </form>
 
     </div>
 
@@ -201,40 +330,65 @@ e.preventDefault();
 const form = document.getElementById('form');
 const formData = new FormData(form);
 
-var email =$('#email').val();
-var password =$('#password').val();
-var username =$('#username').val();
-var nombres = $('#nombres').val();
-var apellidos = $('#apellidos').val();
-var tipoidentificacione_id = $('#select-identificacion').val()? $('#select-identificacion').val() : ''; 
-var identificacion = $('#identificacion').val();
-var perfile_id = $('#select-perfiles').val()? $('#select-perfiles').val(): ''; 
+var ica =$('#ica').val()? 1 : 0;
+var renta =$('#renta').val()? 1 : 0;
+var aut =$('#aut').val()? 1 : 0;
+var ecommerce =$('#ecommerce').val()? 1 : 0;
+var pucedit =$('#pucedit').val()? 1 : 0;
+var autoretenedor =$('#autoretenedor').val()? 1 : 0;
+
+var nombre = $('#nombre').val();
+var razonsocial = $('#razonsocial').val();
+var nit = $('#identificacion').val();
+var digitoverificacion = $('#verificado').val();
 var direccion = $('#direccion').val();
-var rut = $('#rut').val();
-var celular = $('#celular').val();
-var telefono = $('#telefono').val();
-var cumpleanios = $('#cumpleanios').val();
-var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
+var telefono1 = $('#telefono1').val();
+var telefono2 = $('#telefono2').val();
+var email = $('#email').val();
+var representantelegal = $('#representantelegal').val();
+var texto1 = $('#texto1').val();
+var texto2 = $('#texto2').val();
+var texto3 = $('#texto3').val();
+var texto4 = $('#texto4').val();
+var fechaResolucion = $('#fecharesolucione').val();
+var ciiuclase_id = $('#ciiu_id').val();
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
 
 
-formData.append("empresa_id", localStorage.empresa_id);
-formData.append("creador_id", localStorage.id);
-formData.append("email", email);
-formData.append("password", password);
-formData.append("username", username);
-formData.append("nombres", nombres);
-formData.append("apellidos", apellidos);
-formData.append("tipoidentificacione_id", tipoidentificacione_id);
-formData.append("identificacion", identificacion);
-formData.append("perfile_id", perfile_id);
+var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : ''; 
+var tipocontribuyente_id = $('#select-tipocontribuyente').val()? $('#select-tipocontribuyente').val() : ''; 
+var regimene_id = $('#select-regimene').val()? $('#select-regimene').val() : ''; 
+var personeria_id = $('#select-personeria').val()? $('#select-personeria').val() : ''; 
+var tiposociedade_id = $('#select-tiposociedade').val()? $('#select-tiposociedade').val() : ''; 
+
+
+formData.append("ica", ica);
+formData.append("renta", renta);
+formData.append("aut", aut);
+formData.append("ecommerce", ecommerce);
+formData.append("pucedit", pucedit);
+formData.append("autoretenedor", autoretenedor);
+formData.append("nombre", nombre);
+formData.append("razonsocial", razonsocial);
+formData.append("nit", nit);
+formData.append("digitoverificacion", digitoverificacion);
 formData.append("direccion", direccion);
-formData.append("rut", rut);
-formData.append("celular", celular);
-formData.append("telefono", telefono);
-formData.append("cumpleanios", cumpleanios);
-formData.append("ciudade_id", ciudade_id);
+formData.append("telefono1", telefono1);
+formData.append("telefono2", telefono2);
+formData.append("email", email);
+formData.append("representantelegal", representantelegal);
+formData.append("texto1", texto1);
+formData.append("texto2", texto2);
+formData.append("texto3", texto3);
+formData.append("texto4", texto4);
+formData.append("fechaResolucion", fechaResolucion);
+formData.append("ciiuclase_id", ciiuclase_id);
 formData.append("imagen", imagen);
+formData.append("ciudade_id", ciudade_id);
+formData.append("tipocontribuyente_id", tipocontribuyente_id);
+formData.append("regimene_id", regimene_id);
+formData.append("personeria_id", personeria_id);
+formData.append("tiposociedade_id", tiposociedade_id);
 
 // const output = document.getElementById('output');
 
@@ -244,7 +398,7 @@ formData.append("imagen", imagen);
 
 $.ajax({
     method: "POST",
-    url: url_back + "users",
+    url: url_back + "empresas",
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -255,7 +409,7 @@ $.ajax({
     success: function(respuesta) {
 
         if(respuesta){
-            var mensaje = 'empresa creado de forma correcta: '+ respuesta.data.tercero.nombres;
+            var mensaje = 'empresa creado de forma correcta: '+ respuesta.data.nombre;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'empresas/index.html');
         } else {
@@ -279,11 +433,39 @@ $.ajax({
 });
 
 
+//***************************************************autocompletar*******************
 
-//***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
+$( "#ciiu" ).autocomplete({
+        source: function( request, response ) {
+            var url_ciiu = 'ciiuclases/?search='+$('#ciiu').val();
 
-var tipoidentificaciones = function(){
-    url_ide= 'tipoidentificaciones';
+           // Fetch data
+           $.ajax({
+             method: "GET",
+             url: url_back + url_ciiu,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                // console.log(respuesta);
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#ciiu').val(ui.item.label); // display the selected text
+          $('#ciiu_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
+
+ //***************************************************trae valores masivos de tipocontribuyente,ciudad, ciiuclase, tiposociedades, regimen, personeria*******************
+
+var obtenertipocontribuyentes = function(){
+    url_ide= 'tipocontribuyentes';
     $.ajax({
     method: "GET",
     url: url_back + url_ide,
@@ -292,8 +474,8 @@ var tipoidentificaciones = function(){
     },
     dataType: "json",
     success: function(respuesta) {
-        $('#select-identificacion').html(crearHtml(respuesta.data));
 
+        $('#select-tipocontribuyente').html(crearHtml(respuesta.data));
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -302,55 +484,92 @@ var tipoidentificaciones = function(){
   })  
 }
 
-/**
- * Genera el html con los departamentos configurados en la base de datos
- */
-
-function obtenerDepartamentos() {
-
-url = 'paises/'+ 170 +'/departamentos';
-
-$.ajax({
+var obtenerRegimenes = function(){
+    url_ide= 'regimenes';
+    $.ajax({
     method: "GET",
-    url: url_back + url,
+    url: url_back + url_ide,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
     dataType: "json",
     success: function(respuesta) {
 
-        $('#select-departamento').html(crearHtml(respuesta.data));
-
-        //  crearDepartamentos(respuesta.data);
+        $('#select-regimene').html(crearHtml(respuesta.data));
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
         sweetMessage('error', mensaje);
     }
-  })     
+  })  
 }
 
-function obtenerPerfiles() {
 
-url = 'perfiles';
-
-$.ajax({
+var obtenerPersonerias = function(){
+    url_pe= 'personerias';
+    $.ajax({
     method: "GET",
-    url: url_back + url,    headers: { 
+    url: url_back + url_pe,
+    headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
     dataType: "json",
     success: function(respuesta) {
-        //  crearPerfiles(respuesta.data);
-        $('#select-perfiles').html(crearHtml(respuesta.data));
 
+        $('#select-personeria').html(crearHtml(respuesta.data));
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
         sweetMessage('error', mensaje);
     }
-  })     
+  })  
 }
+
+var obtenerTiposociedades = function(){
+    url_pe= 'tiposociedades';
+    $.ajax({
+    method: "GET",
+    url: url_back + url_pe,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+
+        $('#select-tiposociedade').html(crearHtml(respuesta.data));
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+/**
+ * Genera el html con los departamentos configurados en la base de datos
+ */
+
+ function obtenerDepartamentos() {
+
+url = 'paises/'+ 170 +'/departamentos';
+
+    $.ajax({
+        method: "GET",
+        url: url_back + url,
+        headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+            // crearDepartamentos(respuesta.data);
+            $('#select-departamento').html(crearHtml(respuesta.data));
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    })     
+}
+
 
 var crearHtml = function(data) {
     var html = '<option value="">Seleccione..</option>';
@@ -361,18 +580,43 @@ var crearHtml = function(data) {
         });
     return html;
 }
+//******************************************************************************************************************************************
+
+$('#autoretenedor').change(function(){    
+    if($('input[id=autoretenedor]').is(':checked')){
+        $("#div").show();
+        $("#divf").show();
+    }else{
+        $("#div").hide();
+        $("#divf").hide();
+    }
+});
+
+$('#pucedit').click(function(){    
+    var bool = confirm($("#msgpuc").val());
+    if(bool){
+        $('#pucedit').prop( "checked", true )
+    }else{
+        $('#pucedit').prop( "checked", false )
+    }
+});
+
 
 
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
 
-    $("#calculo").on("click",calcularDigito); //TODO: Digito de verificacion
+    $("#identificacion").on("change",calcularDigito); // Digito de verificacion
 
 
+    obtenertipocontribuyentes();
+    obtenerRegimenes();
+    obtenerPersonerias();
+    obtenerTiposociedades();
     obtenerDepartamentos();
-    obtenerPerfiles();
-    tipoidentificaciones();
+
+
 
     $('#select-departamento').on('change',function(){
         var departamento_id = $(this).val();
@@ -402,7 +646,7 @@ $( document ).ready(function() {
 
 $(function() {
     //Date picker
- $("#cumpleanio").datetimepicker({
+ $("#fecharesolucione").datetimepicker({
         locale: "es",
         format: "YYYY-MM-DD",  
         //  defaultDate:"2012/01/01",

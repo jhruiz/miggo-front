@@ -99,7 +99,7 @@
                 <!-- iCheck -->
                 <div class="card card-success">
                     <div class="card-header">
-                      <h3 class="card-title">Marque las casillas con que cumple la Empresa</h3>
+                      <h3 class="card-title">Procedimientos Empresa</h3>
                     </div>
                     <div class="card-body">
                       <!-- Minimal style -->
@@ -513,6 +513,7 @@ $.ajax({
         respuesta.data.aut == 1 ? $('#aut').prop( "checked", true ) : $('#aut').prop( "checked", false );
         respuesta.data.ecommerce == 1 ? $('#ecommerce').prop( "checked", true ) : $('#ecommerce').prop( "checked", false );
         respuesta.data.pucedit == 1 ? $('#pucedit').prop( "checked", true ) : $('#pucedit').prop( "checked", false );
+        respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
 
 
         $('#nombre').val(respuesta.data.nombre);
@@ -544,7 +545,7 @@ $.ajax({
             $("#divf").show();
         }
 
-        if(respuesta.data.imagen){ //TODO: backend imagen  revisar
+        if(respuesta.data.imagen){ 
               $("#imagen").attr('src', url_img + 'empresas/'+ respuesta.data.imagen);
           }else{
             $("#imagen").attr("src","../empresas/"+ 'defecto.jpg');
