@@ -22,6 +22,9 @@ var loginFunction = function() {
                 localStorage.setItem('nombres', respuesta.data.tercero.nombres);
                 localStorage.setItem('empresa_id', respuesta.data.empresa_id);
                 localStorage.setItem('empresa', respuesta.data.empresa.nombre);
+                localStorage.setItem('msgpuc', respuesta.data.empresa.msgpuc);
+                localStorage.setItem('moneda', respuesta.data.empresa.moneda);
+                localStorage.setItem('nivelgasto', respuesta.data.empresa.nivelgasto);
                 localStorage.setItem('access_token', respuesta.access_token);
                 localStorage.setItem('date', new Date());            
 

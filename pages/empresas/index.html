@@ -93,7 +93,7 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
             element.nit,
             element.telefono1,
             element.telefono2,
-            // element.telefono1            
+            element.empresa_id? 'Sucursal': 'Empresa Pricipal',         
         ];
 
         arrEmpresa.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verEmpresa('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarEmpresa('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button>  </div>'); 
@@ -147,6 +147,7 @@ var generarDataTable = function( dataSet ) {
             { title: "NIT" },
             { title: "Contacto 1" },
             { title: "Contacto 2" },
+            { title: "Sucursal" },
             { title: "Acciones" },
             ],
     "responsive": true, "lengthChange": true, "autoWidth": false,

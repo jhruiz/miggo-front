@@ -94,6 +94,12 @@
         <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" disabled>  
     </div> 
 
+    <div id="div" class="input-group mb-3" style="display: none;">
+      <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+      </div>
+      <input type="text" id="moneda" class="form-control" placeholder="Simbolo de Moneda a Usar"> 
+  </div>
     <!--  -->
 
                 <!-- iCheck -->
@@ -189,23 +195,24 @@
                   </div>
                   <!-- /.card -->
     
-    <!-- Date -->
-      <div id="divf" class="form-group" style="display: none;">
-        <label>Fecha de Resolucion:</label>
-          <div class="input-group date" id="fecharesolucione" data-target-input="nearest">
-              <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesoluciones" disabled/>
-              <div class="input-group-append" data-target="#fecharesoluciones" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-              </div>
-          </div>
-      </div>
-
-      <div id="div" class="input-group mb-3" style="display: none;">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        <!-- Date -->
+        <div class="form-group" id="divf" style="display: none;">
+          <label>Fecha Resolución:</label>
+            <div class="input-group date" id="fecharesolucione" data-target-input="nearest">
+                <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesolucione" disabled/>
+                <div class="input-group-append" data-target="#fecharesolucione" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
         </div>
-        <input type="text" id="resolucionautoretenedor" class="form-control" placeholder="Resolucion Autoretenedor" disabled> 
-    </div> 
+
+
+        <div id="div" class="input-group mb-3" style="display: none;">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input type="text" id="resolucionautoretenedor" class="form-control" placeholder="Resolucion Autoretenedor" disabled> 
+      </div> 
 
       <div class="form-group">
         <label for="exampleSelectRounded0">Tipo Sociedades </label>
@@ -248,31 +255,6 @@
         </select>
       </div>
 
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-        </div>
-        <input type="text" id="telefono1" class="form-control input-numero" placeholder="Telefono 1" disabled>
-    </div> 
-
-
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-        </div>
-        <input type="text" id="telefono2" class="form-control input-numero" placeholder="Telefono 2" disabled>
-    </div> 
-
-      <div class="form-group">
-        <label for="exampleSelectRounded0">Departamento</label>
-        <select class="custom-select rounded-0" id="select-departamento" disabled>
-          <!-- <option>Value 1</option> -->
-
-        </select>
-      </div>
-
       <div class="form-group">
         <label for="exampleSelectRounded0">Ciudad</label>
         <select class="custom-select rounded-0" id="select-ciudad" disabled>
@@ -281,18 +263,16 @@
         </select>
       </div>
 
-    <!-- <output id="output"></output>
-
-       <div id="mostrarImagen" stye="display:flex;">
-        
-        </div>
-
       <div class="form-group">
-        <label for="imagen">selecione para editar la Imagen</label>
-      <div class="custom-file">
-        <input class="form-control" type="file" id="imagen">
+        <label for="exampleSelectRounded0">Nivel Centro de Costos</label>
+        <select class="custom-select rounded-0" id="select-nivelcentro" disabled>
+          <option value=""></option>
+          <option value="1">Divisiones</option>
+          <option value="2">Secciones</option>
+          <option value="3">Dependencias</option>
+
+        </select>
       </div>
-    </div> -->
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -515,7 +495,6 @@ $.ajax({
         respuesta.data.pucedit == 1 ? $('#pucedit').prop( "checked", true ) : $('#pucedit').prop( "checked", false );
         respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
 
-
         $('#nombre').val(respuesta.data.nombre);
         $('#razonsocial').val(respuesta.data.razonsocial);
         $('#identificacion').val(respuesta.data.nit);
@@ -525,20 +504,19 @@ $.ajax({
         $('#telefono2').val(respuesta.data.telefono2);
         $('#email').val(respuesta.data.email);
         $('#representantelegal').val(respuesta.data.representantelegal);
+        $('#moneda').val(respuesta.data.moneda);
         $('#texto1').val(respuesta.data.texto1);
         $('#texto2').val(respuesta.data.texto2);
         $('#texto3').val(respuesta.data.texto3);
         $('#texto4').val(respuesta.data.texto4);
-        // $('#moneda').val(respuesta.data.moneda);
-        $('#fecharesolucione').val(respuesta.data.fechaResolucion);
+        $('#fecharesoluciones').val(respuesta.data.fecharesolucion);
         $('#resolucionautoretenedor').val(respuesta.data.resolucionautoretenedor);
-        $('#msgpuc').val(respuesta.data.msgpuc); 
+        $('#select-nivelcentro').val(respuesta.data.nivelgasto);
 
 
-
-        // $('#empresa_id').val(respuesta.data.empresa_id);
-
-        respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
+        if($('input[id=pucedit]').is(':checked')){
+           $('#pucedit').prop('disabled', true);
+        }
 
         if($('input[id=autoretenedor]').is(':checked')){
             $("#div").show();
