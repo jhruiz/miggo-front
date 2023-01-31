@@ -66,6 +66,8 @@ const formData = new FormData(form);
         formData.append("nombre", nombre);
         formData.append("descripcion", descripcion);
         formData.append("empresa_id", localStorage.empresa_id);
+        formData.append("creador_id", localStorage.id);
+
         break;
     case 'centrocostos':
         url = 'divisiones';
@@ -76,6 +78,8 @@ const formData = new FormData(form);
         formData.append("nombre", nombre);
         formData.append("puc_id", puc_id);
         formData.append("centrocosto_id", id);
+        formData.append("creador_id", localStorage.id);
+
         break;
 
     case 'divisiones':
@@ -85,6 +89,8 @@ const formData = new FormData(form);
         formData.append("codigo", codigo);
         formData.append("nombre", nombre);
         formData.append("divisione_id", id);
+        formData.append("creador_id", localStorage.id);
+
         break;
 
     case 'secciones':
@@ -94,6 +100,8 @@ const formData = new FormData(form);
         formData.append("codigo", codigo);
         formData.append("nombre", nombre);
         formData.append("seccione_id", id);
+        formData.append("creador_id", localStorage.id);
+
         break;
 
     case 'dependencias':

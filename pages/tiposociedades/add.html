@@ -57,6 +57,8 @@ var descripcion = $('#descripcion').val();
 
 formData.append("codigo", codigo);
 formData.append("descripcion", descripcion);
+formData.append("creador_id", localStorage.id);
+
 
 $.ajax({
     method: "POST",
