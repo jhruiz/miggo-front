@@ -65,6 +65,24 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6">
+
+                  <div class="form-group">
+                    <!-- <label>Nombre</label> -->
+
+                      <div id="mostrarImagen" stye="display:flex;">
+                        
+                        </div>
+
+                      <div class="form-group">
+                        <!-- <label for="imagen">selecione para editar la Foto</label> -->
+                      <div class="custom-file">
+                        <input class="btn btn-success col fileinput" type="file" id="imagen">
+
+                      </div>
+                    </div>
+
+                  </div>
+
                   <div class="form-group">
                     <label>Nombre</label>
 
@@ -72,7 +90,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-signature"></i></span>
                         </div>
-                        <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" required>  <code>&nbsp;*</code>
+                        <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" >  <code>&nbsp;*</code>
                     </div>
 
                   </div>
@@ -97,7 +115,7 @@
 
                     <div class="form-group">
                         <label for="exampleSelectBorder">Tipo Identificacion<code> &nbsp;*</code></label>
-                        <select class="custom-select form-control-border" id="select-identificacion" required>
+                        <select class="custom-select form-control-border" id="select-identificacion" >
                         <!-- <option>Value 1</option> -->
         
                         </select>
@@ -115,7 +133,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                         </div>
-                        <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" required> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+                        <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" > <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
                     </div> 
 
                     </div>
@@ -134,47 +152,6 @@
                     </div> 
 
                     </div>
-                    <!-- /.form-group -->
-
-                <!-- /.form-group -->
-                <div class="form-group">
-                    <label>Teléfono</label>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                        </div>
-                        <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono">
-                    </div>
-
-                    </div>
-                <!-- /.form-group -->
-
-                <!-- /.form-group -->
-                <div class="form-group">
-                <label>Razon Social</label>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-signature"></i></span>
-                    </div>
-                    <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social">
-                </div>
-
-                </div>
-                <!-- /.form-group -->
-
-                <!-- /.form-group -->
-                    <div class="form-group">
-                        <label>Fecha de Nacimiento:</label>
-                        <!-- <div class="input-group date" id="cumpleanio" data-target-input="nearest"> -->
-                            <div class="input-group date" id="cumpleanio" data-target-input="nearest">
-                                <div class="input-group-prepend" data-target="#cumpleanio" data-toggle="datetimepicker">
-                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                  </div>
-                              <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio"/>
-                          </div>
-                      </div>
                     <!-- /.form-group -->
 
                 </div>
@@ -215,7 +192,7 @@
 
                     <div class="form-group">
                         <label for="exampleSelectBorder">Tipo Direccion<code> &nbsp;*</code></label>
-                        <select class="custom-select form-control-border" id="select-identificacion" required>
+                        <select class="custom-select form-control-border" id="select-tipodirecciones" >
                         <!-- <option>Value 1</option> -->
 
                         </select>
@@ -244,7 +221,7 @@
 
                     <div class="form-group">
                         <label for="exampleSelectBorder">Tipo Direccion 2</label>
-                        <select class="custom-select form-control-border" id="select-identificacion" required>
+                        <select class="custom-select form-control-border" id="select-tipodirecciones2" >
                         <!-- <option>Value 1</option> -->
 
                         </select>
@@ -267,20 +244,22 @@
                   </div>
                   <!-- /.form-group -->
 
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>Teléfono</label>
+
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                      </div>
+                      <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono">
+                  </div>
+
+                  </div>
+              <!-- /.form-group -->
 
 
-                  <!-- <div class="form-group">
-                    <label>Representante Legal</label>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" required>  <code>&nbsp;*</code>
-                    </div>
-
-                  </div> -->
-                  <!-- /.form-group -->
+                
                 </div>
                 <!-- /.col -->
               </div>
@@ -296,7 +275,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="text" id="email" class="form-control" placeholder="Email" required>  <code>&nbsp;*</code>
+                        <input type="text" id="email" class="form-control" placeholder="Email" >  <code>&nbsp;*</code>
                     </div> 
 
                   </div>
@@ -304,18 +283,23 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6">
-                  <div class="form-group">
-                    <label>Representante Legal</label>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-                        </div>
-                        <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" required>  <code>&nbsp;*</code>
+
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>Fecha de Nacimiento:</label>
+                  <!-- <div class="input-group date" id="cumpleanio" data-target-input="nearest"> -->
+                      <div class="input-group date" id="cumpleanio" data-target-input="nearest">
+                          <div class="input-group-prepend" data-target="#cumpleanio" data-toggle="datetimepicker">
+                              <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                        <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio"/>
                     </div>
+                </div>
+              <!-- /.form-group -->
 
-                  </div>
-                  <!-- /.form-group -->
+
+  
                 </div>
                 <!-- /.col -->
               </div>
@@ -330,7 +314,7 @@
           <!-- SELECT2 EXAMPLE -->
           <div class="card card-default">
             <div class="card-header">
-              <h3 class="card-title">Información Contable</h3>
+              <h3 class="card-title">Información General Contable</h3>
   
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -346,16 +330,19 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-6">
+
+
                   <div class="form-group">
-                    <!-- <label>Minimal</label> -->
+                    <label>Representante Legal</label>
 
-                    <!-- <div class="form-group"> -->
-                        <label for="responsable">Codigo CIIU: </label>
-                        <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU">
-                      <!-- </div> -->
-                      <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
-
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-laptop"></i></span>
+                        </div>
+                        <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" >  <code>&nbsp;*</code>
+                    </div>
                   </div>
+                  <!-- /.form-group -->
 
 
                   <!-- /.form-group -->
@@ -364,7 +351,7 @@
 
                     <!-- <div class="form-group"> -->
                         <label for="exampleSelectRounded0">Personeria <code> &nbsp;*</code></label>
-                        <select class="custom-select rounded-0" id="select-personeria">
+                        <select class="custom-select rounded-0" id="select-personerias">
                           <!-- <option>Value 1</option> -->
         
                         </select>
@@ -377,26 +364,30 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-md-6">
-                  <div class="form-group">
 
-                    <label for="exampleSelectRounded0">Tipo Contribuyente <code> &nbsp;*</code></label>
-                    <select class="custom-select rounded-0" id="select-tipocontribuyentes">
-                      <!-- <option>Value 1</option> -->
-    
-                    </select>
-
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>Razon Social</label>
+  
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                      </div>
+                      <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social">
+                  </div>
                   </div>
                   <!-- /.form-group -->
-                  <div class="form-group">
-                    <!-- <label>Disabled</label> -->
 
-                    <label for="exampleSelectRounded0">Regimen <code> &nbsp;*</code></label>
-                    <select class="custom-select rounded-0" id="select-regimen">
-                      <!-- <option>Value 1</option> -->
-    
-                    </select>
+                  <div class="form-group">
+
+                    <!-- <div class="form-group"> -->
+                        <label for="responsable">Codigo CIIU: </label>
+                        <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU">
+                      <!-- </div> -->
+                      <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
 
                   </div>
+
                   <!-- /.form-group -->
                 </div>
                 <!-- /.col -->
@@ -416,40 +407,63 @@
                   <h3 class="card-title">Retencion</h3>
                 </div>
                 <div class="card-body">
-                  <div class="form-group">
-                    <div class="input-group">
 
-                        <div class="form-group clearfix">
-                            <div class="icheck-primary d-inline">
-                              <input type="checkbox" id="autoretenedor">
-                              <label for="autoretenedor">
-                                Autoretenedor
-                              </label>
-                            </div>
-                          </div>
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <!-- <label>Disabled</label> -->
 
-
-                    </div>
-                    <!-- /.input group -->
-                  </div>
-                  <!-- /.form group -->
+                  <label for="exampleSelectRounded0">Regimen <code> &nbsp;*</code></label>
+                  <select class="custom-select rounded-0" id="select-regimenes">
+                    <!-- <option>Value 1</option> -->
   
-                  <div class="form-group">
-                    <div class="input-group">
+                  </select>
 
-                        <div class="form-group clearfix">
-                            <div class="icheck-success d-inline">
-                              <input type="checkbox" id="ica">
-                              <label for="ica">
-                                ICA
-                              </label>
-                            </div>
+                </div>
+                <!-- /.form-group -->
+
+                <div class="form-group">
+
+                  <label for="exampleSelectRounded0">Tipo Contribuyente <code> &nbsp;*</code></label>
+                  <select class="custom-select rounded-0" id="select-tipocontribuyentes">
+                    <!-- <option>Value 1</option> -->
+  
+                  </select>
+
+                </div>
+                <!-- /.form-group -->
+
+                <div class="form-group">
+                  <div class="input-group">
+                      <div class="form-group clearfix">
+                          <div class="icheck-primary d-inline">
+                            <input type="checkbox" id="autoretenedorrenta">
+                            <label for="autoretenedorrenta">
+                              Autoretenedor
+                            </label>
                           </div>
-
-                    </div>
-                    <!-- /.input group -->
+                        </div>
                   </div>
-                  <!-- /.form group -->  
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+
+                <div class="form-group">
+                  <div class="input-group">
+
+                      <div class="form-group clearfix">
+                          <div class="icheck-success d-inline">
+                            <input type="checkbox" id="autoretenedorica">
+                            <label for="autoretenedorica">
+                              ICA
+                            </label>
+                          </div>
+                        </div>
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->  
+
+
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -468,7 +482,7 @@
                     <div class="form-group">
 
                     <label for="exampleSelectRounded0">Tipo de Contacto <code> &nbsp;*</code></label>
-                    <select class="custom-select rounded-0" id="select-regimen">
+                    <select class="custom-select rounded-0" id="select-contactos">
                       <!-- <option>Value 1</option> -->
     
                     </select>
@@ -481,9 +495,9 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                         </div>
-                        <input type="text" id="contactonombre" class="form-control input-texto-espacio" placeholder="Nombres" required>  <code>&nbsp;*</code>
+                        <input type="text" id="contactonombre" class="form-control input-texto-espacio" placeholder="Nombres" >  <code>&nbsp;*</code>
                     </div>
 
                   </div>
@@ -530,11 +544,55 @@
                         <!-- checkbox -->
                         <div class="form-group clearfix">
                           <div class="icheck-primary d-inline">
-                            <input type="checkbox" id="autoretenedor">
-                            <label for="autoretenedor">
+                            <input type="checkbox" id="cliente">
+                            <label for="cliente">
                                 Cliente
                             </label>
                           </div>
+
+                          <!--  -->
+
+                          <div class="table table-striped files" id="divf" style="display: none;">
+
+                            <div class="col-auto d-flex align-items-center">
+                              <div class="btn-group">
+
+                                <!-- <button class="btn btn-success start">
+                                    <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                    <span></span>
+                                  </button> -->
+                                    &nbsp;
+                                    
+                                <button class="btn btn-success btn-sm" id="clientebtnver" data-toggle="modal" data-target="#exampleModalLong">
+                                  <!-- <button class="btn btn-info start"> -->
+                                  <!-- <i class="fas fa-upload"></i> -->
+                                  <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                 <input type="text" id="cliente_id" class="form-control input-numero" hidden>
+                                  <span></span>
+                                </button>
+                                &nbsp;
+    
+                                <!-- <button class="btn btn-success btn-sm" type="submit" onclick="verTiposociedade('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> -->
+
+
+                                <button data-dz-remove class="btn btn-info cancel" id="clientebtnedit" data-toggle="modal" data-target="#ModalLong2">
+                                  <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                  <!-- <i class="fas fa-times-circle"></i> -->
+                                  <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                  <span></span>
+                                </button>
+                                &nbsp;
+    
+                                <button data-dz-remove class="btn btn-danger delete">
+                                  <i class="fas fa-trash"></i>
+                                  <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                  <span></span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+<!--  -->
+
                         </div>
                       </div>
 
@@ -624,7 +682,14 @@
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <!-- Many more skins available. -->
+                    
+                    
+                    <div id="mymodal">
+  
+                    </div>
+
+
+
                   </div>
                 </div>
 
@@ -632,100 +697,7 @@
             </div>
                 <!-- /.card -->
 
-
-          <br>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card card-default">
-                <div class="card-body">
-                  <div id="actions" class="row">
-                    <div class="col-lg-6">
-                      <div class="btn-group w-100">
-                        <span class="btn btn-success col fileinput-button">
-                          <i class="fas fa-plus"></i>
-                          <span>Add files</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table table-striped files" id="previews">
-                      <div class="col-auto d-flex align-items-center">
-                        <div class="btn-group">
-                          <button class="btn btn-primary start">
-                            <i class="fas fa-upload"></i>
-                            <span></span>
-                          </button>
-                          <button data-dz-remove class="btn btn-warning cancel">
-                            <i class="fas fa-times-circle"></i>
-                            <span></span>
-                          </button>
-                          <button data-dz-remove class="btn btn-danger delete">
-                            <i class="fas fa-trash"></i>
-                            <span></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-<br>
-              <div class="col-md-6">
-                <div class="card card-default">
-                  <div class="card-body">
-                    <div id="actions" class="row">
-                      <div class="col-lg-6">
-                        <div class="btn-group w-100">
-                          <span class="btn btn-success col fileinput-button">
-                            <i class="fas fa-plus"></i>
-                            <span>Add files</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="table table-striped files" id="previews">
-
-                        <div class="col-auto d-flex align-items-center">
-                          <div class="btn-group">
-                            <button class="btn btn-success start">
-                                <!-- <i class="fas fa-upload"></i> -->
-                                <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
-                                <span></span>
-                              </button>
-                                &nbsp;
-                                
-                            <button class="btn btn-info start">
-                              <!-- <i class="fas fa-upload"></i> -->
-                              <i class="nav-icon fas fa-search" aria-hidden="true"></i>
-                              <span></span>
-                            </button>
-                            &nbsp;
-
-                            <button data-dz-remove class="btn btn-primary cancel">
-                              <!-- <i class="fas fa-times-circle"></i> -->
-                              <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
-                              <span></span>
-                            </button>
-                            &nbsp;
-
-                            <button data-dz-remove class="btn btn-danger delete">
-                              <i class="fas fa-trash"></i>
-                              <span></span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
+                
 
             </div>
           </div>
@@ -737,18 +709,6 @@
     <!-- /.content-wrapper -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!--  -->
 
 
@@ -756,16 +716,7 @@
 
             <!-- <output id="output"></output>
 
-               <div id="mostrarImagen" stye="display:flex;">
-                
-                </div>
-
-              <div class="form-group">
-                <label for="imagen">selecione para editar la Foto</label>
-              <div class="custom-file">
-                <input class="form-control" type="file" id="imagen">
-              </div>
-            </div> -->
+ -->
 
             <!-- <div class="col-12 float-right">
                 <button type="submit" id="actualizar" class="btn btn-primary float-right">Actualizar</button>
@@ -899,31 +850,9 @@ var obtenerCiudad = function(id){
   })  
 }
 
-var obtenerPerfil = function(id){
-    url_perf= 'perfiles/'+id;
-    $.ajax({
-    method: "GET",
-    url: url_back + url_perf,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-            var htmlPerfil = '';
-            htmlPerfil += '<option value="'+ respuesta.data.id+'">';
-            htmlPerfil += respuesta.data.descripcion;
-            htmlPerfil += '</option>';
-            obtenerPerfiles(htmlPerfil, id);
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
 
-var obtenerTipoidentificacione = function(id){
-    url_tipo= 'tipoidentificaciones/'+id;
+var obtenerSelect = function(url, select, id){
+    url_tipo= url+ '/' +id;
     $.ajax({
     method: "GET",
     url: url_back + url_tipo,
@@ -932,11 +861,11 @@ var obtenerTipoidentificacione = function(id){
     },
     dataType: "json",
     success: function(respuesta) {
-            var htmlTipo = '';
-            htmlTipo += '<option value="'+ respuesta.data.id+'">';
-            htmlTipo += respuesta.data.descripcion;
-            htmlTipo += '</option>';
-            obtenerTipoidentificaciones(htmlTipo, id);
+            var html = '';
+            html += '<option value="'+ respuesta.data.id+'">';
+            html += respuesta.data.descripcion;
+            html += '</option>';
+            obtenerSelects(url, select, id, html);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -947,25 +876,6 @@ var obtenerTipoidentificacione = function(id){
 
 //***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
 
-var obtenerTipoidentificaciones = function(base = null, id = null){
-    url_ide= 'tipoidentificaciones';
-    $.ajax({
-    method: "GET",
-    url: url_back + url_ide,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-
-        $('#select-identificacion').html(crearHtml(respuesta.data, base, id));
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
 /**
  * Genera el html con los departamentos configurados en la base de datos
  */
@@ -992,12 +902,8 @@ url = 'paises/'+ 170 +'/departamentos';
     })     
 }
 
-/**
-* Genera el html con los perfiles configurados en la base de datos
-*/
-function obtenerPerfiles(base = null, id = null) {
 
-url = 'perfiles';
+function obtenerSelects(url, select, id = null,  base = null) {
 
 $.ajax({
     method: "GET",
@@ -1008,7 +914,7 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#select-perfiles').html(crearHtml(respuesta.data, base, id));
+        $(select).html(crearHtml(respuesta.data, base, id));
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -1039,6 +945,37 @@ var crearHtml = function(data, base = null, id = null) {
     }
 }
 
+//***************************************************autocompletar*******************
+
+$( "#ciiu" ).autocomplete({
+        source: function( request, response ) {
+            var url_ciiu = 'ciiuclases/?search='+$('#ciiu').val();
+
+           // Fetch data
+           $.ajax({
+             method: "GET",
+             url: url_back + url_ciiu,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                // console.log(respuesta);
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#ciiu').val(ui.item.label); // display the selected text
+          $('#ciiu_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
+
+//******************************************************************************************************************************************
+
 function obtenertercero(id){
 
 var url = 'terceros/'+ id;
@@ -1055,36 +992,98 @@ $.ajax({
         $('#nombres').val(respuesta.data.nombres);
         $('#apellidos').val(respuesta.data.apellidos);
         $('#identificacion').val(respuesta.data.identificacion);
-        $('#email').val(respuesta.data.email);
+        $('#digitoverificacion').val(respuesta.data.digitoverificacion);
         $('#direccion').val(respuesta.data.direccion);
+        $('#direccion2').val(respuesta.data.direccion2);
         $('#celular').val(respuesta.data.celular);
         $('#telefono').val(respuesta.data.telefono);
-        // $('#cumpleanios').val(respuesta.data.cumpleanios);
-        // $('#username').val(respuesta.data.username);
+        $('#email').val(respuesta.data.email);
+        $('#cumpleanios').val(respuesta.data.cumpleanios);
+        $('#contactocelular').val(respuesta.data.contactocelular);
+        $('#contactonombre').val(respuesta.data.contactonombre);
 
+        respuesta.data.autoretenedorrenta == 1 ? $('#autoretenedorrenta').prop( "checked", true ) : $('#autoretenedorrenta').prop( "checked", false );
+        respuesta.data.autoretenedorica == 1 ? $('#autoretenedorica').prop( "checked", true ) : $('#autoretenedorica').prop( "checked", false );
+    
         if(respuesta.data.imagen){
             const ul = document.getElementById("mostrarImagen");
             const imagen = document.createElement("img");
             imagen.width = 200;
             imagen.src = url_img + 'terceros/'+ respuesta.data.imagen;
             ul.appendChild(imagen);
+          }else{
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'terceros/defecto.jpg';
+            ul.appendChild(imagen);
           }
 
-        // if(respuesta.data.ciudade_id){
-        //     obtenerCiudad(respuesta.data.ciudade_id);
-        // }
-        // if(respuesta.data.perfile_id){
-        //     obtenerPerfil(respuesta.data.perfile_id);
-        // }else{
-        //     obtenerPerfiles();
-        // }
+        if(respuesta.data.ciudade_id){
+            obtenerCiudad(respuesta.data.ciudade_id);
+        }
 
-        // if(respuesta.data.tipoidentificacione_id){
-        //     obtenerTipoidentificacione(respuesta.data.tipoidentificacione_id);
-        // }else{
-        //     obtenerTipoidentificaciones();
-        // }
+        if(respuesta.data.tipoidentificacione_id){
+            obtenerSelect('tipoidentificaciones', '#select-identificacion', respuesta.data.tipoidentificacione_id);
 
+        }else{
+            obtenerSelects('tipoidentificaciones', '#select-identificacion');
+        }
+
+        if(respuesta.data.tipodireccione_id){
+            obtenerSelect('tipodirecciones', '#select-tipodirecciones', respuesta.data.tipodireccione_id);
+
+        }else{
+            obtenerSelects('tipodirecciones', '#select-tipodirecciones');
+        }
+
+        if(respuesta.data.tipodireccione2_id){
+            obtenerSelect('tipodirecciones', '#select-tipodirecciones2', respuesta.data.tipodireccione2_id);
+
+        }else{
+            obtenerSelects('tipodirecciones', '#select-tipodirecciones2');
+        }
+
+        if(respuesta.data.regimene_id){
+            obtenerSelect('regimenes', '#select-regimenes', respuesta.data.regimene_id);
+        }else{
+            obtenerSelects('regimenes', '#select-regimenes');
+        }
+
+        if(respuesta.data.personeria_id){
+            obtenerSelect('personerias', '#select-personerias', respuesta.data.personeria_id);
+        }else{
+            obtenerSelects('personerias', '#select-personerias');
+        }
+
+        if(respuesta.data.tipocontribuyente_id){
+            obtenerSelect('tipocontribuyentes', '#select-tipocontribuyentes', respuesta.data.tipocontribuyente_id);
+        }else{
+            obtenerSelects('tipocontribuyentes', '#select-tipocontribuyentes');
+        }
+
+        if(respuesta.data.contacto_id){
+            obtenerSelect('contactos', '#select-contactos', respuesta.data.contacto_id);
+        }else{
+            obtenerSelects('contactos', '#select-contactos');
+        }
+
+
+        $.each(respuesta.data.clientes, function (key, item) {
+
+        // console.log(respuesta.data.clientes[0].empresa_id);
+       //  console.log(respuesta.data.clientes[key].observaciones);
+
+              if(localStorage.empresa_id == respuesta.data.clientes[key].empresa_id){
+                  // alert('existe el cliente' + respuesta.data.clientes[key].id );
+                  $('#cliente').prop( "checked", true);
+                  $("#divf").show();
+                  $('#cliente').prop('disabled', true);
+
+                  $("#cliente_id").val(respuesta.data.clientes[key].id);
+              }
+
+          });
 
     },
     error: function() {
@@ -1094,10 +1093,59 @@ $.ajax({
   })  
 }
 
+//***************************************** Terceros Especificos **************************************************************************
+$('#cliente').click(function(){    
 
+  if($('input[id=cliente]').is(':checked')){
+        var bool = confirm('¿Desea que este tercero sea un cliente?');
+        if(bool){
+            $('#cliente').prop( "checked", true )
+            $("#divf").show();
+            $('#cliente').prop('disabled', true);
+            console.log('crear cliente solo una vez');
+        }else{
+            $('#cliente').prop( "checked", false )
+        }
+    }
+});
+
+
+
+
+
+
+$("#clientebtnver").click(function(event) {
+
+  event.preventDefault();
+  var id =  $("#cliente_id").val();
+
+  $('#mymodal').html('');
+  localStorage.setItem('ver', id);
+  $('#mymodal').load('../terceros/clientes/show.html',function(){
+        $('#exampleModalLong').modal({show:true});
+    });
+});
+
+
+$("#clientebtnedit").click(function(event) {
+
+event.preventDefault();
+var id =  $("#cliente_id").val();
+
+
+$('#mymodal').html('');
+localStorage.setItem('editar', id);
+$('#mymodal').load('../terceros/clientes/edit.html',function(){
+      $('#ModalLong2').modal({show:true});
+  });
+});
+
+//******************************************************************************************************************************************
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
+
+    $("#identificacion").on("change",calcularDigito); // Digito de verificacion
 
     // $('#actualizar').on('click',actualizartercero(localStorage.editar));
 
