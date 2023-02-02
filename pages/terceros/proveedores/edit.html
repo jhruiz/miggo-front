@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Editar Cliente</h5>
+            Editar Proveedor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -28,20 +28,14 @@
             </div>
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
         </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
+            </div>
+            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor">
+        </div>
   
-        <div class="form-group">
-            <label>Observaciones</label>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..."></textarea>
-            </div> 
-
-          </div>
-          <!-- /.form-group -->
-
           <div class="form-group">
             <label>Dias de Credito</label>
 
@@ -69,31 +63,20 @@
 
           </div>
           <!-- /.form-group -->
-  
+
           <div class="form-group">
-            <label>Estadisticas</label>
+            <label>Observaciones</label>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-              <input type="text" id="estadisticas" class="form-control" placeholder="estadisticas">
+                <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..."></textarea>
             </div> 
 
           </div>
           <!-- /.form-group -->
-
-        <div class="form-group">
-
-            <label for="exampleSelectRounded0">Clasificion Cliente <code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-clasificacionclientes">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          <!-- /.form-group -->
+  
 
           <div class="form-group">
 
@@ -108,58 +91,19 @@
 
             <!-- /.form-group -->
 
-            <div class="form-group">
-
-                <label for="exampleSelectRounded0">Grado Deudores <code> &nbsp;*</code></label>
-                <select class="custom-select rounded-0" id="select-gradodeudores">
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-    
-                </div>
-
-
-            <!-- /.form-group -->
-
-            <div class="form-group">
-
-                <label for="exampleSelectRounded0">Cliente Descuento <code> &nbsp;*</code></label>
-                <select class="custom-select rounded-0" id="select-clientedescuentos">
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-    
-                </div>
-
-
                 <div class="form-group">
                     <div class="input-group">
                         <div class="form-group clearfix">
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus">
                               <label for="estatus">
-                                Excluir Cliente por Desicion de Gerencia 
+                                Excluir proveedore por Desicion de Gerencia 
                               </label>
                             </div>
                           </div>
                     </div>
                     <!-- /.input group -->
                   </div>
-
-
-                  <div class="form-group" id="divestatus" style="display: none;">
-                    <label>Mesaje Estatus Cliente</label>
-        
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                        </div>
-                        <textarea id="mesajeEstatus" class="form-control" rows="3" placeholder="Mesaje Estatus..."></textarea>
-                    </div> 
-        
-                  </div>
-                  <!-- /.form-group -->
-
 
 
           <div class="col-12 float-right">
@@ -173,7 +117,6 @@
 
   </div>
 
-</div>
 </div>
 
 
@@ -199,35 +142,29 @@ const form = document.getElementById('form');
 const formData = new FormData(form);
 
 var paginaweb = $('#paginaweb').val();
+var email = $('#emailProveedor').val();
 var observaciones = $('#observaciones').val();
 var diascredito = $('#diascredito').val();
 var limitecredito = $('#limitecredito').val();
-var estadisticas = $('#estadisticas').val();
-var mesajeEstatus = $('#mesajeEstatus').val();
+
+console.log(email);
 
 var estatus =$('#estatus').is(':checked') ? 1 : 0;
 
-var clasificacioncliente_id = $('#select-clasificacionclientes').val()? $('#select-clasificacionclientes').val() : ''; 
 var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
-var gradodeudore_id = $('#select-gradodeudores').val()? $('#select-gradodeudores').val() : ''; 
-var clientedescuento_id = $('#select-clientedescuentos').val()? $('#select-clientedescuentos').val() : ''; 
 
 formData.append("paginaweb", paginaweb);
-formData.append("observaciones", observaciones);
+formData.append("email", email);
 formData.append("diascredito", diascredito);
 formData.append("limitecredito", limitecredito);
-formData.append("estadisticas", estadisticas);
+formData.append("observaciones", observaciones);
 formData.append("estatus", estatus);
-formData.append("mesajeEstatus", mesajeEstatus);
-formData.append("clasificacioncliente_id", clasificacioncliente_id);
 formData.append("terminopago_id", terminopago_id);
-formData.append("gradodeudore_id", gradodeudore_id);
-formData.append("clientedescuento_id", clientedescuento_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "clientes/"+localStorage.editartercero,
+    url: url_back + "proveedores/"+localStorage.editartercero,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -237,7 +174,7 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-      console.log('editar cliente respuesta');
+      console.log('editar proveedore respuesta');
         localStorage.editartercero = '';
         if(respuesta){
             $('#ModalLong2').modal('hide');
@@ -324,9 +261,9 @@ $('#estatus').change(function(){
 //*********************************************************************************************************************************
 
 
-function obtenerCliente(id){
+function obtenerproveedore(id){
 
-var url = 'clientes/'+ id;
+var url = 'proveedores/'+ id;
 
 $.ajax({
     method: "GET",
@@ -338,43 +275,17 @@ $.ajax({
     success: function(respuesta) {
 
         $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#observaciones').val(respuesta.data.observaciones);
-
+        $('#emailProveedor').val(respuesta.data.email);
         $('#diascredito').val(respuesta.data.diascredito);
         $('#limitecredito').val(respuesta.data.limitecredito);
-        $('#estadisticas').val(respuesta.data.estadisticas);
-        $('#mesajeEstatus').val(respuesta.data.mesajeEstatus);
-        // $('#clientedescuento').val(respuesta.data.clientedescuento);
+        $('#observaciones').val(respuesta.data.observaciones);
 
         respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
-
-        if($('input[id=estatus]').is(':checked')){
-            $("#divestatus").show();
-        }
-
-
-        if(respuesta.data.clasificacioncliente_id){
-            obtenerSelect('clasificacionclientes', '#select-clasificacionclientes', respuesta.data.clasificacioncliente_id);
-        }else{
-            obtenerSelects('clasificacionclientes', '#select-clasificacionclientes');
-        }
 
         if(respuesta.data.terminopago_id){
             obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
         }else{
             obtenerSelects('terminopagos', '#select-terminopagos');
-        }
-
-        if(respuesta.data.gradodeudore_id){
-            obtenerSelect('gradodeudores', '#select-gradodeudores', respuesta.data.gradodeudore_id);
-        }else{
-            obtenerSelects('gradodeudores', '#select-gradodeudores');
-        }
-
-        if(respuesta.data.clientedescuento_id){
-            obtenerSelect('clientedescuentos', '#select-clientedescuentos', respuesta.data.clientedescuento_id);
-        }else{
-            obtenerSelects('clientedescuentos', '#select-clientedescuentos');
         }
 
     },
@@ -389,7 +300,7 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerCliente(localStorage.editartercero);
+      obtenerproveedore(localStorage.editartercero);
 
 });
 

@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Ver Cliente</h5>
+            Ver Proveedor</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -20,160 +20,108 @@
       
       
       <form  method="PUT" id="form" action="" enctype="multipart/form-data">
-  
-  
+
+
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-laptop"></i></span>
             </div>
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web" disabled>
         </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
+            </div>
+            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor" disabled>
+        </div>
   
-        <div class="form-group">
+          <div class="form-group">
+            <label>Dias de Credito</label>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+             <input type="text" id="diascredito" class="form-control" placeholder="diascredito" disabled>
+
+            </div> 
+
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label>Limite Credito</label>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+             <input type="text" id="limitecredito" class="form-control" placeholder="limitecredito" disabled>
+
+            </div> 
+
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
             <label>Observaciones</label>
-  
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
                 <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..." disabled></textarea>
             </div> 
-  
+
           </div>
           <!-- /.form-group -->
   
+
           <div class="form-group">
-            <label>Dias de Credito</label>
-  
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-             <input type="text" id="diascredito" class="form-control" placeholder="diascredito" disabled>
-  
-            </div> 
-  
-          </div>
-          <!-- /.form-group -->
-  
-          <div class="form-group">
-            <label>Limite Credito</label>
-  
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-             <input type="text" id="limitecredito" class="form-control" placeholder="limitecredito" disabled>
-  
-            </div> 
-  
-          </div>
-          <!-- /.form-group -->
-  
-          <div class="form-group">
-            <label>Estadisticas</label>
-  
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-              <input type="text" id="estadisticas" class="form-control" placeholder="estadisticas" disabled>
-            </div> 
-  
-          </div>
-          <!-- /.form-group -->
-  
-        <div class="form-group">
-  
-            <label for="exampleSelectRounded0">Clasificion Cliente <code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-clasificacionclientes" disabled>
-              <!-- <option>Value 1</option> -->
-  
-            </select>
-  
-          </div>
-  
-          <!-- /.form-group -->
-  
-          <div class="form-group">
-  
+
             <label for="exampleSelectRounded0">Termino Pago <code> &nbsp;*</code></label>
             <select class="custom-select rounded-0" id="select-terminopagos" disabled>
               <!-- <option>Value 1</option> -->
-  
+
             </select>
-  
+
           </div>
-  
-  
+
+
             <!-- /.form-group -->
-  
-            <div class="form-group">
-  
-                <label for="exampleSelectRounded0">Grado Deudores <code> &nbsp;*</code></label>
-                <select class="custom-select rounded-0" id="select-gradodeudores" disabled>
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-    
-                </div>
-  
-  
-            <!-- /.form-group -->
-  
-            <div class="form-group">
-  
-                <label for="exampleSelectRounded0">Cliente Descuento <code> &nbsp;*</code></label>
-                <select class="custom-select rounded-0" id="select-clientedescuentos" disabled>
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-    
-                </div>
-  
-  
+
                 <div class="form-group">
                     <div class="input-group">
                         <div class="form-group clearfix">
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus" disabled>
                               <label for="estatus">
-                                Excluir Cliente por Desicion de Gerencia 
+                                Excluir proveedore por Desicion de Gerencia 
                               </label>
                             </div>
                           </div>
                     </div>
                     <!-- /.input group -->
                   </div>
-  
-  
-                  <div class="form-group" id="divestatus" style="display: none;">
-                    <label>Mesaje Estatus Cliente</label>
-        
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                        </div>
-                        <textarea id="mesajeEstatus" class="form-control" rows="3" placeholder="Mesaje Estatus..." disabled></textarea>
-                    </div> 
-        
-                  </div>
-                  <!-- /.form-group -->
-  
-  
-  
+
+
           <div class="col-12 float-right">
             <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button> 
             <!-- <button type="submit" id="form" class="btn btn-primary float-right">Actualizar</button> -->
           </div>
-  
-  
-  
+
+
+
       </form>
-  
+
   </div>
-  
-  </div>
+
+</div>
+
+
+
+       
 
 <!--  -->
         </div>
@@ -247,64 +195,46 @@ $('#estatus').change(function(){
 //*********************************************************************************************************************************
 
 
-function obtenerCliente(id){
+function obtenerproveedore(id){
 
-var url = 'clientes/'+ id;
+var url = 'proveedores/'+ id;
 
 $.ajax({
-  method: "GET",
-  url: url_back + url,
-  headers: { 
-                Authorization: 'Bearer ' + localStorage.access_token
-            },
-  dataType: "json",
-  success: function(respuesta) {
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+                  Authorization: 'Bearer ' + localStorage.access_token
+              },
+    dataType: "json",
+    success: function(respuesta) {
 
-      $('#paginaweb').val(respuesta.data.paginaweb);
-      $('#observaciones').val(respuesta.data.observaciones);
+        $('#paginaweb').val(respuesta.data.paginaweb);
+        $('#emailProveedor').val(respuesta.data.email);
+        $('#diascredito').val(respuesta.data.diascredito);
+        $('#limitecredito').val(respuesta.data.limitecredito);
+        $('#observaciones').val(respuesta.data.observaciones);
 
-      $('#diascredito').val(respuesta.data.diascredito);
-      $('#limitecredito').val(respuesta.data.limitecredito);
-      $('#estadisticas').val(respuesta.data.estadisticas);
-      $('#mesajeEstatus').val(respuesta.data.mesajeEstatus);
-      // $('#clientedescuento').val(respuesta.data.clientedescuento);
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
 
-      respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        if(respuesta.data.terminopago_id){
+            obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
+        }else{
+            obtenerSelects('terminopagos', '#select-terminopagos');
+        }
 
-      if($('input[id=estatus]').is(':checked')){
-          $("#divestatus").show();
-      }
-
-
-      if(respuesta.data.clasificacioncliente_id){
-          obtenerSelect('clasificacionclientes', '#select-clasificacionclientes', respuesta.data.clasificacioncliente_id);
-      }
-
-      if(respuesta.data.terminopago_id){
-          obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
-      }
-
-      if(respuesta.data.gradodeudore_id){
-          obtenerSelect('gradodeudores', '#select-gradodeudores', respuesta.data.gradodeudore_id);
-      }
-
-      if(respuesta.data.clientedescuento_id){
-          obtenerSelect('clientedescuentos', '#select-clientedescuentos', respuesta.data.clientedescuento_id);
-      }
-
-  },
-  error: function() {
-      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-      sweetMessage('error', mensaje);
-  }
-})  
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
 }
 
 
 $( document ).ready(function() {
   $('.preloader').hide("slow");
     validarLogin();
-    obtenerCliente(localStorage.vertercero);
+    obtenerproveedore(localStorage.vertercero);
     localStorage.vertercero = '';
 
 });
