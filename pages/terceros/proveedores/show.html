@@ -97,7 +97,7 @@
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus" disabled>
                               <label for="estatus">
-                                Excluir proveedore por Desicion de Gerencia 
+                                Excluir proveedor
                               </label>
                             </div>
                           </div>
@@ -164,34 +164,6 @@ var obtenerSelect = function(url, select, id){
 })  
 }
 
-
-function obtenerSelects(url, select, id = null,  base = null) {
-
-$.ajax({
-  method: "GET",
-  url: url_back + url,
-  headers: { 
-      Authorization: 'Bearer ' + localStorage.access_token
-  },
-  dataType: "json",
-  success: function(respuesta) {
-
-      $(select).html(crearHtml(respuesta.data, base, id));
-  },
-  error: function() {
-      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-      sweetMessage('error', mensaje);
-  }
-})     
-}
-
-$('#estatus').change(function(){    
-  if($('input[id=estatus]').is(':checked')){
-      $("#divestatus").show();
-  }else{
-      $("#divestatus").hide();
-  }
-});
 //*********************************************************************************************************************************
 
 

@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Editar Proveedor</h5>
+            Editar Socio</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -21,89 +21,60 @@
       
       <form  method="PUT" id="form" action="" enctype="multipart/form-data">
 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-            </div>
-            <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-            </div>
-            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor">
-        </div>
-  
-          <div class="form-group">
-            <label>Dias de Credito</label>
+ 
+        <div class="form-group">
+            <label>Numero de Acciones</label>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-             <input type="text" id="diascredito" class="form-control" placeholder="diascredito">
-
+              <input type="text" id="numeroacciones" class="form-control" placeholder="Numero Acciones">
             </div> 
 
           </div>
           <!-- /.form-group -->
 
           <div class="form-group">
-            <label>Limite Credito</label>
+            <label>Porcentaje de Participación</label>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-             <input type="text" id="limitecredito" class="form-control" placeholder="limitecredito">
+             <input type="text" id="porcentajeparticipacion" class="form-control" placeholder="porcentajeparticipacion">
 
             </div> 
 
           </div>
           <!-- /.form-group -->
 
-          <div class="form-group">
-            <label>Observaciones</label>
+        <div class="form-group">
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-                <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..."></textarea>
-            </div> 
-
-          </div>
-          <!-- /.form-group -->
-  
-
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">Termino Pago <code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-terminopagos">
+            <label for="exampleSelectRounded0">Tipo de Socio <code> &nbsp;*</code></label>
+            <select class="custom-select rounded-0" id="select-tiposocios">
               <!-- <option>Value 1</option> -->
 
             </select>
 
           </div>
 
+          <!-- /.form-group -->
 
-            <!-- /.form-group -->
 
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="form-group clearfix">
-                            <div class="icheck-primary d-inline">
-                              <input type="checkbox" id="estatus">
-                              <label for="estatus">
-                                Excluir proveedor
-                              </label>
-                            </div>
-                          </div>
-                    </div>
-                    <!-- /.input group -->
-                  </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="form-group clearfix">
+                        <div class="icheck-primary d-inline">
+                          <input type="checkbox" id="estatus">
+                          <label for="estatus">
+                            Excluir Socio 
+                          </label>
+                        </div>
+                      </div>
+                </div>
+                <!-- /.input group -->
+              </div>
 
 
           <div class="col-12 float-right">
@@ -117,6 +88,7 @@
 
   </div>
 
+</div>
 </div>
 
 
@@ -141,30 +113,22 @@ e.preventDefault();
 const form = document.getElementById('form');
 const formData = new FormData(form);
 
-var paginaweb = $('#paginaweb').val();
-var email = $('#emailProveedor').val();
-var observaciones = $('#observaciones').val();
-var diascredito = $('#diascredito').val();
-var limitecredito = $('#limitecredito').val();
-
-console.log(email);
+var numeroacciones = $('#numeroacciones').val();
+var porcentajeparticipacion = $('#porcentajeparticipacion').val();
 
 var estatus =$('#estatus').is(':checked') ? 1 : 0;
 
-var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
+var tiposocio_id = $('#select-tiposocios').val()? $('#select-tiposocios').val() : ''; 
 
-formData.append("paginaweb", paginaweb);
-formData.append("email", email);
-formData.append("diascredito", diascredito);
-formData.append("limitecredito", limitecredito);
-formData.append("observaciones", observaciones);
+formData.append("numeroacciones", numeroacciones);
+formData.append("porcentajeparticipacion", porcentajeparticipacion);
 formData.append("estatus", estatus);
-formData.append("terminopago_id", terminopago_id);
+formData.append("tiposocio_id", tiposocio_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "proveedores/"+localStorage.editartercero,
+    url: url_back + "socios/"+localStorage.editartercero,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -174,7 +138,7 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-      console.log('editar proveedore respuesta');
+      console.log('editar Socio respuesta');
         localStorage.editartercero = '';
         if(respuesta){
             $('#ModalLong2').modal('hide');
@@ -251,19 +215,12 @@ $.ajax({
   })     
 }
 
-$('#estatus').change(function(){    
-    if($('input[id=estatus]').is(':checked')){
-        $("#divestatus").show();
-    }else{
-        $("#divestatus").hide();
-    }
-});
 //*********************************************************************************************************************************
 
 
-function obtenerproveedore(id){
+function obtenerSocio(id){
 
-var url = 'proveedores/'+ id;
+var url = 'socios/'+ id;
 
 $.ajax({
     method: "GET",
@@ -274,18 +231,15 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailProveedor').val(respuesta.data.email);
-        $('#diascredito').val(respuesta.data.diascredito);
-        $('#limitecredito').val(respuesta.data.limitecredito);
-        $('#observaciones').val(respuesta.data.observaciones);
+        $('#numeroacciones').val(respuesta.data.numeroacciones);
+        $('#porcentajeparticipacion').val(respuesta.data.porcentajeparticipacion);
 
         respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
 
-        if(respuesta.data.terminopago_id){
-            obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
+        if(respuesta.data.tiposocio_id){
+            obtenerSelect('tiposocios', '#select-tiposocios', respuesta.data.tiposocio_id);
         }else{
-            obtenerSelects('terminopagos', '#select-terminopagos');
+            obtenerSelects('tiposocios', '#select-tiposocios');
         }
 
     },
@@ -300,7 +254,7 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerproveedore(localStorage.editartercero);
+      obtenerSocio(localStorage.editartercero);
 
 });
 

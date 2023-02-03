@@ -752,7 +752,7 @@
                                 </button>
                                 &nbsp;
     
-                                <button data-dz-remove class="btn btn-danger delete">
+                                <button data-dz-remove class="btn btn-danger delete" id="entnominabtndelete">
                                   <i class="fas fa-trash"></i>
                                   <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                   <span></span>
@@ -809,7 +809,7 @@
                                     </button>
                                     &nbsp;
 
-                                    <button data-dz-remove class="btn btn-danger delete">
+                                    <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete">
                                       <i class="fas fa-trash"></i>
                                       <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                       <span></span>
@@ -866,7 +866,7 @@
                                       </button>
                                       &nbsp;
 
-                                      <button data-dz-remove class="btn btn-danger delete">
+                                      <button data-dz-remove class="btn btn-danger delete" id="otrostercerobtndelete">
                                         <i class="fas fa-trash"></i>
                                         <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                         <span></span>
@@ -927,7 +927,7 @@
                                       </button>
                                       &nbsp;
 
-                                      <button data-dz-remove class="btn btn-danger delete">
+                                      <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete">
                                         <i class="fas fa-trash"></i>
                                         <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                         <span></span>
@@ -1480,7 +1480,7 @@ if($('input[id=otrostercero]').is(':checked')){
 $('#mastercardyvisa').click(function(){    
 
 if($('input[id=mastercardyvisa]').is(':checked')){
-      var bool = confirm('¿Desea que este tercero sea Catalogado como Visa o Mastercard?');
+      var bool = confirm('¿Desea que este tercero sea Catalogado como Mastercard o Visa?');
       if(bool){
           $('#mastercardyvisa').prop( "checked", true )
           $("#divM").show();
@@ -1712,6 +1712,264 @@ var url_index = 'terceros/edit.html';
   }
 });
 
+
+//*********************************************************Botones de terceros Especificos Entidad Nomina ****************************************************
+
+$("#entnominabtnver").click(function(event) {
+
+event.preventDefault();
+var id =  $("#entnomina_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('vertercero', id);
+$('#mymodal').load('../terceros/entnominas/show.html',function(){
+      $('#exampleModalLong').modal({show:true});
+  });
+});
+
+
+$("#entnominabtnedit").click(function(event) {
+event.preventDefault();
+var id =  $("#entnomina_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('editartercero', id);
+
+$('#mymodal').load('../terceros/entnominas/edit.html',function(){
+      $('#ModalLong2').modal({show:true});
+});
+});
+
+$("#entnominabtndelete").click(function(event) {
+event.preventDefault();
+var id =  $("#entnomina_id").val();
+
+var url_eliminar = 'entnominas/' + id;
+var url_index = 'terceros/edit.html';
+
+  if (confirm('¿Está seguro de Borrar Esta Entidad Nomina?')){
+
+          $.ajax({
+            method: "DELETE",
+            url: url_back + url_eliminar,
+            headers: { 
+                          Authorization: 'Bearer ' + localStorage.access_token
+                      },
+            dataType: "json",
+            success: function(respuesta) {
+
+                var mensaje = 'se borro exitosamente la Entidad Nomina';
+                sweetMessage('success', mensaje);
+                
+                // $('#main_content').load(url_front + url_index);
+
+                $('#entnomina').prop( "checked", false)
+                $('#entnomina').prop('disabled', false);
+                $("#divN").hide();
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })  
+  } else{
+    return false;
+  }
+});
+
+//*********************************************************Botones de terceros Especificos Socio****************************************************
+
+$("#sociobtnver").click(function(event) {
+
+event.preventDefault();
+var id =  $("#socio_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('vertercero', id);
+$('#mymodal').load('../terceros/socios/show.html',function(){
+      $('#exampleModalLong').modal({show:true});
+  });
+});
+
+
+$("#sociobtnedit").click(function(event) {
+event.preventDefault();
+var id =  $("#socio_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('editartercero', id);
+
+$('#mymodal').load('../terceros/socios/edit.html',function(){
+      $('#ModalLong2').modal({show:true});
+});
+});
+
+$("#sociobtndelete").click(function(event) {
+event.preventDefault();
+var id =  $("#socio_id").val();
+
+var url_eliminar = 'socios/' + id;
+var url_index = 'terceros/edit.html';
+
+  if (confirm('¿Está seguro de Borrar este Socio?')){
+
+          $.ajax({
+            method: "DELETE",
+            url: url_back + url_eliminar,
+            headers: { 
+                          Authorization: 'Bearer ' + localStorage.access_token
+                      },
+            dataType: "json",
+            success: function(respuesta) {
+
+                var mensaje = 'se borro exitosamente el Socio';
+                sweetMessage('success', mensaje);
+                
+                // $('#main_content').load(url_front + url_index);
+
+                $('#socio').prop( "checked", false)
+                $('#socio').prop('disabled', false);
+                $("#divS").hide();
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })  
+  } else{
+    return false;
+  }
+});
+
+
+//*********************************************************Botones de Otro tercero****************************************************
+
+$("#otrostercerobtnver").click(function(event) {
+
+event.preventDefault();
+var id =  $("#otrostercero_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('vertercero', id);
+$('#mymodal').load('../terceros/otrosterceros/show.html',function(){
+      $('#exampleModalLong').modal({show:true});
+  });
+});
+
+
+$("#otrostercerobtnedit").click(function(event) {
+event.preventDefault();
+var id =  $("#otrostercero_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('editartercero', id);
+
+$('#mymodal').load('../terceros/otrosterceros/edit.html',function(){
+      $('#ModalLong2').modal({show:true});
+});
+});
+
+$("#otrostercerobtndelete").click(function(event) {
+event.preventDefault();
+var id =  $("#otrostercero_id").val();
+
+var url_eliminar = 'otrosterceros/' + id;
+var url_index = 'terceros/edit.html';
+
+  if (confirm('¿Está seguro de Borrar este Otro Tercero?')){
+
+          $.ajax({
+            method: "DELETE",
+            url: url_back + url_eliminar,
+            headers: { 
+                          Authorization: 'Bearer ' + localStorage.access_token
+                      },
+            dataType: "json",
+            success: function(respuesta) {
+
+                var mensaje = 'se borro exitosamente el Otro Tercero';
+                sweetMessage('success', mensaje);
+                
+                // $('#main_content').load(url_front + url_index);
+
+                $('#otrostercero').prop( "checked", false)
+                $('#otrostercero').prop('disabled', false);
+                $("#divO").hide();
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })  
+  } else{
+    return false;
+  }
+});
+
+
+//*********************************************************Botones de Mastercard y Visa****************************************************
+
+$("#mastercardyvisabtnver").click(function(event) {
+
+event.preventDefault();
+var id =  $("#mastercardyvisa_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('vertercero', id);
+$('#mymodal').load('../terceros/mastercardyvisas/show.html',function(){
+      $('#exampleModalLong').modal({show:true});
+  });
+});
+
+
+$("#mastercardyvisabtnedit").click(function(event) {
+event.preventDefault();
+var id =  $("#mastercardyvisa_id").val();
+
+$('#mymodal').html('');
+localStorage.setItem('editartercero', id);
+
+$('#mymodal').load('../terceros/mastercardyvisas/edit.html',function(){
+      $('#ModalLong2').modal({show:true});
+});
+});
+
+$("#mastercardyvisabtndelete").click(function(event) {
+event.preventDefault();
+var id =  $("#mastercardyvisa_id").val();
+
+var url_eliminar = 'mastercardyvisas/' + id;
+var url_index = 'terceros/edit.html';
+
+  if (confirm('¿Está seguro de Borrar este Tercero?')){
+
+          $.ajax({
+            method: "DELETE",
+            url: url_back + url_eliminar,
+            headers: { 
+                          Authorization: 'Bearer ' + localStorage.access_token
+                      },
+            dataType: "json",
+            success: function(respuesta) {
+
+                var mensaje = 'se borro exitosamente el Tercero';
+                sweetMessage('success', mensaje);
+                
+                // $('#main_content').load(url_front + url_index);
+
+                $('#mastercardyvisa').prop( "checked", false)
+                $('#mastercardyvisa').prop('disabled', false);
+                $("#divM").hide();
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })  
+  } else{
+    return false;
+  }
+});
 //*********************************************************crear detalles de terceros****************************************************
 
 function creardetallesTercero(id, url){

@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Editar Proveedor</h5>
+            Editar Empleado</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -28,43 +28,8 @@
             </div>
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-            </div>
-            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor">
-        </div>
   
-          <div class="form-group">
-            <label>Dias de Credito</label>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-             <input type="text" id="diascredito" class="form-control" placeholder="diascredito">
-
-            </div> 
-
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label>Limite Credito</label>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                </div>
-             <input type="text" id="limitecredito" class="form-control" placeholder="limitecredito">
-
-            </div> 
-
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
+        <div class="form-group">
             <label>Observaciones</label>
 
             <div class="input-group mb-3">
@@ -76,7 +41,30 @@
 
           </div>
           <!-- /.form-group -->
-  
+
+        <!-- inicio -->
+        <div class="form-group">
+          <label>Fecha inicio:</label>
+            <div class="input-group date" id="inicio" data-target-input="nearest">
+                <input type="text" id="inicio_" class="form-control datetimepicker-input" data-target="#inicio"/>
+                <div class="input-group-append" data-target="#inicio" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+          <!-- /.form-group -->
+
+        <!-- inicio -->
+        <div class="form-group">
+          <label>Fecha Terminacion:</label>
+            <div class="input-group date" id="fechaterminacion" data-target-input="nearest">
+                <input type="text" id="fechaterminacion_" class="form-control datetimepicker-input" data-target="#fechaterminacion"/>
+                <div class="input-group-append" data-target="#fechaterminacion" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
+          <!-- /.form-group -->
 
           <div class="form-group">
 
@@ -92,18 +80,46 @@
             <!-- /.form-group -->
 
                 <div class="form-group">
+                  <label for="exampleSelectRounded0">Procedimiento RETENCION EN LA FUENTE <code> &nbsp;*</code></label>
+                  <select class="custom-select rounded-0" id="select-nivelcentro" required>
+                    <option value="">Selecione un Procedimiento RTF</option>
+                    <option value="1">Procedimiento 1</option>
+                    <option value="2">Procedimiento 2</option>
+  
+                  </select>
+                </div>
+
+            <!-- /.form-group -->
+
+
+                <div class="form-group">
                     <div class="input-group">
                         <div class="form-group clearfix">
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus">
                               <label for="estatus">
-                                Excluir proveedor
+                                Excluir Empleado
                               </label>
                             </div>
                           </div>
                     </div>
                     <!-- /.input group -->
                   </div>
+
+
+                  <div class="form-group" id="divestatus" style="display: none;">
+                    <label>Mesaje Estatus empleado</label>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <textarea id="msgEstatus" class="form-control" rows="3" placeholder="Mesaje Estatus..."></textarea>
+                    </div> 
+        
+                  </div>
+                  <!-- /.form-group -->
+
 
 
           <div class="col-12 float-right">
@@ -117,6 +133,7 @@
 
   </div>
 
+</div>
 </div>
 
 
@@ -142,29 +159,35 @@ const form = document.getElementById('form');
 const formData = new FormData(form);
 
 var paginaweb = $('#paginaweb').val();
-var email = $('#emailProveedor').val();
 var observaciones = $('#observaciones').val();
 var diascredito = $('#diascredito').val();
 var limitecredito = $('#limitecredito').val();
-
-console.log(email);
+var estadisticas = $('#estadisticas').val();
+var mesajeEstatus = $('#mesajeEstatus').val();
 
 var estatus =$('#estatus').is(':checked') ? 1 : 0;
 
+var clasificacionempleado_id = $('#select-clasificacionempleados').val()? $('#select-clasificacionempleados').val() : ''; 
 var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
+var gradodeudore_id = $('#select-gradodeudores').val()? $('#select-gradodeudores').val() : ''; 
+var empleadodescuento_id = $('#select-empleadodescuentos').val()? $('#select-empleadodescuentos').val() : ''; 
 
 formData.append("paginaweb", paginaweb);
-formData.append("email", email);
+formData.append("observaciones", observaciones);
 formData.append("diascredito", diascredito);
 formData.append("limitecredito", limitecredito);
-formData.append("observaciones", observaciones);
+formData.append("estadisticas", estadisticas);
 formData.append("estatus", estatus);
+formData.append("mesajeEstatus", mesajeEstatus);
+formData.append("clasificacionempleado_id", clasificacionempleado_id);
 formData.append("terminopago_id", terminopago_id);
+formData.append("gradodeudore_id", gradodeudore_id);
+formData.append("empleadodescuento_id", empleadodescuento_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "proveedores/"+localStorage.editartercero,
+    url: url_back + "empleados/"+localStorage.editartercero,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -174,7 +197,7 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-      console.log('editar proveedore respuesta');
+      console.log('editar empleado respuesta');
         localStorage.editartercero = '';
         if(respuesta){
             $('#ModalLong2').modal('hide');
@@ -261,9 +284,9 @@ $('#estatus').change(function(){
 //*********************************************************************************************************************************
 
 
-function obtenerproveedore(id){
+function obtenerempleado(id){
 
-var url = 'proveedores/'+ id;
+var url = 'empleados/'+ id;
 
 $.ajax({
     method: "GET",
@@ -274,19 +297,47 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailProveedor').val(respuesta.data.email);
-        $('#diascredito').val(respuesta.data.diascredito);
-        $('#limitecredito').val(respuesta.data.limitecredito);
+        $('#sueldo').val(respuesta.data.sueldo);
         $('#observaciones').val(respuesta.data.observaciones);
+        $('#msgEstatus').val(respuesta.data.msgEstatus);
+        $('#inicio').val(respuesta.data.inicio);
+        $('#fechaterminacion').val(respuesta.data.fechaterminacion);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
 
-        if(respuesta.data.terminopago_id){
-            obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
-        }else{
-            obtenerSelects('terminopagos', '#select-terminopagos');
+        // 'arl_id', entnomina
+        // 'eps_id', entnomina
+        // 'fondopensione_id', entnomina
+        // 'fondocesantia_id', entnomina
+        // 'cajacompensación_id', entnomina
+
+        // 'altoriesgoafp',//activo o desctivado (extra en caso que se defina +10% fondo pensiones en base al salario)
+        // 'retenciónfuente',
+        // 'metodoretencionfuente', //TODO: Procedimiento 1 - Procedimiento 2. 
+        // 'responsable_id', empleado activo fijo
+
+        // 'tiposueldo_id',
+        // 'cargoempresa_id',
+        // 'periodicidadpago_id',
+        // 'tipocontrato_id',
+        // 'metodopagonomina_id'
+        // 'nivelarl_id',
+        // 'nivelriesgoarl_id',
+
+
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
+
+        if($('input[id=estatus]').is(':checked')){
+            $("#divestatus").show();
         }
+
+
+        // if(respuesta.data.clasificacionempleado_id){
+        //     obtenerSelect('clasificacionempleados', '#select-clasificacionempleados', respuesta.data.clasificacionempleado_id);
+        // }else{
+        //     obtenerSelects('clasificacionempleados', '#select-clasificacionempleados');
+        // }
+
+       
 
     },
     error: function() {
@@ -300,8 +351,32 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerproveedore(localStorage.editartercero);
+      obtenerempleado(localStorage.editartercero);
 
+});
+
+
+$(function() {
+    //Date picker
+ $("#inicio").datetimepicker({
+        locale: 'es',
+        format: "YYYY-MM-DD",  
+        maxDate: new Date(), //TODO: solo dura una año minDate  y maxDate
+        timepicker:false, 
+        autoclose: true,
+        showButtonPanel: true
+ });
+
+ $("#fechaterminacion").datetimepicker({
+        // locale: 'es',
+        format: "YYYY-MM-DD",  
+        maxDate: new Date(),
+        timepicker:false,
+        autoclose: true,
+        showButtonPanel: true,
+        lang: 'sp'
+
+ });
 });
 
 </script>

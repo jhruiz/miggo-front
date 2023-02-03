@@ -28,9 +28,11 @@
     width: 100%;
     height: 90%;
     position: relative;
-    top: -10%;
+    top: -1%;
     left: -1%;
     padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
 
 }
 

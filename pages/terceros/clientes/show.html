@@ -138,7 +138,7 @@
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus" disabled>
                               <label for="estatus">
-                                Excluir Cliente por Desicion de Gerencia 
+                                Excluir Cliente
                               </label>
                             </div>
                           </div>
@@ -216,27 +216,6 @@ var obtenerSelect = function(url, select, id){
 })  
 }
 
-
-function obtenerSelects(url, select, id = null,  base = null) {
-
-$.ajax({
-  method: "GET",
-  url: url_back + url,
-  headers: { 
-      Authorization: 'Bearer ' + localStorage.access_token
-  },
-  dataType: "json",
-  success: function(respuesta) {
-
-      $(select).html(crearHtml(respuesta.data, base, id));
-  },
-  error: function() {
-      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-      sweetMessage('error', mensaje);
-  }
-})     
-}
-
 $('#estatus').change(function(){    
   if($('input[id=estatus]').is(':checked')){
       $("#divestatus").show();
@@ -269,7 +248,7 @@ $.ajax({
       $('#mesajeEstatus').val(respuesta.data.mesajeEstatus);
       // $('#clientedescuento').val(respuesta.data.clientedescuento);
 
-      respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+      respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
 
       if($('input[id=estatus]').is(':checked')){
           $("#divestatus").show();

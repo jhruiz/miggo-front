@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Editar Proveedor</h5>
+            Editar Otro Tercero</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -28,14 +28,28 @@
             </div>
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-            </div>
-            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor">
-        </div>
   
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-laptop"></i></span>
+          </div>
+          <input type="text" id="emailotrostercero" class="form-control" placeholder="Email">
+      </div>
+
+        <div class="form-group">
+            <label>Observaciones</label>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..."></textarea>
+            </div> 
+
+          </div>
+          <!-- /.form-group -->
+
           <div class="form-group">
             <label>Dias de Credito</label>
 
@@ -63,20 +77,19 @@
 
           </div>
           <!-- /.form-group -->
-
+  
           <div class="form-group">
-            <label>Observaciones</label>
+            <label>Descripcion</label>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div>
-                <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones..."></textarea>
+                <textarea id="descripcion" class="form-control" rows="3" placeholder="Descripcion..."></textarea>
             </div> 
 
           </div>
           <!-- /.form-group -->
-  
 
           <div class="form-group">
 
@@ -91,13 +104,14 @@
 
             <!-- /.form-group -->
 
+
                 <div class="form-group">
                     <div class="input-group">
                         <div class="form-group clearfix">
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus">
                               <label for="estatus">
-                                Excluir proveedor
+                                Excluir Otro Tercero
                               </label>
                             </div>
                           </div>
@@ -106,17 +120,65 @@
                   </div>
 
 
+                      <!-- iCheck -->
+                      <div class="card card-success" id="divestatus" style="display: none;">
+                        <div class="card-header">
+                          <h3 class="card-title">Marque la casilla que corresponde a este Otro Tercero</h3>
+                        </div>
+                        <div class="card-body">
+
+                          <div class="row">
+
+                            <div class="col-sm-6">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" id="dian" name="radio1">
+                                <label class="form-check-label">DIAN</label>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" id="contratistas" name="radio1">
+                                <label class="form-check-label">Contratista</label>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+
+                            <div class="col-sm-6">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" id="alcaldia" name="radio1">
+                                <label class="form-check-label">Alcaldia</label>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="gobernacion" name="radio1">
+                                    <label class="form-check-label">Gobernacion</label>
+                                  </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
           <div class="col-12 float-right">
             <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button> 
             <button type="submit" id="form" class="btn btn-primary float-right">Actualizar</button>
           </div>
 
-
-
       </form>
 
   </div>
 
+</div>
 </div>
 
 
@@ -142,29 +204,37 @@ const form = document.getElementById('form');
 const formData = new FormData(form);
 
 var paginaweb = $('#paginaweb').val();
-var email = $('#emailProveedor').val();
+var email = $('#emailotrostercero').val();
 var observaciones = $('#observaciones').val();
 var diascredito = $('#diascredito').val();
 var limitecredito = $('#limitecredito').val();
+var descripcion = $('#descripcion').val();
 
-console.log(email);
-
-var estatus =$('#estatus').is(':checked') ? 1 : 0;
+var estatus =$('#estatus').is(':checked') ? 0 : 1;
+var dian =$('#dian').is(':checked') ? 1 : 0;
+var contratistas =$('#contratistas').is(':checked') ? 1 : 0;
+var alcaldia =$('#alcaldia').is(':checked') ? 1 : 0;
+var gobernacion =$('#gobernacion').is(':checked') ? 1 : 0;
 
 var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
 
 formData.append("paginaweb", paginaweb);
 formData.append("email", email);
+formData.append("observaciones", observaciones);
 formData.append("diascredito", diascredito);
 formData.append("limitecredito", limitecredito);
-formData.append("observaciones", observaciones);
+formData.append("descripcion", descripcion);
 formData.append("estatus", estatus);
+formData.append("dian", dian);
+formData.append("contratistas", contratistas);
+formData.append("alcaldia", alcaldia);
+formData.append("gobernacion", gobernacion);
 formData.append("terminopago_id", terminopago_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "proveedores/"+localStorage.editartercero,
+    url: url_back + "otrosterceros/"+localStorage.editartercero,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -174,7 +244,7 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-      console.log('editar proveedore respuesta');
+      console.log('editar Otrostercero respuesta' + localStorage.editartercero);
         localStorage.editartercero = '';
         if(respuesta){
             $('#ModalLong2').modal('hide');
@@ -253,17 +323,17 @@ $.ajax({
 
 $('#estatus').change(function(){    
     if($('input[id=estatus]').is(':checked')){
-        $("#divestatus").show();
-    }else{
         $("#divestatus").hide();
+    }else{
+        $("#divestatus").show();
     }
 });
 //*********************************************************************************************************************************
 
 
-function obtenerproveedore(id){
+function obtenerOtrostercero(id){
 
-var url = 'proveedores/'+ id;
+var url = 'otrosterceros/'+ id;
 
 $.ajax({
     method: "GET",
@@ -275,18 +345,30 @@ $.ajax({
     success: function(respuesta) {
 
         $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailProveedor').val(respuesta.data.email);
+        $('#emailotrostercero').val(respuesta.data.email);
+        $('#observaciones').val(respuesta.data.observaciones);
         $('#diascredito').val(respuesta.data.diascredito);
         $('#limitecredito').val(respuesta.data.limitecredito);
-        $('#observaciones').val(respuesta.data.observaciones);
+        $('#descripcion').val(respuesta.data.descripcion);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
+        respuesta.data.dian == 1 ? $('#dian').prop( "checked", true ) : $('#dian').prop( "checked", false );
+        respuesta.data.contratistas == 1 ? $('#contratistas').prop( "checked", true ) : $('#contratistas').prop( "checked", false );
+        respuesta.data.alcaldia == 1 ? $('#alcaldia').prop( "checked", true ) : $('#alcaldia').prop( "checked", false );
+        respuesta.data.gobernacion == 1 ? $('#gobernacion').prop( "checked", true ) : $('#gobernacion').prop( "checked", false );
+
+        if($('input[id=estatus]').is(':checked')){
+            $("#divestatus").hide();
+        }else{
+            $("#divestatus").show();
+        }
 
         if(respuesta.data.terminopago_id){
             obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);
         }else{
             obtenerSelects('terminopagos', '#select-terminopagos');
         }
+
 
     },
     error: function() {
@@ -300,7 +382,7 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerproveedore(localStorage.editartercero);
+      obtenerOtrostercero(localStorage.editartercero);
 
 });
 

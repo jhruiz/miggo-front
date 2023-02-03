@@ -138,7 +138,7 @@
                             <div class="icheck-primary d-inline">
                               <input type="checkbox" id="estatus">
                               <label for="estatus">
-                                Excluir Cliente por Desicion de Gerencia 
+                                Excluir Cliente
                               </label>
                             </div>
                           </div>
@@ -205,7 +205,7 @@ var limitecredito = $('#limitecredito').val();
 var estadisticas = $('#estadisticas').val();
 var mesajeEstatus = $('#mesajeEstatus').val();
 
-var estatus =$('#estatus').is(':checked') ? 1 : 0;
+var estatus =$('#estatus').is(':checked') ? 0 : 1;
 
 var clasificacioncliente_id = $('#select-clasificacionclientes').val()? $('#select-clasificacionclientes').val() : ''; 
 var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
@@ -346,7 +346,7 @@ $.ajax({
         $('#mesajeEstatus').val(respuesta.data.mesajeEstatus);
         // $('#clientedescuento').val(respuesta.data.clientedescuento);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
 
         if($('input[id=estatus]').is(':checked')){
             $("#divestatus").show();
