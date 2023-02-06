@@ -1,17 +1,4 @@
-<!-- Modal -->
-<div class="modal fade" id="ModalLong2" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLongTitle">
-            <i class="nav-icon fas fa-user"></i>
-            Editar Empleado</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
 
-        <div class="modal-body">
 <!--  -->
 
 <div class="card">
@@ -21,15 +8,12 @@
       
       <form  method="PUT" id="form" action="" enctype="multipart/form-data">
 
-        <div class="form-group">
-          <label>Salario</label>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-laptop"></i></span>
             </div>
-            <input type="text" id="sueldo" class="form-control" placeholder="Sueldo">
-        </div>
+            <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
         </div>
   
         <div class="form-group">
@@ -129,80 +113,17 @@
 
           </div>
 
+
           <div class="form-group">
             <label for="responsable">Responsable: </label>
             <input class="form-control input-texto-alfanumerico" id="responsable" placeholder="El nombre o identificacion Empleado">
           </div>
 
-           <input type="text" id='responsable_id'  hidden>
+           <input type="text" id='responsable_id' >
 
+           <div id="suggestions"></div>
 
           <!-- /.form-group -->
-
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">EPS<code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-epss">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          
-          <!-- /.form-group -->
-
-          
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">Fondo de Pensiones<code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-fondopensiones">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          
-          <!-- /.form-group -->
-
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">Fondo de Cesantias<code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-fondocesantias">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          
-          <!-- /.form-group -->
-
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">Caja de Compensacion Familiar<code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-cajacompensaciones">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          
-          <!-- /.form-group -->
-
-          <div class="form-group">
-
-            <label for="exampleSelectRounded0">Entidad ARL<code> &nbsp;*</code></label>
-            <select class="custom-select rounded-0" id="select-arls">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-
-          </div>
-
-          <!--  -->
 
           <div class="form-group">
 
@@ -254,7 +175,7 @@
 
                 <div class="form-group" id="divretencionfuente" style="display: none;">
                   <label for="exampleSelectRounded0">Procedimiento RETENCION EN LA FUENTE <code> &nbsp;*</code></label>
-                  <select class="custom-select rounded-0" id="select-nivelcentro">
+                  <select class="custom-select rounded-0" id="select-nivelcentro" required>
                     <option value="">Selecione un Procedimiento RTF</option>
                     <option value="1">Procedimiento 1</option>
                     <option value="2">Procedimiento 2</option>
@@ -310,15 +231,7 @@
 
 
 
-<!--  -->
-        </div>
-        <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-          <!-- <button type="button" class="btn btn-primary">Enviar</button> -->
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 <script>
 
@@ -329,53 +242,31 @@ e.preventDefault();
 const form = document.getElementById('form');
 const formData = new FormData(form);
 
-var sueldo = $('#sueldo').val();
+var paginaweb = $('#paginaweb').val();
 var observaciones = $('#observaciones').val();
-var inicio = $('#inicio_').val();
-var fechaterminacion = $('#fechaterminacion_').val();
-var msgEstatus = $('#msgEstatus').val();
-var responsable_id = $('#responsable_id').val();
+var diascredito = $('#diascredito').val();
+var limitecredito = $('#limitecredito').val();
+var estadisticas = $('#estadisticas').val();
+var mesajeEstatus = $('#mesajeEstatus').val();
 
-var estatus =$('#estatus').is(':checked') ? 0 : 1;
-var altoriesgoafp =$('#altoriesgoafp').is(':checked') ? 1 : 0;
-var retencionfuente =$('#retencionfuente').is(':checked') ? 1 : 0;
+var estatus =$('#estatus').is(':checked') ? 1 : 0;
 
-var eps_id = $('#select-epss').val()? $('#select-epss').val() : ''; 
-var arl_id = $('#select-arls').val()? $('#select-arls').val() : ''; 
-var fondopensione_id = $('#select-fondopensiones').val()? $('#select-fondopensiones').val() : ''; 
-var fondocesantia_id = $('#select-fondocesantias').val()? $('#select-fondocesantias').val() : ''; 
-var cajacompensacione_id = $('#select-cajacompensaciones').val()? $('#select-cajacompensaciones').val() : ''; 
-var tipocontrato_id = $('#select-tipocontratos').val()? $('#select-tipocontratos').val() : ''; 
-var periodicidadpago_id = $('#select-periodicidadpagos').val()? $('#select-periodicidadpagos').val() : ''; 
-var cargoempresa_id = $('#select-cargoempresas').val()? $('#select-cargoempresas').val() : ''; 
-var tiposueldo_id = $('#select-tiposueldos').val()? $('#select-tiposueldos').val() : ''; 
-var metodopagonomina_id = $('#select-metodopagonominas').val()? $('#select-metodopagonominas').val() : ''; 
-var nivelarl_id = $('#select-nivelarls').val()? $('#select-nivelarls').val() : ''; 
-var nivelriesgoarl_id = $('#select-nivelriesgoarls').val()? $('#select-nivelriesgoarls').val() : ''; 
-var metodoretencionfuente = $('#select-nivelcentro').val()? $('#select-nivelcentro').val() : ''; 
+var clasificacionempleado_id = $('#select-clasificacionempleados').val()? $('#select-clasificacionempleados').val() : ''; 
+var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
+var gradodeudore_id = $('#select-gradodeudores').val()? $('#select-gradodeudores').val() : ''; 
+var empleadodescuento_id = $('#select-empleadodescuentos').val()? $('#select-empleadodescuentos').val() : ''; 
 
-formData.append("sueldo", sueldo);
+formData.append("paginaweb", paginaweb);
 formData.append("observaciones", observaciones);
-formData.append("inicio", inicio);
-formData.append("fechaterminacion", fechaterminacion);
-formData.append("msgEstatus", msgEstatus);
-formData.append("responsable_id", responsable_id);
+formData.append("diascredito", diascredito);
+formData.append("limitecredito", limitecredito);
+formData.append("estadisticas", estadisticas);
 formData.append("estatus", estatus);
-formData.append("altoriesgoafp", altoriesgoafp);
-formData.append("retencionfuente", retencionfuente);
-formData.append("eps_id", eps_id);
-formData.append("arl_id", arl_id);
-formData.append("fondopensione_id", fondopensione_id);
-formData.append("fondocesantia_id", fondocesantia_id);
-formData.append("cajacompensacione_id", cajacompensacione_id);
-formData.append("tipocontrato_id", tipocontrato_id);
-formData.append("periodicidadpago_id", periodicidadpago_id);
-formData.append("cargoempresa_id", cargoempresa_id);
-formData.append("tiposueldo_id", tiposueldo_id);
-formData.append("metodopagonomina_id", metodopagonomina_id);
-formData.append("nivelarl_id", nivelarl_id);
-formData.append("nivelriesgoarl_id", nivelriesgoarl_id);
-formData.append("metodoretencionfuente", metodoretencionfuente);
+formData.append("mesajeEstatus", mesajeEstatus);
+formData.append("clasificacionempleado_id", clasificacionempleado_id);
+formData.append("terminopago_id", terminopago_id);
+formData.append("gradodeudore_id", gradodeudore_id);
+formData.append("empleadodescuento_id", empleadodescuento_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
@@ -468,28 +359,6 @@ $.ajax({
   })     
 }
 
-var crearHtml = function(data, base = null, id = null) {
-    if (base) {
-            var html = base;
-            $.each(data, function (key, item) {
-                if(id != item.id){
-                    html += '<option value="'+ item.id+'">';
-                    html += item.descripcion;
-                    html += '</option>';
-                }
-            });
-        return html;
-    } else {
-            var html = '<option value="">Seleccione..</option>';
-            $.each(data, function (key, item) {
-                html += '<option value="'+ item.id+'">';
-                html += item.descripcion;
-                html += '</option>';
-            });
-        return html;
-    }
-}
-
 $('#estatus').change(function(){    
     if($('input[id=estatus]').is(':checked')){
         $("#divestatus").show();
@@ -528,15 +397,16 @@ $( "#responsable" ).autocomplete({
             },
              dataType: "json",
              success: function(respuesta) {
+                console.log(respuesta[0].label);
                 auto(respuesta);
+                console.log(respuesta[0].value);
              }
            });
         },
-        autoFocus: true,
         minLength: 2,
-        appendTo: "#ModalLong2",
         select: function (event, ui) {
           // Set selection
+          alert('here');
           $('#responsable').val(ui.item.label); // display the selected text
           $('#responsable_id').val(ui.item.value); // save selected id to input
           return false;
@@ -564,74 +434,6 @@ var obtenerTercero = function(id){
   })  
 }
 
-var obtenerEntidadnomina = function(search, select, id){
-  //empresas/1/entnominas?search=arl
-    url_ent= 'entnominas/'+ id ;
-    $.ajax({
-    method: "GET",
-    url: url_back + url_ent,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-
-            var html = '';
-            html += '<option value="'+ respuesta.data.id+'">';
-            html += respuesta.data.codigo +'-'+ respuesta.data.descripcion;
-            html += '</option>';
-
-            obtenerEntidadnominas(search, select, html,  id);
-          
-            // });
-      
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
-
-var obtenerEntidadnominas = function(search, select, base=null, id = null){
-    url_ent= 'empresas/' + localStorage.empresa_id + '/entnominas?search='+search;
-    $.ajax({
-    method: "GET",
-    url: url_back + url_ent,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-
-        if (base) {
-            var html = base;
-            $.each(respuesta, function (key, item) {
-                if(id != item.id){
-                    html += '<option value="'+ item.id+'">';
-                    html += item.codigo +'-'+ item.descripcion;
-                    html += '</option>';
-                   }
-                 });
-        } else {
-            var html = '<option value="">Seleccione..</option>';
-            $.each(respuesta, function (key, item) {
-                html += '<option value="'+ item.id+'">';
-                html += item.codigo +'-'+ item.descripcion;
-                html += '</option>';
-            });
-        }
-
-          $(select).html(html);
-      
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
-
 function obtenerempleado(id){
 
 var url = 'empleados/'+ id;
@@ -648,8 +450,20 @@ $.ajax({
         $('#sueldo').val(respuesta.data.sueldo);
         $('#observaciones').val(respuesta.data.observaciones);
         $('#msgEstatus').val(respuesta.data.msgEstatus);
-        $('#inicio_').val(respuesta.data.inicio);
-        $('#fechaterminacion_').val(respuesta.data.fechaterminacion);
+        $('#inicio').val(respuesta.data.inicio);
+        $('#fechaterminacion').val(respuesta.data.fechaterminacion);
+
+
+        // 'arl_id', entnomina
+        // 'eps_id', entnomina
+        // 'fondopensione_id', entnomina
+        // 'fondocesantia_id', entnomina
+        // 'cajacompensación_id', entnomina
+
+        // 'altoriesgoafp',//activo o desctivado (extra en caso que se defina +10% fondo pensiones en base al salario)
+        // 'responsable_id', empleado activo fijo
+
+
 
         respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
         respuesta.data.altoriesgoafp == 1 ? $('#altoriesgoafp').prop( "checked", true ) : $('#altoriesgoafp').prop( "checked", false );
@@ -666,41 +480,6 @@ $.ajax({
         if($('input[id=retencionfuente]').is(':checked')){
             $("#divretencionfuente").show();
         }
-
-        // 'altoriesgoafp',//activo o desctivado (extra en caso que se defina +10% fondo pensiones en base al salario)
-
-        //****************************entidades de nomina*******************
-        if(respuesta.data.eps_id){
-          obtenerEntidadnomina('eps','#select-epss', respuesta.data.eps_id);
-        }else{
-          obtenerEntidadnominas('eps','#select-epss');
-        }
-
-        if(respuesta.data.arl_id){
-          obtenerEntidadnomina('arl','#select-arls', respuesta.data.arl_id);
-        }else{
-          obtenerEntidadnominas('arl','#select-arls');
-        }
-
-        if(respuesta.data.fondopensione_id){
-          obtenerEntidadnomina('afp','#select-fondopensiones', respuesta.data.fondopensione_id);
-        }else{
-          obtenerEntidadnominas('afp','#select-fondopensiones');
-        }
-
-        if(respuesta.data.fondocesantia_id){
-          obtenerEntidadnomina('fondocesantias','#select-fondocesantias', respuesta.data.fondocesantia_id);
-        }else{
-          obtenerEntidadnominas('fondocesantias','#select-fondocesantias');
-        }
-
-        if(respuesta.data.cajacompensacione_id){
-          obtenerEntidadnomina('ccf','#select-cajacompensaciones', respuesta.data.cajacompensacione_id);
-        }else{
-          obtenerEntidadnominas('ccf','#select-cajacompensaciones');
-        }
-
-       //*************************************** detalles del trabajador*****************
 
         if(respuesta.data.responsable_id){
             obtenerTercero(respuesta.data.responsable_id);
@@ -721,7 +500,7 @@ $.ajax({
         if(respuesta.data.cargoempresa_id){
             obtenerSelect('cargoempresas', '#select-cargoempresas', respuesta.data.cargoempresa_id);
         }else{
-            obtenerSelects('cargoempresas', '#select-cargoempresas');//TODO: controller
+            obtenerSelects('cargoempresas', '#select-cargoempresas');
         }
 
         if(respuesta.data.tiposueldo_id){
