@@ -29,14 +29,6 @@
           <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web" disabled>
       </div>
 
-      
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-        </div>
-        <input type="text" id="emailotrostercero" class="form-control" placeholder="Email" disabled>
-    </div>
-
       <div class="form-group">
           <label>Observaciones</label>
 
@@ -93,7 +85,7 @@
 
         <div class="form-group">
 
-          <label for="exampleSelectRounded0">Termino Pago <code> &nbsp;*</code></label>
+          <label for="exampleSelectRounded0">Termino Pago </label>
           <select class="custom-select rounded-0" id="select-terminopagos" disabled>
             <!-- <option>Value 1</option> -->
 
@@ -249,7 +241,6 @@ $.ajax({
     success: function(respuesta) {
 
         $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailotrostercero').val(respuesta.data.email);
         $('#observaciones').val(respuesta.data.observaciones);
         $('#diascredito').val(respuesta.data.diascredito);
         $('#limitecredito').val(respuesta.data.limitecredito);

@@ -28,14 +28,6 @@
             </div>
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web">
         </div>
-  
-        
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-          </div>
-          <input type="text" id="emailotrostercero" class="form-control" placeholder="Email">
-      </div>
 
         <div class="form-group">
             <label>Observaciones</label>
@@ -204,7 +196,6 @@ const form = document.getElementById('form');
 const formData = new FormData(form);
 
 var paginaweb = $('#paginaweb').val();
-var email = $('#emailotrostercero').val();
 var observaciones = $('#observaciones').val();
 var diascredito = $('#diascredito').val();
 var limitecredito = $('#limitecredito').val();
@@ -219,7 +210,6 @@ var gobernacion =$('#gobernacion').is(':checked') ? 1 : 0;
 var terminopago_id = $('#select-terminopagos').val()? $('#select-terminopagos').val() : ''; 
 
 formData.append("paginaweb", paginaweb);
-formData.append("email", email);
 formData.append("observaciones", observaciones);
 formData.append("diascredito", diascredito);
 formData.append("limitecredito", limitecredito);
@@ -345,7 +335,6 @@ $.ajax({
     success: function(respuesta) {
 
         $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailotrostercero').val(respuesta.data.email);
         $('#observaciones').val(respuesta.data.observaciones);
         $('#diascredito').val(respuesta.data.diascredito);
         $('#limitecredito').val(respuesta.data.limitecredito);

@@ -214,7 +214,6 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-      console.log('editar Entnomina respuesta');
         localStorage.editartercero = '';
         if(respuesta){
             $('#ModalLong2').modal('hide');
@@ -286,7 +285,6 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-      console.log('entnomina id' + id);
         $('#codigo').val(respuesta.data.codigo);
         $('#descripcion').val(respuesta.data.descripcion);
 

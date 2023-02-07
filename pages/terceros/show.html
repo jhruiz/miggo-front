@@ -1,163 +1,908 @@
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <i class="nav-icon fas fa-user"></i>
-            Ver usuario</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-<!--  -->
-
-
-<div class="card">
-  <div class="card-header">
-      <div class="row">
-          <div class="col-12">
-              <h4>
-                  <!-- <img id="imagen" src="../usuarios/user-04.jpg" /> -->
-                  <img id="imagen" src="" />
-              </h4>
-          </div>
-      </div>
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+  <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
-
-  <div class="card-body">
-        
-        
-    <form method="PUT" action="" enctype="multipart/form-data">
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="nombres" class="form-control" placeholder="Nombres" disabled> 
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-signature"></i></span>
-            </div>
-            <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" disabled> 
-        </div>
-
-        <div class="form-group">
-            <label for="exampleSelectBorder">Tipo Identificacion</label>
-            <select class="custom-select form-control-border" id="select-identificacion" disabled aria-readonly="true">
-              <!-- <option>Value 1</option> -->
-
-            </select>
-          </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="identificacion" class="form-control" placeholder="Identificación" disabled> 
-        </div>   
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="text" id="email" class="form-control" placeholder="Email" disabled> 
-        </div>   
-
-        <div class="form-group">
-          <label for="exampleSelectBorder">Perfil</label>
-          <select class="custom-select form-control-border" id="select-perfiles" disabled>
-            <!-- <option>Value 1</option> -->
-
-          </select>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="rut" class="form-control" placeholder="RUT" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="celular" class="form-control" placeholder="Celular" disabled>
-        </div> 
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="telefono" class="form-control" placeholder="Teléfono" disabled>
-        </div>
-
-        <div class="form-group">
-            <label>Cumpleaños:</label>
-              <div class="input-group date">
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" disabled>
-                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+  
+  <div class="card">
+      <div class="card-header">
+          <div class="row">
+              <div class="col-12">
+                  <h4>
+                      <i class="nav-icon fas fa-user"></i>
+                      Ver Tercero                               
+                  </h4>
               </div>
           </div>
-
-          <div class="form-group">
-            <label for="exampleSelectRounded0">Ciudad</label>
-            <select class="custom-select rounded-0" id="select-ciudad" disabled>
-              <!-- <option>Value 1</option> -->
-
-            </select>
-          </div>
-        
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-            </div>
-            <input type="text" id="username" class="form-control" placeholder="Username" disabled>
-        </div> 
-
-        <div class="col-12 float-right">
-            <button type="button" id="actualizar" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
-        </div> 
-
-    </form>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<!--  -->
-        </div>
-        <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-          <!-- <button type="button" class="btn btn-primary">Enviar</button> -->
-        </div>
       </div>
-    </div>
+  
+      <div class="card-body-tercero">
+          <form id="formTercero"  method="PUT" action="" enctype="multipart/form-data">
+  
+  <!--  -->
+    
+        <section class="content">
+          <div class="container-fluid">
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">Datos Generales</h3>
+    
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+  
+                    <div class="form-group">
+                        <div id="mostrarImagen" stye="display:flex;"></div>
+                        <div class="form-group">
+                        <div class="custom-file">
+                          <input class="btn btn-success col fileinput" type="file" id="imagen" disabled></div>
+                      </div>
+                    </div>
+  
+                    <div class="form-group">
+                      <label>Nombre</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                          </div>
+                          <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" disabled>  
+                      </div>
+  
+                    </div>
+  
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Apellidos</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                          </div>
+                          <input type="text" id="apellidos" class="form-control input-texto-espacio" placeholder="Apellidos" disabled>
+                      </div>
+  
+                    </div>
+                    <!-- /.form-group -->
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                      <!-- <label>Apellidos</label> -->
+  
+                      <div class="form-group">
+                          <label for="exampleSelectBorder">Tipo Identificacion</label>
+                          <select class="custom-select form-control-border" id="select-identificacion" disabled>
+                          <!-- <option>Value 1</option> -->
+          
+                          </select>
+                      </div>
+  
+                      </div>
+                      <!-- /.form-group -->
+  
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                      <label>Numero Identificación</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" disabled> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+                      </div> 
+  
+                      </div>
+                      <!-- /.form-group -->
+  
+  
+                                      <!-- /.form-group -->
+                  <div class="form-group">
+                      <label>Celular</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                          </div>
+                          <input type="text" id="celular" class="form-control input-numero" placeholder="Celular" disabled>
+                      </div> 
+  
+                      </div>
+                      <!-- /.form-group -->
+  
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                          <label for="exampleSelectRounded0">Ciudad</label>
+                          <select class="custom-select rounded-0" id="select-ciudad" disabled>
+                            <!-- <option>Value 1</option> -->
+          
+                          </select>
+                  </div>
+                  <!-- /.form-group -->
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                      <!-- <label>Apellidos</label> -->
+  
+                      <div class="form-group">
+                          <label for="exampleSelectBorder">Tipo Direccion</label>
+                          <select class="custom-select form-control-border" id="select-tipodirecciones" disabled>
+                          <!-- <option>Value 1</option> -->
+  
+                          </select>
+                      </div>
+  
+                      </div>
+                      <!-- /.form-group -->
+  
+  
+                    <div class="form-group">
+                      <label>Direccion</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
+                      </div> 
+  
+                    </div>
+                    <!-- /.form-group -->
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                      <!-- <label>Apellidos</label> -->
+  
+                      <div class="form-group">
+                          <label for="exampleSelectBorder">Tipo Direccion 2</label>
+                          <select class="custom-select form-control-border" id="select-tipodirecciones2" disabled>
+                          <!-- <option>Value 1</option> -->
+  
+                          </select>
+                      </div>
+  
+                      </div>
+                      <!-- /.form-group -->
+  
+  
+                    <div class="form-group">
+                      <label>Direccion 2</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <textarea id="direccion2" class="form-control" rows="3" placeholder="Dirección ..." disabled></textarea>
+                      </div> 
+  
+                    </div>
+                    <!-- /.form-group -->
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                    <label>Teléfono</label>
+  
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono" disabled>
+                    </div>
+  
+                    </div>
+                <!-- /.form-group -->
+  
+  
+                  
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+    
+                <!-- <h5>Custom Color Variants</h5> -->
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Email</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                          </div>
+                          <input type="text" id="email" class="form-control" placeholder="Email" disabled>  
+                      </div> 
+  
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-12 col-sm-6">
+  
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                    <label>Fecha de Nacimiento:</label>
+                    <!-- <div class="input-group date" id="cumpleanio" data-target-input="nearest"> -->
+                        <div class="input-group date" id="cumpleanio" data-target-input="nearest">
+                            <div class="input-group-prepend" data-target="#cumpleanio" data-toggle="datetimepicker">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                              </div>
+                          <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio" disabled/>
+                      </div>
+                  </div>
+                <!-- /.form-group -->
+  
+  
+    
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+    
+  
+  
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">Información General Contable</h3>
+    
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+  
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+  
+  
+                    <div class="form-group">
+                      <label>Representante Legal</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-laptop"></i></span>
+                          </div>
+                          <input type="text" id="representantelegal" class="form-control" placeholder="Representante Legal" disabled>  
+                      </div>
+                    </div>
+                    <!-- /.form-group -->
+  
+  
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                      <!-- <label>Disabled</label> -->
+  
+                      <!-- <div class="form-group"> -->
+                          <label for="exampleSelectRounded0">Personeria </label>
+                          <select class="custom-select rounded-0" id="select-personerias" disabled>
+                            <!-- <option>Value 1</option> -->
+          
+                          </select>
+                        <!-- </div> -->
+  
+                    </div>
+                    <!-- /.form-group -->
+  
+  
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                    <label>Razon Social</label>
+    
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                        </div>
+                        <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social" disabled>
+                    </div>
+                    </div>
+                    <!-- /.form-group -->
+  
+                    <div class="form-group">
+  
+                      <!-- <div class="form-group"> -->
+                          <label for="ciiu">Codigo CIIU: </label>
+                          <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU" disabled>
+                        <!-- </div> -->
+                        <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
+  
+                    </div>
+  
+                    <!-- /.form-group -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+  
+    
+            <div class="row">
+              <div class="col-md-6">
+    
+                <div class="card card-danger">
+                  <div class="card-header">
+                    <h3 class="card-title">Retencion</h3>
+                  </div>
+                  <div class="card-body">
+  
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                    <!-- <label>Disabled</label> -->
+  
+                    <label for="exampleSelectRounded0">Regimen </label>
+                    <select class="custom-select rounded-0" id="select-regimenes" disabled>
+                      <!-- <option>Value 1</option> -->
+    
+                    </select>
+  
+                  </div>
+                  <!-- /.form-group -->
+  
+                  <div class="form-group">
+  
+                    <label for="exampleSelectRounded0">Tipo Contribuyente </label>
+                    <select class="custom-select rounded-0" id="select-tipocontribuyentes" disabled>
+                      <!-- <option>Value 1</option> -->
+    
+                    </select>
+  
+                  </div>
+                  <!-- /.form-group -->
+  
+                  <div class="form-group">
+                    <div class="input-group">
+                        <div class="form-group clearfix">
+                            <div class="icheck-primary d-inline">
+                              <input type="checkbox" id="autoretenedorrenta" disabled>
+                              <label for="autoretenedorrenta">
+                                Autoretenedor
+                              </label>
+                            </div>
+                          </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+  
+                  <div class="form-group">
+                    <div class="input-group">
+  
+                        <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" id="autoretenedorica" disabled>
+                              <label for="autoretenedorica">
+                                ICA
+                              </label>
+                            </div>
+                          </div>
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->  
+  
+  
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+    
+    
+              </div>
+              <!-- /.col (left) -->
+              <div class="col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Información de Contacto</h3>
+                  </div>
+                  <div class="card-body">
+  
+                      <div class="form-group">
+  
+                      <label for="exampleSelectRounded0">Tipo de Contacto </label>
+                      <select class="custom-select rounded-0" id="select-contactos" disabled>
+                        <!-- <option>Value 1</option> -->
+      
+                      </select>
+  
+                    </div>
+  
+                    <div class="form-group">
+  
+                      <label>Nombre Contacto</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <input type="text" id="contactonombre" class="form-control input-texto-espacio" placeholder="Nombres" disabled>  
+                      </div>
+  
+                    </div>
+                    <!-- /.form group -->
+                    <div class="form-group">
+                      <label>Celular Contacto</label>
+  
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                          </div>
+                          <input type="text" id="contactocelular" class="form-control input-numero" placeholder="Celular" disabled>
+                      </div> 
+  
+                    </div>
+                    <!-- /.form group -->
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <br>
+            <div class="row">
+            <div class="col-md-12">
+                <!-- iCheck -->
+                <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Información Detallada</h3>
+                    </div>
+                    <div class="card-body">
+                      <!-- Minimal style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-primary d-inline">
+                              <input type="checkbox" id="cliente" disabled>
+                              <label for="cliente">
+                                  Cliente
+                              </label>
+                            </div>
+  
+                            <!--  -->
+  
+                            <div class="table table-striped files" id="divC" style="display: none;">
+  
+                              <div class="col-auto d-flex align-items-center">
+                                <div class="btn-group">
+  
+                                  <!-- <button class="btn btn-success start">
+                                      <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                      <span></span>
+                                    </button> -->
+                                      &nbsp;
+                                      
+                                  <button class="btn btn-success btn-sm" id="clientebtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                    <!-- <button class="btn btn-info start"> -->
+                                    <!-- <i class="fas fa-upload"></i> -->
+                                    <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                   <input type="text" id="cliente_id" class="form-control input-numero" hidden>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+  
+  
+                                    <button data-dz-remove class="btn btn-info btn-sm" id="clientebtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                    <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                    <!-- <i class="fas fa-times-circle"></i> -->
+                                    <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+                                  <button data-dz-remove id="clientebtndelete" class="btn btn-danger delete" disabled>
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                    <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                    <span></span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+  <!--  -->
+  
+                          </div>
+                        </div>
+  
+  
+                        <div class="col-sm-6">
+  
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" id="proveedore" disabled>
+                              <label for="proveedore">
+                                Proveedor
+                              </label>
+                            </div>
+  
+                              <!--  -->
+  
+                            <div class="table table-striped files" id="divP" style="display: none;">
+  
+                              <div class="col-auto d-flex align-items-center">
+                                <div class="btn-group">
+  
+                                  <!-- <button class="btn btn-success start">
+                                      <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                      <span></span>
+                                    </button> -->
+                                      &nbsp;
+                                      
+                                  <button class="btn btn-success btn-sm" id="proveedorebtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                    <!-- <button class="btn btn-info start"> -->
+                                    <!-- <i class="fas fa-upload"></i> -->
+                                    <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                   <input type="text" id="proveedore_id" class="form-control input-numero" hidden>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+  
+                                  <button data-dz-remove class="btn btn-info btn-sm" id="proveedorebtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                    <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                    <!-- <i class="fas fa-times-circle"></i> -->
+                                    <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+                                  <button data-dz-remove class="btn btn-danger delete" id="proveedorebtndelete" disabled>
+                                    <i class="fas fa-trash"></i>
+                                    <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                    <span></span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+  <!--  -->
+  
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Minimal red style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-danger d-inline">
+                              <input type="checkbox" id="empleado" disabled>
+                              <label for="empleado">
+                                Empleado
+                              </label>
+                            </div>
+  
+                             <!--  -->
+  
+                             <div class="table table-striped files" id="divE" style="display: none;">
+  
+                              <div class="col-auto d-flex align-items-center">
+                                <div class="btn-group">
+  
+                                  <!-- <button class="btn btn-success start">
+                                      <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                      <span></span>
+                                    </button> -->
+                                      &nbsp;
+                                      
+                                  <button class="btn btn-success btn-sm" id="empleadobtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                    <!-- <button class="btn btn-info start"> -->
+                                    <!-- <i class="fas fa-upload"></i> -->
+                                    <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                   <input type="text" id="empleado_id" class="form-control input-numero" hidden>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+  
+                                  <button data-dz-remove class="btn btn-info btn-sm" id="empleadobtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                    <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                    <!-- <i class="fas fa-times-circle"></i> -->
+                                    <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+                                  <button data-dz-remove class="btn btn-danger delete" id="empleadobtndelete" disabled>
+                                    <i class="fas fa-trash"></i>
+                                    <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                    <span></span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+  <!--  -->
+                          </div>
+                        </div>
+  
+                        <div class="col-sm-6">
+                            <div class="icheck-danger d-inline">
+                                <input type="checkbox" id="entnomina" disabled>
+                                <label for="entnomina">
+                                  Entidad de Nomina
+                                </label>
+                              </div>
+  
+   <!--  -->
+  
+                             <div class="table table-striped files" id="divN" style="display: none;">
+  
+                              <div class="col-auto d-flex align-items-center">
+                                <div class="btn-group">
+  
+                                  <!-- <button class="btn btn-success start">
+                                      <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                      <span></span>
+                                    </button> -->
+                                      &nbsp;
+                                      
+                                  <button class="btn btn-success btn-sm" id="entnominabtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                    <!-- <button class="btn btn-info start"> -->
+                                    <!-- <i class="fas fa-upload"></i> -->
+                                    <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                   <input type="text" id="entnomina_id" class="form-control input-numero" hidden>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+  
+                                  <button data-dz-remove class="btn btn-info btn-sm" id="entnominabtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                    <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                    <!-- <i class="fas fa-times-circle"></i> -->
+                                    <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                    <span></span>
+                                  </button>
+                                  &nbsp;
+      
+                                  <button data-dz-remove class="btn btn-danger delete" id="entnominabtndelete" disabled>
+                                    <i class="fas fa-trash"></i>
+                                    <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                    <span></span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+  <!--  -->
+  
+                        </div>
+                      </div>
+                      <!-- Minimal red style -->
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <!-- checkbox -->
+                          <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" id="socio" disabled>
+                              <label for="socio">
+                                socio
+                              </label>
+                            </div>
+  
+                                <!--  -->
+  
+                                <div class="table table-striped files" id="divS" style="display: none;">
+  
+                                  <div class="col-auto d-flex align-items-center">
+                                    <div class="btn-group">
+  
+                                      <!-- <button class="btn btn-success start">
+                                          <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                          <span></span>
+                                        </button> -->
+                                          &nbsp;
+                                          
+                                      <button class="btn btn-success btn-sm" id="sociobtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                        <!-- <button class="btn btn-info start"> -->
+                                        <!-- <i class="fas fa-upload"></i> -->
+                                        <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                      <input type="text" id="socio_id" class="form-control input-numero" hidden>
+                                        <span></span>
+                                      </button>
+                                      &nbsp;
+  
+  
+                                      <button data-dz-remove class="btn btn-info btn-sm" id="sociobtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                        <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                        <!-- <i class="fas fa-times-circle"></i> -->
+                                        <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                        <span></span>
+                                      </button>
+                                      &nbsp;
+  
+                                      <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete" disabled>
+                                        <i class="fas fa-trash"></i>
+                                        <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                        <span></span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--  -->
+  
+                          </div>
+                        </div>
+  
+  
+                        <div class="col-sm-6">
+                            <!-- checkbox -->
+                            <div class="form-group clearfix">
+                                <div class="icheck-success d-inline">
+                                    <input type="checkbox" id="otrostercero" disabled>
+                                    <label for="otrostercero">
+                                    Otros Terceros
+                                    </label>
+                                </div>
+                                
+                                  <!--  -->
+  
+                                  <div class="table table-striped files" id="divO" style="display: none;">
+  
+                                    <div class="col-auto d-flex align-items-center">
+                                      <div class="btn-group">
+  
+                                        <!-- <button class="btn btn-success start">
+                                            <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                            <span></span>
+                                          </button> -->
+                                            &nbsp;
+                                            
+                                        <button class="btn btn-success btn-sm" id="otrostercerobtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                          <!-- <button class="btn btn-info start"> -->
+                                          <!-- <i class="fas fa-upload"></i> -->
+                                          <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                        <input type="text" id="otrostercero_id" class="form-control input-numero" hidden>
+                                          <span></span>
+                                        </button>
+                                        &nbsp;
+  
+                                        <button data-dz-remove class="btn btn-info btn-sm" id="otrostercerobtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                          <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                          <!-- <i class="fas fa-times-circle"></i> -->
+                                          <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                          <span></span>
+                                        </button>
+                                        &nbsp;
+  
+                                        <button data-dz-remove class="btn btn-danger delete" id="otrostercerobtndelete" disabled>
+                                          <i class="fas fa-trash"></i>
+                                          <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                          <span></span>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--  -->
+  
+  
+                                </div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="row">
+                          <div class="col-sm-6">
+                            <!-- checkbox -->
+                            <div class="form-group clearfix">
+                              <div class="icheck-success d-inline">
+                                <input type="checkbox" id="mastercardyvisa" disabled>
+                                <label for="mastercardyvisa">
+                                  Master Card y Visa
+                                </label>
+                              </div>
+  
+  
+                              <!--  -->
+  
+                                  <div class="table table-striped files" id="divM" style="display: none;">
+  
+                                    <div class="col-auto d-flex align-items-center">
+                                      <div class="btn-group">
+  
+                                        <!-- <button class="btn btn-success start">
+                                            <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
+                                            <span></span>
+                                          </button> -->
+                                            &nbsp;
+                                            
+                                        <button class="btn btn-success btn-sm" id="mastercardyvisabtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                          <!-- <button class="btn btn-info start"> -->
+                                          <!-- <i class="fas fa-upload"></i> -->
+                                          <i class="nav-icon fas fa-search" aria-hidden="true"></i>
+                                        <input type="text" id="mastercardyvisa_id" class="form-control input-numero" hidden>
+                                          <span></span>
+                                        </button>
+                                        &nbsp;
+  
+  
+                                        <button data-dz-remove class="btn btn-info btn-sm" id="mastercardyvisabtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                          <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
+                                          <!-- <i class="fas fa-times-circle"></i> -->
+                                          <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
+                                          <span></span>
+                                        </button>
+                                        &nbsp;
+  
+                                        <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete" disabled>
+                                          <i class="fas fa-trash"></i>
+                                          <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
+                                          <span></span>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--  -->
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card-footer"></div>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
   </div>
+  <!--  -->
+  
+  </form>
+  
+          <div id="mymodal"></div>
 
 
   <script>
 
 
-//***************************************************trae valores de tercero y usuario si ya exiten (perfil,ciudad,tipodocumento)*******************
+
+
+//***************************************************trae valores de tercero y tercero si ya exiten (perfil,ciudad,tipodocumento)*******************
+var obtenerCiiu = function(id){
+    url_ci= 'ciiuclases/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_ci,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#ciiu').val(respuesta.data.codigo+'-'+respuesta.data.descripcion);
+            $('#ciiu_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
 var obtenerCiudad = function(id){
     url_ciu= 'ciudades/' + id;
     $.ajax({
@@ -169,9 +914,11 @@ var obtenerCiudad = function(id){
     dataType: "json",
     success: function(respuesta) {
             var htmlCiudades = '';
-            htmlCiudades += '<option value="'+ respuesta.data.id+'">';
-            htmlCiudades += respuesta.data.descripcion;
-            htmlCiudades += '</option>';
+            if (respuesta.data.id) {
+                htmlCiudades += '<option value="'+ respuesta.data.id+'">';
+                htmlCiudades += respuesta.data.descripcion;
+                htmlCiudades += '</option>';
+            }
             $('#select-ciudad').html(htmlCiudades);
     },
     error: function() {
@@ -181,31 +928,9 @@ var obtenerCiudad = function(id){
   })  
 }
 
-var obtenerPerfil = function(id){
-    url_perf= 'perfiles/'+id;
-    $.ajax({
-    method: "GET",
-    url: url_back + url_perf,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-            var htmlPerfil = '';
-            htmlPerfil += '<option value="'+ respuesta.data.id+'">';
-            htmlPerfil += respuesta.data.descripcion;
-            htmlPerfil += '</option>';
-            $('#select-perfiles').html(htmlPerfil);
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
 
-var obtenerTipoidentificacione = function(id){
-    url_tipo= 'tipoidentificaciones/'+id;
+var obtenerSelect = function(url, select, id){
+    url_tipo= url+ '/' +id;
     $.ajax({
     method: "GET",
     url: url_back + url_tipo,
@@ -214,11 +939,13 @@ var obtenerTipoidentificacione = function(id){
     },
     dataType: "json",
     success: function(respuesta) {
-            var htmlTipo = '';
-            htmlTipo += '<option value="'+ respuesta.data.id+'">';
-            htmlTipo += respuesta.data.descripcion;
-            htmlTipo += '</option>';
-            $('#select-identificacion').html(htmlTipo);
+            var html = '';
+            html += '<option value="'+ respuesta.data.id+'">';
+            html += respuesta.data.descripcion;
+            html += '</option>';
+            // obtenerSelects(url, select, id, html);
+        $(select).html(html);
+
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -227,11 +954,84 @@ var obtenerTipoidentificacione = function(id){
   })  
 }
 
-//*************************************************************************************************************************
+//***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
 
-function obtenerUsuario(id){
+// function obtenerSelects(url, select, id = null,  base = null) {
 
-var url = 'users/'+ id;
+// $.ajax({
+//     method: "GET",
+//     url: url_back + url,
+//     headers: { 
+//         Authorization: 'Bearer ' + localStorage.access_token
+//     },
+//     dataType: "json",
+//     success: function(respuesta) {
+
+//         $(select).html(crearHtml(respuesta.data, base, id));
+//     },
+//     error: function() {
+//         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+//         sweetMessage('error', mensaje);
+//     }
+//   })     
+// }
+
+// var crearHtml = function(data, base = null, id = null) {
+//     if (base) {
+//             var html = base;
+//             $.each(data, function (key, item) {
+//                 if(id != item.id){
+//                     html += '<option value="'+ item.id+'">';
+//                     html += item.descripcion;
+//                     html += '</option>';
+//                 }
+//             });
+//         return html;
+//     } else {
+//             var html = '<option value="">Seleccione..</option>';
+//             $.each(data, function (key, item) {
+//                 html += '<option value="'+ item.id+'">';
+//                 html += item.descripcion;
+//                 html += '</option>';
+//             });
+//         return html;
+//     }
+// }
+
+//***************************************************autocompletar*******************
+
+// $( "#ciiu" ).autocomplete({
+//         source: function( request, response ) {
+//             var url_ciiu = 'ciiuclases/?search='+$('#ciiu').val();
+
+//            // Fetch data
+//            $.ajax({
+//              method: "GET",
+//              url: url_back + url_ciiu,
+//              headers: { 
+//                 Authorization: 'Bearer ' + localStorage.access_token
+//             },
+//              dataType: "json",
+//              success: function(respuesta) {
+//                 // console.log(respuesta);
+//                 response(respuesta);
+//              }
+//            });
+//         },
+//         minLength: 2,
+//         select: function (event, ui) {
+//           // Set selection
+//           $('#ciiu').val(ui.item.label); // display the selected text
+//           $('#ciiu_id').val(ui.item.value); // save selected id to input
+//           return false;
+//         }
+//      });
+
+//******************************************************************************************************************************************
+
+function obtenertercero(id){
+
+var url = 'terceros/'+ id;
 
 $.ajax({
     method: "GET",
@@ -242,32 +1042,104 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
-        $('#nombres').val(respuesta.data.tercero.nombres);
-        $('#apellidos').val(respuesta.data.tercero.apellidos);
-        $('#identificacion').val(respuesta.data.tercero.identificacion);
+        $('#nombres').val(respuesta.data.nombres);
+        $('#apellidos').val(respuesta.data.apellidos);
+        $('#razonsocial').val(respuesta.data.razonsocial);
+        $('#representantelegal').val(respuesta.data.representantelegal);
+        $('#identificacion').val(respuesta.data.identificacion);
+        $('#verificado').val(respuesta.data.digitoverificacion);
+        $('#direccion').val(respuesta.data.direccion);
+        $('#direccion2').val(respuesta.data.direccion2);
+        $('#celular').val(respuesta.data.celular);
+        $('#telefono').val(respuesta.data.telefono);
         $('#email').val(respuesta.data.email);
-        $('#direccion').val(respuesta.data.tercero.direccion);
-        $('#rut').val(respuesta.data.tercero.rut);
-        $('#celular').val(respuesta.data.tercero.celular);
-        $('#telefono').val(respuesta.data.tercero.telefono);
-        $('#cumpleanios').val(respuesta.data.tercero.cumpleanios);
-        $('#username').val(respuesta.data.username);
+        $('#cumpleanios').val(respuesta.data.cumpleanios);
+        $('#contactocelular').val(respuesta.data.contactocelular);
+        $('#contactonombre').val(respuesta.data.contactonombre);
 
-          if(respuesta.data.imagen){
-              $("#imagen").attr('src', url_img + 'users/'+ respuesta.data.imagen);
+        respuesta.data.autoretenedorrenta == 1 ? $('#autoretenedorrenta').prop( "checked", true ) : $('#autoretenedorrenta').prop( "checked", false );
+        respuesta.data.autoretenedorica == 1 ? $('#autoretenedorica').prop( "checked", true ) : $('#autoretenedorica').prop( "checked", false );
+    
+        if(respuesta.data.imagen){
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_img + 'terceros/'+ respuesta.data.imagen;
+            ul.appendChild(imagen);
           }else{
-            $("#imagen").attr("src","../usuarios/"+ 'defecto.jpg');
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'terceros/defecto.jpg';
+            ul.appendChild(imagen);
           }
 
-        if(respuesta.data.tercero.ciudade_id){
-            obtenerCiudad(respuesta.data.tercero.ciudade_id);
-        }
-        if(respuesta.data.perfile_id){
-            obtenerPerfil(respuesta.data.perfile_id);
+       if(respuesta.data.ciiuclase_id){
+            obtenerCiiu(respuesta.data.ciiuclase_id);
         }
 
-        if(respuesta.data.tercero.tipoidentificacione_id){
-            obtenerTipoidentificacione(respuesta.data.tercero.tipoidentificacione_id);
+        if(respuesta.data.ciudade_id){
+            obtenerCiudad(respuesta.data.ciudade_id);
+        }
+
+        if(respuesta.data.tipoidentificacione_id){
+            obtenerSelect('tipoidentificaciones', '#select-identificacion', respuesta.data.tipoidentificacione_id);
+
+        }
+
+        if(respuesta.data.tipodireccione_id){
+            obtenerSelect('tipodirecciones', '#select-tipodirecciones', respuesta.data.tipodireccione_id);
+
+        }
+
+        if(respuesta.data.tipodireccione2_id){
+            obtenerSelect('tipodirecciones', '#select-tipodirecciones2', respuesta.data.tipodireccione2_id);
+
+        }
+
+        if(respuesta.data.regimene_id){
+            obtenerSelect('regimenes', '#select-regimenes', respuesta.data.regimene_id);
+        }
+
+        if(respuesta.data.personeria_id){
+            obtenerSelect('personerias', '#select-personerias', respuesta.data.personeria_id);
+        }
+
+        if(respuesta.data.tipocontribuyente_id){
+            obtenerSelect('tipocontribuyentes', '#select-tipocontribuyentes', respuesta.data.tipocontribuyente_id);
+        }
+
+        if(respuesta.data.contacto_id){
+            obtenerSelect('contactos', '#select-contactos', respuesta.data.contacto_id);
+        }
+          //***************** check*****************************
+
+        if(respuesta.data.clientes){
+            marcarCheck(respuesta.data.clientes, localStorage.empresa_id, '#cliente','#divC');
+        }
+
+        if(respuesta.data.proveedores){
+            marcarCheck(respuesta.data.proveedores, localStorage.empresa_id, '#proveedore','#divP');
+        }
+
+        if(respuesta.data.empleados){
+            marcarCheck(respuesta.data.empleados, localStorage.empresa_id, '#empleado','#divE');
+        }
+
+        if(respuesta.data.entnominas){
+            marcarCheck(respuesta.data.entnominas, localStorage.empresa_id, '#entnomina','#divN');
+        }
+
+        if(respuesta.data.socios){
+            marcarCheck(respuesta.data.socios, localStorage.empresa_id, '#socio','#divS');
+        }
+
+        if(respuesta.data.otrosterceros){
+            marcarCheck(respuesta.data.otrosterceros, localStorage.empresa_id, '#otrostercero','#divO');
+        }
+
+        if(respuesta.data.mastercardyvisas){
+            marcarCheck(respuesta.data.mastercardyvisas, localStorage.empresa_id, '#mastercardyvisa','#divM');
         }
 
     },
@@ -278,12 +1150,35 @@ $.ajax({
   })  
 }
 
+//******************************************* marcar terceros cuando ya existen********************************************************************
+// marcarCheck(respuesta.data.empleados, localStorage.empresa_id, '#empleado','#divE');
+
+var marcarCheck = function(arre, empresa_id, html_id, div){
+
+  $.each(arre, function (key, item) {
+
+      if(empresa_id == arre[key].empresa_id){
+          $(html_id).prop( "checked", true);
+          $(div).show();
+          $(html_id).prop('disabled', true);
+
+          $(html_id+"_id").val(arre[key].id);
+      }
+
+  });
+
+}
+
+
+//*********************************************************crear detalles de terceros****************************************************
 
 
 $( document ).ready(function() {
-    $('.preloader').hide("slow");
+  $('.preloader').hide("slow");
     validarLogin();
+    obtenertercero(localStorage.ver);
+    localStorage.ver = '';
 
-    obtenerUsuario(localStorage.ver);
 });
-  </script>
+
+</script>

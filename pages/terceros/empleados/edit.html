@@ -254,7 +254,7 @@
 
                 <div class="form-group" id="divretencionfuente" style="display: none;">
                   <label for="exampleSelectRounded0">Procedimiento RETENCION EN LA FUENTE <code> &nbsp;*</code></label>
-                  <select class="custom-select rounded-0" id="select-nivelcentro">
+                  <select class="custom-select rounded-0" id="select-metodoretencionfuente">
                     <option value="">Selecione un Procedimiento RTF</option>
                     <option value="1">Procedimiento 1</option>
                     <option value="2">Procedimiento 2</option>
@@ -352,7 +352,7 @@ var tiposueldo_id = $('#select-tiposueldos').val()? $('#select-tiposueldos').val
 var metodopagonomina_id = $('#select-metodopagonominas').val()? $('#select-metodopagonominas').val() : ''; 
 var nivelarl_id = $('#select-nivelarls').val()? $('#select-nivelarls').val() : ''; 
 var nivelriesgoarl_id = $('#select-nivelriesgoarls').val()? $('#select-nivelriesgoarls').val() : ''; 
-var metodoretencionfuente = $('#select-nivelcentro').val()? $('#select-nivelcentro').val() : ''; 
+var metodoretencionfuente = $('#select-metodoretencionfuente').val()? $('#select-metodoretencionfuente').val() : ''; 
 
 formData.append("sueldo", sueldo);
 formData.append("observaciones", observaciones);
@@ -583,8 +583,6 @@ var obtenerEntidadnomina = function(search, select, id){
 
             obtenerEntidadnominas(search, select, html,  id);
           
-            // });
-      
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -650,6 +648,7 @@ $.ajax({
         $('#msgEstatus').val(respuesta.data.msgEstatus);
         $('#inicio_').val(respuesta.data.inicio);
         $('#fechaterminacion_').val(respuesta.data.fechaterminacion);
+        $('#select-metodoretencionfuente').val(respuesta.data.metodoretencionfuente);
 
         respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
         respuesta.data.altoriesgoafp == 1 ? $('#altoriesgoafp').prop( "checked", true ) : $('#altoriesgoafp').prop( "checked", false );

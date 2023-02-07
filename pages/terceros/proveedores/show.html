@@ -29,13 +29,6 @@
             <input type="text" id="paginaweb" class="form-control" placeholder="Pagina Web" disabled>
         </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-            </div>
-            <input type="text" id="emailProveedor" class="form-control" placeholder="Email Proveedor" disabled>
-        </div>
-  
           <div class="form-group">
             <label>Dias de Credito</label>
 
@@ -80,7 +73,7 @@
 
           <div class="form-group">
 
-            <label for="exampleSelectRounded0">Termino Pago <code> &nbsp;*</code></label>
+            <label for="exampleSelectRounded0">Termino Pago </label>
             <select class="custom-select rounded-0" id="select-terminopagos" disabled>
               <!-- <option>Value 1</option> -->
 
@@ -181,12 +174,11 @@ $.ajax({
     success: function(respuesta) {
 
         $('#paginaweb').val(respuesta.data.paginaweb);
-        $('#emailProveedor').val(respuesta.data.email);
         $('#diascredito').val(respuesta.data.diascredito);
         $('#limitecredito').val(respuesta.data.limitecredito);
         $('#observaciones').val(respuesta.data.observaciones);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
 
         if(respuesta.data.terminopago_id){
             obtenerSelect('terminopagos', '#select-terminopagos', respuesta.data.terminopago_id);

@@ -116,7 +116,7 @@ const formData = new FormData(form);
 var numeroacciones = $('#numeroacciones').val();
 var porcentajeparticipacion = $('#porcentajeparticipacion').val();
 
-var estatus =$('#estatus').is(':checked') ? 1 : 0;
+var estatus =$('#estatus').is(':checked') ? 0 : 1;
 
 var tiposocio_id = $('#select-tiposocios').val()? $('#select-tiposocios').val() : ''; 
 
@@ -234,7 +234,7 @@ $.ajax({
         $('#numeroacciones').val(respuesta.data.numeroacciones);
         $('#porcentajeparticipacion').val(respuesta.data.porcentajeparticipacion);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
 
         if(respuesta.data.tiposocio_id){
             obtenerSelect('tiposocios', '#select-tiposocios', respuesta.data.tiposocio_id);

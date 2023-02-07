@@ -51,7 +51,7 @@
 
       <div class="form-group">
 
-          <label for="exampleSelectRounded0">Tipo de Socio <code> &nbsp;*</code></label>
+          <label for="exampleSelectRounded0">Tipo de Socio </label>
           <select class="custom-select rounded-0" id="select-tiposocios" disabled>
             <!-- <option>Value 1</option> -->
 
@@ -150,7 +150,7 @@ $.ajax({
         $('#numeroacciones').val(respuesta.data.numeroacciones);
         $('#porcentajeparticipacion').val(respuesta.data.porcentajeparticipacion);
 
-        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", true ) : $('#estatus').prop( "checked", false );
+        respuesta.data.estatus == 1 ? $('#estatus').prop( "checked", false ) : $('#estatus').prop( "checked", true );
 
         if(respuesta.data.tiposocio_id){
             obtenerSelect('tiposocios', '#select-tiposocios', respuesta.data.tiposocio_id);
