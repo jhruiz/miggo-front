@@ -45,7 +45,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Lista Empresas</h3>
+              <h3 class="card-title">Lista De Sucursales</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -93,48 +93,17 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
             element.nit,
             element.telefono1,
             element.telefono2,
-            element.empresa_id? 'Sucursal': 'Empresa Pricipal',         
+            // element.empresa_id? 'Sucursal': 'Empresa Pricipal',         
         ];
 
-        arrEmpresa.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verEmpresa('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarEmpresa('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button>  </div>'); 
-        // arrEmpresa.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verEmpresa('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarEmpresa('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarEmpresa('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
+        // arrEmpresa.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verEmpresa('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarEmpresa('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button>  </div>'); 
+        arrEmpresa.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verEmpresa('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarEmpresa('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarEmpresa('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
 
         arrEmpresas.push(arrEmpresa);
     });
 
     return arrEmpresas;
 }
-
-
-
-// function desactivar(id){
-
-//   var url_index = 'empresas/index.html';
-//   var url = 'estatus/'+id;
-
-//   if (confirm('¿Está seguro que desea desactivar este Empresa?')){
-
-//     $.ajax({
-//             method: "GET",
-//             url: url_back + url,
-//             headers: { 
-//                 Authorization: 'Bearer ' + localStorage.access_token
-//             },
-//             dataType: 'json',
-//             success: function(respuesta) {
-
-//               var mensaje = 'El Empresa esta: ' + (respuesta.data.estatus ? 'Activo': 'Desactivado') + ' Nombre: '+ respuesta.data.tercero.nombres;
-//                 sweetMessage( respuesta.data.estatus ? 'success' : 'error', mensaje);
-//                 $('#main_content').load(url_front + url_index);
-//             },
-//             error: function() {
-//                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
-//                 sweetMessage('error', mensaje);
-//             }
-//         }) 
-// }
-// }
-
 
 
 var generarDataTable = function( dataSet ) {
@@ -147,7 +116,7 @@ var generarDataTable = function( dataSet ) {
             { title: "NIT" },
             { title: "Contacto 1" },
             { title: "Contacto 2" },
-            { title: "Sucursal" },
+            // { title: "Sucursal" },
             { title: "Acciones" },
             ],
     "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -165,11 +134,9 @@ var generarDataTable = function( dataSet ) {
 
 }
 
-
-
 var infoTable = function(){
 
-var url = 'empresas';
+var url = 'sucursales/'+ localStorage.empresa_id;
 
 // alert(localStorage.access_token);
     $.ajax({
@@ -180,7 +147,7 @@ var url = 'empresas';
             },
             dataType: 'json',
             success: function(respuesta) {
-              console.log(respuesta.data);
+              // console.log(respuesta.data);
                 generarDataTable(organizarDatos(respuesta.data));
 
             },
@@ -220,7 +187,7 @@ var url_index = 'empresas/index.html';
             dataType: "json",
             success: function(respuesta) {
 
-                var mensaje = 'se borro exitosamente el Empresa de email: ' + respuesta.data.email + ' de nombre: ' + respuesta.data.tercero.nombres;
+                var mensaje = 'se borro exitosamente la Sucursal : ' + respuesta.data.nombre;
                 sweetMessage('success', mensaje);
                 
                 $('#main_content').load(url_front + url_index);
@@ -244,15 +211,10 @@ function editarEmpresa(id){//render al editar
 }
 
 function verEmpresa(id){
+    var url_ver = 'empresas/show.html';
 
-  $('#mymodal').html('');
-
-  $('#mymodal').load('../empresas/show.html',function(){
-        $('#exampleModalLong').modal({show:true});
-    });
+$('#main_content').load(url_front + url_ver);
     localStorage.setItem('ver', id);
-
-
 }
 
 

@@ -61,6 +61,20 @@
 
         <!-- /.form-group -->
 
+                <!-- /.form-group -->
+
+        <!-- <div class="form-group">
+
+          <label for="exampleSelectRounded0">Empresas o Sucursales de este Socio </label>
+          <select class="custom-select rounded-0" id="select-empresas" disabled>
+
+          </select>
+
+        </div> -->
+
+        <!-- /.form-group -->
+        
+
 
           <div class="form-group">
               <div class="input-group">
@@ -154,8 +168,6 @@ $.ajax({
 
         if(respuesta.data.tiposocio_id){
             obtenerSelect('tiposocios', '#select-tiposocios', respuesta.data.tiposocio_id);
-        }else{
-            obtenerSelects('tiposocios', '#select-tiposocios');
         }
 
     },
@@ -165,6 +177,7 @@ $.ajax({
     }
   })  
 }
+
 
 $( document ).ready(function() {
   $('.preloader').hide("slow");

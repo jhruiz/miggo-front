@@ -62,6 +62,20 @@
           <!-- /.form-group -->
 
 
+        <!-- /.form-group -->
+
+        <!-- <div class="form-group">
+
+          <label for="exampleSelectRounded0">Empresas o Sucursales de este Socio <code> &nbsp;*</code></label>
+          <select class="custom-select rounded-0" id="select-empresas">
+
+          </select>
+
+        </div> -->
+
+        <!-- /.form-group -->
+
+
             <div class="form-group">
                 <div class="input-group">
                     <div class="form-group clearfix">
@@ -119,6 +133,7 @@ var porcentajeparticipacion = $('#porcentajeparticipacion').val();
 var estatus =$('#estatus').is(':checked') ? 0 : 1;
 
 var tiposocio_id = $('#select-tiposocios').val()? $('#select-tiposocios').val() : ''; 
+// var empresa_id = $('#select-empresas').val()? $('#select-empresas').val() : ''; 
 
 formData.append("numeroacciones", numeroacciones);
 formData.append("porcentajeparticipacion", porcentajeparticipacion);
@@ -194,6 +209,28 @@ var obtenerSelect = function(url, select, id){
   })  
 }
 
+var obtenerSelectEmpresa = function(url, select, id){
+  url_empre= url+ '/' +id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_empre,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            var html = '';
+            html += '<option value="'+ respuesta.data.id+'">';
+            html += respuesta.data.nit+' - '+respuesta.data.nombre;
+            html += '</option>';
+            obtenerSelectEmpresas(url, select, id, html);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
 
 function obtenerSelects(url, select, id = null,  base = null) {
 
@@ -215,6 +252,72 @@ $.ajax({
   })     
 }
 
+function obtenerSelectEmpresas(url, select, id = null,  base = null) {
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+      console.log(respuesta);
+
+        $(select).html(crearHtmlEmpresa(respuesta.data, base, id));
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
+}
+
+
+var crearHtml = function(data, base = null, id = null) {
+    if (base) {
+            var html = base;
+            $.each(data, function (key, item) {
+                if(id != item.id){
+                    html += '<option value="'+ item.id+'">';
+                    html += item.descripcion;
+                    html += '</option>';
+                }
+            });
+        return html;
+    } else {
+            var html = '<option value="">Seleccione..</option>';
+            $.each(data, function (key, item) {
+                html += '<option value="'+ item.id+'">';
+                html += item.descripcion;
+                html += '</option>';
+            });
+        return html;
+    }
+}
+
+
+var crearHtmlEmpresa = function(data, base = null, id = null) {
+    if (base) {
+            var html = base;
+            $.each(data, function (key, item) {
+                if(id != item.id){
+                    html += '<option value="'+ item.id+'">';
+                    html += item.nit+' - '+item.nombre;
+                    html += '</option>';
+                }
+            });
+        return html;
+    } else {
+            var html = '<option value="">Seleccione..</option>';
+            $.each(data, function (key, item) {
+                html += '<option value="'+ item.id+'">';
+                html += item.nit+' - '+item.nombre;
+                html += '</option>';
+            });
+        return html;
+    }
+}
 //*********************************************************************************************************************************
 
 
@@ -240,6 +343,12 @@ $.ajax({
             obtenerSelect('tiposocios', '#select-tiposocios', respuesta.data.tiposocio_id);
         }else{
             obtenerSelects('tiposocios', '#select-tiposocios');
+        }
+
+        if(respuesta.data.empresa_id){
+          obtenerSelectEmpresa('empresas', '#select-empresas', respuesta.data.empresa_id);
+        }else{
+          obtenerSelectEmpresas('empresas', '#select-empresas');
         }
 
     },

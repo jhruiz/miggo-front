@@ -49,15 +49,8 @@ const formData = new FormData(form);
 
 var descripcion = $('#descripcion').val();
 
-// formData.append("empresa_id", localStorage.empresa_id);
 formData.append("creador_id", localStorage.id);
 formData.append("descripcion", descripcion);
-
-// const output = document.getElementById('output');
-
-// for (const [key, value] of formData) {
-//   output.textContent += `${key}: ${value}\n`;
-// }
 
 $.ajax({
     method: "POST",

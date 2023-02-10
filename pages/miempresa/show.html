@@ -9,7 +9,7 @@
             <div class="col-12">
                 <h4>
                     <i class="nav-icon fas fa-user"></i>
-                    Ver Sucursal                               
+                    Ver Mi Empresa &nbsp;<button class="btn btn-info btn-sm" type="submit" id="editarempresa"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button>                                                
                 </h4>
             </div>
         </div>
@@ -777,6 +777,12 @@ $.ajax({
             imagen.width = 200;
             imagen.src = url_img + 'empresas/'+ respuesta.data.imagen;
             ul.appendChild(imagen);
+          }else{
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'miempresa/defecto.jpg';
+            ul.appendChild(imagen);
           }
 
         if(respuesta.data.ciudade_id){
@@ -823,21 +829,24 @@ $.ajax({
   })  
 }
 
-var defaultImage = function(){
-    const ul = document.getElementById("mostrarImagen");
-    const imagen = document.createElement("img");
-    imagen.width = 200;
-    imagen.src = url_front + 'empresas/defecto.jpg';
-    ul.appendChild(imagen);
+function editarEmpresa(id){//render al editar
+
+var url_edit = 'miempresa/edit.html';
+
+var bool = confirm('Deseas Modificar Tu empresa esta opcion es de cuidado ya que Miggo usa parte de la información para su funcionamiento?');
+    if(bool){
+        $('#main_content').load(url_front + url_edit);
+    }
 }
 
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
 
-    obtenerEmpresa(localStorage.ver);
+  $("#editarempresa").on("click",editarEmpresa);
+
+    obtenerEmpresa(localStorage.empresa_id);
     obtenerretencionicas();
-    defaultImage();
 
 });
   </script>

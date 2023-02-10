@@ -9,7 +9,7 @@
             <div class="col-12">
                 <h4>
                     <i class="nav-icon fas fa-user"></i>
-                    Ver Sucursal                               
+                    Editar Mi Empresa  
                 </h4>
             </div>
         </div>
@@ -27,20 +27,20 @@
     
                   <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Nombre </label>
+                            <label>Nombre <code>&nbsp;*</code></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                                 </div>
-                                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" disabled>  
+                                <input type="text" id="nombre" class="form-control input-texto-espacio" placeholder="Nombre" required>  
                             </div>
                         </div>
                   </div>
     
                   <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="responsable">Codigo CIIU: </label>
-                        <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU" disabled>
+                        <label for="responsable">Codigo CIIU: <code>&nbsp;*</code></label>
+                        <input class="form-control input-texto-alfanumerico" id="ciiu" placeholder="El nombre o Codigo CIIU" required>
                       </div>
                       <input class="form-control input-texto-alfanumerico" id="ciiu_id" hidden>
                   </div>
@@ -51,24 +51,24 @@
 
                   <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Razon Social </label>
+                            <label>Razon Social <code>&nbsp;*</code></label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                                 </div>
-                                <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social" disabled>
+                                <input type="text" id="razonsocial" class="form-control input-texto-espacio" placeholder="Razon Social" required>
                             </div>
                         </div>
                   </div>
     
                   <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Teléfono </label>
+                        <label>Teléfono <code>&nbsp;*</code></label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input type="text" id="telefono1" class="form-control input-numero" placeholder="Teléfono" disabled>
+                            <input type="text" id="telefono1" class="form-control input-numero" placeholder="Teléfono">
                         </div>
                     </div>
                   </div>
@@ -79,12 +79,12 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>NIT </label>
+                        <label>NIT <code>&nbsp;*</code></label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div>
-                            <input type="text" id="identificacion" class="form-control input-texto-alfanumerico" placeholder="NIT" disabled> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
+                            <input type="text" id="identificacion" class="form-control input-texto-alfanumerico" placeholder="NIT" required> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
                         </div> 
                     </div>  
                 </div>
@@ -96,7 +96,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input type="text" id="telefono2" class="form-control input-numero" placeholder="Teléfono" disabled>
+                            <input type="text" id="telefono2" class="form-control input-numero" placeholder="Teléfono">
                         </div>
                     </div>
                 </div>
@@ -108,24 +108,24 @@
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email <code>&nbsp;*</code></label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="text" id="email" class="form-control" placeholder="Email" disabled>  
+                            <input type="text" id="email" class="form-control" placeholder="Email" >  
                         </div> 
                       </div>
                 </div>
 
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Representante Legal</label>
+                        <label>Representante Legal <code>&nbsp;*</code></label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-laptop"></i></span>
                             </div>
-                            <input type="text" id="representantelegal" class="form-control input-texto-espacio" placeholder="Representante Legal" disabled>  
+                            <input type="text" id="representantelegal" class="form-control input-texto-espacio" placeholder="Representante Legal" >  
                         </div>
                       </div>
                 </div>
@@ -152,7 +152,7 @@
                                   <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
-                                      <input type="checkbox" id="autoretenedor" disabled>
+                                      <input type="checkbox" id="autoretenedor">
                                       <label for="autoretenedor">
                                         Autoretenedor
                                       </label>
@@ -165,7 +165,7 @@
                                   <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-success d-inline">
-                                      <input type="checkbox" id="autoretenedorica" disabled>
+                                      <input type="checkbox" id="autoretenedorica">
                                       <label for="autoretenedorica">
                                         Autoretenedor ICA
                                       </label>
@@ -178,7 +178,7 @@
                                     <!-- checkbox -->
                                     <div class="form-group clearfix">
                                       <div class="icheck-danger d-inline">
-                                        <input type="checkbox" id="autoretenedorrenta" disabled>
+                                        <input type="checkbox" id="autoretenedorrenta">
                                         <label for="autoretenedorrenta">
                                           Auto Retenedor Renta
                                         </label>
@@ -189,7 +189,7 @@
                                   <div class="col-sm-3">
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
-                                          <input type="checkbox" id="ecommerce" disabled>
+                                          <input type="checkbox" id="ecommerce">
                                           <label for="ecommerce">
                                             Ecommerce
                                           </label>
@@ -204,7 +204,7 @@
                                   <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-success d-inline">
-                                        <input type="checkbox" id="pucedit" disabled>
+                                        <input type="checkbox" id="pucedit">
                                         <label for="pucedit">
                                         Generar y Cambiar sus PUC
                                         </label>
@@ -248,19 +248,19 @@
                 <div class="row">
   
                   <div class="col-sm-3">
+
                     <div class="form-group">
-                        <label for="exampleSelectRounded0">Tipo Sociedades </label>
-                        <select class="custom-select rounded-0" id="select-tiposociedades" disabled>
-                          <!-- <option>Value 1</option> -->
-        
-                        </select>
-                      </div>
+                        <label for="responsable">Cuenta Puc <code> &nbsp;*</code></label>
+                        <input class="form-control input-texto-alfanumerico" id="puc" placeholder="Nombre de la cuenta PUC" required>
+                    </div>
+                        <input class="form-control input-texto-alfanumerico" id="puc_id" hidden>
+
                   </div>
   
                   <div class="col-sm-3">
                     <div class="form-group">
                         <label for="exampleSelectRounded0">Tipo Contribuyente </label>
-                        <select class="custom-select rounded-0" id="select-tipocontribuyentes" disabled>
+                        <select class="custom-select rounded-0" id="select-tipocontribuyentes" >
                           <!-- <option>Value 1</option> -->
         
                         </select>
@@ -270,7 +270,7 @@
                   <div class="col-sm-3">
                     <div class="form-group">
                         <label for="exampleSelectRounded0">Regimen </label>
-                        <select class="custom-select rounded-0" id="select-regimenes" disabled>
+                        <select class="custom-select rounded-0" id="select-regimenes">
                           <!-- <option>Value 1</option> -->
         
                         </select>
@@ -280,7 +280,7 @@
                   <div class="col-sm-3">
                     <div class="form-group">
                         <label for="exampleSelectRounded0">Personeria </label>
-                        <select class="custom-select rounded-0" id="select-personerias" disabled>
+                        <select class="custom-select rounded-0" id="select-personerias">
                           <!-- <option>Value 1</option> -->
         
                         </select>
@@ -309,8 +309,8 @@
 
               <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="exampleSelectRounded0">Nivel Centro de Costos </label>
-                    <select class="custom-select rounded-0" id="select-nivelcentro" disabled>
+                    <label for="exampleSelectRounded0">Nivel Centro de Costos <code> &nbsp;*</code></label>
+                    <select class="custom-select rounded-0" id="select-nivelcentro" required>
                       <option value="0" selected="true" disabled="disabled">Selecione un Nivel</option>
                       <option value="1">Divisiones</option>
                       <option value="2">Secciones</option>
@@ -321,8 +321,18 @@
 
               <div class="col-sm-3">
                 <div class="form-group">
+                    <label for="exampleSelectRounded0">Departamento</label>
+                    <select class="custom-select rounded-0" id="select-departamento">
+                      <!-- <option>Value 1</option> -->
+    
+                    </select>
+                  </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="form-group">
                     <label for="exampleSelectRounded0">Ciudad</label>
-                    <select class="custom-select rounded-0" id="select-ciudad" disabled>
+                    <select class="custom-select rounded-0" id="select-ciudad">
                       <!-- <option>Value 1</option> -->
     
                     </select>
@@ -342,7 +352,7 @@
                     <div id="mostrarImagen" stye="display:flex;"></div>
                     <div class="form-group">
                     <div class="custom-file">
-                      <input class="btn btn-success col fileinput" type="file" id="imagen" disabled></div>
+                      <input class="btn btn-success col fileinput" type="file" id="imagen"></div>
                   </div>
                   </div>
     
@@ -353,13 +363,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div>
-                            <textarea id="direccion" class="form-control" rows="4" placeholder="Dirección ..." disabled></textarea>
+                            <textarea id="direccion" class="form-control" rows="4" placeholder="Dirección ..."></textarea>
                         </div> 
                     </div>
 
                     <div class="form-group">
                         <label for="exampleSelectRounded0">Tipo de Contacto </label>
-                        <select class="custom-select rounded-0" id="select-contactos" disabled>
+                        <select class="custom-select rounded-0" id="select-contactos">
                           <!-- <option>Value 1</option> -->
                         </select>
                       </div>
@@ -383,18 +393,18 @@
                                 <ol class="breadcrumb" style="background: rgba(128, 128, 128, 0);">
                                     <li class="breadcrumb-item active">
                                             <!-- <li class="breadcrumb-item active"> -->
-                                    <button class="btn btn-success btn-sm" id="crearica" data-toggle="modal" data-target="#ModalLong3" disabled>
+                                    <button class="btn btn-success btn-sm" id="crearica" data-toggle="modal" data-target="#ModalLong3">
                                         <!-- <button class="btn btn-success btn-sm" id="crearica" onclick="crearRetencionica()" data-toggle="modal" data-target="#ModalLong3"> -->
                                         <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
                                     </button>
                                     <!-- <div class="col text-center"></div> -->
-                                    <button class="btn btn-success btn-sm" id="verica" data-toggle="modal" data-target="#ModalLong" disabled>
+                                    <button class="btn btn-success btn-sm" id="verica" data-toggle="modal" data-target="#ModalLong">
                                         <i class="nav-icon fas fa-search" aria-hidden="true"></i>
                                     </button>
-                                    <button class="btn btn-info btn-sm" id="editarica" data-toggle="modal" data-target="#ModalLong2" disabled>
+                                    <button class="btn btn-info btn-sm" id="editarica" data-toggle="modal" data-target="#ModalLong2">
                                         <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
                                     </button> 
-                                    <button class="btn btn-danger btn-sm" id="eliminarica" disabled>
+                                    <button class="btn btn-danger btn-sm" id="eliminarica">
                                         <i class="nav-icon fa fa-times" aria-hidden="true"></i>
                                     </button>
                                     </li>
@@ -408,7 +418,7 @@
 
                     <div class="form-group">
                         <!-- <label>Retencion ICA</label> -->
-                        <select multiple class="form-control" id="select-retencionicas" disabled>
+                        <select multiple class="form-control" id="select-retencionicas">
                           <!-- <option>option 1</option> -->
                         </select>
                       </div>
@@ -421,7 +431,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div>
-                            <input type="text" id="contactonombre" class="form-control input-texto-espacio" placeholder="Nombre" disabled>  
+                            <input type="text" id="contactonombre" class="form-control input-texto-espacio" placeholder="Nombre" >  
                         </div>
                     </div>
 
@@ -431,17 +441,18 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input type="text" id="contactocelular" class="form-control input-numero" placeholder="Celular" disabled>
+                            <input type="text" id="contactocelular" class="form-control input-numero" placeholder="Celular">
                         </div> 
                     </div>
 
                     <div class="form-group">
-                        <label for="responsable">Cuenta Puc </label>
-                        <input class="form-control input-texto-alfanumerico" id="puc" placeholder="Nombre de la cuenta PUC" disabled>
-                      </div>
-                      <input class="form-control input-texto-alfanumerico" id="puc_id" hidden>
-                  </div>
-                       
+                            <label for="exampleSelectRounded0">Tipo Sociedades</label>
+                            <select class="custom-select rounded-0" id="select-tiposociedades">
+                              <!-- <option>Value 1</option> -->
+            
+                            </select>
+                    </div>
+
                   </div>
     
             </div>
@@ -485,48 +496,48 @@
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Información de la Empresa</label>
+                        <label>Texto 1</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div>
-                                <textarea id="texto1" class="form-control" rows="3" placeholder="Informacion de la Empresa 1" disabled></textarea>
+                                <textarea id="texto1" class="form-control" rows="3" placeholder="Informacion de la Empresa 1"></textarea>
                             </div> 
                         </div> 
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Información de la Empresa 2</label>
+                        <label>Texto 2</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div>
-                                <textarea id="texto2" class="form-control" rows="3" placeholder="Informacion de la Empresa 2" disabled></textarea>
+                                <textarea id="texto2" class="form-control" rows="3" placeholder="Informacion de la Empresa 2"></textarea>
                             </div> 
                         </div> 
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Información de la Empresa 3</label>
+                        <label>Texto 3</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div>
-                                <textarea id="texto3" class="form-control" rows="3" placeholder="Informacion de la Empresa 3" disabled></textarea>
+                                <textarea id="texto3" class="form-control" rows="3" placeholder="Informacion de la Empresa 3"></textarea>
                             </div> 
                         </div> 
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Información de la Empresa 4</label>
+                        <label>Texto 4</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div>
-                                <textarea id="texto4" class="form-control" rows="3" placeholder="Informacion de la Empresa 4" disabled></textarea>
+                                <textarea id="texto4" class="form-control" rows="3" placeholder="Informacion de la Empresa 4"></textarea>
                             </div> 
                         </div> 
                 </div>
@@ -550,9 +561,286 @@
 
 </div>
 
+<div id="mymodal"></div>
 
-  <script>
+<script>
 
+
+$("#formEmpresa").change(function(e) {
+e.preventDefault();   
+
+const formEmpresa = document.getElementById('formEmpresa');
+const formData = new FormData(formEmpresa);
+
+var autoretenedor =$('#autoretenedor').is(':checked') ? 1 : 0; //
+var autoretenedorica =$('#autoretenedorica').is(':checked') ? 1 : 0; //
+var autoretenedorrenta =$('#autoretenedorrenta').is(':checked') ? 1 : 0;//
+var ecommerce =$('#ecommerce').is(':checked') ? 1 : 0;//
+var pucedit =$('#pucedit').is(':checked') ? 1 : 0;//
+
+var nombre = $('#nombre').val();//
+var razonsocial = $('#razonsocial').val();//
+var nit = $('#identificacion').val();//
+var digitoverificacion = $('#verificado').val();//
+var direccion = $('#direccion').val();//
+var telefono1 = $('#telefono1').val();//
+var telefono2 = $('#telefono2').val();//
+var email = $('#email').val();//
+var representantelegal = $('#representantelegal').val();//
+// var moneda = $('#moneda').val();
+var texto1 = $('#texto1').val();//
+var texto2 = $('#texto2').val();//
+var texto3 = $('#texto3').val();//
+var texto4 = $('#texto4').val();//
+var fecharesolucion = $('#fecharesoluciones').val();//
+var resolucionautoretenedor = $('#resolucionautoretenedor').val();//
+var contactonombre = $('#contactonombre').val();//
+var contactocelular = $('#contactocelular').val();//
+var ciiuclase_id = $('#ciiu_id').val();//
+var puc_id = $('#puc_id').val();//
+var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
+
+var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : ''; //
+var tipocontribuyente_id = $('#select-tipocontribuyentes').val()? $('#select-tipocontribuyentes').val() : '';// 
+var regimene_id = $('#select-regimenes').val()? $('#select-regimenes').val() : ''; //
+var personeria_id = $('#select-personerias').val()? $('#select-personerias').val() : ''; //
+var tiposociedade_id = $('#select-tiposociedades').val()? $('#select-tiposociedades').val() : ''; //
+var nivelgasto = $('#select-nivelcentro').val()? $('#select-nivelcentro').val() : ''; //
+var contacto_id = $('#select-contactos').val()? $('#select-contactos').val() : ''; //
+
+formData.append("autoretenedor", autoretenedor);
+formData.append("autoretenedorica", autoretenedorica);
+formData.append("autoretenedorrenta", autoretenedorrenta);
+formData.append("ecommerce", ecommerce);
+formData.append("pucedit", pucedit);
+formData.append("nombre", nombre);
+formData.append("razonsocial", razonsocial);
+formData.append("nit", nit);
+formData.append("digitoverificacion", digitoverificacion);
+formData.append("direccion", direccion);
+formData.append("telefono1", telefono1);
+formData.append("telefono2", telefono2);
+formData.append("email", email);
+formData.append("representantelegal", representantelegal);
+// formData.append("moneda", moneda);
+formData.append("texto1", texto1);
+formData.append("texto2", texto2);
+formData.append("texto3", texto3);
+formData.append("texto4", texto4);
+formData.append("fecharesolucion", fecharesolucion);
+formData.append("resolucionautoretenedor", resolucionautoretenedor);
+formData.append("contactonombre", contactonombre);
+formData.append("contactocelular", contactocelular);
+formData.append("ciiuclase_id", ciiuclase_id);
+formData.append("puc_id", puc_id);
+formData.append("imagen", imagen);
+formData.append("ciudade_id", ciudade_id);
+formData.append("tipocontribuyente_id", tipocontribuyente_id);
+formData.append("regimene_id", regimene_id);
+formData.append("personeria_id", personeria_id);
+formData.append("tiposociedade_id", tiposociedade_id);
+formData.append("nivelgasto", nivelgasto);
+formData.append("contacto_id", contacto_id);
+formData.append('_method', 'PUT');
+
+// const output = document.getElementById('output');
+
+// for (const [key, value] of formData) {
+//   output.textContent += `${key}: ${value}\n`;
+// }
+
+$.ajax({
+    method: "POST",
+    url: url_back + "empresas/"+localStorage.empresa_id,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,//formData
+    processData: false,//formData
+    // async: false,
+    success: function(respuesta) {
+
+        if(respuesta){
+            var mensaje = 'Empresa actualizado de forma correcta nombre.: '+ respuesta.data.nombre;
+            sweetMessage('success', mensaje); 
+            // localStorage.editar = '';
+            // $('#main_content').load(url_front + 'empresas/index.html');
+        } else {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    },
+    error: function(respuesta) {
+
+        console.log(respuesta.responseJSON);
+        if(respuesta.responseJSON.error){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
+            });
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+ 
+
+    }
+});
+});
+
+//****************************************************Retencion ICA ********************************************************
+$('#select-retencionicas').on('click',function(){
+  var ica_id = $(this).val();
+  if(ica_id){
+      $('#idica').val(ica_id);
+  }
+});
+
+$('#autoretenedorica').on('click',function(){
+  var bool = confirm('esta empresa es autoretenedor ICA?');
+  if(bool){
+      $('#autoretenedorica').prop('disabled', true);
+      $('#autoretenedorica').prop( "checked", true );
+      $('#crearica').prop('disabled', false);
+      $('#verica').prop('disabled', false);
+      $('#editarica').prop('disabled', false);
+      $('#eliminarica').prop('disabled', false);
+  }else{
+    $('#autoretenedorica').prop( "checked", false);
+  }
+});
+
+
+function eliminarRetencionica(e){
+e.preventDefault();   
+
+var id = $('#idica').val();
+
+var url_eliminar = 'icas/' + id;
+
+if(id){
+if (confirm('¿Está seguro de Borrar Este ICA?')){
+
+            $.ajax({
+          method: "DELETE",
+          url: url_back + url_eliminar,
+          headers: { 
+                        Authorization: 'Bearer ' + localStorage.access_token
+                    },
+          dataType: "json",
+          success: function(respuesta) {
+
+              var mensaje = 'se borro exitosamente '+ respuesta.data.actividad;
+              sweetMessage('success', mensaje);
+
+              obtenerretencionicas();
+              
+          },
+          error: function() {
+              var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+              sweetMessage('error', mensaje);
+          }
+        })  
+} else{
+  return false;
+}
+}else{
+      var mensaje = 'Se presentó un error. Por favor, seleccione un elemento.';
+      sweetMessage('error', mensaje);
+  }
+}
+
+function verRetencionica(e){
+e.preventDefault();   
+var id = $('#idica').val();
+
+if(id){
+  $('#mymodal').html('');
+  localStorage.setItem('verica', id);
+  $('#mymodal').load('../miempresa/retencionicas/show.html',function(){
+        $('#ModalLong').modal({show:true});
+    });
+  }else{
+      var mensaje = 'Se presentó un error. Por favor, seleccione un elemento.';
+      sweetMessage('error', mensaje);
+  }
+}
+
+function editarRetencionica(e){
+e.preventDefault();  
+$('#mymodal').html('');
+var id = $('#idica').val();
+
+if(id){
+  $('#mymodal').html('');
+  localStorage.setItem('editarica', id);
+  $('#mymodal').load('../miempresa/retencionicas/edit.html',function(){
+        $('#ModalLong2').modal({show:true});
+    });
+  }else{
+      var mensaje = 'Se presentó un error. Por favor, seleccione un elemento.';
+      sweetMessage('error', mensaje);
+  }
+}
+
+var crearRetencionica = function(e){ //TODO: error se debe crear con la empresa que se edita
+    e.preventDefault();   
+    $('#mymodal').html('');
+
+    $('#mymodal').load('../miempresa/retencionicas/add.html',function(){
+        $('#ModalLong3').modal({show:true});
+    });
+}
+
+
+
+//*****************************************************Socios ***************************************************************
+
+var generarDataTable = function( dataSet ) {
+
+$("#socios").DataTable({
+  data: dataSet,
+  columns: [
+          { title: "Nombre" },
+          { title: "Apellidos" },
+          { title: "Celular" },
+          { title: "N° Acciones" },
+          { title: "Participacion %" },
+          { title: "Acciones" },
+          ],
+  "responsive": true, "lengthChange": true, "autoWidth": false,
+  "paging": true, "ordering": true, "info": true,  "scrollX": true,
+      "language": {
+              url:"../../build/config/languagedatatable.json"
+        },
+        dom: 'Bfrtip',
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+}
+
+var organizarDatos = function( data ) {  //TODO: revisar este codigo
+    var arrSocios = [];
+    data.forEach(element => {
+        arrSocio = [
+            element.tercero.nombres,
+            element.tercero.apellidos? element.tercero.apellidos : '',
+            element.tercero.celular,
+            element.numeroacciones? element.numeroacciones : '',
+            element.porcentajeparticipacion? element.porcentajeparticipacion : '',
+        ];
+
+        arrSocio.push('<div class="col"> <button class="btn btn-success btn-sm" type="submit" onclick="verSocio('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarSocio('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarSocio('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
+
+        arrSocios.push(arrSocio);
+
+    });
+
+    return arrSocios;
+}
 
 //***************************************************trae valores de y Empresa si ya exiten (ciudad)*******************
 
@@ -569,7 +857,13 @@ $.ajax({
     },
     dataType: "json",
     success: function(respuesta) {
-      $('#select-retencionicas').html(crearHtmlICA(respuesta.data));
+        if(respuesta.count < 5 && respuesta.count != 0){
+           $('#crearica').prop('disabled', false);
+            $('#select-retencionicas').html(crearHtmlICA(respuesta.data));
+        }else{
+           $('#crearica').prop('disabled', true);
+           $('#select-retencionicas').html(crearHtmlICA(respuesta.data));
+        }
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -669,7 +963,7 @@ var obtenerSelect = function(url, select, id){
             html += '<option value="'+ respuesta.data.id+'">';
             html += respuesta.data.descripcion;
             html += '</option>';
-            $(select).html(html);
+            obtenerSelects(url, select, id, html);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -678,49 +972,190 @@ var obtenerSelect = function(url, select, id){
   })  
 }
 
-//*****************************************************Socios ***************************************************************
 
-var generarDataTable = function( dataSet ) {
+//***************************************************trae valores masivos de tipocontribuyente,ciudad, ciiuclase, tiposociedades, regimen, personeria*******************
 
-$("#socios").DataTable({
-  data: dataSet,
-  columns: [
-          { title: "Nombre" },
-          { title: "Apellidos" },
-          { title: "Celular" },
-          { title: "N° Acciones" },
-          { title: "Participacion %" },
-          ],
-  "responsive": true, "lengthChange": true, "autoWidth": false,
-  "paging": true, "ordering": true, "info": true,  "scrollX": true,
-      "language": {
-              url:"../../build/config/languagedatatable.json"
+/**
+ * Genera el html con los departamentos configurados en la base de datos
+ */
+
+ function obtenerDepartamentos() {
+
+url = 'paises/'+ 170 +'/departamentos';
+
+    $.ajax({
+        method: "GET",
+        url: url_back + url,
+        headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
         },
-        dom: 'Bfrtip',
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
+        dataType: "json",
+        success: function(respuesta) {
+            // crearDepartamentos(respuesta.data);
+            $('#select-departamento').html(crearHtml(respuesta.data));
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    })     
 }
 
-var organizarDatos = function( data ) {  //TODO: revisar este codigo
-    var arrSocios = [];
-    data.forEach(element => {
-        arrSocio = [
-            element.tercero.nombres,
-            element.tercero.apellidos? element.tercero.apellidos : '',
-            element.tercero.celular,
-            element.numeroacciones? element.numeroacciones : '',
-            element.porcentajeparticipacion? element.porcentajeparticipacion : '',
-        ];
+function obtenerSelects(url, select, id = null,  base = null) {
 
-        arrSocios.push(arrSocio);
+$.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+
+        $(select).html(crearHtml(respuesta.data, base, id));
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })     
+}
+
+var crearHtml = function(data, base = null, id = null) {
+    if (base) {
+            var html = base;
+            $.each(data, function (key, item) {
+                if(id != item.id){
+                    html += '<option value="'+ item.id+'">';
+                    html += item.descripcion;
+                    html += '</option>';
+                }
+            });
+        return html;
+    } else {
+            var html = '<option value="">Seleccione..</option>';
+            $.each(data, function (key, item) {
+                html += '<option value="'+ item.id+'">';
+                html += item.descripcion;
+                html += '</option>';
+            });
+        return html;
+    }
+}
+
+
+//***************************************************autocompletar*******************
+
+$( "#ciiu" ).autocomplete({
+        source: function( request, response ) {
+            var url_ciiu = 'ciiuclases/?search='+$('#ciiu').val();
+
+           // Fetch data
+           $.ajax({
+             method: "GET",
+             url: url_back + url_ciiu,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#ciiu').val(ui.item.label); // display the selected text
+          $('#ciiu_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
+
+
+$( "#puc" ).autocomplete({
+        source: function( request, response ) {
+            var url_puc = 'allpucs/41?search='+$('#puc').val(); //TODO: buscar en todas las 41
+
+           // Fetch data
+           $.ajax({
+             method: "GET",
+             url: url_back + url_puc,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#puc').val(ui.item.label); // display the selected text
+          $('#puc_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
+
+//*********************************************************Botones de terceros Especificos Socio****************************************************
+
+var verSocio = function(id) {
+event.preventDefault();
+
+  $('#mymodal').html('');
+  localStorage.setItem('vertercero', id);
+  $('#mymodal').load('../terceros/socios/show.html',function(){
+        $('#exampleModalLong').modal({show:true});
     });
-
-    return arrSocios;
-}
+};
 
 
-//*************************************************************************************************************************
+var editarSocio = function(id) {
+event.preventDefault();
+
+  $('#mymodal').html('');
+  localStorage.setItem('editartercero', id);
+
+  $('#mymodal').load('../terceros/socios/edit.html',function(){
+        $('#ModalLong2').modal({show:true});
+  });
+};
+
+var eliminarSocio = function(id) {
+event.preventDefault();
+
+var url_eliminar = 'socios/' + id;
+var url_index = 'miempresa/edit.html';
+
+  if (confirm('¿Está seguro de Borrar este Socio?')){
+
+          $.ajax({
+            method: "DELETE",
+            url: url_back + url_eliminar,
+            headers: { 
+                          Authorization: 'Bearer ' + localStorage.access_token
+                      },
+            dataType: "json",
+            success: function(respuesta) {
+
+                var mensaje = 'se borro exitosamente el Socio';
+                sweetMessage('success', mensaje);
+                
+                $('#main_content').load(url_front + url_index);
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })  
+  } else{
+    return false;
+  }
+};
+
+//***************************************************trae valores*******************
 
 function obtenerEmpresa(id){
 
@@ -770,12 +1205,32 @@ $.ajax({
             $("#divf").show();
         }
 
+        if(!$('input[id=autoretenedorica]').is(':checked')){
+            $('#crearica').prop('disabled', true);
+            $('#verica').prop('disabled', true);
+            $('#editarica').prop('disabled', true);
+            $('#eliminarica').prop('disabled', true);
+
+        }else{
+            $('#autoretenedorica').prop('disabled', true);
+            $('#crearica').prop('disabled', false);
+            $('#verica').prop('disabled', false);
+            $('#editarica').prop('disabled', false);
+            $('#eliminarica').prop('disabled', false);
+        }
+
 
         if(respuesta.data.imagen){
             const ul = document.getElementById("mostrarImagen");
             const imagen = document.createElement("img");
             imagen.width = 200;
             imagen.src = url_img + 'empresas/'+ respuesta.data.imagen;
+            ul.appendChild(imagen);
+          }else{
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'terceros/defecto.jpg';
             ul.appendChild(imagen);
           }
 
@@ -793,22 +1248,33 @@ $.ajax({
 
         if(respuesta.data.contacto_id){
             obtenerSelect('contactos', '#select-contactos', respuesta.data.contacto_id);
+        }else{
+            obtenerSelects('contactos', '#select-contactos');
         }
 
         if(respuesta.data.tipocontribuyente_id){
             obtenerSelect('tipocontribuyentes', '#select-tipocontribuyentes', respuesta.data.tipocontribuyente_id);
+        }else{
+            obtenerSelects('tipocontribuyentes', '#select-tipocontribuyentes');
         }
 
         if(respuesta.data.regimene_id){
             obtenerSelect('regimenes', '#select-regimenes', respuesta.data.regimene_id);
+        }else{
+            obtenerSelects('regimenes', '#select-regimenes');
         }
 
         if(respuesta.data.personeria_id){
             obtenerSelect('personerias', '#select-personerias', respuesta.data.personeria_id);
+        }else{
+            obtenerSelects('personerias', '#select-personerias');
         }
 
         if(respuesta.data.tiposociedade_id){
             obtenerSelect('tiposociedades', '#select-tiposociedades', respuesta.data.tiposociedade_id);
+
+        }else{
+            obtenerSelects('tiposociedades', '#select-tiposociedades');
         }
 
         if(respuesta.data.socios){
@@ -823,21 +1289,110 @@ $.ajax({
   })  
 }
 
-var defaultImage = function(){
-    const ul = document.getElementById("mostrarImagen");
-    const imagen = document.createElement("img");
-    imagen.width = 200;
-    imagen.src = url_front + 'empresas/defecto.jpg';
-    ul.appendChild(imagen);
+
+$('#autoretenedor').change(function(){    
+    if($('input[id=autoretenedor]').is(':checked')){
+        $("#div").show();
+        $("#divf").show();
+    }else{
+        $("#div").hide();
+        $("#divf").hide();
+    }
+});
+
+$('#pucedit').click(function(){    
+    var bool = confirm(localStorage.msgpuc);
+    if(bool){
+        $('#pucedit').prop( "checked", true )
+    }else{
+        $('#pucedit').prop( "checked", false )
+    }
+});
+
+
+
+$( document ).ready(function() {  
+    // TODO: agregar resolucion CRUD
+    // controlador de cuentas puc mejorar la busqueda 
+    $('.preloader').hide("slow");
+      validarLogin();
+
+    $("#identificacion").on("change",calcularDigito); // Digito de verificacion
+
+    $("#crearica").on("click",crearRetencionica); 
+    $("#editarica").on("click",editarRetencionica); 
+    $("#verica").on("click",verRetencionica); 
+    $("#eliminarica").on("click",eliminarRetencionica); 
+
+    obtenerretencionicas();
+    obtenerEmpresa(localStorage.empresa_id);
+    obtenerDepartamentos();
+
+    $('#select-departamento').on('change',function(){
+        var departamento_id = $(this).val();
+        var url_d ='departamentos/'+departamento_id+'/ciudades';
+        if(departamento_id){
+            $.ajax({
+                type:"GET",
+                url: url_back + url_d,
+                headers: { 
+                    Authorization: 'Bearer ' + localStorage.access_token
+                },
+                dataType: "json",
+                success:function(respuesta){
+
+                    $('#select-ciudad').html(crearHtml(respuesta.data));
+                }
+            }); 
+        }else if($(this).val() == ''){
+             $('#select-ciudad').val('');
+        }
+    });
+
+
+    $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
+    $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
+});
+
+
+
+$(function() {
+    //Date picker
+ $("#fecharesolucione").datetimepicker({
+        locale: "es",
+        format: "YYYY-MM-DD",  
+        //  defaultDate:"2012/01/01",
+        maxDate: new Date("2010-01-01"),//TODO: fijar fecha automatica menos 15 años 
+        minDate: '1950-01-01',
+        timepicker:false,
+        autoclose: true,
+        showButtonPanel: true
+ });
+    // //Date and time picker
+    // $('#fecharesolucionetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+});
+
+
+document.getElementById("imagen").onchange = function(e){
+    if(validarImagen(e)){
+        const ul = document.getElementById("mostrarImagen");
+        ul.innerHTML = '';
+        const imagen = document.createElement("img");
+        const read = new FileReader();
+        const file = this.files;
+        
+        read.onload = function(){
+            const result = this.result;
+            const url = result;
+            imagen.width = 200;
+            imagen.src = url;
+            ul.appendChild(imagen);
+        }
+        read.readAsDataURL(file[0]);
+    }
 }
 
-$( document ).ready(function() {
-    $('.preloader').hide("slow");
-    validarLogin();
+</script>
 
-    obtenerEmpresa(localStorage.ver);
-    obtenerretencionicas();
-    defaultImage();
-
-});
-  </script>
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>
