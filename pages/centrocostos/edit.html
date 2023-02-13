@@ -173,8 +173,8 @@ function switchEditar(url, data){ //TODO: required
 
     bottones = '';
     bottones += '<div class="col-12 float-right">';
-    bottones += '<button type="submit" id="form" class="btn btn-primary float-right">Actualizar</button>&nbsp;'; 
-    bottones += '<button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button></div>';
+    bottones += '<button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>&nbsp;';
+    bottones += '<button type="submit" id="form" class="btn btn-primary float-right">Actualizar</button></div>'; 
         
 
     switch (url) {
@@ -281,7 +281,7 @@ var obtenerPuc = function(id){
     success: function(respuesta) {
             var htmlEstado = '';
             htmlEstado += '<option value="'+ respuesta.data.id+'">';
-            htmlEstado += respuesta.data.descripcion;
+            htmlEstado += respuesta.data.id+'-'+respuesta.data.descripcion;
             htmlEstado += '</option>';
             obtenerPucs(htmlEstado, id);
     },
@@ -295,7 +295,7 @@ var obtenerPuc = function(id){
 
 //******************************************************* trae todas las cuentas pucs ********************************************************
 var obtenerPucs = function(base = null, id = null){
-    var url_puc= 'pucs';
+    var url_puc= 'allpucscentrocostos';
     $.ajax({
     method: "GET",
     url: url_back + url_puc,
@@ -304,7 +304,8 @@ var obtenerPucs = function(base = null, id = null){
     },
     dataType: "json",
     success: function(respuesta) {
-        $('#select-puc').html(crearHtmlshow(respuesta.data, base, id));
+
+        $('#select-puc').html(crearHtmlshow(respuesta, base, id));
 
     },
     error: function() {
@@ -320,7 +321,7 @@ var crearHtmlshow = function(data, base = null, id = null) {
             $.each(data, function (key, item) {
                 if(id != item.id){
                     html += '<option value="'+ item.id+'">';
-                    html += item.descripcion;
+                    html += item.id+'-'+item.descripcion;
                     html += '</option>';
                 }
             });
@@ -329,7 +330,7 @@ var crearHtmlshow = function(data, base = null, id = null) {
             var html = '<option value="">Seleccione..</option>';
             $.each(data, function (key, item) {
                 html += '<option value="'+ item.id+'">';
-                html += item.descripcion;
+                html += item.id+'-'+item.descripcion;
                 html += '</option>';
             });
         return html;

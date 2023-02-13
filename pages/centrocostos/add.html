@@ -176,8 +176,8 @@ function switchcrear(url){ //TODO: required
 
     bottones = '';
     bottones += '<div class="col-12 float-right">';
-    bottones += '<button type="submit" id="form" class="btn btn-primary float-right">Crear</button>&nbsp;'; 
-    bottones += '<button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button></div>';
+    bottones += '<button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>&nbsp;'; 
+    bottones += '<button type="submit" id="form" class="btn btn-primary float-right">Crear</button></div>';
 
     switch (url) {
         case '':
@@ -269,7 +269,7 @@ function switchcrear(url){ //TODO: required
 
 //******************************************************* trae todas las cuentas pucs ********************************************************
 var obtenerPucs = function(){
-    var url_puc= 'pucs';
+    var url_puc= 'allpucscentrocostos';
     $.ajax({
     method: "GET",
     url: url_back + url_puc,
@@ -278,7 +278,7 @@ var obtenerPucs = function(){
     },
     dataType: "json",
     success: function(respuesta) {
-        $('#select-puc').html(crearHtmlshow(respuesta.data));
+        $('#select-puc').html(crearHtmlshow(respuesta));
 
     },
     error: function() {
@@ -293,7 +293,7 @@ var crearHtmlshow = function(data) {
             var html = '<option value="">Seleccione..</option>';
             $.each(data, function (key, item) {
                 html += '<option value="'+ item.id+'">';
-                html += item.descripcion;
+                html += item.id+'-'+item.descripcion;
                 html += '</option>';
             });
         return html;

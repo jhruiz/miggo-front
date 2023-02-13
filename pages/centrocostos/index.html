@@ -262,22 +262,64 @@ function editarCentrocosto(){
     }
 }
 
-function crearCentrocosto(){
+function crearCentrocosto(){ //TODO: Las únicas cuentas elegibles para parametrizar las divisiones son las 5, 6 y 7 (es decir todas las que empiezan por ese dígito), es decir que debe traer: 51 – 52 – 53 – 61 – 62 – 71 – 72 -73 - 74
   $('#mymodal').html('');
-
   var id = $('#id').val();
   var url = $('#centrocosto').val();
-  if (id){
-    localStorage.setItem('crear', id);
-    localStorage.setItem('url', url);
+
+  if(localStorage.nivelgasto == 1){
+
+    if(url =='' || url =='centrocostos'){
+      if (id){
+            localStorage.setItem('crear', id);
+            localStorage.setItem('url', url);
+          }else{
+            localStorage.setItem('crear', '');
+            localStorage.setItem('url', '');
+          }
+          $('#mymodal').load('../centrocostos/add.html',function(){
+                      $('#ModalLong3').modal({show:true});
+                  });
+    }else{
+          var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que la empresa tiene un nivel de gasto Divisiones';
+          sweetMessage('error', mensaje);
+      }
+
+  }else if(localStorage.nivelgasto == 2){
+
+      if(url =='' || url =='centrocostos' || url == 'divisiones'){
+          if (id){
+            localStorage.setItem('crear', id);
+            localStorage.setItem('url', url);
+          }else{
+            localStorage.setItem('crear', '');
+            localStorage.setItem('url', '');
+          }
+          $('#mymodal').load('../centrocostos/add.html',function(){
+                      $('#ModalLong3').modal({show:true});
+                  });
+      }else{
+          var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que la empresa tiene un nivel de gasto Secciones';
+          sweetMessage('error', mensaje);
+      }
+
+  }else if(localStorage.nivelgasto == 3){
+        if (id){
+          localStorage.setItem('crear', id);
+          localStorage.setItem('url', url);
+        }else{
+          localStorage.setItem('crear', '');
+          localStorage.setItem('url', '');
+        }
+
+        $('#mymodal').load('../centrocostos/add.html',function(){
+                      $('#ModalLong3').modal({show:true});
+                  });
   }else{
-    localStorage.setItem('crear', '');
-    localStorage.setItem('url', '');
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde. verifique tener un centro de costo asociado a la empresa';
+          sweetMessage('error', mensaje);
   }
 
-  $('#mymodal').load('../centrocostos/add.html',function(){
-        $('#ModalLong3').modal({show:true});
-    });
 }
 
 function obtenerCentrocostos() {
