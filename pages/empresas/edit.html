@@ -463,42 +463,7 @@
         <!--  -->
 
 
-
-
-
-<!--  -->
-
-<div class="card">
-    <div class="card-header border-0">
-      <h3 class="card-title">             
-         Tabla de Socios
-        <i class="ion ion-ios-people-outline"></i>
-    </h3>
-      <div>
-
-        <ol class="breadcrumb float-sm-right" style="background: rgba(128, 128, 128, 0);">
-            <li class="breadcrumb-item active">
-              <button class="btn btn-success btn-sm float-right" id="crearsocio">
-                <i class="fas fa fa-plus" aria-hidden="true"></i>
-              </button>
-            </li>
-            <!-- <li class="breadcrumb-item active">Tabla de Tipoactivosfijo</li> -->
-          </ol>
-
-      </div>
-    </div>
-    <div class="card-body table-responsive p-0">
-      <table id="socios" class="table table-striped table-valign-middle">
-
-      </table>
-    </div>
-  </div>
-  <!-- /.card -->
-<!--  -->
-
-
-
-      <div class="col-12">
+     <div class="col-12">
               <div class="row">
 
                 <div class="col-sm-3">
@@ -801,53 +766,6 @@ var crearRetencionica = function(e){ //TODO: error se debe crear con la empresa 
         $('#ModalLong3').modal({show:true});
     });
 }
-
-
-
-//*****************************************************Socios ***************************************************************
-
-var generarDataTable = function( dataSet ) {
-
-$("#socios").DataTable({
-  data: dataSet,
-  columns: [
-          { title: "Nombre" },
-          { title: "Apellidos" },
-          { title: "Celular" },
-          { title: "N° Acciones" },
-          { title: "Participacion %" },
-          { title: "Acciones" },
-          ],
-  "responsive": true, "lengthChange": true, "autoWidth": false,
-  "paging": true, "ordering": true, "info": true,  "scrollX": true,
-      "language": {
-              url:"../../build/config/languagedatatable.json"
-        },
-        dom: 'Bfrtip',
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-}
-
-var organizarDatos = function( data ) {  //TODO: revisar este codigo
-    var arrSocios = [];
-    data.forEach(element => {
-        arrSocio = [
-            element.tercero.nombres,
-            element.tercero.apellidos? element.tercero.apellidos : '',
-            element.tercero.celular,
-            element.numeroacciones? element.numeroacciones : '',
-            element.porcentajeparticipacion? element.porcentajeparticipacion : '',
-        ];
-
-        arrSocio.push('<div class="col"> <button class="btn btn-success btn-sm" type="submit" onclick="verSocio('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarSocio('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarSocio('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
-
-        arrSocios.push(arrSocio);
-    });
-
-    return arrSocios;
-}
-
 
 //*********************************************************Botones de terceros Especificos Socio****************************************************
 
@@ -1293,9 +1211,9 @@ $.ajax({
             obtenerSelects('tiposociedades', '#select-tiposociedades');
         }
 
-        if(respuesta.data.socios){
-            generarDataTable(organizarDatos(respuesta.data.socios));
-        }
+        // if(respuesta.data.socios){
+        //     generarDataTable(organizarDatos(respuesta.data.socios));
+        // }
 
     },
     error: function() {

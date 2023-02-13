@@ -714,15 +714,16 @@
                           <!-- checkbox -->
                           <div class="form-group clearfix">
                             <div class="icheck-success d-inline">
-                              <input type="checkbox" id="socio">
-                              <label for="socio">
-                                socio
+                              <input type="checkbox" id="mastercardyvisa">
+                              <label for="mastercardyvisa">
+                                Master Card y Visa
                               </label>
                             </div>
 
-                                <!--  -->
 
-                                <div class="table table-striped files" id="divS" style="display: none;">
+                            <!--  -->
+
+                                <div class="table table-striped files" id="divM" style="display: none;">
 
                                   <div class="col-auto d-flex align-items-center">
                                     <div class="btn-group">
@@ -733,17 +734,17 @@
                                         </button> -->
                                           &nbsp;
                                           
-                                      <button class="btn btn-success btn-sm" id="sociobtnver" data-toggle="modal" data-target="#exampleModalLong">
+                                      <button class="btn btn-success btn-sm" id="mastercardyvisabtnver" data-toggle="modal" data-target="#exampleModalLong">
                                         <!-- <button class="btn btn-info start"> -->
                                         <!-- <i class="fas fa-upload"></i> -->
                                         <i class="nav-icon fas fa-search" aria-hidden="true"></i>
-                                      <input type="text" id="socio_id" class="form-control input-numero" hidden>
+                                      <input type="text" id="mastercardyvisa_id" class="form-control input-numero" hidden>
                                         <span></span>
                                       </button>
                                       &nbsp;
 
 
-                                      <button data-dz-remove class="btn btn-info btn-sm" id="sociobtnedit" data-toggle="modal" data-target="#ModalLong2">
+                                      <button data-dz-remove class="btn btn-info btn-sm" id="mastercardyvisabtnedit" data-toggle="modal" data-target="#ModalLong2">
                                         <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
                                         <!-- <i class="fas fa-times-circle"></i> -->
                                         <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
@@ -751,7 +752,7 @@
                                       </button>
                                       &nbsp;
 
-                                      <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete">
+                                      <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete">
                                         <i class="fas fa-trash"></i>
                                         <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                         <span></span>
@@ -760,7 +761,6 @@
                                   </div>
                                 </div>
                                 <!--  -->
-
                           </div>
                         </div>
 
@@ -825,49 +825,51 @@
 
 
                       <div class="row">
+
+
+
                           <div class="col-sm-6">
                             <!-- checkbox -->
-                            <div class="form-group clearfix">
+                            <div class="form-group clearfix" id="divEmpresa" style="display: none;">
                               <div class="icheck-success d-inline">
-                                <input type="checkbox" id="mastercardyvisa">
-                                <label for="mastercardyvisa">
-                                  Master Card y Visa
+                                <input type="checkbox" id="socio">
+                                <label for="socio">
+                                  socio
                                 </label>
                               </div>
-
-
-                              <!--  -->
-
-                                  <div class="table table-striped files" id="divM" style="display: none;">
-
+  
+                                  <!--  -->
+  
+                                  <div class="table table-striped files" id="divS" style="display: none;">
+  
                                     <div class="col-auto d-flex align-items-center">
                                       <div class="btn-group">
-
+  
                                         <!-- <button class="btn btn-success start">
                                             <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
                                             <span></span>
                                           </button> -->
                                             &nbsp;
                                             
-                                        <button class="btn btn-success btn-sm" id="mastercardyvisabtnver" data-toggle="modal" data-target="#exampleModalLong">
+                                        <button class="btn btn-success btn-sm" id="sociobtnver" data-toggle="modal" data-target="#exampleModalLong">
                                           <!-- <button class="btn btn-info start"> -->
                                           <!-- <i class="fas fa-upload"></i> -->
                                           <i class="nav-icon fas fa-search" aria-hidden="true"></i>
-                                        <input type="text" id="mastercardyvisa_id" class="form-control input-numero" hidden>
+                                        <input type="text" id="socio_id" class="form-control input-numero" hidden>
                                           <span></span>
                                         </button>
                                         &nbsp;
-
-
-                                        <button data-dz-remove class="btn btn-info btn-sm" id="mastercardyvisabtnedit" data-toggle="modal" data-target="#ModalLong2">
+  
+  
+                                        <button data-dz-remove class="btn btn-info btn-sm" id="sociobtnedit" data-toggle="modal" data-target="#ModalLong2">
                                           <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
                                           <!-- <i class="fas fa-times-circle"></i> -->
                                           <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
                                           <span></span>
                                         </button>
                                         &nbsp;
-
-                                        <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete">
+  
+                                        <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete">
                                           <i class="fas fa-trash"></i>
                                           <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                           <span></span>
@@ -876,6 +878,7 @@
                                     </div>
                                   </div>
                                   <!--  -->
+  
                             </div>
                           </div>
                         </div>
@@ -1842,6 +1845,15 @@ var url_index = 'terceros/edit.html';
 });
 
 
+var verificarSucursal = function(){
+
+  if(localStorage.sucursal == ''){
+    $("#divEmpresa").show();
+  }
+
+}
+
+
 //*********************************************************Botones de Otro tercero****************************************************
 
 $("#otrostercerobtnver").click(function(event) {
@@ -2033,6 +2045,7 @@ $( document ).ready(function() {
 
     obtenertercero(localStorage.editar);
     obtenerDepartamentos();
+    verificarSucursal();
 
     $('#select-departamento').on('change',function(){
         var departamento_id = $(this).val();

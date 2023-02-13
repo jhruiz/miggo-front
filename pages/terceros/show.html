@@ -700,44 +700,45 @@
                           <!-- checkbox -->
                           <div class="form-group clearfix">
                             <div class="icheck-success d-inline">
-                              <input type="checkbox" id="socio" disabled>
-                              <label for="socio">
-                                socio
+                              <input type="checkbox" id="mastercardyvisa" disabled>
+                              <label for="mastercardyvisa">
+                                Master Card y Visa
                               </label>
                             </div>
-  
-                                <!--  -->
-  
-                                <div class="table table-striped files" id="divS" style="display: none;">
-  
+
+
+                            <!--  -->
+
+                                <div class="table table-striped files" id="divM" style="display: none;">
+
                                   <div class="col-auto d-flex align-items-center">
                                     <div class="btn-group">
-  
+
                                       <!-- <button class="btn btn-success start">
                                           <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
                                           <span></span>
                                         </button> -->
                                           &nbsp;
                                           
-                                      <button class="btn btn-success btn-sm" id="sociobtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                      <button class="btn btn-success btn-sm" id="mastercardyvisabtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
                                         <!-- <button class="btn btn-info start"> -->
                                         <!-- <i class="fas fa-upload"></i> -->
                                         <i class="nav-icon fas fa-search" aria-hidden="true"></i>
-                                      <input type="text" id="socio_id" class="form-control input-numero" hidden>
+                                      <input type="text" id="mastercardyvisa_id" class="form-control input-numero" hidden>
                                         <span></span>
                                       </button>
                                       &nbsp;
-  
-  
-                                      <button data-dz-remove class="btn btn-info btn-sm" id="sociobtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+
+
+                                      <button data-dz-remove class="btn btn-info btn-sm" id="mastercardyvisabtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
                                         <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
                                         <!-- <i class="fas fa-times-circle"></i> -->
                                         <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
                                         <span></span>
                                       </button>
                                       &nbsp;
-  
-                                      <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete" disabled>
+
+                                      <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete" disabled>
                                         <i class="fas fa-trash"></i>
                                         <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                         <span></span>
@@ -746,7 +747,6 @@
                                   </div>
                                 </div>
                                 <!--  -->
-  
                           </div>
                         </div>
   
@@ -810,47 +810,46 @@
                       <div class="row">
                           <div class="col-sm-6">
                             <!-- checkbox -->
-                            <div class="form-group clearfix">
+                            <div class="form-group clearfix" id="divEmpresa" style="display: none;">
                               <div class="icheck-success d-inline">
-                                <input type="checkbox" id="mastercardyvisa" disabled>
-                                <label for="mastercardyvisa">
-                                  Master Card y Visa
+                                <input type="checkbox" id="socio" disabled>
+                                <label for="socio">
+                                  socio
                                 </label>
                               </div>
-  
-  
-                              <!--  -->
-  
-                                  <div class="table table-striped files" id="divM" style="display: none;">
-  
+    
+                                  <!--  -->
+    
+                                  <div class="table table-striped files" id="divS" style="display: none;">
+    
                                     <div class="col-auto d-flex align-items-center">
                                       <div class="btn-group">
-  
+    
                                         <!-- <button class="btn btn-success start">
                                             <i class="nav-icon fas fa-plus" aria-hidden="true"></i>
                                             <span></span>
                                           </button> -->
                                             &nbsp;
                                             
-                                        <button class="btn btn-success btn-sm" id="mastercardyvisabtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
+                                        <button class="btn btn-success btn-sm" id="sociobtnver" data-toggle="modal" data-target="#exampleModalLong" disabled>
                                           <!-- <button class="btn btn-info start"> -->
                                           <!-- <i class="fas fa-upload"></i> -->
                                           <i class="nav-icon fas fa-search" aria-hidden="true"></i>
-                                        <input type="text" id="mastercardyvisa_id" class="form-control input-numero" hidden>
+                                        <input type="text" id="socio_id" class="form-control input-numero" hidden>
                                           <span></span>
                                         </button>
                                         &nbsp;
-  
-  
-                                        <button data-dz-remove class="btn btn-info btn-sm" id="mastercardyvisabtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
+    
+    
+                                        <button data-dz-remove class="btn btn-info btn-sm" id="sociobtnedit" data-toggle="modal" data-target="#ModalLong2" disabled>
                                           <!-- <button data-dz-remove class="btn btn-primary cancel"> -->
                                           <!-- <i class="fas fa-times-circle"></i> -->
                                           <i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i>
                                           <span></span>
                                         </button>
                                         &nbsp;
-  
-                                        <button data-dz-remove class="btn btn-danger delete" id="mastercardyvisabtndelete" disabled>
+    
+                                        <button data-dz-remove class="btn btn-danger delete" id="sociobtndelete" disabled>
                                           <i class="fas fa-trash"></i>
                                           <!-- <i class="nav-icon fa fa-times" aria-hidden="true"></i> -->
                                           <span></span>
@@ -859,6 +858,7 @@
                                     </div>
                                   </div>
                                   <!--  -->
+    
                             </div>
                           </div>
                         </div>
@@ -954,78 +954,7 @@ var obtenerSelect = function(url, select, id){
   })  
 }
 
-//***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
 
-// function obtenerSelects(url, select, id = null,  base = null) {
-
-// $.ajax({
-//     method: "GET",
-//     url: url_back + url,
-//     headers: { 
-//         Authorization: 'Bearer ' + localStorage.access_token
-//     },
-//     dataType: "json",
-//     success: function(respuesta) {
-
-//         $(select).html(crearHtml(respuesta.data, base, id));
-//     },
-//     error: function() {
-//         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-//         sweetMessage('error', mensaje);
-//     }
-//   })     
-// }
-
-// var crearHtml = function(data, base = null, id = null) {
-//     if (base) {
-//             var html = base;
-//             $.each(data, function (key, item) {
-//                 if(id != item.id){
-//                     html += '<option value="'+ item.id+'">';
-//                     html += item.descripcion;
-//                     html += '</option>';
-//                 }
-//             });
-//         return html;
-//     } else {
-//             var html = '<option value="">Seleccione..</option>';
-//             $.each(data, function (key, item) {
-//                 html += '<option value="'+ item.id+'">';
-//                 html += item.descripcion;
-//                 html += '</option>';
-//             });
-//         return html;
-//     }
-// }
-
-//***************************************************autocompletar*******************
-
-// $( "#ciiu" ).autocomplete({
-//         source: function( request, response ) {
-//             var url_ciiu = 'ciiuclases/?search='+$('#ciiu').val();
-
-//            // Fetch data
-//            $.ajax({
-//              method: "GET",
-//              url: url_back + url_ciiu,
-//              headers: { 
-//                 Authorization: 'Bearer ' + localStorage.access_token
-//             },
-//              dataType: "json",
-//              success: function(respuesta) {
-//                 // console.log(respuesta);
-//                 response(respuesta);
-//              }
-//            });
-//         },
-//         minLength: 2,
-//         select: function (event, ui) {
-//           // Set selection
-//           $('#ciiu').val(ui.item.label); // display the selected text
-//           $('#ciiu_id').val(ui.item.value); // save selected id to input
-//           return false;
-//         }
-//      });
 
 //******************************************************************************************************************************************
 
@@ -1170,13 +1099,21 @@ var marcarCheck = function(arre, empresa_id, html_id, div){
 }
 
 
-//*********************************************************crear detalles de terceros****************************************************
+//************************************************************************************************************
 
+var verificarSucursal = function(){
+
+if(localStorage.sucursal == ''){
+  $("#divEmpresa").show();
+}
+
+}
 
 $( document ).ready(function() {
   $('.preloader').hide("slow");
     validarLogin();
     obtenertercero(localStorage.ver);
+    verificarSucursal();
     localStorage.ver = '';
 
 });

@@ -452,34 +452,6 @@
         <!--  -->
 
 
-
-
-
-<!--  -->
-
-<div class="card">
-    <div class="card-header border-0">
-      <h3 class="card-title">             
-         Tabla de Socios
-        <i class="ion ion-ios-people-outline"></i>
-    </h3>
-      <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-sm">
-          <i class="fas fa-home"></i>
-        </a>
-      </div>
-    </div>
-    <div class="card-body table-responsive p-0">
-      <table id="socios" class="table table-striped table-valign-middle">
-
-      </table>
-    </div>
-  </div>
-  <!-- /.card -->
-<!--  -->
-
-
-
       <div class="col-12">
               <div class="row">
 
@@ -678,48 +650,6 @@ var obtenerSelect = function(url, select, id){
   })  
 }
 
-//*****************************************************Socios ***************************************************************
-
-var generarDataTable = function( dataSet ) {
-
-$("#socios").DataTable({
-  data: dataSet,
-  columns: [
-          { title: "Nombre" },
-          { title: "Apellidos" },
-          { title: "Celular" },
-          { title: "N° Acciones" },
-          { title: "Participacion %" },
-          ],
-  "responsive": true, "lengthChange": true, "autoWidth": false,
-  "paging": true, "ordering": true, "info": true,  "scrollX": true,
-      "language": {
-              url:"../../build/config/languagedatatable.json"
-        },
-        dom: 'Bfrtip',
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-}
-
-var organizarDatos = function( data ) {  //TODO: revisar este codigo
-    var arrSocios = [];
-    data.forEach(element => {
-        arrSocio = [
-            element.tercero.nombres,
-            element.tercero.apellidos? element.tercero.apellidos : '',
-            element.tercero.celular,
-            element.numeroacciones? element.numeroacciones : '',
-            element.porcentajeparticipacion? element.porcentajeparticipacion : '',
-        ];
-
-        arrSocios.push(arrSocio);
-    });
-
-    return arrSocios;
-}
-
-
 //*************************************************************************************************************************
 
 function obtenerEmpresa(id){
@@ -777,6 +707,12 @@ $.ajax({
             imagen.width = 200;
             imagen.src = url_img + 'empresas/'+ respuesta.data.imagen;
             ul.appendChild(imagen);
+          }else{
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'empresas/defecto.jpg';
+            ul.appendChild(imagen);
           }
 
         if(respuesta.data.ciudade_id){
@@ -811,10 +747,6 @@ $.ajax({
             obtenerSelect('tiposociedades', '#select-tiposociedades', respuesta.data.tiposociedade_id);
         }
 
-        if(respuesta.data.socios){
-            generarDataTable(organizarDatos(respuesta.data.socios));
-        }
-
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -823,21 +755,11 @@ $.ajax({
   })  
 }
 
-var defaultImage = function(){
-    const ul = document.getElementById("mostrarImagen");
-    const imagen = document.createElement("img");
-    imagen.width = 200;
-    imagen.src = url_front + 'empresas/defecto.jpg';
-    ul.appendChild(imagen);
-}
-
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
 
     obtenerEmpresa(localStorage.ver);
     obtenerretencionicas();
-    defaultImage();
-
 });
   </script>

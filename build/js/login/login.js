@@ -25,6 +25,7 @@ var loginFunction = function() {
                 localStorage.setItem('msgpuc', respuesta.data.empresa.msgpuc);
                 localStorage.setItem('moneda', respuesta.data.empresa.moneda);
                 localStorage.setItem('nivelgasto', respuesta.data.empresa.nivelgasto);
+                localStorage.setItem('sucursal', respuesta.data.empresa.empresa_id? respuesta.data.empresa.empresa_id : '');
                 localStorage.setItem('access_token', respuesta.access_token);
                 localStorage.setItem('date', new Date());            
 
