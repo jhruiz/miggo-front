@@ -702,7 +702,7 @@ $( "#ciiu" ).autocomplete({
 //**************************************************************************************************************************************
 
 var crearHtml = function(data) {
-    var html = '<option value="">Seleccione..</option>';
+        var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
         $.each(data, function (key, item) {
             html += '<option value="'+ item.id+'">';
             html += item.descripcion;

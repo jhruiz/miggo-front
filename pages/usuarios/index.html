@@ -88,11 +88,11 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
     // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrUsuario = [
-            element.tercero.nombres,
-            element.tercero.apellidos,
-            element.tercero.identificacion,
-            element.email
-            // element.estatus            
+            element.email,
+            element.perfile.descripcion,
+            element.tercero_id ? element.tercero.nombres : '',
+            element.tercero_id ? element.tercero.apellidos : '',
+            element.tercero_id ? element.tercero.identificacion : '',
         ];
 
         arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
@@ -142,10 +142,11 @@ var generarDataTable = function( dataSet ) {
   $("#example1").DataTable({
     data: dataSet,
     columns: [
+            { title: "Email" },
+            { title: "Perfil" },
             { title: "Nombres" },
             { title: "Apellidos" },
             { title: "Identificación" },
-            { title: "Email" },
             { title: "Estatus" },
             { title: "Acciones" },
             ],
