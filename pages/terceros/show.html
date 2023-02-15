@@ -1013,7 +1013,10 @@ $.ajax({
 
         if(respuesta.data.tipoidentificacione_id){
             obtenerSelect('tipoidentificaciones', '#select-identificacion', respuesta.data.tipoidentificacione_id);
-
+            
+              if(respuesta.data.digitoverificacion != ''){
+                  $("#divDigito").show();
+                  }
         }
 
         if(respuesta.data.tipodireccione_id){

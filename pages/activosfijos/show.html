@@ -79,14 +79,6 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleSelectBorder">Tipo Activos fijos</label>
-                <select class="custom-select form-control-border" id="select-tiposactivosfijo" disabled>
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label for="exampleSelectBorder">Departamento</label>
                 <select class="custom-select form-control-border" id="select-departamento" disabled>
                     <!-- <option>Value 1</option> -->
@@ -324,29 +316,6 @@ var obtenerEstadoActivo = function(id){
   })  
 }
 
-var obtenerTipoactivo = function(id){
-    url_ti= 'tiposactivosfijos/'+id;
-    $.ajax({
-    method: "GET",
-    url: url_back + url_ti,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-            var htmlTipo = '';
-            htmlTipo += '<option value="'+ respuesta.data.id+'">';
-            htmlTipo += respuesta.data.descripcion;
-            htmlTipo += '</option>';
-            $('#select-tiposactivosfijo').html(htmlTipo);
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
-
 var obtenerPuc = function(id){
     url_puc= 'pucs/'+id;
     $.ajax({
@@ -422,10 +391,6 @@ $.ajax({
 
         if(respuesta.data.estadoactivo_id){
             obtenerEstadoActivo(respuesta.data.estadoactivo_id);
-        }
-        
-        if(respuesta.data.tiposactivosfijo_id){
-            obtenerTipoactivo(respuesta.data.tiposactivosfijo_id);
         }
 
         if(respuesta.data.puc_id){

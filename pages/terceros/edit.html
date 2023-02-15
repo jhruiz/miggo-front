@@ -90,16 +90,14 @@
 
                   <!-- /.form-group -->
                   <div class="form-group">
-                      <label>Numero Identificación <code>&nbsp;*</code></label>
-
-                      <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                          </div>
-                          <input type="text" id="identificacion" class="form-control input-numero" placeholder="NIT" required> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled>
-                      </div> 
-
-                      </div>
+                    <label>Numero de Identificacion </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div>
+                        <input type="text" id="identificacion" class="form-control input-texto-alfanumerico" placeholder="Identificacion"> <div id="divDigito" style="display: none;"> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled> </div>
+                    </div> 
+                </div>
                       <!-- /.form-group -->
 
 
@@ -1238,7 +1236,9 @@ $.ajax({
 
         if(respuesta.data.tipoidentificacione_id){
             obtenerSelect('tipoidentificaciones', '#select-identificacion', respuesta.data.tipoidentificacione_id);
-
+            if(respuesta.data.digitoverificacion != ''){
+                $("#divDigito").show();
+                }
         }else{
             obtenerSelects('tipoidentificaciones', '#select-identificacion');
         }
@@ -1318,6 +1318,54 @@ $.ajax({
     }
   })  
 }
+//********************************************************************************************************************************
+var recargarDepartamento = function(){
+  var departamento_id = $(this).val();
+  var url_d ='departamentos/'+departamento_id+'/ciudades';
+  if(departamento_id){
+      $.ajax({
+          type:"GET",
+          url: url_back + url_d,
+          headers: { 
+              Authorization: 'Bearer ' + localStorage.access_token
+          },
+          dataType: "json",
+          success:function(respuesta){
+              $('#select-ciudad').html(crearHtml(respuesta.data));
+          }
+      }); 
+  }else if($(this).val() == ''){
+       $('#select-ciudad').val('');
+  }
+}
+
+var mostrardivDigito = function(){
+  var tipoidentificacione_id = $("#select-identificacion").val() ;
+  var url_d ='tipoidentificaciones/'+tipoidentificacione_id;
+
+  if(tipoidentificacione_id){
+      $.ajax({
+          type:"GET",
+          url: url_back + url_d,
+          headers: { 
+              Authorization: 'Bearer ' + localStorage.access_token
+          },
+          dataType: "json",
+          success:function(respuesta){
+
+              $("#verificado").val('');
+
+              if(respuesta.data.digitoverificacion == 1){
+                  $("#divDigito").show();
+              }else{
+                  $("#divDigito").hide();
+              }
+          }
+      }); 
+  }
+}
+
+
 
 //******************************************* marcar terceros cuando ya existen********************************************************************
 // marcarCheck(respuesta.data.empleados, localStorage.empresa_id, '#empleado','#divE');
@@ -2039,34 +2087,14 @@ $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
 
-    $("#identificacion").on("change",calcularDigito); // Digito de verificacion
+      $("#select-identificacion").on("change",mostrardivDigito);
+      $("#identificacion").on("change",calcularDigito); // Digito de verificacion
+      $("#select-departamento").on("change",recargarDepartamento); 
 
-    // $('#actualizar').on('click',actualizartercero(localStorage.editar));
 
     obtenertercero(localStorage.editar);
     obtenerDepartamentos();
     verificarSucursal();
-
-    $('#select-departamento').on('change',function(){
-        var departamento_id = $(this).val();
-        var url_d ='departamentos/'+departamento_id+'/ciudades';
-        if(departamento_id){
-            $.ajax({
-                type:"GET",
-                url: url_back + url_d,
-                headers: { 
-                    Authorization: 'Bearer ' + localStorage.access_token
-                },
-                dataType: "json",
-                success:function(respuesta){
-
-                    $('#select-ciudad').html(crearHtml(respuesta.data));
-                }
-            }); 
-        }else if($(this).val() == ''){
-             $('#select-ciudad').val('');
-        }
-    });
 
 
     $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');

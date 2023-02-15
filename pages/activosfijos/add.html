@@ -66,14 +66,6 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleSelectBorder">Tipo Activos fijos<code> &nbsp;*</code></label>
-                <select class="custom-select form-control-border" id="select-tiposactivosfijo" required>
-                    <!-- <option>Value 1</option> -->
-    
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label for="exampleSelectBorder">Departamento<code> &nbsp;*</code></label>
                 <select class="custom-select form-control-border" id="select-departamento" required>
                     <!-- <option>Value 1</option> -->
@@ -243,7 +235,6 @@ var residuo = $('#residuo').val();
 var observaciones = $('#observaciones').val();
 var costohora = $('#costohora').val();
 var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
-var tiposactivosfijo_id = $('#select-tiposactivosfijo').val()? $('#select-tiposactivosfijo').val() : ''; 
 var puc_id = $('#select-puc').val()? $('#select-puc').val() : ''; 
 var estadoactivo_id = $('#select-estadoactivo').val()? $('#select-estadoactivo').val() : ''; 
 var responsable_id = $('#tercero_id').val(); 
@@ -270,7 +261,6 @@ formData.append("residuo", residuo);
 formData.append("observaciones", observaciones);
 formData.append("costohora", costohora);
 formData.append("ciudade_id", ciudade_id);
-formData.append("tiposactivosfijo_id", tiposactivosfijo_id);
 formData.append("puc_id", puc_id);
 formData.append("estadoactivo_id", estadoactivo_id);
 formData.append("responsable_id", responsable_id);
@@ -351,27 +341,7 @@ $( "#responsable" ).autocomplete({
      });
 
 
-//***************************************************trae valores masivos de estadoactivo,gruposactivosfijos,tiposactivosfijos*******************
-
-var tiposactivosfijos = function(){
-    url_ide= 'tiposactivosfijos';
-    $.ajax({
-    method: "GET",
-    url: url_back + url_ide,
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    success: function(respuesta) {
-        $('#select-tiposactivosfijo').html(crearHtml(respuesta.data));
-
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
+//***************************************************trae valores masivos de estadoactivo,gruposactivosfijos,*******************
 
 var obtenerPucs = function(){
     var url_puc= 'pucs';
@@ -475,7 +445,6 @@ $( document ).ready(function() {
 
     obtenerDepartamentos();
     obtenerEstadoActivo();
-    tiposactivosfijos();
     obtenerPucs();
     obtenerGruposactivosfijos();
 

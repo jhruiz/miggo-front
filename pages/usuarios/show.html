@@ -32,118 +32,83 @@
     <form method="PUT" action="" enctype="multipart/form-data">
 
 
-  <div class="form-group">
-      <label>Email <code> &nbsp;*</code></label>
-      <div class="input-group mb-6">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-          </div>
-          <input type="text" id="email" class="form-control" placeholder="Email" disabled>  
-      </div> 
-  </div>
+        <div id="mostrarImagen" stye="display:flex;"></div>
+        <div class="form-group">
+        <div class="custom-file">
+        <input class="btn btn-success col fileinput" type="file" id="imagen"></div>
+        </div>
 
-<div class="form-group">
-  <label for="exampleSelectRounded0">Perfil <code> &nbsp;*</code></label>
-  <select class="custom-select rounded-0" id="select-perfiles" disabled>
+    <div class="form-group">
+        <label>Email </label>
+        <div class="input-group mb-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="text" id="email" class="form-control" placeholder="Email" disabled>  
+        </div> 
+    </div>
 
-  </select>
-</div>
-
-  <div class="form-group">
-      <label>Username</label>
-      <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-          </div>
-          <input type="text" id="username" class="form-control input-texto-alfanumerico" placeholder="Username" disabled>
-
-      </div>
-  </div>
-
-  <div class="form-group">
-      <label for="exampleSelectRounded0">Tipo Identificacion</label>
-      <select class="custom-select rounded-0" id="select-identificacion" disabled>
-
-      </select>
+    <div class="form-group">
+        <label>Contraseña </label>
+        <div class="input-group mb-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="new-password" disabled>
+        </div> 
     </div>
 
   <div class="form-group">
-      <label>Numero de Identificacion </label>
-      <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-          </div>
-          <input type="text" id="identificacion" class="form-control input-texto-alfanumerico" placeholder="Identificacion" disabled> <div id="divDigito" style="display: none;"> <input type="text" id="verificado" class="form-control input-numero" placeholder="Digito Verificacion" disabled> </div>
-      </div> 
-  </div>  
+    <label for="exampleSelectRounded0">Perfil </label>
+    <select class="custom-select rounded-0" id="select-perfiles" disabled>
 
-  <div class="form-group">
-      <label>Nombres </label>
-      <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-          </div>
-          <input type="text" id="nombres" class="form-control input-texto-espacio" placeholder="Nombres" disabled> 
-      </div>
+    </select>
   </div>
 
-      <div class="form-group">
-          <label>Apellidos</label>
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-              </div>
-              <input type="text" id="apellidos" class="form-control input-texto-espacio" placeholder="Apellidos" disabled> 
-          </div>
+    <div class="form-group">
+        <label for="tercero">Numero Identificacion-Empleado: </label>
+        <input class="form-control input-texto-alfanumerico" id="tercero" placeholder="El nombre del Empleado" disabled>
       </div>
 
-          <div class="form-group">
-              <label>Celular</label>
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                  </div>
-                  <input type="text" id="celular" class="form-control input-numero" placeholder="Celular" disabled>
-              </div>
-          </div>
+       <input type="text" id='tercero_id' hidden>
 
-          <div class="form-group">
-              <label>Teléfono</label>
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                  </div>
-                  <input type="text" id="telefono" class="form-control input-numero" placeholder="Teléfono" disabled>
-              </div>
-          </div>
 
-          <div class="form-group">
-          <label>Fecha de Nacimiento:</label>
-          <!-- <div class="input-group date" id="cumpleanio" data-target-input="nearest"> -->
-              <div class="input-group date" id="cumpleanio" data-target-input="nearest">
-                  <div class="input-group-prepend" data-target="#cumpleanio" data-toggle="datetimepicker">
-                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                      </div>
-                  <input type="text" id="cumpleanios" class="form-control datetimepicker-input" data-target="#cumpleanio" disabled/>
-              </div>
-          </div>
+        <div class="form-group">
+            <label>Apellidos</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <input type="text" id="apellidos" class="form-control input-texto-espacio" placeholder="Apellidos" disabled> 
+            </div>
+        </div>
+    
+            <div class="form-group">
+                <label>Celular</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    </div>
+                    <input type="text" id="celular" class="form-control input-numero" placeholder="Celular" disabled>
+                </div>
+            </div>
 
-          <div class="form-group">
-              <label for="exampleSelectRounded0">Ciudad</label>
-              <select class="custom-select rounded-0" id="select-ciudad" disabled>
+            <div class="form-group">
+                <label for="exampleSelectRounded0">Ciudad</label>
+                <select class="custom-select rounded-0" id="select-ciudad" disabled>
 
-              </select>
-          </div>
+                </select>
+            </div>
 
-          <div class="form-group">
-          <label>Direccion</label>
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-              </div>
-              <textarea id="direccion" class="form-control" rows="4" placeholder="Dirección ..." disabled></textarea>
-          </div> 
-          </div> 
+            <div class="form-group">
+            <label>Direccion</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div>
+                <textarea id="direccion" class="form-control" rows="4" placeholder="Dirección ..." disabled></textarea>
+            </div> 
+            </div> 
 
         <div class="col-12 float-right">
             <button type="button" id="actualizar" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
@@ -217,6 +182,31 @@ var obtenerSelect = function(url, select, id){
 })  
 }
 
+//*******************************************************************************************************
+var obtenerTercero = function(id){
+    url_ter= 'terceros/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_ter,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#tercero').val(respuesta.data.identificacion+'-'+respuesta.data.nombres);
+            $('#tercero_id').val(respuesta.data.id);
+            $('#apellidos').val(respuesta.data.apellidos );
+            $('#celular').val(respuesta.data.celular );
+            $('#direccion').val(respuesta.data.direccion );
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+
 //*************************************************************************************************************************
 
 function obtenerUsuario(id){
@@ -233,15 +223,6 @@ $.ajax({
     success: function(respuesta) {
 
         $('#email').val(respuesta.data.email);
-        $('#username').val(respuesta.data.username);
-        $('#identificacion').val(respuesta.data.tercero_id ? respuesta.data.tercero.identificacion : '' );
-        $('#verificado').val(respuesta.data.tercero_id ? respuesta.data.tercero.digitoverificacion : '');
-        $('#nombres').val(respuesta.data.tercero_id ? respuesta.data.tercero.nombres : '');
-        $('#apellidos').val(respuesta.data.tercero_id ? respuesta.data.tercero.apellidos : '');
-        $('#celular').val(respuesta.data.tercero_id ? respuesta.data.tercero.celular : '');
-        $('#telefono').val(respuesta.data.tercero_id ? respuesta.data.tercero.telefono : '');
-        $('#cumpleanios').val(respuesta.data.tercero_id ? respuesta.data.tercero.cumpleanios : '');
-        $('#direccion').val(respuesta.data.tercero_id ? respuesta.data.tercero.direccion : '');
 
           if(respuesta.data.imagen){
               $("#imagen").attr('src', url_img + 'users/'+ respuesta.data.imagen);
@@ -254,17 +235,8 @@ $.ajax({
         }
 
         if(respuesta.data.tercero_id){
-            if(respuesta.data.tercero.ciudade_id){
-              obtenerCiudad(respuesta.data.tercero.ciudade_id);
-            }
-
-            if(respuesta.data.tercero.tipoidentificacione_id){
-              obtenerSelect('tipoidentificaciones', '#select-identificacion', respuesta.data.tercero.tipoidentificacione_id);
-              if(respuesta.data.tercero.digitoverificacion != null){
-                $("#divDigito").show();
-            }
-            }
-          }
+            obtenerTercero(respuesta.data.tercero_id);
+        }
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
