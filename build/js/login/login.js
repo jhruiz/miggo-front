@@ -17,12 +17,13 @@ var loginFunction = function() {
 
             if (respuesta.data) {
                 //Almacena la información del usuario en el local storage
-                localStorage.setItem('email', respuesta.data.email);//TODO: guardar el nombre para mostrarlo en todas las paginas
+                localStorage.setItem('email', respuesta.data.email);
                 localStorage.setItem('id', respuesta.data.id);
                 localStorage.setItem('nombres', respuesta.data.tercero_id ? respuesta.data.tercero.nombres : 'Usuario');
                 localStorage.setItem('empresa_id', respuesta.data.empresa_id);
                 localStorage.setItem('empresa', respuesta.data.empresa.nombre);
                 localStorage.setItem('msgpuc', respuesta.data.empresa.msgpuc);
+                localStorage.setItem('pucedit', respuesta.data.empresa.pucedit);
                 localStorage.setItem('moneda', respuesta.data.empresa.moneda);
                 localStorage.setItem('nivelgasto', respuesta.data.empresa.nivelgasto);
                 localStorage.setItem('sucursal', respuesta.data.empresa.empresa_id? respuesta.data.empresa.empresa_id : '');

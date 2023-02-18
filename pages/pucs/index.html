@@ -10,7 +10,6 @@
 
 <!-- inicio -->
 
-<!-- <div class="card-body" style="width: 100%; height: 100%;  position: absolute; top: 50%; left:-10%;"> -->
 <div class="card-body-datatable">
 
 
@@ -147,7 +146,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Lista de centro de costo</h3>
+            <h3 class="card-title">Lista de Pucs</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -247,6 +246,12 @@ function editarPuc(){
   var id = $('#id').val();
   var posicion = $('#posicion').val();
 
+  if(localStorage.pucedit == 0){
+    var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que solo puede Crear Puc si Habilita la opcion en la empresa';
+    sweetMessage('error', mensaje);
+    return false;
+  }
+
   if(posicion =='cuentas' || posicion =='subcuentas' || posicion =='auxiliares'){
 
           if(id){
@@ -292,6 +297,11 @@ function crearPuc(){
   var id = $('#id').val();
   var posicion = $('#posicion').val();
 
+  if(localStorage.pucedit == 0){
+    var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que solo puede Crear Puc si Habilita la opcion en la empresa';
+    sweetMessage('error', mensaje);
+    return false;
+  }
 
     if(posicion =='cuentas' || posicion =='subcuentas' || posicion =='grupos'){
       if (id){
@@ -342,38 +352,71 @@ var url = 'clasespucs';
       return html;
   }
 
-  //************************************************Lista Centro de costo*****************************************************
+  //************************************************Lista Pucs*****************************************************
 
   var organizarDatos = function( data ) {  
     var arrPucs = [];
     var arrPuc = [];
     var bool= 1;
 
-    $.each(data, function(i, Puc) { //TODO: esto esta registrado en la empresa por el nivel debe ser tomado en cuenta 
+    $.each(data, function(i, clases) { 
          bool = 1;
-        $.each(Puc.divisiones, function(j, divisiones) {
+        $.each(clases.pucs, function(j, grupos) {
             bool = 1;
-            $.each(divisiones.secciones, function(k, secciones) {
+            $.each(grupos.pucs, function(k, cuentas) {
                 bool = 1;
-                $.each(secciones.dependencias, function(h, dependencias) {
-                  arrPuc.push(Puc.nombre);
-                  arrPuc.push(divisiones.codigo);
-                  arrPuc.push(divisiones.nombre);
-                  arrPuc.push(secciones.codigo);
-                  arrPuc.push(secciones.nombre);
-                  arrPuc.push(dependencias.codigo);
-                  arrPuc.push(dependencias.nombre);
-                  arrPucs.push(arrPuc);
-                  arrPuc = [];
-                  bool = 0;
+                $.each(cuentas.pucs, function(h, subcuentas) {
+                     bool = 1;
+                     $.each(subcuentas.pucs, function(L, auxiliares) {               
+
+                      arrPuc.push(clases.codigo+'-'+clases.descripcion);
+                      arrPuc.push(grupos.codigo+'-'+grupos.descripcion);
+                      arrPuc.push(cuentas.codigo+'-'+cuentas.descripcion);
+                      arrPuc.push(subcuentas.codigo+'-'+subcuentas.descripcion);
+
+                      if(auxiliares.empresa_id != null){
+                        arrPuc.push(auxiliares.codigo+'-'+auxiliares.descripcion+' (#)');
+                      }else{
+                        arrPuc.push(auxiliares.codigo+'-'+auxiliares.descripcion);
+                      }
+
+                      arrPucs.push(arrPuc);
+                      arrPuc = [];
+                      bool = 0;
+
+                       });
+
+                    if(bool == 1 && h >= 0){
+
+                      arrPuc.push(clases.codigo+'-'+clases.descripcion);
+                      arrPuc.push(grupos.codigo+'-'+grupos.descripcion);
+                      arrPuc.push(cuentas.codigo+'-'+cuentas.descripcion);
+
+                      if(subcuentas.empresa_id != null){
+                         arrPuc.push(subcuentas.codigo+'-'+subcuentas.descripcion+' (#)');
+                      }else{
+                         arrPuc.push(subcuentas.codigo+'-'+subcuentas.descripcion);
+                      }
+
+                      arrPuc.push('');
+
+                      arrPucs.push(arrPuc);
+                      arrPuc = [];
+                      bool = 0;
+                    }
                 });
 
                     if(bool == 1 && k >= 0){
-                      arrPuc.push(Puc.nombre);
-                      arrPuc.push(divisiones.codigo);
-                      arrPuc.push(divisiones.nombre);
-                      arrPuc.push(secciones.codigo);
-                      arrPuc.push(secciones.nombre);
+
+                      arrPuc.push(clases.codigo+'-'+clases.descripcion);
+                      arrPuc.push(grupos.codigo+'-'+grupos.descripcion);
+
+                      if(cuentas.empresa_id != null){
+                        arrPuc.push(cuentas.codigo+'-'+cuentas.descripcion+' (#)');
+                      }else{
+                         arrPuc.push(cuentas.codigo+'-'+cuentas.descripcion);
+                      }
+
                       arrPuc.push('');
                       arrPuc.push('');
                       arrPucs.push(arrPuc);
@@ -383,33 +426,7 @@ var url = 'clasespucs';
 
             });
 
-                    if(bool == 1 && j >= 0){
-                          arrPuc.push(Puc.nombre);
-                          arrPuc.push(divisiones.codigo);
-                          arrPuc.push(divisiones.nombre);
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPucs.push(arrPuc);
-                          arrPuc = [];
-                          bool = 0;
-                        }
-
           });
-
-                      if(bool == 1 && i >= 0){
-                          arrPuc.push(Puc.nombre);
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPuc.push('');
-                          arrPucs.push(arrPuc);
-                          arrPuc = [];
-                          bool = 0;
-                        }
 
       });
 
@@ -427,7 +444,6 @@ var generarDataTable = function( dataSet ) {
             { title: "Cuentas" },
             { title: "Sub-Cuentas" },
             { title: "Auxiliares" },
-            // { title: "Acciones" },
             ],
     "responsive": true, "lengthChange": true, "autoWidth": false,
     "paging": true, "ordering": true, "info": true,
@@ -448,7 +464,7 @@ var generarDataTable = function( dataSet ) {
 
 var infoTable = function(){
 
-var url = 'getallcentros/' + localStorage.empresa_id;
+var url = 'pucsallniveles';
 
     $.ajax({
             method: "GET",
@@ -458,7 +474,7 @@ var url = 'getallcentros/' + localStorage.empresa_id;
             },
             dataType: 'json',
             success: function(respuesta) {
-                generarDataTable(organizarDatos(respuesta.data));
+                generarDataTable(organizarDatos(respuesta));
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -468,58 +484,48 @@ var url = 'getallcentros/' + localStorage.empresa_id;
 
 }
 
+//*********************************************select clases, grupos, cuenta, subcuenta, auxiliares**********************
 
+var recargarClases = function(){ 
+  var puc_id = $(this).val();
+  var url_d ='pucsdependientes/'+puc_id;
+  if(puc_id){
+      $.ajax({
+          type:"GET",
+          url: url_back + url_d,
+          headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+          },
+          dataType: "json",
+          success:function(respuesta){
 
-
-
-  //*************************************************************************************************************************
-
-$( document ).ready(function() {
-  $('.preloader').hide("slow");
-  validarLogin();
-
-  alert(localStorage.access_token);
-  obtenerPucs(); 
-  // infoTable();
-
-  $('#select-clases').on('click',function(){
-    var puc_id = $(this).val();
-    var url_d ='pucsdependientes/'+puc_id;
-    if(puc_id){
-        $.ajax({
-            type:"GET",
-            url: url_back + url_d,
-            headers: { 
-                  Authorization: 'Bearer ' + localStorage.access_token
-            },
-            dataType: "json",
-            success:function(respuesta){
-
-              console.log(respuesta.length);
-                $('#id').val(puc_id);
-                $('#posicion').val('clases');
-                if(respuesta.length != 0){
-                    $('#select-auxiliares').html('');
-                    $('#select-subcuentas').html('');
-                    $('#select-cuentas').html('');
-                    $('#select-grupos').html(crearHtml(respuesta));
-                }else{
+            console.log(respuesta.length);
+              $('#id').val(puc_id);
+              $('#posicion').val('clases');
+              if(respuesta.length != 0){
                   $('#select-auxiliares').html('');
-                    $('#select-subcuentas').html('');
-                    $('#select-cuentas').html('');
-                    $('#select-grupos').html('');
-                }
-            }
-        }); 
-    }else if($(this).val() == ''){
-               $('#select-auxiliares').html('');
-               $('#select-subcuentas').html('');
-               $('#select-cuentas').html('');
-               $('#select-grupos').html('');
-    }
-});
+                  $('#select-subcuentas').html('');
+                  $('#select-cuentas').html('');
+                  $('#select-grupos').html(crearHtml(respuesta));
+              }else{
+                $('#select-auxiliares').html('');
+                  $('#select-subcuentas').html('');
+                  $('#select-cuentas').html('');
+                  $('#select-grupos').html('');
+              }
+          }
+      }); 
+  }else if($(this).val() == ''){
+             $('#select-auxiliares').html('');
+             $('#select-subcuentas').html('');
+             $('#select-cuentas').html('');
+             $('#select-grupos').html('');
+  }
+}
 
-$('#select-grupos').on('click',function(){
+
+
+var recargarGrupos = function(){ 
   var puc_id = $(this).val();
   var url_d ='pucsdependientes/'+puc_id;
 
@@ -551,9 +557,10 @@ $('#select-grupos').on('click',function(){
     $('#select-subcuentas').html('');
     $('#select-cuentas').html('');
   }
-});
+};
 
-$('#select-cuentas').on('click',function(){
+
+var recargarCuentas = function(){ 
   var puc_id = $(this).val();
   var url_d ='pucsdependientes/'+puc_id;
   if(puc_id){
@@ -581,9 +588,11 @@ $('#select-cuentas').on('click',function(){
       $('#select-auxiliares').html('');
       $('#select-subcuentas').html('');
   }
-});
+};
 
-$('#select-subcuentas').on('click',function(){
+
+
+var recargarSubcuentas = function(){ 
   var puc_id = $(this).val();
   var url_d ='pucsdependientes/'+puc_id;
   if(puc_id){
@@ -608,16 +617,34 @@ $('#select-subcuentas').on('click',function(){
   }else if($(this).val() == ''){
       $('#select-auxiliares').html('');
   }
-});
+};
 
-$('#select-auxiliares').on('click',function(){
+
+var recargarAuxiliares = function(){ 
   var puc_id = $(this).val();
   if(puc_id){
       $('#id').val(puc_id);
       $('#posicion').val('auxiliares');
   }
-});
-  //$("#crear").on("click",renderPuc);
+};
+
+
+  //*************************************************************************************************************************
+
+$( document ).ready(function() {
+  $('.preloader').hide("slow");
+  validarLogin();
+
+  obtenerPucs(); 
+  infoTable();
+
+
+  $("#select-clases").on("click",recargarClases);
+  $("#select-grupos").on("click",recargarGrupos);
+  $("#select-cuentas").on("click",recargarCuentas);
+  $("#select-subcuentas").on("click",recargarSubcuentas);
+  $("#select-auxiliares").on("click",recargarAuxiliares);
+
 
 });
 

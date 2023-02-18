@@ -1211,10 +1211,6 @@ $.ajax({
             obtenerSelects('tiposociedades', '#select-tiposociedades');
         }
 
-        // if(respuesta.data.socios){
-        //     generarDataTable(organizarDatos(respuesta.data.socios));
-        // }
-
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -1246,8 +1242,6 @@ $('#pucedit').click(function(){
 
 
 $( document ).ready(function() {  
-    // TODO: agregar resolucion CRUD
-    // controlador de cuentas puc mejorar la busqueda 
     $('.preloader').hide("slow");
       validarLogin();
 
