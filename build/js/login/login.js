@@ -59,11 +59,12 @@ var enviarCorreo = function() {
         data: { email: email },
         success: function(respuesta) {
 
+            console.log(respuesta);
+
             if (respuesta) {
                 sweetMessage('success', 'Correo electrónico se envió con éxito'); 
-                sweetMessage('success', 'verifique su bandeja de entrada.'); 
+                alert(respuesta.data);
                 window.location.href =  home;
-
             } else {
                 sweetMessage('warning', respuesta.mensaje);
             }
@@ -71,8 +72,15 @@ var enviarCorreo = function() {
         },
         error: function(data) {
             console.log(data);
-            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-            sweetMessage('error', mensaje);
+            if(data.responseJSON){
+                if(data.responseJSON.message){
+                    var mensaje = 'Se produjo un error.:'+ data.responseJSON.message;
+                    sweetMessage('error', mensaje);
+                }else if(data.responseJSON.error){
+                    var mensaje = 'Se produjo un error.:'+ data.responseJSON.error;
+                    sweetMessage('error', mensaje);
+                }
+            }
         }
       })
 
@@ -90,12 +98,10 @@ function getParameterByName(name) {
 var cambioPassword = function () {
 
      var token = getParameterByName('token');
-     var email = $('#email').val();
+     var email = getParameterByName('email');
      var password = $('#password').val();
      var passwordConfirm = $('#password-confirm').val();
      var url = 'resetPassword';
-
-    //  console.log('token'+token+' '+email+' '+password+' '+passwordConfirm);
 
      $.ajax({
         method: 'POST',

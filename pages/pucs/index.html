@@ -340,7 +340,6 @@ var url = 'clasespucs';
   
   var crearHtml = function(data) {
       var html = '';
-      console.log(data);
           $.each(data, function (key, item) {
             if(localStorage.empresa_id == item.empresa_id || item.empresa_id == null){
               html += '<option value="'+ item.id+'">';
@@ -499,7 +498,6 @@ var recargarClases = function(){
           dataType: "json",
           success:function(respuesta){
 
-            console.log(respuesta.length);
               $('#id').val(puc_id);
               $('#posicion').val('clases');
               if(respuesta.length != 0){
