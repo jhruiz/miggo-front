@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Ver Tipo Activo Fijo  </h5>
+            Ver Grupo Activo Fijo  </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -21,22 +21,29 @@
       
       <form  method="PUT" action="" enctype="multipart/form-data">
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-signature"></i></span>
-          </div>
-          <input type="text" id="codigo" class="form-control" placeholder="Codigo del Grupo" required>  <code>&nbsp;*</code>
-      </div>
+        <div class="form-group">
+          <label>Codigo </label>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+              </div> 
+              <input type="text" id="codigo" class="form-control" placeholder="Codigo del Grupo" disabled>
+          </div> 
+      </div> 
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-signature"></i></span>
-          </div>
-          <input type="text" id="descripcion" class="form-control" placeholder="Tipo Activo Fijo">
-        </div>
+
+      <div class="form-group">
+          <label>Nombre </label>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+              </div> 
+              <input type="text" id="descripcion" class="form-control" placeholder="Descripción Activo Fijo" disabled>
+          </div> 
+      </div> 
 
           <div class="col-12 float-right">
-            <button type="button" id="actualizar" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
         </div>
 
       </form>
@@ -46,14 +53,9 @@
 </div>
 </div>
 
-
-
-
 <!--  -->
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-          <!-- <button type="button" class="btn btn-primary">Enviar</button> -->
         </div>
       </div>
     </div>

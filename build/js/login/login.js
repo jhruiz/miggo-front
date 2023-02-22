@@ -13,8 +13,6 @@ var loginFunction = function() {
             email: email, password: password },
         success: function(respuesta) {
 
-            console.log(respuesta);
-
             if (respuesta.data) {
                 //Almacena la información del usuario en el local storage
                 localStorage.setItem('email', respuesta.data.email);
@@ -28,6 +26,9 @@ var loginFunction = function() {
                 localStorage.setItem('nivelgasto', respuesta.data.empresa.nivelgasto);
                 localStorage.setItem('sucursal', respuesta.data.empresa.empresa_id? respuesta.data.empresa.empresa_id : '');
                 localStorage.setItem('access_token', respuesta.access_token);
+                localStorage.setItem('perfile_id', respuesta.data.perfile_id);
+                localStorage.setItem('nivelperfil', respuesta.data.perfile.nivel);
+                localStorage.setItem('perfile', respuesta.data.perfile.descripcion);
                 localStorage.setItem('date', new Date());            
 
                 sweetMessage('success', 'login correcto'); 
