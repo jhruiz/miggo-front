@@ -1,40 +1,48 @@
-<!-- Preloader -->
-<div class="preloader flex-column justify-content-center align-items-center">
-<img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-</div>
-
-<div class="card" id="content-usuarios">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-12">
-                <h4>
-                    <i class="nav-icon fas fa-user"></i>
-                    Nueva Parte Vehiculo                                   
-                </h4>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="ModalLong3" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">
+            <i class="nav-icon fas fa-user"></i>
+            Crear Parte Vehiculo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </div>
 
-    <div class="card-body-form">
+        <div class="modal-body">
+<!--  -->
+
+<div class="card">
+
+  <div class="card-body">
         
         <form method="POST" id="form" action="" enctype="multipart/form-data">
           
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
-                </div>
-                <input type="text" id="descripcion" class="form-control" placeholder="Parte Vehiculo" required>  <code>&nbsp;*</code>
-            </div>
+            <div class="form-group">
+                <label>Parte Vehiculo <code> &nbsp;*</code></label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                    </div> 
+                    <input type="text" id="descripcion" class="form-control" placeholder="Parte Vehiculo" required>
+                </div> 
+            </div> 
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-signature"></i></span>
-                </div>
-                <input type="text" id="extra" class="form-control input-numero" placeholder="Extra" required>  <code>&nbsp;*</code>
-            </div>
+            <div class="form-group">
+                <label>Extra <code> &nbsp;*</code></label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                    </div> 
+                    <input type="text" id="extra" class="form-control input-numero" placeholder="Extra" required>
+                </div> 
+            </div> 
 
             <div class="col-12 float-right">
-                <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
             </div> 
 
         </form>
@@ -42,6 +50,14 @@
     </div>
 
 </div>
+</div>
+
+<!--  -->
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
 
 <script>
 
@@ -73,6 +89,8 @@ $.ajax({
     success: function(respuesta) {
 
         if(respuesta){
+            $('.modal-backdrop').remove();
+
             var mensaje = 'Parte Vehiculo creado de forma correcta.: '+ respuesta.data.descripcion;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'Partevehiculos/index.html');
@@ -95,10 +113,6 @@ $.ajax({
     }
 });
 });
-
-
-
-
 
 $( document ).ready(function() {
     $('.preloader').hide("slow");

@@ -42,12 +42,11 @@
                    
 
                     <div class="form-group">
-                        <label for="exampleSelectRounded0">Cuenta PUC CUALES APLICA? </label>
-                        <select class="custom-select rounded-0" id="select-puc">
-                          <!-- <option selected="true" disabled="disabled">Selecione un Nivel</option> -->
-        
-                        </select>
+                        <label for="responsable">Cuenta Puc <code> &nbsp;*</code></label>
+                        <input class="form-control input-texto-alfanumerico" id="puc" placeholder="Nombre de la cuenta PUC" required>
                     </div>
+                        <input class="form-control input-texto-alfanumerico" id="puc_id" hidden>
+
 
                     <div class="form-group">
                         <label>Depreciar Meses</label>
@@ -239,11 +238,6 @@
 
 <script>
 
-
-
-
-
-
   
 
 $("#form").submit(function(e) {
@@ -264,6 +258,7 @@ var depreciarmeses = $('#depreciarmeses').val();
 var residuo = $('#residuo').val();
 var observaciones = $('#observaciones').val();
 var costohora = $('#costohora').val();
+var puc_id = $('#puc_id').val();
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
 
 var alquilable =$('#alquilable').val()? 1 : 0;
@@ -272,7 +267,6 @@ var centrocosto_id = $('#select-nivelcentrocostos').val()? $('#select-nivelcentr
 var estadoactivo_id = $('#select-estadoactivos').val()? $('#select-estadoactivos').val() : ''; 
 var responsable_id = $('#tercero_id').val(); 
 var gruposactivosfijo_id = $('#select-gruposactivosfijo').val()? $('#select-gruposactivosfijo').val() : ''; 
-// var puc_id = $('#select-puc').val()? $('#select-puc').val() : ''; 
 
 var nivelcentrocosto = '';
 if(localStorage.nivelgasto == 1){
@@ -305,14 +299,8 @@ formData.append("nivelcentrocosto", nivelcentrocosto);
 formData.append("estadoactivo_id", estadoactivo_id);
 formData.append("responsable_id", responsable_id);
 formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
-// formData.append("puc_id", puc_id);
+formData.append("puc_id", puc_id);
 formData.append("imagen", imagen);
-
-// const output = document.getElementById('output');
-
-// for (const [key, value] of formData) {
-//   output.textContent += `${key}: ${value}\n`;
-// }
 
 $.ajax({
     method: "POST",
@@ -336,7 +324,6 @@ $.ajax({
         }
     },
     error: function(respuesta) {
-        // console.log(respuesta);
         if(respuesta.responseJSON.error){
             $.each(respuesta.responseJSON.error.message, function (key, item) {
                 var mensaje = item[0];
@@ -539,38 +526,69 @@ var defaultImagen = function(){
     ul.appendChild(imagen);
 }
 
+//******************************************************************************************************************************************************************************
+
+$( "#puc" ).autocomplete({
+        source: function( request, response ) {
+            var url_puc = 'pucsactivosfijos?search='+$('#puc').val(); //TODO: buscar en todas las 15 y 16
+
+           $.ajax({
+             method: "GET",
+             url: url_back + url_puc,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#puc').val(ui.item.label); // display the selected text
+          $('#puc_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+});
+
+
+//****************************************************************************************************************************************************************************
+
+var recargarDepartamento = function(){
+    var departamento_id = $(this).val();
+    var url_d ='departamentos/'+departamento_id+'/ciudades';
+    if(departamento_id){
+        $.ajax({
+            type:"GET",
+            url: url_back + url_d,
+            headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+            dataType: "json",
+            success:function(respuesta){
+                $('#select-ciudad').html(crearHtml(respuesta.data));
+            }
+        }); 
+    }else if($(this).val() == ''){
+         $('#select-ciudad').val('');
+    }
+}
+
+//*************************************************************************************************************************************************************************
+
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
     defaultImagen();
 
     obtenerDepartamentos();
-    // obtenerPucs();
     obtenerGruposactivosfijos();
     obtenerSelects('estadoactivos', '#select-estadoactivos');
     nivelCentrocostos('#select-nivelcentrocostos');
 
-
-    $('#select-departamento').on('change',function(){
-        var departamento_id = $(this).val();
-        var url_d ='departamentos/'+departamento_id+'/ciudades';
-        if(departamento_id){
-            $.ajax({
-                type:"GET",
-                url: url_back + url_d,
-                headers: { 
-                      Authorization: 'Bearer ' + localStorage.access_token
-                },
-                dataType: "json",
-                success:function(respuesta){
-
-                  $('#select-ciudad').html(crearHtml(respuesta.data));
-                }
-            }); 
-        }else if($(this).val() == ''){
-             $('#select-ciudad').val('');
-        }
-    });
+    $("#select-departamento").on("change",recargarDepartamento); 
 
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
 });

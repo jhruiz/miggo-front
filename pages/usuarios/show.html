@@ -59,7 +59,7 @@
     </div>
 
   <div class="form-group">
-    <label for="exampleSelectRounded0">Perfil </label>
+    <label for="exampleSelectRounded0">Perfil (Nivel)</label>
     <select class="custom-select rounded-0" id="select-perfiles" disabled>
 
     </select>
@@ -159,7 +159,7 @@ var obtenerCiudad = function(id){
   })  
 }
 
-var obtenerSelect = function(url, select, id){
+var obtenerPerfilSelect = function(url, select, id){
   url_tipo= url+ '/' +id;
   $.ajax({
   method: "GET",
@@ -171,7 +171,7 @@ var obtenerSelect = function(url, select, id){
   success: function(respuesta) {
           var html = '';
           html += '<option value="'+ respuesta.data.id+'">';
-          html += respuesta.data.descripcion;
+          html += respuesta.data.descripcion+'-'+respuesta.data.nivel;
           html += '</option>';
           $(select).html(html);
   },
@@ -231,7 +231,7 @@ $.ajax({
           }
 
         if(respuesta.data.perfile_id){
-          obtenerSelect('perfiles', '#select-perfiles', respuesta.data.perfile_id);
+          obtenerPerfilSelect('perfiles', '#select-perfiles', respuesta.data.perfile_id);
         }
 
         if(respuesta.data.tercero_id){

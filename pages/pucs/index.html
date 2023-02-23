@@ -1,5 +1,4 @@
 <div class="card card-main-content">
-  <!-- <div class="card card-main-content" style="position: relative;"> -->
 
   <div class="card-header">
       <h2 class="card-title"><b>
@@ -7,14 +6,10 @@
   </div>
 
 
-
-<!-- inicio -->
-
 <div class="card-body-datatable">
 
 
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -27,7 +22,6 @@
               <button class="btn btn-success btn-sm" type="submit" onclick="crearPuc()" data-toggle="modal" data-target="#ModalLong3">
                 <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
               </button>
-              <!-- <div class="col text-center"></div> -->
                <button class="btn btn-success btn-sm" type="submit" onclick="verPuc()" data-toggle="modal" data-target="#ModalLong">
                 <i class="nav-icon fas fa-search" aria-hidden="true"></i>
               </button>
@@ -42,10 +36,9 @@
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -55,13 +48,10 @@
             <div class="card-header">
               <h3 class="card-title">Gestion de PUCS</h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-              <!-- <table id="1" class="table table-bordered table-striped"> -->
 
                 <div class="row">
                   <div class="col-sm-2">
-                    <!-- Select multiple-->
                     <div class="form-group">
                       <label>1) Clases:</label>
                       <select multiple class="form-control" id="select-clases">
@@ -108,17 +98,11 @@
                 </div>
 
 
-              <!-- <select> -->
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
 
     <div class="row">
       <div class="col-12">
@@ -138,8 +122,6 @@
       </div>
     </div>
 
-
-
     <div class="row">
       <div class="col-12">
 
@@ -148,7 +130,6 @@
           <div class="card-header">
             <h3 class="card-title">Lista de Pucs</h3>
           </div>
-          <!-- /.card-header -->
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
             
@@ -156,45 +137,56 @@
 
             </table>
           </div>
-          <!-- /.card-body -->
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col -->
-
-
-
     </div>
-
   </section>
-  <!-- /.content -->
 </div>
 </div>
-<!-- fin -->
-<!-- data table -->
 
+<div id="mymodal"></div>
 
-
-<div id="mymodal">
-  
-</div>
-
-  <div class="card-footer">
-    <!-- Footer -->
-  </div>
+  <div class="card-footer"></div>
 
 </div>
 
 <script>
 
+function verificarNivelperfil(llamado){
+  if(llamado == 'eliminar'){
+       if(localStorage.nivelperfil < 2){
+          var mensaje = 'no tiene el nivel para eliminar el centro de costo';
+          sweetMessage('info', mensaje);
+          return false;
+          } 
+  }else if(llamado == 'editar'){
+        if(localStorage.nivelperfil < 1){
+          var mensaje = 'no tiene el nivel para editar el centro de costo';
+          sweetMessage('info', mensaje);
+          return false;
+          }
+    }else if(llamado == 'crear'){
+        if(localStorage.nivelperfil < 1){
+          var mensaje = 'no tiene el nivel para crear el centro de costo';
+          sweetMessage('info', mensaje);
+          return false;
+          } 
+    } 
+}
+
+
+
+
 
 function eliminarPuc(){
-
   var id = $('#id').val();
   var posicion = $('#posicion').val();
+  var url_eliminar = 'pucs/'+id;
+  var url_index = 'pucs/index.html';
 
-var url_eliminar = 'pucs/'+id;
-var url_index = 'pucs/index.html';
+  if(verificarNivelperfil('eliminar')  == false){
+    return false;
+  } 
 
 if(id){
   if (confirm('¿Está seguro de Borrar?')){
@@ -246,6 +238,10 @@ function editarPuc(){
   var id = $('#id').val();
   var posicion = $('#posicion').val();
 
+    if(verificarNivelperfil('editar')  == false){
+     return false;
+    } 
+
   if(localStorage.pucedit == 0){
     var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que solo puede Crear Puc si Habilita la opcion en la empresa';
     sweetMessage('error', mensaje);
@@ -296,6 +292,10 @@ function crearPuc(){
   $('#mymodal').html('');
   var id = $('#id').val();
   var posicion = $('#posicion').val();
+
+    if(verificarNivelperfil('crear')  == false){
+       return false;
+    } 
 
   if(localStorage.pucedit == 0){
     var mensaje = 'Se presentó un error. Por favor, Tome en cuenta que solo puede Crear Puc si Habilita la opcion en la empresa';

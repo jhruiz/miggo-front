@@ -1,31 +1,21 @@
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <i class="nav-icon fas fa-user"></i>
-            Ver Activo Fijo</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+    
+    <div class="card" id="content-activosfijos">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        <i class="nav-icon fas fa-user"></i>
+                        Ver Activo Fijo                                   
+                    </h4>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-<!--  -->
-
-
-<div class="card">
-  <div class="card-header">
-      <div class="row">
-          <div class="col-12">
-              <h4>
-                  <!-- <img id="imagen" src="../Activo Fijoss/user-04.jpg" /> -->
-              </h4>
-          </div>
-      </div>
-  </div>
-
-  <div class="card-body">
+    
+        <div class="card-body">
         
     <form method="PUT" action="" enctype="multipart/form-data">
 
@@ -49,15 +39,12 @@
                     </div>
                     <input type="text" id='tercero_id' hidden>
 
-                   
 
                     <div class="form-group">
-                        <label for="exampleSelectRounded0">Cuenta PUC CUALES APLICA? </label>
-                        <select class="custom-select rounded-0" id="select-puc" disabled>
-                          <!-- <option selected="true" disabled="disabled">Selecione un Nivel</option> -->
-        
-                        </select>
+                        <label for="responsable">Cuenta Puc <code> &nbsp;*</code></label>
+                        <input class="form-control input-texto-alfanumerico" id="puc" placeholder="Nombre de la cuenta PUC" disabled>
                     </div>
+                        <input class="form-control input-texto-alfanumerico" id="puc_id" hidden>
 
                     <div class="form-group">
                         <label>Depreciar Meses</label>
@@ -230,7 +217,7 @@
             </div>
             
         <div class="col-12 float-right">
-            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            <!-- <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button> -->
         </div> 
 
     </form>
@@ -238,17 +225,6 @@
 </div>
 
 </div>
-
-
-</div>
-
-<!--  -->
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   <script>
@@ -428,6 +404,25 @@ $.ajax({
 
 }
 
+var obtenerPuc = function(id){
+    url_p= 'pucs/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_p,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#puc').val(respuesta.data.id+'-'+respuesta.data.descripcion);
+            $('#puc_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
 
 
 //*************************************************************************************************************************
@@ -494,11 +489,9 @@ $.ajax({
             nivelCentrocosto('#select-nivelcentrocostos',respuesta.data.nivelcentrocosto, respuesta.data.centrocosto_id);
         }
 
-        // if(respuesta.data.puc_id){
-        //     obtenerPuc(respuesta.data.puc_id);
-        // }
-
-
+        if(respuesta.data.puc_id){
+            obtenerPuc(respuesta.data.puc_id);
+        }
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

@@ -1,5 +1,4 @@
 <div class="card card-main-content">
-  <!-- <div class="card card-main-content" style="position: relative;"> -->
 
   <div class="card-header">
       <h2 class="card-title"><b>
@@ -7,15 +6,9 @@
   </div>
 
 
-
-<!-- inicio -->
-
-<!-- <div class="card-body" style="width: 100%; height: 100%;  position: absolute; top: 50%; left:-10%;"> -->
 <div class="card-body-datatable">
 
-
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -29,14 +22,12 @@
                 <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
               </button>
             </li>
-            <!-- <li class="breadcrumb-item active">Tabla de Terceros</li> -->
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -47,7 +38,6 @@
             <div class="card-header">
               <h3 class="card-title">Lista Terceros</h3>
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
               
@@ -55,36 +45,24 @@
 
               </table>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
   </section>
-  <!-- /.content -->
 </div>
-</div>
-<!-- fin -->
-
-<div id="mymodal">
-  
 </div>
 
-  <div class="card-footer">
-    <!-- Footer -->
-  </div>
+<div id="mymodal"></div>
+
+  <div class="card-footer"></div>
 
 </div>
 
 <script>
 
-var organizarDatos = function( data ) {  //TODO: revisar este codigo
+var organizarDatos = function( data ) {
     var arrTerceros = [];
-//  console.log(data);
     // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrTercero = [
@@ -95,9 +73,13 @@ var organizarDatos = function( data ) {  //TODO: revisar este codigo
             element.telefono            
         ];
 
-        // arrTercero.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
-
-        arrTercero.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verTercero('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTercero('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarTercero('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
+        if(localStorage.nivelperfil == 2){
+            arrTercero.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verTercero('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTercero('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarTercero('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
+        }else if(localStorage.nivelperfil == 1){
+            arrTercero.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verTercero('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarTercero('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; </div>'); 
+        }else if(localStorage.nivelperfil == 0){
+            arrTercero.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verTercero('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; '); 
+        }
 
         arrTerceros.push(arrTercero);
     });
@@ -257,17 +239,21 @@ function verTercero(id){
 
 }
 
+function nivelPerfil(){
+  if(localStorage.nivelperfil >= 1){
+     $('#divCrear').show();
+  }
+}
 
 $( document ).ready(function() {
   $('.preloader').hide("slow");
   validarLogin();
-
-  // alert(localStorage.access_token);
+  nivelPerfil();
+  infoTable(); 
 
   var saludo = 'Hola '+ localStorage.nombres;
   $('#saludos').text(saludo);
 
-  infoTable(); 
   $("#crear").on("click",renderTercero);
 
 });

@@ -40,15 +40,13 @@
                     </div>
                     <input type="text" id='tercero_id' hidden>
 
-                   
 
                     <div class="form-group">
-                        <label for="exampleSelectRounded0">Cuenta PUC CUALES APLICA? </label>
-                        <select class="custom-select rounded-0" id="select-puc">
-                          <!-- <option selected="true" disabled="disabled">Selecione un Nivel</option> -->
-        
-                        </select>
+                        <label for="responsable">Cuenta Puc <code> &nbsp;*</code></label>
+                        <input class="form-control input-texto-alfanumerico" id="puc" placeholder="Nombre de la cuenta PUC" required>
                     </div>
+                        <input class="form-control input-texto-alfanumerico" id="puc_id" hidden>
+
 
                     <div class="form-group">
                         <label>Depreciar Meses</label>
@@ -261,6 +259,7 @@ var residuo = $('#residuo').val();
 var observaciones = $('#observaciones').val();
 var costohora = $('#costohora').val();
 var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
+var puc_id = $('#puc_id').val();
 
 var alquilable =$('#alquilable').val()? 1 : 0;
 var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
@@ -268,7 +267,6 @@ var centrocosto_id = $('#select-nivelcentrocostos').val()? $('#select-nivelcentr
 var estadoactivo_id = $('#select-estadoactivos').val()? $('#select-estadoactivos').val() : ''; 
 var responsable_id = $('#tercero_id').val(); 
 var gruposactivosfijo_id = $('#select-gruposactivosfijo').val()? $('#select-gruposactivosfijo').val() : ''; 
-// var puc_id = $('#select-puc').val()? $('#select-puc').val() : ''; 
 
 var nivelcentrocosto = '';
 if(localStorage.nivelgasto == 1){
@@ -279,9 +277,6 @@ if(localStorage.nivelgasto == 1){
     nivelcentrocosto = 'dependencias';
 }
 
-
-// formData.append("creador_id", localStorage.id);
-// formData.append("empresa_id", localStorage.empresa_id);
 formData.append("nombre", nombre);
 formData.append("codigo", codigo);
 formData.append("direccion", direccion);
@@ -301,7 +296,7 @@ formData.append("nivelcentrocosto", nivelcentrocosto);
 formData.append("estadoactivo_id", estadoactivo_id);
 formData.append("responsable_id", responsable_id);
 formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
-// formData.append("puc_id", puc_id);
+formData.append("puc_id", puc_id);
 formData.append("imagen", imagen);
 formData.append('_method', 'PUT');
 
@@ -336,7 +331,6 @@ $.ajax({
     },
     error: function(respuesta) {
 
-        // console.log(respuesta.responseJSON);
         if(respuesta.responseJSON.error){
             $.each(respuesta.responseJSON.error.message, function (key, item) {
                 var mensaje = item[0];
@@ -367,7 +361,6 @@ $( "#responsable" ).autocomplete({
             },
              dataType: "json",
              success: function(respuesta) {
-                // console.log(respuesta);
                 response(respuesta);
              }
            });
@@ -636,11 +629,9 @@ $.ajax({
             nivelCentrocostos('#select-nivelcentrocostos');
         }
 
-        // if(respuesta.data.puc_id){ //TODO: auxiliares que empiezan con 15 o 16
-        //     obtenerPuc(respuesta.data.puc_id);
-        // }else{
-        //     obtenerPucs();
-        // }
+        if(respuesta.data.puc_id){
+            obtenerPuc(respuesta.data.puc_id);
+        }
 
 
     },
@@ -819,14 +810,78 @@ var crearHtmlCosto = function(data, base = null, id = null) {
     }
 }
 
+//******************************************************************************************************************************************************************************
 
-
-
+var obtenerPuc = function(id){
+    url_p= 'pucs/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_p,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#puc').val(respuesta.data.id+'-'+respuesta.data.descripcion);
+            $('#puc_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
 
 //******************************************************************************************************************************************************************************
 
+$( "#puc" ).autocomplete({
+        source: function( request, response ) {
+            var url_puc = 'pucsactivosfijos?search='+$('#puc').val(); //TODO: buscar en todas las 15 y 16
 
+           $.ajax({
+             method: "GET",
+             url: url_back + url_puc,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#puc').val(ui.item.label); // display the selected text
+          $('#puc_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
 
+//********************************************************************************************************************************************************************
+
+var recargarDepartamento = function(){
+    var departamento_id = $(this).val();
+    var url_d ='departamentos/'+departamento_id+'/ciudades';
+    if(departamento_id){
+        $.ajax({
+            type:"GET",
+            url: url_back + url_d,
+            headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+            dataType: "json",
+            success:function(respuesta){
+                $('#select-ciudad').html(crearHtml(respuesta.data));
+            }
+        }); 
+    }else if($(this).val() == ''){
+         $('#select-ciudad').val('');
+    }
+}
+
+//******************************************************************************************************************************************************************
 
 $( document ).ready(function() {
     $('.preloader').hide("slow");
@@ -834,29 +889,8 @@ $( document ).ready(function() {
 
     obtenerActivosfijos(localStorage.editar);
     obtenerDepartamentos();
-    // nivelCentrocostos('#select-nivelcentrocostos');
 
-    $('#select-departamento').on('change',function(){
-        var departamento_id = $(this).val();
-        var url_d ='departamentos/'+departamento_id+'/ciudades';
-        if(departamento_id){
-            $.ajax({
-                type:"GET",
-                url: url_back + url_d,
-                headers: { 
-                    Authorization: 'Bearer ' + localStorage.access_token
-                },
-                dataType: "json",
-                success:function(respuesta){
-
-                    $('#select-ciudad').html(crearHtml(respuesta.data));
-                }
-            }); 
-        }else if($(this).val() == ''){
-             $('#select-ciudad').val('');
-        }
-    });
-
+    $("#select-departamento").on("change",recargarDepartamento); 
 
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
 });

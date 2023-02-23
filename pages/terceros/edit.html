@@ -2091,11 +2091,9 @@ $( document ).ready(function() {
       $("#identificacion").on("change",calcularDigito); // Digito de verificacion
       $("#select-departamento").on("change",recargarDepartamento); 
 
-
     obtenertercero(localStorage.editar);
     obtenerDepartamentos();
     verificarSucursal();
-
 
     $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');

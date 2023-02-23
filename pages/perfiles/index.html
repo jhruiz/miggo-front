@@ -60,11 +60,12 @@
 
 var organizarDatos = function( data ) {  
     var arrPerfiles = [];
+    var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
     // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrPerfile = [
             element.descripcion,
-            element.nivel,
+            arrayNivel[element.nivel],
         ];
 
         if(localStorage.nivelperfil == 2){
@@ -134,6 +135,8 @@ var url = 'perfiles';
 
 var renderPerfile = function() {
 var url = 'perfiles/add.html';
+  
+  $('#mymodal').html('');
   $('#mymodal').load('../' + url,function(){
             $('#ModalLong3').modal({show:true});
         });
@@ -198,11 +201,10 @@ function nivelPerfil(){
   }
 }
 
-
 $( document ).ready(function() {
   $('.preloader').hide("slow");
   validarLogin();
-  nivelPerfil();
+  // nivelPerfil(); //TODO: no dejar crear perfiles
   infoTable(); 
 
   var saludo = 'Hola '+ localStorage.nombres;

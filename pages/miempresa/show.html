@@ -620,7 +620,7 @@ var obtenerPuc = function(id){
     },
     dataType: "json",
     success: function(respuesta) {
-            $('#puc').val(respuesta.data.id+'-'+respuesta.data.descripcion);
+            $('#puc').val(respuesta.data.codigo+'-'+respuesta.data.descripcion);
             $('#puc_id').val(respuesta.data.id);
     },
     error: function() {
@@ -830,13 +830,19 @@ $.ajax({
 }
 
 function editarEmpresa(id){//render al editar
-
 var url_edit = 'miempresa/edit.html';
 
-var bool = confirm('Deseas Modificar Tu empresa esta opcion es de cuidado ya que Miggo usa parte de la información para su funcionamiento?');
-    if(bool){
-        $('#main_content').load(url_front + url_edit);
-    }
+if(localStorage.nivelperfil == 2){
+
+    var bool = confirm('Deseas Modificar Tu empresa esta opcion es de cuidado ya que Miggo usa parte de la información para su funcionamiento?');
+        if(bool){
+            $('#main_content').load(url_front + url_edit);
+        }
+  }else{
+        var mensaje = 'No tiene los permisos para Editar la Empresa';
+        sweetMessage('info', mensaje);
+  }
+
 }
 
 $( document ).ready(function() {

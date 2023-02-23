@@ -48,7 +48,7 @@
                 </div>
 
               <div class="form-group">
-                <label for="exampleSelectRounded0">Perfil <code> &nbsp;*</code></label>
+                <label for="exampleSelectRounded0">Perfil (Nivel) <code> &nbsp;*</code></label>
                 <select class="custom-select rounded-0" id="select-perfiles" required>
 
                 </select>
@@ -271,8 +271,10 @@ var obtenerCiudad = function(id){
 }
 
 
-var obtenerSelect = function(url, select, id){
+var obtenerPerfilSelect = function(url, select, id){
     url_tipo= url+ '/' +id;
+    var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
+
     $.ajax({
     method: "GET",
     url: url_back + url_tipo,
@@ -283,9 +285,9 @@ var obtenerSelect = function(url, select, id){
     success: function(respuesta) {
             var html = '';
             html += '<option value="'+ respuesta.data.id+'">';
-            html += respuesta.data.descripcion;
+            html += respuesta.data.descripcion+'-'+ arrayNivel[respuesta.data.nivel];
             html += '</option>';
-            obtenerSelects(url, select, id, html);
+            obtenerPerfilSelects(url, select, id, html);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -296,30 +298,8 @@ var obtenerSelect = function(url, select, id){
 
 //***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
 
- function obtenerDepartamentos() {
 
-url = 'paises/'+ 170 +'/departamentos';
-
-    $.ajax({
-        method: "GET",
-        url: url_back + url,
-        headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-        },
-        dataType: "json",
-        success: function(respuesta) {
-            // crearDepartamentos(respuesta.data);
-            $('#select-departamento').html(crearHtml(respuesta.data));
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-    })     
-}
-
-
-function obtenerSelects(url, select, id = null,  base = null) {
+function obtenerPerfilSelects(url, select, id = null,  base = null) {
 
     $.ajax({
         method: "GET",
@@ -330,7 +310,7 @@ function obtenerSelects(url, select, id = null,  base = null) {
         dataType: "json",
         success: function(respuesta) {
     
-            $(select).html(crearHtml(respuesta.data, base, id));
+            $(select).html(crearPerfilHtml(respuesta.data, base, id));
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -339,13 +319,15 @@ function obtenerSelects(url, select, id = null,  base = null) {
       })     
     }
     
-    var crearHtml = function(data, base = null, id = null) {
+    var crearPerfilHtml = function(data, base = null, id = null) {
+         var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
+
         if (base) {
                 var html = base;
                 $.each(data, function (key, item) {
                     if(id != item.id){
                         html += '<option value="'+ item.id+'">';
-                        html += item.descripcion;
+                        html += item.descripcion+'-'+arrayNivel[item.nivel];
                         html += '</option>';
                     }
                 });
@@ -354,7 +336,7 @@ function obtenerSelects(url, select, id = null,  base = null) {
                 var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
                 $.each(data, function (key, item) {
                     html += '<option value="'+ item.id+'">';
-                    html += item.descripcion;
+                    html += item.descripcion+'-'+arrayNivel[item.nivel];
                     html += '</option>';
                 });
             return html;
@@ -393,9 +375,9 @@ $.ajax({
 
 
         if(respuesta.data.perfile_id){
-            obtenerSelect('perfiles', '#select-perfiles', respuesta.data.perfile_id);
+            obtenerPerfilSelect('perfiles', '#select-perfiles', respuesta.data.perfile_id);
         }else{
-            obtenerSelects('perfiles', '#select-perfiles');
+            obtenerPerfilSelects('perfiles', '#select-perfiles');
         }
 
         if(respuesta.data.tercero_id){
@@ -416,37 +398,13 @@ $.ajax({
   })  
 }
 
-var recargarDepartamento = function(){
-    var departamento_id = $(this).val();
-    var url_d ='departamentos/'+departamento_id+'/ciudades';
-    if(departamento_id){
-        $.ajax({
-            type:"GET",
-            url: url_back + url_d,
-            headers: { 
-                Authorization: 'Bearer ' + localStorage.access_token
-            },
-            dataType: "json",
-            success:function(respuesta){
-                $('#select-ciudad').html(crearHtml(respuesta.data));
-            }
-        }); 
-    }else if($(this).val() == ''){
-         $('#select-ciudad').val('');
-    }
-}
-
 
 //********************************************************************************************************************************
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
 
-    $("#select-departamento").on("change",recargarDepartamento); 
-
     obtenerUsuario(localStorage.editar);
-    obtenerDepartamentos();
-
 
     $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');

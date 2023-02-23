@@ -198,13 +198,8 @@ function editarActivosfijo(id){
 function verActivosfijo(id){
     var url_show = 'activosfijos/show.html';
 
-  $('#mymodal').html('');
-  $('#mymodal').load('../'+ url_show,function(){
-        $('#exampleModalLong').modal({show:true});
-    });
+    $('#main_content').load(url_front + url_show);
     localStorage.setItem('ver', id);
-
-
 }
 
 function nivelPerfil(){

@@ -762,7 +762,29 @@ var defaultImage = function(){
     ul.appendChild(imagen);
 }
 
-//*********************************************************************************************************************************************************
+//****************************************************************************************************************************************************************************
+
+var recargarDepartamento = function(){
+    var departamento_id = $(this).val();
+    var url_d ='departamentos/'+departamento_id+'/ciudades';
+    if(departamento_id){
+        $.ajax({
+            type:"GET",
+            url: url_back + url_d,
+            headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+            dataType: "json",
+            success:function(respuesta){
+                $('#select-ciudad').html(crearHtml(respuesta.data));
+            }
+        }); 
+    }else if($(this).val() == ''){
+         $('#select-ciudad').val('');
+    }
+}
+
+//*******************************************************************************************************************************************************************************
 
 $( document ).ready(function() {
     $('.preloader').hide("slow");
@@ -779,26 +801,7 @@ $( document ).ready(function() {
     obtenerSelects('personerias', '#select-personerias');
     obtenerSelects('tiposociedades', '#select-tiposociedades');
 
-    $('#select-departamento').on('change',function(){
-        var departamento_id = $(this).val();
-        var url_d ='departamentos/'+departamento_id+'/ciudades';
-        if(departamento_id){
-            $.ajax({
-                type:"GET",
-                url: url_back + url_d,
-                headers: { 
-                      Authorization: 'Bearer ' + localStorage.access_token
-                },
-                dataType: "json",
-                success:function(respuesta){
-
-                  $('#select-ciudad').html(crearHtml(respuesta.data));
-                }
-            }); 
-        }else if($(this).val() == ''){
-             $('#select-ciudad').val('');
-        }
-    });
+    $("#select-departamento").on("change",recargarDepartamento); 
 
     $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
     $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
