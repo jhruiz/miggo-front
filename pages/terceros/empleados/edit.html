@@ -769,21 +769,21 @@ $(function() {
  $("#inicio").datetimepicker({
         locale: 'es',
         format: "YYYY-MM-DD",  
-        maxDate: new Date(), //TODO: solo dura una año minDate  y maxDate
+        maxDate: moment(),
+        minDate: moment().subtract(99, 'year'),
         timepicker:false, 
         autoclose: true,
         showButtonPanel: true
  });
 
  $("#fechaterminacion").datetimepicker({
-        // locale: 'es',
+        locale: 'es',
         format: "YYYY-MM-DD",  
-        maxDate: new Date(),
+        maxDate: moment(),
+        minDate: moment().subtract(99, 'year'),
         timepicker:false,
         autoclose: true,
         showButtonPanel: true,
-        lang: 'es'
-
  });
 });
 

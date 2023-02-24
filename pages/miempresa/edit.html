@@ -1361,19 +1361,15 @@ $( document ).ready(function() {
 
 
 $(function() {
-    //Date picker
  $("#fecharesolucione").datetimepicker({
         locale: "es",
         format: "YYYY-MM-DD",  
-        //  defaultDate:"2012/01/01",
-        maxDate: new Date("2010-01-01"),//TODO: fijar fecha automatica menos 15 años 
-        minDate: '1950-01-01',
+        maxDate: moment(),
+        minDate: moment().subtract(99, 'year'),
         timepicker:false,
         autoclose: true,
         showButtonPanel: true
  });
-    // //Date and time picker
-    // $('#fecharesolucionetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 });
 
 

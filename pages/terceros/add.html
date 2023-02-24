@@ -791,23 +791,19 @@ $( document ).ready(function() {
 });
 
 
-
 $(function() {
-    //Date picker
  $("#cumpleanio").datetimepicker({
-        // language: 'es',
-        format: "DD-MM-YYYY",  
-        //  defaultDate:"2012/01/01",
-        // maxDate: new Date(),
-        maxDate: moment(),
+        // format: "DD-MM-YYYY",  
+        format: "YYYY-MM-DD",  
+        maxDate:  moment(),
         minDate: moment().subtract(99, 'year'),
         timepicker:false,
         autoclose: true,
-        showButtonPanel: true
+        showButtonPanel: true,
+        locale:'es',
  });
-    // //Date and time picker
-    $("#cumpleanio").datetimepicker( $.datepicker.regional[ "es" ] );
-    // $( selector ).datepicker( $.datepicker.regional[ "fr" ] );
+//  console.log(moment.locale());
+
 });
 
 
@@ -835,5 +831,7 @@ document.getElementById("imagen").onchange = function(e){
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
+
+
 
 
