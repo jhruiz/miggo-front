@@ -75,13 +75,13 @@ var organizarDatos = function( data ) {
         ];
 
         if(localStorage.nivelperfil == 2){
-            arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
+            arrUsuario.push( element.estatus ? '<div class="col text-center"> <a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<div class="col text-center"> <a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
             arrUsuario.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarUsuario('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarUsuario('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
         }else if(localStorage.nivelperfil == 1){
-            arrUsuario.push( element.estatus ? '<a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
+            arrUsuario.push( element.estatus ? '<div class="col text-center"> <a class="text-success" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>' : '<div class="col text-center"> <a class="text-danger" href="#" onclick="desactivar('+ element.id +')"><i class="fas fa-square"></i></a>');
             arrUsuario.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarUsuario('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; </div>'); 
         }else if(localStorage.nivelperfil == 0){
-            arrUsuario.push( element.estatus ? '<a class="text-success" href="#"><i class="fas fa-square"></i></a>' : '<a class="text-danger" href="#"><i class="fas fa-square"></i></a>');
+            arrUsuario.push( element.estatus ? '<div class="col text-center"> <a class="text-success" href="#"><i class="fas fa-square"></i></a>' : '<div class="col text-center"> <a class="text-danger" href="#"><i class="fas fa-square"></i></a>');
             arrUsuario.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verUsuario('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; </div>'); 
         }
 
