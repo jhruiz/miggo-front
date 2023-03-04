@@ -1,0 +1,213 @@
+<!-- Modal -->
+<div class="modal fade" id="ModalLong3" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">
+            <i class="nav-icon fas fa-user"></i>
+            Crear Numero Facturacion venta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+<!--  -->
+
+<div class="card">
+
+  <div class="card-body">
+        
+        <form method="POST" id="form" action="" enctype="multipart/form-data">
+  
+            <div class="form-group">
+                <label>Numero Resolucion <code> &nbsp;*</code></label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                    </div> 
+                    <input type="text" id="numeroresolucion" class="form-control input-texto-alfanumerico" placeholder="Numero Resolucion" required>  
+                </div> 
+            </div> 
+
+            <div class="form-group">
+            <label>Fecha de Resolucion: <code> &nbsp;*</code></label>
+                <div class="input-group date" id="fecharesolucion" data-target-input="nearest">
+                    <div class="input-group-prepend" data-target="#fecharesolucion" data-toggle="datetimepicker">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                    <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesolucion" required/>
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label>prefijo <code> &nbsp;*</code></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div> 
+                <input type="text" id="prefijo" class="form-control input-texto-alfanumerico" placeholder="Prefijo" required>  
+            </div> 
+        </div> 
+
+        <div class="form-group">
+            <label>Consecutivo Desde <code> &nbsp;*</code></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div> 
+                <input type="text" id="consecutivodesde" class="form-control input-texto-alfanumerico" placeholder="Consecutivo Desde" required>  
+            </div> 
+        </div> 
+
+        <div class="form-group">
+            <label>Consecutivo Hasta <code> &nbsp;*</code></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div> 
+                <input type="text" id="consecutivohasta" class="form-control input-texto-alfanumerico" placeholder="Consecutivo Hasta" required>  
+            </div> 
+        </div> 
+
+
+        <div class="form-group">
+            <label>Vigencia Meses <code> &nbsp;*</code></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div> 
+                <input type="text" id="vigenciameses" class="form-control input-texto-alfanumerico" placeholder="Vigencia Meses" required>  
+            </div> 
+        </div> 
+
+
+        <div class="form-group">
+            <label>Alerta Consecutiva <code> &nbsp;*</code></label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                </div> 
+                <input type="text" id="alertaconsecutiva" class="form-control input-texto-alfanumerico" placeholder="Alerta Consecutiva" required>  
+            </div> 
+        </div> 
+
+
+            <div class="col-12 float-right">
+                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            </div> 
+
+        </form>
+
+    </div>
+
+</div>
+</div>
+
+<!--  -->
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+
+
+$("#form").submit(function(e) {
+e.preventDefault();   
+
+const form = document.getElementById('form');
+const formData = new FormData(form);
+
+var numeroresolucion = $('#numeroresolucion').val();
+var fecharesolucion = $('#fecharesoluciones').val();
+var prefijo = $('#prefijo').val();
+var consecutivodesde = $('#consecutivodesde').val();
+var consecutivohasta = $('#consecutivohasta').val();
+var vigenciameses = $('#vigenciameses').val();
+var alertaconsecutiva = $('#alertaconsecutiva').val();
+
+formData.append("numeroresolucion", numeroresolucion);
+formData.append("fecharesolucion", fecharesolucion);
+formData.append("prefijo", prefijo);
+formData.append("consecutivodesde", consecutivodesde);
+formData.append("consecutivohasta", consecutivohasta);
+formData.append("vigenciameses", vigenciameses);
+formData.append("alertaconsecutiva", alertaconsecutiva);
+formData.append("empresa_id", localStorage.empresa_id);
+formData.append("creador_id", localStorage.id);
+
+
+$.ajax({
+    method: "POST",
+    url: url_back + "numeracionfacturaventas",
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(respuesta) {
+
+        if(respuesta){
+            $('.modal-backdrop').remove();
+
+            var mensaje = 'Numero Facturacion venta creado de forma correcta.: '+ respuesta.data.numeroresolucion;
+            sweetMessage('success', mensaje); 
+            $('#main_content').load(url_front + 'numeracionfacturaventas/index.html');
+        } else {
+                sweetMessage('warning', respuesta);                
+        }
+    },
+    error: function(respuesta) {
+
+        if(respuesta.responseJSON){
+            if(respuesta.responseJSON.error.message[1] =! ''){
+                    $.each(respuesta.responseJSON.error.message, function (key, item) {
+                    var mensaje = item[0];
+                    console.log(key + item[0]);
+                    sweetMessage('error', mensaje);
+                });
+            }else{
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.' + respuesta.responseJSON.error.message;
+                sweetMessage('error',  mensaje);
+            }
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    }
+});
+});
+
+
+$(function() {
+ $("#fecharesolucion").datetimepicker({
+        locale: "es",
+        format: "YYYY-MM-DD",  
+        maxDate: moment(),
+        minDate: moment().subtract(99, 'year'),
+        timepicker:false,
+        autoclose: true,
+        showButtonPanel: true,
+ });
+});
+
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+    validarLogin();
+
+    $('#numeroresolucion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
+});
+
+
+</script>
+
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>
+
