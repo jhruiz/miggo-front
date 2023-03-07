@@ -166,9 +166,6 @@ function verificarNivelperfil(llamado){
 }
 
 
-
-
-
 function eliminarZonaventa(){
   var id = $('#id').val();
   var posicion = $('#posicion').val();
@@ -420,7 +417,7 @@ var generarDataTable = function( dataSet ) {
 
 var infoTable = function(){
 
-var url = 'zonaventasallniveles';
+var url = 'empresas/'+localStorage.empresa_id+'/zonaventas';
 
     $.ajax({
             method: "GET",
@@ -430,7 +427,7 @@ var url = 'zonaventasallniveles';
             },
             dataType: 'json',
             success: function(respuesta) {
-                generarDataTable(organizarDatos(respuesta));
+                generarDataTable(organizarDatos(respuesta.data));
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
