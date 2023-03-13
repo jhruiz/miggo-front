@@ -1,89 +1,5 @@
-<div class="card card-main-content">
-  
-    <div class="card-header">
-        <h2 class="card-title"><b>
-        </b></h2>
-    </div>
-  
-  
-  <div class="card-body-datatable">
-  
-  <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 id="saludos"></h1>
-          </div>
-        </div>
-        <div class="row">
-
-          <div class="col-sm-12">
-                
-                      <form method="POST" id="form" action="" enctype="multipart/form-data" class="form-inline">
-
- 
-                            <div class="form-group mb-2">
-                              <br>
-                              <br>
-                              <h4 id="tipovehiculo"></h4>
-
-                            </div>
-                            <div class="form-group mx-sm-3 mb-2">
-                              <label for="select-partevehiculo" class="sr-only">Parte Vehiculo</label>
-                              <select class="form-control" id="select-partevehiculo" required>
-                                <option selected>Parte...</option>
-                                <option>...</option>
-                              </select>
-                            </div>
-
-                          <button type="button" id="vincular" class="btn btn-primary mb-2">Vincular</button>
-              
-                      </form>
-              
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-  
-  
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title" id="saludo">Lista de Partes: </h3>
-              </div>
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                
-  
-  
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  </div>
-  
-  <div id="mymodal">
-    
-  </div>
-  
-    <div class="card-footer">
-    </div>
-  
-  </div>
-  
-  <script>
-  
-var obtenertipovehiculo = function(){
-    url_tipo= 'tipovehiculos/' + localStorage.editar;
+var obtenerListadescuento = function(){
+    url_tipo= 'listadescuentos/' + localStorage.editar;
     $.ajax({
     method: "GET",
     url: url_back + url_tipo,
@@ -92,7 +8,7 @@ var obtenertipovehiculo = function(){
     },
     dataType: "json",
     success: function(respuesta) {
-      $('#tipovehiculo').text("Agregando las partes "+respuesta.data.descripcion +" :");
+      $('#listadescuento').text("Lista descuento "+respuesta.data.descripcion +" Grupo Inventario :");
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -101,9 +17,9 @@ var obtenertipovehiculo = function(){
   })  
 }
 
-function obtenerpartevehiculos() {
+function obtenerGrupoinventario() {
 
-url = 'partevehiculos';
+url = 'allgrupoinventarios';
 
 $.ajax({
     method: "GET",
@@ -113,7 +29,7 @@ $.ajax({
     },
     dataType: "json",
     success: function(respuesta) {
-        $('#select-partevehiculo').html(crearHtml(respuesta.data));
+        $('#select-grupoinventario').html(crearHtml(respuesta));
 
     },
     error: function() {
@@ -124,31 +40,31 @@ $.ajax({
 }
 
 var crearHtml = function(data) {
-    var html = '<option value="">Seleccione..</option>';
+      var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
         $.each(data, function (key, item) {
             html += '<option value="'+ item.id+'">';
-            html += item.descripcion;
+            html += item.codigo+'-'+item.descripcion;
             html += '</option>';
         });
     return html;
 }
 
   var organizarDatos = function( data ) {  
-      var arrTipovehiculos = [];
+      var arrListadescuentos = [];
       var i = 0;
       data.forEach(element => {
-          arrTipovehiculo = [
+          arrListadescuento = [
+              element.codigo,
               element.descripcion,
-              element.extra,
           ];
   
           i++;
-          arrTipovehiculo.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarTipovehiculosP('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+          arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
   
-          arrTipovehiculos.push(arrTipovehiculo);
+          arrListadescuentos.push(arrListadescuento);
       });
   
-      return arrTipovehiculos;
+      return arrListadescuentos;
   }
   
   
@@ -157,8 +73,8 @@ var crearHtml = function(data) {
     $("#example1").DataTable({
       data: dataSet,
       columns: [
-              { title: "Parte de Vehiculo" },
-              { title: "Extra" },
+              { title: "Codigo" },
+              { title: "Descripcion" },
               { title: "Acciones" },
               ],
       "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -180,7 +96,7 @@ var crearHtml = function(data) {
   
   var infoTable = function(){
   
-  var url = 'tipovehiculos/'+ localStorage.editar +'/partevehiculos';
+  var url = 'listadescuentos/'+ localStorage.editar +'/grupoinventarios';
   
       $.ajax({
               method: "GET",
@@ -203,13 +119,13 @@ var crearHtml = function(data) {
   
   
   
-  function eliminarTipovehiculosP(id){
-  var url_eliminar = 'tipovehiculos/' + localStorage.editar +'/partevehiculos/'+id;
-  var url_index = 'tipovehiculoPartevehiculo/index.html';
-  var url_edit = 'tipovehiculoPartevehiculo/edit.html';
+  function eliminarListadescuentoG(id){
+  var url_eliminar = 'listadescuentos/' + localStorage.editar +'/grupoinventarios/'+id;
+  var url_edit = 'listadescuentoGrupoinventario/edit.html';
+  
 
   if(localStorage.nivelperfil == 2){
-  
+
     if (confirm('¿Está seguro de Borrar?')){
   
                 $.ajax({
@@ -240,13 +156,14 @@ var crearHtml = function(data) {
     sweetMessage('info', mensaje);
   }
 
+
   }
 
   $("#vincular").on('click',function(e){
 
-    var parte = $('#select-partevehiculo').val();
-    var url = 'tipovehiculos/'+ localStorage.editar +'/partevehiculos/'+parte;
-    var url_edit = 'tipovehiculoPartevehiculo/edit.html';
+    var grupo = $('#select-grupoinventario').val();
+    var url = 'listadescuentos/'+ localStorage.editar +'/grupoinventarios/'+grupo;
+    var url_edit = 'listadescuentoGrupoinventario/edit.html';
   
   $.ajax({
           method: "PUT",
@@ -256,7 +173,7 @@ var crearHtml = function(data) {
           },
           dataType: 'json',
           success: function(respuesta) {
-            var mensaje = 'se agrego exitosamente la parte: ' + respuesta.data.descripcion;
+            var mensaje = 'se agrego exitosamente el grupo: ' + respuesta.data.descripcion;
             sweetMessage('success', mensaje);
             $('#main_content').load(url_front + url_edit);    
           },
@@ -273,15 +190,12 @@ var crearHtml = function(data) {
     validarLogin();
   
     infoTable(); 
-    obtenerpartevehiculos();
-    obtenertipovehiculo();
+    obtenerGrupoinventario();
+    obtenerListadescuento();
 
     var saludos = 'Hola '+ localStorage.nombres;
     $('#saludos').text(saludos);
 
   
   });
-  
-  
-  </script>
   
