@@ -64,6 +64,7 @@ var url = 'empresas/'+localStorage.empresa_id+'/listadescuentos';
             },
             dataType: 'json',
             success: function(respuesta) {
+              console.log(respuesta);
                 generarDataTable(organizarDatos(respuesta.data));
             },
             error: function() {
