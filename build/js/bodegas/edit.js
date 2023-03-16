@@ -1,39 +1,38 @@
+
 $("#form").submit(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
     const formData = new FormData(form);
     
-    var porcentaje = $('#porcentaje').val() / 100;
+    var codigo = $('#codigo').val();
     var descripcion = $('#descripcion').val();
-    var inicio = $('#inicios').val();
-    var fin = $('#fins').val();
+    var tipobodega_id = $('#select-tipobodegas').val();
     
-    formData.append("porcentaje", porcentaje);
+    formData.append("codigo", codigo);
     formData.append("descripcion", descripcion);
-    formData.append("inicio", inicio);
-    formData.append("fin", fin);
+    formData.append("tipobodega_id", tipobodega_id);
     formData.append('_method', 'PUT');
     
     $.ajax({
         method: "POST",
-        url: url_back + "listadescuentos/"+localStorage.editar,
+        url: url_back + "bodegas/"+localStorage.editar,
         headers: { 
             Authorization: 'Bearer ' + localStorage.access_token
         },
         dataType: "json",
         data: formData,
-        contentType: false,
-        processData: false,
+        contentType: false,//formData
+        processData: false,//formData
         success: function(respuesta) {
     
-            localStorage.editar = '';
-            $('#ModalLong2').modal('hide');
-            $('ModalLong2').removeClass('show');
-            $('.modal-backdrop').remove();
-            var mensaje = ' Descuento actualizado de forma correcta.: '+ respuesta.data.descripcion;
-            sweetMessage('success', mensaje); 
-            infoTable();
+                localStorage.editar = '';
+                $('#ModalLong2').modal('hide');
+                $('ModalLong2').removeClass('show');
+                $('.modal-backdrop').remove();
+                var mensaje = ' Bodega actualizado de forma correcta.: '+ respuesta.data.descripcion;
+                sweetMessage('success', mensaje); 
+                infoTable(); 
         },
         error: function(respuesta) {
     
@@ -51,10 +50,8 @@ $("#form").submit(function(e) {
     });
     });
     
-    
-    function obtenerListadescuento(id){
-    
-    var url = 'listadescuentos/'+ id;
+    function obtenerBodega(id){
+    var url = 'bodegas/'+ id;
     
     $.ajax({
         method: "GET",
@@ -65,10 +62,14 @@ $("#form").submit(function(e) {
         dataType: "json",
         success: function(respuesta) {
     
-            $('#porcentaje').val(respuesta.data.porcentaje * 100);
+            $('#codigo').val(respuesta.data.codigo);
             $('#descripcion').val(respuesta.data.descripcion);
-            $('#inicios').val(respuesta.data.inicio);
-            $('#fins').val(respuesta.data.fin);
+    
+            if(respuesta.data.tipobodega_id){
+                obtenerSelect('tipobodegas', '#select-tipobodegas', respuesta.data.tipobodega_id);
+            }else{
+                obtenerSelects('tipobodegas', '#select-tipobodegas');
+            }
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -77,34 +78,10 @@ $("#form").submit(function(e) {
       })  
     }
     
-    $(function() {
-     $("#inicio").datetimepicker({
-            locale: "es",
-            format: "YYYY-MM-DD",  
-            maxDate: moment().endOf('year'),
-            minDate: moment(),
-            timepicker:false,
-            autoclose: true,
-            showButtonPanel: true,
-     });
-    
-     $("#fin").datetimepicker({
-            locale: "es",
-            format: "YYYY-MM-DD",  
-            maxDate: moment().endOf('year'),
-            minDate: moment(),
-            timepicker:false,
-            autoclose: true,
-            showButtonPanel: true,
-     });
-    });
-    
-    
     $( document ).ready(function() {
         $('.preloader').hide("slow");
           validarLogin();
-          obtenerListadescuento(localStorage.editar);
+          obtenerBodega(localStorage.editar);
     
         $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });
-    

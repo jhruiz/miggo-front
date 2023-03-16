@@ -109,9 +109,9 @@ function desactivar(id){
             dataType: 'json',
             success: function(respuesta) {
 
-              var mensaje = 'El usuario esta: ' + (respuesta.data.estatus ? 'Activo': 'Desactivado') + ' Nombre: '+ respuesta.data.tercero.nombres;
+              var mensaje = 'El usuario esta: ' + (respuesta.data.estatus ? 'Activo': 'Desactivado');
                 sweetMessage( respuesta.data.estatus ? 'success' : 'error', mensaje);
-                $('#main_content').load(url_front + url_index);
+                infoTable();
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -127,6 +127,7 @@ var generarDataTable = function( dataSet ) {
 
   $("#example1").DataTable({
     data: dataSet,
+    destroy: true,
     columns: [
             { title: "Email" },
             { title: "Perfil" },
@@ -154,10 +155,8 @@ var generarDataTable = function( dataSet ) {
 
 
 var infoTable = function(){
-
 var url = 'empresas/'+ localStorage.empresa_id+'/users';
 
-// alert(localStorage.access_token);
     $.ajax({
             method: "GET",
             url: url_back + url,
@@ -196,25 +195,24 @@ var url_index = 'usuarios/index.html';
 
   if (confirm('¿Está seguro de Borrar?')){
 
-              $.ajax({
-            method: "DELETE",
-            url: url_back + url_eliminar,
-            headers: { 
-                          Authorization: 'Bearer ' + localStorage.access_token
-                      },
-            dataType: "json",
-            success: function(respuesta) {
+          $.ajax({
+                  method: "DELETE",
+                  url: url_back + url_eliminar,
+                  headers: { 
+                                Authorization: 'Bearer ' + localStorage.access_token
+                            },
+                  dataType: "json",
+                  success: function(respuesta) {
 
-                var mensaje = 'se borro exitosamente el usuario de email: ' + respuesta.data.email + ' de nombre: ' + respuesta.data.tercero.nombres;
-                sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
-            },
-            error: function() {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
-          })  
+                      var mensaje = 'se borro exitosamente el usuario de email: ' + respuesta.data.email;
+                      sweetMessage('success', mensaje);
+                      infoTable();
+                  },
+                  error: function() {
+                      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                      sweetMessage('error', mensaje);
+                  }
+                })  
   } else{
     return false;
   }

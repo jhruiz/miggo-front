@@ -4,7 +4,7 @@ var organizarDatos = function( data ) {
     data.forEach(element => {
         arrListadescuento = [
             element.descripcion,
-            element.porcentaje,
+            element.porcentaje * 100,
             element.inicio,
             element.fin,
         ];
@@ -16,7 +16,6 @@ var organizarDatos = function( data ) {
         }else if(localStorage.nivelperfil == 0){
           arrListadescuento.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verListadescuento('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp;</div>'); 
         }
-
         arrListadescuentos.push(arrListadescuento);
     });
 
@@ -28,9 +27,10 @@ var generarDataTable = function( dataSet ) {
 
   $("#example1").DataTable({
     data: dataSet,
+    destroy: true,
     columns: [
             { title: "Descuento" },
-            { title: "Porcentaje" },
+            { title: "Porcentaje %" },
             { title: "Inicio" },
             { title: "Fin" },
             { title: "Acciones" },
@@ -53,7 +53,6 @@ var generarDataTable = function( dataSet ) {
 
 
 var infoTable = function(){
-
 var url = 'empresas/'+localStorage.empresa_id+'/listadescuentos';
 
     $.ajax({
@@ -87,7 +86,6 @@ var url ='listadescuentos/add.html';
 
 
 function eliminarListadescuento(id){
-
 var url_eliminar = 'listadescuentos/' + id;
 var url_index = 'listadescuentos/index.html';
 
@@ -104,8 +102,7 @@ var url_index = 'listadescuentos/index.html';
 
                 var mensaje = 'se borro exitosamente el listadescuentos: ' + respuesta.data.descripcion;
                 sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
+                infoTable();
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

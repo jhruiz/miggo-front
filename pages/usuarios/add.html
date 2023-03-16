@@ -152,13 +152,9 @@ $.ajax({
     processData: false,//formData
     success: function(respuesta) {
 
-        if(respuesta){
             var mensaje = 'Usuario creado de forma correcta: '+ respuesta.data.email;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'usuarios/index.html');
-        } else {
-                sweetMessage('warning', respuesta);                
-        }
     },
     error: function(respuesta) {
         console.log(respuesta.responseJSON);
@@ -167,8 +163,11 @@ $.ajax({
                 var mensaje = item[0];
                 sweetMessage('error', mensaje);
             });
-
-        }else{
+        }else if(respuesta.responseJSON.exception){
+            var mensaje = 'El Correo no Parece Valido debe revisarlo, no le llegara el correo de verificacion';
+            sweetMessage('info', mensaje);
+            $('#main_content').load(url_front + 'usuarios/index.html');
+        } else {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
         }

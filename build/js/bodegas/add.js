@@ -1,26 +1,22 @@
-
 $("#form").submit(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
     const formData = new FormData(form);
     
-    var porcentaje = $('#porcentaje').val() / 100;
+    var codigo = $('#codigo').val();
     var descripcion = $('#descripcion').val();
-    var inicio = $('#inicios').val();
-    var fin = $('#fins').val();
+    var tipobodega_id = $('#select-tipobodegas').val();
     
-    formData.append("empresa_id", localStorage.empresa_id);
-    formData.append("creador_id", localStorage.id);
-    formData.append("porcentaje", porcentaje);
+    formData.append("codigo", codigo);
     formData.append("descripcion", descripcion);
-    formData.append("inicio", inicio);
-    formData.append("fin", fin);
-    
+    formData.append("tipobodega_id", tipobodega_id);
+    formData.append("creador_id", localStorage.id);
+    formData.append("empresa_id", localStorage.empresa_id);
     
     $.ajax({
         method: "POST",
-        url: url_back + "listadescuentos",
+        url: url_back + "bodegas",
         headers: { 
             Authorization: 'Bearer ' + localStorage.access_token
         },
@@ -33,9 +29,9 @@ $("#form").submit(function(e) {
                 $('#ModalLong3').modal('hide');
                 $('ModalLong3').removeClass('show');
                 $('.modal-backdrop').remove();
-                var mensaje = 'Lista Descuento creado de forma correcta.: '+ respuesta.data.descripcion;
+                var mensaje = 'Bodega creado de forma correcta.: '+ respuesta.data.descripcion;
                 sweetMessage('success', mensaje); 
-                infoTable();
+                infoTable(); 
         },
         error: function(respuesta) {
     
@@ -53,35 +49,12 @@ $("#form").submit(function(e) {
     });
     });
     
-    
-    
-    $(function() {
-     $("#inicio").datetimepicker({
-            locale: "es",
-            format: "YYYY-MM-DD",  
-            maxDate: moment().endOf('year'),
-            minDate: moment(),
-            timepicker:false,
-            autoclose: true,
-            showButtonPanel: true,
-     });
-    
-     $("#fin").datetimepicker({
-            locale: "es",
-            format: "YYYY-MM-DD",  
-            maxDate: moment().endOf('year'),
-            minDate: moment(),
-            timepicker:false,
-            autoclose: true,
-            showButtonPanel: true,
-     });
-    });
-    
-    
     $( document ).ready(function() {
         $('.preloader').hide("slow");
         validarLogin();
+        obtenerSelects('tipobodegas', '#select-tipobodegas');
     
         $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });
+    
     

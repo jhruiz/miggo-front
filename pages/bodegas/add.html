@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Crear Tipo Sociedad</h5>
+            Crear Bodega</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,7 +26,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div> 
-                    <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Tipo Sociedad" required>  <code>&nbsp;*</code>
+                    <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Codigo" required>  <code>&nbsp;*</code>
                 </div> 
             </div> 
 
@@ -36,9 +36,17 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div> 
-                    <textarea id="descripcion" class="form-control" rows="2" placeholder="Descripcion ..." required></textarea>
+                    <input type="text" id="descripcion" class="form-control input-texto-alfanumerico" placeholder="Bodega" required>  <code>&nbsp;*</code>
                 </div> 
-            </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="exampleSelectRounded0">Tipo Bodega </label>
+                <select class="custom-select rounded-0" id="select-tipobodegas" >
+                    <!-- <option>Value 1</option> -->
+
+                </select>
+                </div> 
 
             <div class="col-12 float-right">
                 <button type="submit" class="btn btn-primary">Crear</button>
@@ -64,72 +72,7 @@
   </div>
 
 
-<script>
-
-
-$("#form").submit(function(e) {
-e.preventDefault();   
-
-const form = document.getElementById('form');
-const formData = new FormData(form);
-
-var codigo = $('#codigo').val();
-var descripcion = $('#descripcion').val();
-
-formData.append("codigo", codigo);
-formData.append("descripcion", descripcion);
-formData.append("creador_id", localStorage.id);
-
-
-$.ajax({
-    method: "POST",
-    url: url_back + "tiposociedades",
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function(respuesta) {
-
-            $('#ModalLong3').modal('hide');
-            $('ModalLong3').removeClass('show');
-            $('.modal-backdrop').remove();
-            var mensaje = 'Tipo Sociedad creado de forma correcta.: '+ respuesta.data.descripcion;
-            sweetMessage('success', mensaje); 
-            infoTable(); 
-    },
-    error: function(respuesta) {
-
-        if(respuesta.responseJSON.error){
-            $.each(respuesta.responseJSON.error.message, function (key, item) {
-                var mensaje = item[0];
-                sweetMessage('error', mensaje);
-            });
-
-        }else{
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-    }
-});
-});
-
-
-
-
-
-$( document ).ready(function() {
-    $('.preloader').hide("slow");
-    validarLogin();
-
-    $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
-});
-
-
-</script>
-
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
+<script src="../../build/js/bodegas/add.js"></script>
 

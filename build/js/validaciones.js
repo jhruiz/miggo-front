@@ -153,3 +153,68 @@ moment.locale("es", {
 });
 
 //******************************************************************************************************************* */
+
+var obtenerSelect = function(url, select, id){
+  url_tipo= url+ '/' +id;
+  $.ajax({
+  method: "GET",
+  url: url_back + url_tipo,
+  headers: { 
+      Authorization: 'Bearer ' + localStorage.access_token
+  },
+  dataType: "json",
+  success: function(respuesta) {
+          var html = '';
+          html += '<option value="'+ respuesta.data.id+'">';
+          html += respuesta.data.descripcion;
+          html += '</option>';
+          obtenerSelects(url, select, id, html);
+  },
+  error: function() {
+      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+      sweetMessage('error', mensaje);
+  }
+})  
+}
+
+function obtenerSelects(url, select, id = null,  base = null) {
+
+$.ajax({
+  method: "GET",
+  url: url_back + url,
+  headers: { 
+      Authorization: 'Bearer ' + localStorage.access_token
+  },
+  dataType: "json",
+  success: function(respuesta) {
+
+      $(select).html(crearHtml(respuesta.data, base, id));
+  },
+  error: function() {
+      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+      sweetMessage('error', mensaje);
+  }
+})     
+}
+
+var crearHtml = function(data, base = null, id = null) {
+  if (base) {
+          var html = base;
+          $.each(data, function (key, item) {
+              if(id != item.id){
+                  html += '<option value="'+ item.id+'">';
+                  html += item.descripcion;
+                  html += '</option>';
+              }
+          });
+      return html;
+  } else {
+          var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+          $.each(data, function (key, item) {
+              html += '<option value="'+ item.id+'">';
+              html += item.descripcion;
+              html += '</option>';
+          });
+      return html;
+  }
+}

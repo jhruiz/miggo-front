@@ -268,11 +268,9 @@ $( document ).ready(function() {
 
 
 $(function() {
-    //Date picker
  $("#soat").datetimepicker({
         locale: 'es',
         format: "YYYY-MM-DD",  
-        maxDate: moment().endOf('year'), 
         minDate: moment().subtract(1, 'year'),
         timepicker:false, 
         autoclose: true,
@@ -282,7 +280,6 @@ $(function() {
  $("#tecno").datetimepicker({
         locale: 'es',
         format: "YYYY-MM-DD",  
-        maxDate: moment().endOf('year'),
         minDate: moment().subtract(1, 'year'),
         timepicker:false,
         autoclose: true,

@@ -1,6 +1,5 @@
-function obtenerListadescuento(id){
-
-    var url = 'listadescuentos/'+ id;
+function obtenerBodega(id){
+    var url = 'bodegas/'+ id;
     
     $.ajax({
         method: "GET",
@@ -11,11 +10,12 @@ function obtenerListadescuento(id){
         dataType: "json",
         success: function(respuesta) {
     
-            $('#porcentaje').val(respuesta.data.porcentaje * 100);
+            $('#codigo').val(respuesta.data.codigo);
             $('#descripcion').val(respuesta.data.descripcion);
-            $('#inicios').val(respuesta.data.inicio);
-            $('#fins').val(respuesta.data.fin);
     
+            if(respuesta.data.tipobodega_id){
+                obtenerSelect('tipobodegas', '#select-tipobodegas', respuesta.data.tipobodega_id);
+            }
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -28,6 +28,7 @@ function obtenerListadescuento(id){
     $( document ).ready(function() {
         $('.preloader').hide("slow");
           validarLogin();
-          obtenerListadescuento(localStorage.ver);
+          obtenerBodega(localStorage.ver);
           localStorage.ver = '';
     });
+    
