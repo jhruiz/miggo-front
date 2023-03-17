@@ -34,15 +34,12 @@ $("#form").submit(function(e) {
         success: function(respuesta) {
     
             localStorage.editar = '';
-            if(respuesta){
-                $('.modal-backdrop').remove();
-                var mensaje = 'Numero Facturacion venta actualizado de forma correcta.: '+ respuesta.data.numeroresolucion;
-                sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'numeracionfacturaventas/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+            $('#ModalLong2').modal('hide');
+            $('ModalLong2').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Numero Facturacion venta actualizado de forma correcta.: '+ respuesta.data.numeroresolucion;
+            sweetMessage('success', mensaje); 
+            infoTable(); 
         },
         error: function(respuesta) {
     
@@ -62,7 +59,6 @@ $("#form").submit(function(e) {
     
     
     function obtenerNumeracionfacturaventa(id){
-    
     var url = 'numeracionfacturaventas/'+ id;
     
     $.ajax({
@@ -88,8 +84,7 @@ $("#form").submit(function(e) {
         }
       })  
     }
-    
-    
+        
     $( document ).ready(function() {
         $('.preloader').hide("slow");
           validarLogin();
@@ -97,8 +92,7 @@ $("#form").submit(function(e) {
     
         $('#numeroresolucion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });
-    
-    
+        
     $(function() {
      $("#fecharesolucion").datetimepicker({
             locale: "es",

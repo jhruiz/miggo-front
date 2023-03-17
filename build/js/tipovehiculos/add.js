@@ -10,7 +10,6 @@ $("#form").submit(function(e) {
     formData.append("descripcion", descripcion);
     formData.append("creador_id", localStorage.id);
     
-    
     $.ajax({
         method: "POST",
         url: url_back + "tipovehiculos",
@@ -23,15 +22,12 @@ $("#form").submit(function(e) {
         processData: false,
         success: function(respuesta) {
     
-            if(respuesta){
-                $('.modal-backdrop').remove();
-    
-                var mensaje = 'Tipo Vehiculo creado de forma correcta.: '+ respuesta.data.descripcion;
-                sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'tipovehiculos/index.html');
-            } else {
-                    sweetMessage('warning', respuesta);                
-            }
+            $('#ModalLong3').modal('hide');
+            $('ModalLong3').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Tipo Vehiculo creado de forma correcta.: '+ respuesta.data.descripcion;
+            sweetMessage('success', mensaje); 
+            infoTable();
         },
         error: function(respuesta) {
     

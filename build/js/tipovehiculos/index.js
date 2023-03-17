@@ -25,8 +25,8 @@ var generarDataTable = function( dataSet ) {
 
 $("#example1").DataTable({
   data: dataSet,
+  destroy: true,
   columns: [
-          // { title: "Id" },
           { title: "Descripcion" },
           { title: "Acciones" },
           ],
@@ -47,7 +47,6 @@ $("#example1").DataTable({
 
 
 var infoTable = function(){
-
 var url = 'tipovehiculos';
 
   $.ajax({
@@ -80,13 +79,12 @@ $('#mymodal').load('../' + url,function(){
 
 
 function eliminarTipovehiculo(id){//mensaje de desea borrar y eliminar
-
 var url_eliminar = 'tipovehiculos/' + id;
 var url_index = 'tipovehiculos/index.html';
 
 if (confirm('¿Está seguro de Borrar?')){
 
-            $.ajax({
+        $.ajax({
           method: "DELETE",
           url: url_back + url_eliminar,
           headers: { 
@@ -97,8 +95,7 @@ if (confirm('¿Está seguro de Borrar?')){
 
               var mensaje = 'se borro exitosamente el tipo vehiculo: ' + respuesta.data.descripcion;
               sweetMessage('success', mensaje);
-              
-              $('#main_content').load(url_front + url_index);
+              infoTable();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

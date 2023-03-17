@@ -22,15 +22,12 @@ $("#form").submit(function(e) {
         success: function(respuesta) {
     
             localStorage.editar = '';
-            if(respuesta){
-                $('.modal-backdrop').remove();
-                var mensaje = ' Talla actualizado de forma correcta.: '+ respuesta.data.descripcion;
-                sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'tallas/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+            $('#ModalLong2').modal('hide');
+            $('ModalLong2').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = ' Talla actualizado de forma correcta.: '+ respuesta.data.descripcion;
+            sweetMessage('success', mensaje); 
+            infoTable();
         },
         error: function(respuesta) {
     

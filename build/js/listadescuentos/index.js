@@ -1,4 +1,3 @@
-
 var organizarDatos = function( data ) {
     var arrListadescuentos = [];
     data.forEach(element => {
@@ -24,7 +23,6 @@ var organizarDatos = function( data ) {
 
 
 var generarDataTable = function( dataSet ) {
-
   $("#example1").DataTable({
     data: dataSet,
     destroy: true,

@@ -6,7 +6,6 @@ $("#form").submit(function(e) {
     const formData = new FormData(form);
     var url = 'perfiles';
     
-    
     var descripcion = $('#descripcion').val();
     var nivel = $('#select-nivel').val()? $('#select-nivel').val() : ''; //
     
@@ -27,18 +26,12 @@ $("#form").submit(function(e) {
         processData: false,//formData
         success: function(respuesta) {
     
-            if(respuesta){
-                // $('#ModalLong').modal('hide');
-                // $('ModalLong').removeClass('show')
+                $('#ModalLong3').modal('hide');
+                $('ModalLong3').removeClass('show')
                 $('.modal-backdrop').remove();
-    
                 var mensaje = 'se creo de forma correcta '+ respuesta.data.descripcion;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'perfiles/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+                infoTable(); 
         },
         error: function(respuesta) {
     
@@ -52,14 +45,9 @@ $("#form").submit(function(e) {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                 sweetMessage('error', mensaje);
             }
-     
-    
         }
     });
     });
-    
-    
-    
     
     $(document).ready(function() {
         $('.preloader').hide("slow");

@@ -1,9 +1,7 @@
-
 var organizarDatos = function( data ) { 
     var arrPartevehiculos = [];
     data.forEach(element => {
         arrPartevehiculo = [
-            // element.id,
             element.descripcion,
             element.extra,
         ];
@@ -22,13 +20,11 @@ var organizarDatos = function( data ) {
     return arrPartevehiculos;
 }
 
-
 var generarDataTable = function( dataSet ) {
-
   $("#example1").DataTable({
     data: dataSet,
+    destroy: true,
     columns: [
-            // { title: "Id" },
             { title: "Descripcion" },
             { title: "Extra" },
             { title: "Acciones" },
@@ -48,10 +44,7 @@ var generarDataTable = function( dataSet ) {
 
 }
 
-
-
 var infoTable = function(){
-
 var url = 'partevehiculos';
 
     $.ajax({
@@ -69,9 +62,7 @@ var url = 'partevehiculos';
                 sweetMessage('error', mensaje);
             }
         }) 
-
 }
-
 
 var renderPartevehiculo = function() {
 var url ='partevehiculos/add.html';
@@ -85,7 +76,6 @@ $('#mymodal').html('');
 
 
 function eliminarPartevehiculo(id){
-
 var url_eliminar = 'partevehiculos/' + id;
 var url_index = 'partevehiculos/index.html';
 
@@ -102,8 +92,7 @@ var url_index = 'partevehiculos/index.html';
 
                 var mensaje = 'se borro exitosamente el Parte vehiculo: ' + respuesta.data.descripcion;
                 sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
+                infoTable();
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

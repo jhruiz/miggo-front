@@ -26,15 +26,12 @@ $("#form").submit(function(e) {
         processData: false,
         success: function(respuesta) {
     
-            if(respuesta){
+                $('#ModalLong3').modal('hide');
+                $('ModalLong3').removeClass('show');
                 $('.modal-backdrop').remove();
-    
                 var mensaje = 'Provision Cartera creado de forma correcta.: ';
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'provisioncarteras/index.html');
-            } else {
-                    sweetMessage('warning', respuesta);                
-            }
+                infoTable();
         },
         error: function(respuesta) {
     

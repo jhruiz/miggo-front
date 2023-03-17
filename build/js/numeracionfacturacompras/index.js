@@ -32,6 +32,7 @@ var generarDataTable = function( dataSet ) {
 
   $("#example1").DataTable({
     data: dataSet,
+    destroy: true,
     columns: [
             { title: "Numero Resolución" },
             { title: "Prefijo" },
@@ -100,7 +101,7 @@ if (confirm('¿Está seguro que desea cambiar el estado este Numero Factura de C
 
             var mensaje = 'El Numero Factura de Compra esta: ' + (respuesta.data.habilitada ? 'Activo': 'Desactivado') + ' Resolucion: '+ respuesta.data.numeroresolucion;
               sweetMessage( respuesta.data.habilitada ? 'success' : 'error', mensaje);
-              $('#main_content').load(url_front + url_index);
+             infoTable();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -139,8 +140,7 @@ var url_index = 'numeracionfacturacompras/index.html';
 
                 var mensaje = 'se borro exitosamente el Numero Facturacion Compra: ' + respuesta.data.numeroresolucion;
                 sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
+                infoTable();
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

@@ -26,12 +26,12 @@ $("#form").submit(function(e) {
         processData: false,
         success: function(respuesta) {
     
-                $('#ModalLong3').modal('hide');
-                $('ModalLong3').removeClass('show');
-                $('.modal-backdrop').remove();
-                var mensaje = 'Bodega creado de forma correcta.: '+ respuesta.data.descripcion;
-                sweetMessage('success', mensaje); 
-                infoTable(); 
+            $('#ModalLong3').modal('hide');
+            $('ModalLong3').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Bodega creado de forma correcta.: '+ respuesta.data.descripcion;
+            sweetMessage('success', mensaje); 
+            infoTable(); 
         },
         error: function(respuesta) {
     
@@ -53,7 +53,6 @@ $("#form").submit(function(e) {
         $('.preloader').hide("slow");
         validarLogin();
         obtenerSelects('tipobodegas', '#select-tipobodegas');
-    
         $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });
     

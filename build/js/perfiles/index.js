@@ -1,8 +1,6 @@
-
 var organizarDatos = function( data ) {  
     var arrPerfiles = [];
     var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
-    // se recorre la respuesta y se genera un array de arrays.
     data.forEach(element => {
         arrPerfile = [
             element.descripcion,
@@ -23,11 +21,10 @@ var organizarDatos = function( data ) {
     return arrPerfiles;
 }
 
-
 var generarDataTable = function( dataSet ) {
-
   $("#example1").DataTable({
     data: dataSet,
+    destroy: true,
     columns: [
             { title: "Descripcion" },
             { title: "Nivel" },
@@ -45,14 +42,9 @@ var generarDataTable = function( dataSet ) {
           dom: 'Bfrtip',
          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
 }
 
-
-
 var infoTable = function(){
-
-// var url = 'empresas/'+localStorage.empresa_id+'/perfiles';
 var url = 'perfiles';
 
     $.ajax({
@@ -73,7 +65,6 @@ var url = 'perfiles';
 
 }
 
-
 var renderPerfile = function() {
 var url = 'perfiles/add.html';
   
@@ -83,10 +74,7 @@ var url = 'perfiles/add.html';
         });
 }
 
-
-
 function eliminarPerfile(id){//mensaje de desea borrar y eliminar
-
 var url_eliminar = 'perfiles/' + id;
 var url_index = 'perfiles/index.html';
 
@@ -103,8 +91,7 @@ var url_index = 'perfiles/index.html';
 
                 var mensaje = 'se borro exitosamente el Perfiles: ' + respuesta.data.descripcion;
                 sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
+                infoTable();
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

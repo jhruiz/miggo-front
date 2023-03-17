@@ -24,16 +24,12 @@ $("#form").submit(function(e) {
         success: function(respuesta) {
     
             localStorage.editar = '';
-            if(respuesta){
-                $('.modal-backdrop').remove();
-    
-                var mensaje = 'Parte Vehiculo actualizado de forma correcta.: '+ respuesta.data.descripcion;
-                sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'partevehiculos/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+            $('#ModalLong2').modal('hide');
+            $('ModalLong2').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Parte Vehiculo actualizado de forma correcta.: '+ respuesta.data.descripcion;
+            sweetMessage('success', mensaje); 
+            infoTable(); 
         },
         error: function(respuesta) {
     
@@ -53,7 +49,6 @@ $("#form").submit(function(e) {
     
     
     function obtenerPartevehiculo(id){
-    
     var url = 'partevehiculos/'+ id;
     
     $.ajax({

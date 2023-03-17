@@ -31,6 +31,7 @@ var generarDataTable = function( dataSet ) {
 
   $("#example1").DataTable({
     data: dataSet,
+    detroy: true,
     columns: [
             { title: "Numero Resolución" },
             { title: "Prefijo" },
@@ -55,10 +56,7 @@ var generarDataTable = function( dataSet ) {
 
 }
 
-
-
 var infoTable = function(){
-
 var url = 'empresas/'+ localStorage.empresa_id +'/numeracionfacturaventas';
 
     $.ajax({
@@ -82,7 +80,6 @@ var url = 'empresas/'+ localStorage.empresa_id +'/numeracionfacturaventas';
 
 
 function desactivar(id){
-
 var url_index = 'numeracionfacturaventas/index.html';
 var url = 'facturaventasestatus/'+id;
 
@@ -98,8 +95,8 @@ if (confirm('¿Está seguro que desea cambiar el estado este Numero Factura de v
           success: function(respuesta) {
 
             var mensaje = 'El Numero Factura de venta esta: ' + (respuesta.data.habilitada ? 'Activo': 'Desactivado') + ' Resolucion: '+ respuesta.data.numeroresolucion;
-              sweetMessage( respuesta.data.habilitada ? 'success' : 'error', mensaje);
-              $('#main_content').load(url_front + url_index);
+            sweetMessage( respuesta.data.habilitada ? 'success' : 'error', mensaje);
+            infoTable(); 
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -121,7 +118,6 @@ var url ='numeracionfacturaventas/add.html';
 
 
 function eliminarNumeracionfacturaventa(id){//mensaje de desea borrar y eliminar
-
 var url_eliminar = 'numeracionfacturaventas/' + id;
 var url_index = 'numeracionfacturaventas/index.html';
 
@@ -138,8 +134,7 @@ var url_index = 'numeracionfacturaventas/index.html';
 
                 var mensaje = 'se borro exitosamente el Numero Facturacion venta: ' + respuesta.data.numeroresolucion;
                 sweetMessage('success', mensaje);
-                
-                $('#main_content').load(url_front + url_index);
+                infoTable(); 
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

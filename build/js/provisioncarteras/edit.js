@@ -20,17 +20,14 @@ $("#form").submit(function(e) {
         contentType: false,//formData
         processData: false,//formData
         success: function(respuesta) {
-    
+
             localStorage.editar = '';
-            if(respuesta){
-                $('.modal-backdrop').remove();
-                var mensaje = ' Provision Cartera actualizado de forma correcta.: ';
-                sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'provisioncarteras/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+            $('#ModalLong2').modal('hide');
+            $('ModalLong2').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Provision Cartera actualizado de forma correcta.: ';
+            sweetMessage('success', mensaje); 
+            infoTable();
         },
         error: function(respuesta) {
     

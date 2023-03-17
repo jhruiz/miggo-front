@@ -23,6 +23,7 @@ var generarDataTable = function( dataSet ) {
 
 $("#example1").DataTable({
   data: dataSet,
+  destroy: true,
   columns: [
           { title: "Descripcion" },
           { title: "Acciones" },
@@ -87,8 +88,7 @@ if (confirm('¿Está seguro de Borrar?')){
 
               var mensaje = 'se borro exitosamente el Talla: ' + respuesta.data.descripcion;
               sweetMessage('success', mensaje);
-              
-              $('#main_content').load(url_front + url_index);
+              infoTable();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

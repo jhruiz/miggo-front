@@ -20,11 +20,10 @@ var organizarDatos = function( data ) {
   return arrColores;
 }
 
-
 var generarDataTable = function( dataSet ) {
-
 $("#example1").DataTable({
   data: dataSet,
+  destroy:true,
   columns: [
           { title: "Codigo" },
           { title: "Descripcion" },
@@ -44,7 +43,6 @@ $("#example1").DataTable({
 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
 }
-
 
 var infoTable = function(){
 
@@ -96,8 +94,7 @@ if (confirm('¿Está seguro de Borrar?')){
 
               var mensaje = 'se borro exitosamente el Colores: ' + respuesta.data.descripcion;
               sweetMessage('success', mensaje);
-              
-              $('#main_content').load(url_front + url_index);
+              infoTable(); 
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

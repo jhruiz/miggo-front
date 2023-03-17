@@ -33,16 +33,13 @@ $("#form").submit(function(e) {
         processData: false,//formData
         success: function(respuesta) {
     
-            localStorage.editar = '';
-            if(respuesta){
+                localStorage.editar = '';
+                $('#ModalLong2').modal('hide');
+                $('ModalLong2').removeClass('show');
                 $('.modal-backdrop').remove();
                 var mensaje = 'Numero Facturacion Compra actualizado de forma correcta.: '+ respuesta.data.numeroresolucion;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'numeracionfacturacompras/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+                infoTable(); 
         },
         error: function(respuesta) {
     

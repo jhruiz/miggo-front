@@ -24,18 +24,13 @@ $("#form").submit(function(e) {
         processData: false,//formData
         success: function(respuesta) {
     
-            localStorage.editar = '';
-    
-            if(respuesta){
+                localStorage.editar = '';
+                $('#ModalLong2').modal('hide');
+                $('ModalLong2').removeClass('show');    
                 $('.modal-backdrop').remove();
-    
                 var mensaje = ' Perfil actualizado de forma correcta.: '+ respuesta.data.descripcion;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'perfiles/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
+                infoTable(); 
         },
         error: function(respuesta) {
     
@@ -53,9 +48,7 @@ $("#form").submit(function(e) {
     });
     });
     
-    
     function obtenerPerfile(id){
-    
     var url = 'perfiles/'+ id;
     
     $.ajax({
@@ -75,7 +68,6 @@ $("#form").submit(function(e) {
         }
       })  
     }
-    
     
     $( document ).ready(function() {
         $('.preloader').hide("slow");

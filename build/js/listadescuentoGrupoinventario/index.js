@@ -91,7 +91,7 @@ if(count){
       });
 }else{
     var mensaje = 'No tiene partes asignadas, inténtelo mas tarde.';
-    sweetMessage('error', mensaje);
+    sweetMessage('info', mensaje);
 }
 
 }

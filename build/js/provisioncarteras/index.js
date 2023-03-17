@@ -13,16 +13,15 @@ var organizarDatos = function( data ) {
       }else if(localStorage.nivelperfil == 0){
         arrProvisioncartera.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verProvisioncartera('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp;</div>'); 
       }
-
       arrProvisioncarteras.push(arrProvisioncartera);
   });
-
   return arrProvisioncarteras;
 }
 
 var generarDataTable = function( dataSet ) {
 $("#example1").DataTable({
   data: dataSet,
+  destroy: true,
   columns: [
           { title: "Metodos" },
           { title: "Año Creacion" },
@@ -40,7 +39,6 @@ $("#example1").DataTable({
         dom: 'Bfrtip',
        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
 }
 
 var infoTable = function(){
@@ -78,7 +76,7 @@ var url_index = 'provisioncarteras/index.html';
 
 if (confirm('¿Está seguro de Borrar?')){
 
-            $.ajax({
+        $.ajax({
           method: "DELETE",
           url: url_back + url_eliminar,
           headers: { 
@@ -89,8 +87,7 @@ if (confirm('¿Está seguro de Borrar?')){
 
               var mensaje = 'se borro exitosamente el Provision de Cartera: ';
               sweetMessage('success', mensaje);
-              
-              $('#main_content').load(url_front + url_index);
+              infoTable();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

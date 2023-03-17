@@ -1,6 +1,5 @@
 var organizarDatos = function( data ) {
   var arrUnidadesmedidas = [];
-  // se recorre la respuesta y se genera un array de arrays.
   data.forEach(element => {
       arrUnidadesmedida = [
           element.codigo,
@@ -21,11 +20,10 @@ var organizarDatos = function( data ) {
   return arrUnidadesmedidas;
 }
 
-
 var generarDataTable = function( dataSet ) {
-
 $("#example1").DataTable({
   data: dataSet,
+  destroy: true,
   columns: [
           { title: "Codigo" },
           { title: "Descripcion" },
@@ -46,10 +44,7 @@ $("#example1").DataTable({
 
 }
 
-
-
 var infoTable = function(){
-
 var url = 'unidadesmedidas';
 
   $.ajax({
@@ -67,7 +62,6 @@ var url = 'unidadesmedidas';
               sweetMessage('error', mensaje);
           }
       }) 
-
 }
 
 
@@ -81,8 +75,7 @@ $('#mymodal').load('../'+ url,function(){
 
 
 
-function eliminarUnidadesmedida(id){//mensaje de desea borrar y eliminar
-
+function eliminarUnidadesmedida(id){
 var url_eliminar = 'unidadesmedidas/' + id;
 var url_index = 'unidadesmedidas/index.html';
 
@@ -99,8 +92,7 @@ if (confirm('¿Está seguro de Borrar?')){
 
               var mensaje = 'se borro exitosamente el Unidades de Medidas: ' + respuesta.data.descripcion;
               sweetMessage('success', mensaje);
-              
-              $('#main_content').load(url_front + url_index);
+              infoTable();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -112,12 +104,11 @@ if (confirm('¿Está seguro de Borrar?')){
 }
 }
 
-function editarUnidadesmedida(id){//render al editar
+function editarUnidadesmedida(id){
 var url_edit = 'unidadesmedidas/edit.html';
 
   $('#mymodal').html('');
     localStorage.setItem('editar', id);
-    // localStorage.setItem('posicion', posicion);
     $('#mymodal').load('../' + url_edit ,function(){
           $('#ModalLong2').modal({show:true});
       });
