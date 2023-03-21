@@ -14,6 +14,9 @@ $("#form").submit(function(e) {
         formData.append("cliente_id", cliente_id);
     }else if(proveedore_id){
         formData.append("proveedore_id", proveedore_id);
+    }else{
+        formData.append("cliente_id", '');
+        formData.append("proveedore_id", '');
     }
 
     formData.append("codigo", codigo);
@@ -44,8 +47,6 @@ $("#form").submit(function(e) {
         },
         error: function(respuesta) {
     
-            console.log(respuesta);
-
             if(respuesta.responseJSON.error){
                 $.each(respuesta.responseJSON.error.message, function (key, item) {
                     var mensaje = item[0];
@@ -78,13 +79,17 @@ $("#form").submit(function(e) {
             if(respuesta.data.tipobodega_id){
                 obtenerSelect('tipobodegas', '#select-tipobodegas', respuesta.data.tipobodega_id);
                 evaluar(respuesta.data.tipobodega_id);
-
             }else{
                 obtenerSelects('tipobodegas', '#select-tipobodegas');
             }
 
-            console.log(respuesta);
-            obtenerClienteTercero(respuesta.data.id);
+            if(respuesta.data.cliente_id){
+                obtenerClienteTercero(respuesta.data.cliente_id);
+            }
+
+            if(respuesta.data.proveedore_id){
+                obtenerProveedoreTercero(respuesta.data.proveedore_id);
+            }
 
         },
         error: function() {
@@ -155,6 +160,26 @@ $("#cliente").autocomplete({
     success: function(respuesta) {
             $('#cliente').val(respuesta.data.tercero.identificacion+'-'+respuesta.data.tercero.nombres);
             $('#cliente_id').val(id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+var obtenerProveedoreTercero = function(id){
+    url= 'proveedores/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#proveedore').val(respuesta.data.tercero.identificacion+'-'+respuesta.data.tercero.nombres);
+            $('#proveedore_id').val(id);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

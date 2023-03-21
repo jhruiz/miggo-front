@@ -50,8 +50,6 @@
 <!--  -->
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
-          <!-- <button type="button" class="btn btn-primary">Enviar</button> -->
         </div>
       </div>
     </div>
@@ -60,9 +58,9 @@
 
   <script>
 
-function obtenerTiposociedade(id){
+function obtenerTipocuenta(id){
 
-var url = 'tiposociedades/'+ id;
+var url = 'tipocuentas/'+ id;
 
 $.ajax({
     method: "GET",
@@ -88,7 +86,7 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerTiposociedade(localStorage.ver);
+      obtenerTipocuenta(localStorage.ver);
       localStorage.ver = '';
 });
 

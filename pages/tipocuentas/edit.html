@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Editar Tipo Sociedad</h5>
+            Editar Tipo Cuenta</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -28,7 +28,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div> 
-                    <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Tipo Sociedad" required>  <code>&nbsp;*</code>
+                    <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Tipo Cuenta" required>  <code>&nbsp;*</code>
                 </div> 
             </div> 
 
@@ -82,7 +82,7 @@ formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "tiposociedades/"+localStorage.editar,
+    url: url_back + "tipocuentas/"+localStorage.editar,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -96,7 +96,7 @@ $.ajax({
             $('#ModalLong2').modal('hide');
             $('ModalLong2').removeClass('show');
             $('.modal-backdrop').remove();
-            var mensaje = ' Tipo Sociedad actualizado de forma correcta.: '+ respuesta.data.descripcion;
+            var mensaje = ' Tipo Cuenta actualizado de forma correcta.: '+ respuesta.data.descripcion;
             sweetMessage('success', mensaje); 
             infoTable(); 
     },
@@ -117,9 +117,9 @@ $.ajax({
 });
 
 
-function obtenerTiposociedade(id){
+function obtenerTipocuenta(id){
 
-var url = 'tiposociedades/'+ id;
+var url = 'tipocuentas/'+ id;
 
 $.ajax({
     method: "GET",
@@ -144,7 +144,7 @@ $.ajax({
 $( document ).ready(function() {
     $('.preloader').hide("slow");
       validarLogin();
-      obtenerTiposociedade(localStorage.editar);
+      obtenerTipocuenta(localStorage.editar);
 
     $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
 });
