@@ -1,0 +1,511 @@
+<!-- Modal -->
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+    
+    <div class="card" id="content-activosfijos">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        <i class="nav-icon fas fa-user"></i>
+                        Nuevo Articulo                                  
+                    </h4>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card-body">
+            
+            <form method="POST" id="form" action="" enctype="multipart/form-data">
+    
+                <div class="row">
+                    <div class="col-sm-6">
+    
+                        <div id="mostrarImagen" stye="display:flex;"></div>
+                        <div class="form-group">
+                        <div class="custom-file">
+                        <input class="btn btn-success col fileinput" type="file" id="imagen"></div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label>Costo Barras</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                            <input type="text" id="Costo Barras" class="form-control input-numero" placeholder="Costo Barras">  
+                            </div> 
+                        </div> 
+            
+                        <div class="form-group">
+                            <label>Referencia</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                            <input type="text" id="referencia" class="form-control input-numero" placeholder="Referencia">  
+                            </div> 
+                        </div> 
+    
+                        <div class="form-group">
+                            <label>PLU</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="plu" class="form-control input-numero" placeholder="PLU">  
+                            </div> 
+                        </div> 
+            
+                        <div class="form-group">
+                            <label>Peso Volumen</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                             <input type="text" id="pesovolumen" class="form-control input-numero" placeholder="Peso Volumen">  
+                            </div> 
+                        </div> 
+    
+                        <div class="form-group">
+                            <label>Existencia minima</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="existenciaminima" class="form-control input-numero-decimal2" placeholder="Existencia minima">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Cantidad Ordenar</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="cantidadordenar" class="form-control input-numero-decimal2" placeholder="Cantidad Ordenar">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Descuento</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="descuento" class="form-control input-numero-decimal2" placeholder="Descuento">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Descuento Fecha VLR</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="descuentoafechavlr" class="form-control input-numero-decimal2" placeholder="Descuento Fecta VLR">  
+                            </div> 
+                        </div> 
+
+    
+                    </div>
+    
+    
+                    <div class="col-sm-6">
+
+
+                        <div class="card-info">
+                            <div class="card-header">
+                              <h3 class="card-title">Caracteristicas</h3>
+                            </div>
+                              <div class="row">
+
+                                <div class="col-sm-4">
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-primary d-inline">
+                                      <input type="checkbox" id="activo">
+                                      <label for="activo">
+                                        Activo
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                  <div class="form-group clearfix">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="radio1" id="Lote">
+                                          <label class="form-check-label">Lote</label>
+                                        </div>
+                                  </div>
+
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group clearfix">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="radio1" id="serial">
+                                          <label class="form-check-label">Serial</label>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                              </div>
+
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                        <input type="checkbox" id="color">
+                                        <label for="color">
+                                            color
+                                        </label>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-success d-inline">
+                                          <input type="checkbox" id="talla">
+                                          <label for="talla">
+                                            Talla
+                                          </label>
+                                        </div>
+                                      </div>
+                                </div>
+                              </div>
+
+
+                          </div>
+    
+                        <div class="form-group">
+                            <label>Codigo <code> &nbsp;*</code></label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Codigo" required>  <code>&nbsp;*</code>
+                            </div> 
+                        </div> 
+                      
+                        <div class="form-group">
+                            <label>Nombre <code> &nbsp;*</code></label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="nombre" class="form-control input-texto-alfanumerico" placeholder="Nombre" required>  <code>&nbsp;*</code>
+                            </div> 
+                        </div> 
+    
+                        <div class="form-group">
+                            <label>Costo unitario</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                               <input type="text" id="costounitario" class="form-control input-numero" placeholder="Costo Unitario">  
+                            </div> 
+                        </div> 
+    
+                        <div class="form-group">
+                            <label>Nombre POS</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                               <input type="text" id="posnombre" class="form-control input-numero" placeholder="Nombre POS">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Fecha INVIMA:</label>
+                                <div class="input-group date" id="fechainvima" data-target-input="nearest">
+                                    <div class="input-group-prepend" data-target="#fechainvima" data-toggle="datetimepicker">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                      </div>
+                                  <input type="text" id="fechainvimas" class="form-control datetimepicker-input" data-target="#fechainvima"/>
+                              </div>
+                          </div>
+            
+                        <div class="form-group">
+                            <label>REG INVIMA</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                               <input type="text" id="reginvima" class="form-control input-numero" placeholder="REG INVIMA">  
+                            </div> 
+                        </div>   
+                        
+                        <div class="form-group">
+                            <label>Costos Promedio Bodegas</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimal2" placeholder="Costos Promedio Bodegas">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Ultimo Costo</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Ultimo Costo">  
+                            </div> 
+                        </div> 
+
+                        <div class="form-group">
+                            <label>Fecha Ultimacompra</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <input type="text" id="fechaultimacompra" class="form-control input-numero-decimal2" placeholder="Fecha Ultimacompra">  
+                            </div> 
+                        </div> 
+    
+                    </div>
+    
+              </div>
+              <div class="row">
+                    <div class="col-sm-6">
+    
+                        <div class="form-group">
+                            <label>Descripcion</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div> 
+                                <textarea id="descripcion" class="form-control" rows="2" placeholder="descripcion ..."></textarea>
+            
+                            </div> 
+                        </div> 
+    
+                    </div>
+                    <div class="col-sm-6">
+    
+                            <div class="form-group">
+                                <label for="exampleSelectRounded0">Marca Articulo </label>
+                                <select class="custom-select rounded-0" id="select-marca" >
+                                  <!-- <option>Value 1</option> -->
+                
+                                </select>
+                              </div> 
+    
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+    
+                        <div class="form-group">
+                            <label for="exampleSelectRounded0">Grupo</label>
+                            <select class="custom-select rounded-0" id="select-grupo" >
+                              <!-- <option>Value 1</option> -->
+            
+                            </select>
+                          </div> 
+
+                          <div class="form-group">
+                            <label for="exampleSelectRounded0">Sub-Grupo 2</label>
+                            <select class="custom-select rounded-0" id="select-subgrupo1" >
+                              <!-- <option>Value 1</option> -->
+            
+                            </select>
+                          </div> 
+    
+                    </div>
+                    <div class="col-sm-6">
+    
+                            <div class="form-group">
+                                <label for="exampleSelectRounded0">Sub-Grupo 1</label>
+                                <select class="custom-select rounded-0" id="select-subgrupo2" >
+                                  <!-- <option>Value 1</option> -->
+                
+                                </select>
+                              </div> 
+
+                              <div class="form-group">
+                                <label for="exampleSelectRounded0">Sub-Grupo 3</label>
+                                <select class="custom-select rounded-0" id="select-subgrupo3" >
+                                  <!-- <option>Value 1</option> -->
+                
+                                </select>
+                              </div> 
+    
+                    </div>
+                </div>
+    
+                <div class="col-12 float-right">
+                    <button type="submit" class="btn btn-primary float-right">Crear</button>
+                </div> 
+    
+    
+            </form>
+        </div>
+    
+    </div>
+
+
+<script>
+
+
+$("#form").submit(function(e) {
+e.preventDefault();   
+
+const form = document.getElementById('form');
+const formData = new FormData(form);
+
+var codigo = $('#codigo').val();//
+var nombre = $('#nombre').val();//
+var costounitario = $('#costounitario').val();//
+var posnombre = $('#posnombre').val();//
+var descripcion = $('#descripcion').val();//
+var fechainvima = $('#fechainvimas').val();//
+var costobarras = $('#costobarras').val();//
+var referencia = $('#referencia').val();//
+var plu = $('#plu').val();//
+var pesovolumen = $('#pesovolumen').val();//
+var reginvima = $('#reginvima').val();//
+var existenciaminima = $('#existenciaminima').val();//
+
+var cantidadordenar = $('#cantidadordenar').val();//
+var descuento = $('#descuento').val();//
+var descuentoafechavlr = $('#descuentoafechavlr').val();//
+var costospromediobodegas = $('#costospromediobodegas').val();//
+var ultimocosto = $('#ultimocosto').val();//
+var fechaultimacompra = $('#fechaultimacompra').val();//
+var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
+
+var activo =$('#activo').is(':checked') ? 1 : 0; //
+var lote =$('#lote').is(':checked') ? 1 : 0; //
+var serial =$('#serial').is(':checked') ? 1 : 0;// 
+var talla =$('#talla').is(':checked') ? 1 : 0; //
+var color =$('#color').is(':checked') ? 1 : 0; //
+
+var marca_id = $('#select-marca').val()? $('#select-marca').val() : '';//
+var grupoinventario_id = $('#select-grupoinventario').val()? $('#select-grupoinventario').val() : ''; //
+
+formData.append("codigo", codigo);
+formData.append("nombre", nombre);
+formData.append("costounitario", costounitario);
+formData.append("posnombre", posnombre);
+formData.append("descripcion", descripcion);
+formData.append("costobarras", costobarras);
+formData.append("referencia", referencia);
+formData.append("plu", plu);
+formData.append("activo", activo);
+formData.append("lote", lote);
+formData.append("serial", serial);
+formData.append("talla", talla);
+formData.append("color", color);
+formData.append("pesovolumen", pesovolumen);
+formData.append("reginvima", reginvima);
+formData.append("fechainvima", fechainvima);
+formData.append("existenciaminima", existenciaminima);
+formData.append("cantidadordenar", cantidadordenar);
+formData.append("descuento", descuento);
+formData.append("descuentoafechavlr", descuentoafechavlr);
+formData.append("costospromediobodegas", costospromediobodegas);
+formData.append("ultimocosto", ultimocosto);
+formData.append("fechaultimacompra", fechaultimacompra);
+formData.append("imagen", imagen);
+formData.append("marca_id", marca_id);
+formData.append("grupoinventario_id", grupoinventario_id);
+formData.append("creador_id", localStorage.id);
+
+$.ajax({
+    method: "POST",
+    url: url_back + "articulos",
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(respuesta) {
+
+            var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.descripcion;
+            sweetMessage('success', mensaje); 
+            $('#main_content').load(url_front + 'articulos/index.html');
+    },
+    error: function(respuesta) {
+        console.log(respuesta);
+
+        if(respuesta.responseJSON.error){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
+            });
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    }
+});
+});
+
+var defaultImagen = function(){
+        const ul = document.getElementById("mostrarImagen");
+        const imagen = document.createElement("img");
+        imagen.width = 200;
+        imagen.src = url_front + 'activosfijos/defecto.jpg';
+        ul.appendChild(imagen);
+    }
+
+
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+    validarLogin();
+    defaultImagen();
+
+    $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
+});
+
+document.getElementById("imagen").onchange = function(e){
+        if(validarImagen(e)){
+            const ul = document.getElementById("mostrarImagen");
+            ul.innerHTML = '';
+            const imagen = document.createElement("img");
+            const read = new FileReader();
+            const file = this.files;
+            
+            read.onload = function(){
+                const result = this.result;
+                const url = result;
+                imagen.width = 200;
+                imagen.src = url;
+                ul.appendChild(imagen);
+            }
+            read.readAsDataURL(file[0]);
+        }
+    }
+
+    $(function() {
+ $("#fechainvima").datetimepicker({
+        locale: "es",
+        format: "YYYY-MM-DD",  
+        maxDate: moment(),
+        minDate: moment().subtract(99, 'year'),
+        timepicker:false,
+        autoclose: true,
+        showButtonPanel: true
+ });
+});
+
+
+</script>
+
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>
+

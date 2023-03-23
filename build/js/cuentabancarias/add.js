@@ -8,7 +8,7 @@ $("#form").submit(function(e) {
     var entidadfinanciera = $('#entidadfinanciera').val();
     var oficinanumero = $('#oficinanumero').val();
     var titularcuenta = $('#titularcuenta').val();
-    var franquicia = $('#franquicia').val();
+    var mastercardyvisa_id = $('#select-mastercardyvisa').val()? $('#select-mastercardyvisa').val() : '';
     var apertura = $('#aperturas').val();
     var vencimiento = $('#vencimientos').val();
     var cupo = $('#cupo').val();
@@ -18,14 +18,13 @@ $("#form").submit(function(e) {
     formData.append("entidadfinanciera", entidadfinanciera);
     formData.append("oficinanumero", oficinanumero);
     formData.append("titularcuenta", titularcuenta);
-    formData.append("franquicia", franquicia);
+    formData.append("mastercardyvisa_id", mastercardyvisa_id);
     formData.append("apertura", apertura);
     formData.append("vencimiento", vencimiento);
     formData.append("cupo", cupo);
     formData.append("tipocuenta_id", tipocuenta_id);
     formData.append("creador_id", localStorage.id);
     formData.append("empresa_id", localStorage.empresa_id);
-    
     
     $.ajax({
         method: "POST",
@@ -97,13 +96,42 @@ $("#form").submit(function(e) {
           return html;
     }
     
-    var evaluarFranquicia = function() {
+    var obtenerMastercardyvisas = function(select){
+        url_ent= 'empresas/' + localStorage.empresa_id + '/mastercardyvisas';
+        $.ajax({
+        method: "GET",
+        url: url_back + url_ent,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+
+                var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+                $.each(respuesta, function (key, item) {
+                console.log(item.tercero.nombres);
+
+                    html += '<option value="'+ item.id+'">';
+                    html += item.tercero.identificacion +'-'+ item.tercero.nombres;
+                    html += '</option>';
+                });
+              $(select).html(html);
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    
+    var evaluarmastercardyvisa = function() {
         var tipocuenta_id = $(this).val();
         if(tipocuenta_id == 5){
             $('#divF').show();
+            obtenerMastercardyvisas('#select-mastercardyvisa');
         }else{
             $('#divF').hide();
-            $('#franquicia').val('');
+            $('#select-mastercardyvisa').val('');
         }
     }
     
@@ -113,7 +141,7 @@ $("#form").submit(function(e) {
         validarLogin();
         obtenerSelectsCuenta('tipocuentas', '#select-tipocuentas');
     
-        $('#select-tipocuentas').on('change',evaluarFranquicia);
+        $('#select-tipocuentas').on('change',evaluarmastercardyvisa);
     
         $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });

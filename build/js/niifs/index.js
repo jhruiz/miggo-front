@@ -159,7 +159,6 @@ var generarDataTable = function( dataSet ) {
 
 
 var infoTable = function(){
-
 var url = 'niifsallniveles';
 
     $.ajax({

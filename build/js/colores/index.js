@@ -1,47 +1,37 @@
-var organizarDatos = function( data ) { 
-  var arrActivosfijos = [];
- console.log(data);
-  // se recorre la respuesta y se genera un array de arrays.
+var organizarDatos = function( data ) {
+  var arrColores = [];
   data.forEach(element => {
-      arrActivosfijo = [
+      arrColore = [
           element.codigo,
-          element.nombre,
-          element.gruposactivosfijo.descripcion,
-          element.estadoactivo.descripcion,
-          element.ciudade.descripcion,
+          element.descripcion,
       ];
 
       if(localStorage.nivelperfil == 2){
-          arrActivosfijo.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verActivosfijo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarActivosfijo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarActivosfijo('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
+        arrColore.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verColore('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarColore('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp;  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarColore('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button>  </div>'); 
       }else if(localStorage.nivelperfil == 1){
-          arrActivosfijo.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verActivosfijo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarActivosfijo('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> &nbsp; </div>'); 
+        arrColore.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verColore('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarColore('+ element.id +')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> </div>'); 
       }else if(localStorage.nivelperfil == 0){
-          arrActivosfijo.push('<div class="col text-center"> <button class="btn btn-success btn-sm" type="submit" onclick="verActivosfijo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; </div>'); 
+        arrColore.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verColore('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp;</div>'); 
       }
 
-      arrActivosfijos.push(arrActivosfijo);
+      arrColores.push(arrColore);
   });
 
-  return arrActivosfijos;
+  return arrColores;
 }
 
-
 var generarDataTable = function( dataSet ) {
-
 $("#example1").DataTable({
   data: dataSet,
-  destroy: true,
+  destroy:true,
   columns: [
           { title: "Codigo" },
-          { title: "Nombre" },
-          { title: "Grupo Activo" },
-          { title: "Estado" },
-          { title: "Ciudad" },
+          { title: "Descripcion" },
           { title: "Acciones" },
           ],
   "responsive": true, "lengthChange": true, "autoWidth": false,
-  "paging": true, "ordering": true, "info": true,  "scrollX": true,
-    lengthMenu: [
+  "paging": true, "ordering": true, "info": true,
+  lengthMenu: [
           [10, 25, 50, 100, -1],
           [10, 25, 50, 100, 'All'],
       ],
@@ -54,11 +44,9 @@ $("#example1").DataTable({
 
 }
 
-
-
 var infoTable = function(){
 
-var url = 'empresas/'+ localStorage.empresa_id+'/activosfijos';
+var url = 'colores';
 
   $.ajax({
           method: "GET",
@@ -68,7 +56,7 @@ var url = 'empresas/'+ localStorage.empresa_id+'/activosfijos';
           },
           dataType: 'json',
           success: function(respuesta) {
-              generarDataTable(organizarDatos(respuesta));
+              generarDataTable(organizarDatos(respuesta.data));
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -79,23 +67,19 @@ var url = 'empresas/'+ localStorage.empresa_id+'/activosfijos';
 }
 
 
-var renderActivosfijo = function() {
+var renderColore = function() {
+var url ='colores/add.html';
 
-var url ='activosfijos/add.html';
-//   var load_content = function(url){
-$('#main_content').load(url_front + url);
-// }
-
-
-
+$('#mymodal').load('../'+ url,function(){
+          $('#ModalLong3').modal({show:true});
+      });
 }
 
 
+function eliminarColore(id){
 
-function eliminarActivosfijo(id){//mensaje de desea borrar y eliminar
-
-var url_eliminar = 'activosfijos/' + id;
-var url_index = 'activosfijos/index.html';
+var url_eliminar = 'colores/' + id;
+var url_index = 'colores/index.html';
 
 if (confirm('¿Está seguro de Borrar?')){
 
@@ -108,9 +92,9 @@ if (confirm('¿Está seguro de Borrar?')){
           dataType: "json",
           success: function(respuesta) {
 
-              var mensaje = 'se borro exitosamente el Activosfijo de Nombre: ' + respuesta.data.nombre;
+              var mensaje = 'se borro exitosamente el Colores: ' + respuesta.data.descripcion;
               sweetMessage('success', mensaje);
-              infoTable();
+              infoTable(); 
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -122,19 +106,22 @@ if (confirm('¿Está seguro de Borrar?')){
 }
 }
 
-function editarActivosfijo(id){
-var url_edit = 'activosfijos/edit.html';
+function editarColore(id){
+var url_edit = 'colores/edit.html';
 
+  $('#mymodal').html('');
     localStorage.setItem('editar', id);
-    $('#main_content').load(url_front + url_edit);
-
+    $('#mymodal').load('../' + url_edit ,function(){
+          $('#ModalLong2').modal({show:true});
+      });
 }
 
-function verActivosfijo(id){
-  var url_show = 'activosfijos/show.html';
-
-  $('#main_content').load(url_front + url_show);
-  localStorage.setItem('ver', id);
+function verColore(id){
+$('#mymodal').html('');
+localStorage.setItem('ver', id);
+$('#mymodal').load('../colores/show.html',function(){
+      $('#exampleModalLong').modal({show:true});
+  });
 }
 
 function nivelPerfil(){
@@ -149,9 +136,6 @@ validarLogin();
 nivelPerfil();
 infoTable(); 
 
-var saludo = 'Hola '+ localStorage.nombres;
-$('#saludos').text(saludo);
-
-$("#crear").on("click",renderActivosfijo);
+$("#crear").on("click",renderColore);
 
 });
