@@ -10,9 +10,18 @@ $("#form").submit(function(e) {
     
     var descripcion = $('#descripcion').val();
     var codigo = $('#codigo').val();
+    var posicion = $('#posicion').val();
     
     if(grupoinventario_id != ''){
         formData.append("grupoinventario_id", grupoinventario_id);
+    }
+
+    if(posicion == "grupoinventario"){
+        formData.append("posicion", 1);
+    }else if(posicion == "subgrupoinventario1"){
+        formData.append("posicion", 2);
+    }else if(posicion == "subgrupoinventario2"){
+        formData.append("posicion", 3);
     }
     
     formData.append("empresa_id", localStorage.empresa_id);

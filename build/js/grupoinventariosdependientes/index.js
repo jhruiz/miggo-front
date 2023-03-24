@@ -122,8 +122,6 @@ function editarGrupoinventario(){
 }
 
 function crearGrupoinventario(){ 
-
-
   $('#mymodal').html('');
   var id = $('#id').val();
   var posicion = $('#posicion').val();
@@ -131,7 +129,6 @@ function crearGrupoinventario(){
     if(verificarNivelperfil('crear')  == false){
        return false;
     } 
-
 
     if(posicion !='subgrupoinventario3'){
             localStorage.setItem('crear', id);

@@ -69,7 +69,9 @@ var organizarDatos = function( data ) {
     data.forEach(element => {
         arrArticulo = [
             element.codigo,
-            element.descripcion,
+            element.nombre,
+            element.costounitario,
+            element.posnombre,
         ];
 
         if(localStorage.nivelperfil == 2){
@@ -94,7 +96,9 @@ var generarDataTable = function( dataSet ) {
     destroy: true,
     columns: [
             { title: "Codigo" },
-            { title: "Descripcion" },
+            { title: "Nombre" },
+            { title: "Costo Unitario" },
+            { title: "POS Nombre" },
             { title: "Acciones" },
             ],
     "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -155,7 +159,7 @@ var url_index = 'articulos/index.html';
             dataType: "json",
             success: function(respuesta) {
 
-                var mensaje = 'se borro exitosamente el Articulos: ' + respuesta.data.descripcion;
+                var mensaje = 'se borro exitosamente el Articulos: ' + respuesta.data.nombre;
                 sweetMessage('success', mensaje);
                 infoTable(); 
             },
@@ -176,11 +180,10 @@ function editarArticulo(id){
 }
 
 function verArticulo(id){
-  $('#mymodal').html('');
+  var url_ver = '/articulos/show.html';
+
   localStorage.setItem('ver', id);
-  $('#mymodal').load('../articulos/show.html',function(){
-        $('#exampleModalLong').modal({show:true});
-    });
+  $('#main_content').load(url_front + url_ver);
 }
 
 function nivelPerfil(){

@@ -4,13 +4,13 @@
     <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
     
-    <div class="card" id="content-activosfijos">
+    <div class="card" id="content-articulos">
         <div class="card-header">
             <div class="row">
                 <div class="col-12">
                     <h4>
                         <i class="nav-icon fas fa-user"></i>
-                        Nuevo Articulo                                  
+                        Ver Articulo                                  
                     </h4>
                 </div>
             </div>
@@ -18,7 +18,7 @@
     
         <div class="card-body">
             
-            <form method="POST" id="form" action="" enctype="multipart/form-data">
+            <form method="PUT" id="form" action="" enctype="multipart/form-data">
     
                 <div class="row">
                     <div class="col-sm-6">
@@ -26,7 +26,8 @@
                         <div id="mostrarImagen" stye="display:flex;"></div>
                         <div class="form-group">
                         <div class="custom-file">
-                        <input class="btn btn-success col fileinput" type="file" id="imagen"></div>
+                        <input class="btn btn-success col fileinput" type="file" id="imagen" disabled>
+                        </div>
                         </div>
                       
           
@@ -36,7 +37,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                            <input type="text" id="referencia" class="form-control input-texto-alfanumerico" placeholder="Referencia">  
+                            <input type="text" id="referencia" class="form-control input-texto-alfanumerico" placeholder="Referencia" disabled>  
                             </div> 
                         </div> 
     
@@ -46,7 +47,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="plu" class="form-control input-texto-alfanumerico" placeholder="PLU">  
+                                <input type="text" id="plu" class="form-control input-texto-alfanumerico" placeholder="PLU" disabled>  
                             </div> 
                         </div> 
             
@@ -56,7 +57,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                             <input type="text" id="pesovolumen" class="form-control input-numero" placeholder="Peso Volumen">  
+                             <input type="text" id="pesovolumen" class="form-control input-numero" placeholder="Peso Volumen" disabled>  
                                 <div class="input-group-append">
                                     <span class="input-group-text">Gr</span>
                                 </div>
@@ -69,7 +70,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="existenciaminima" class="form-control input-numero" placeholder="Existencia minima">  
+                                <input type="text" id="existenciaminima" class="form-control input-numero" placeholder="Existencia minima" disabled>  
                             </div> 
                         </div> 
 
@@ -79,7 +80,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="cantidadordenar" class="form-control input-numero" placeholder="Cantidad Ordenar">  
+                                <input type="text" id="cantidadordenar" class="form-control input-numero" placeholder="Cantidad Ordenar" disabled>  
                             </div> 
                         </div> 
 
@@ -89,7 +90,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="descuento" class="form-control input-numero" placeholder="Descuento">  
+                                <input type="text" id="descuento" class="form-control input-numero" placeholder="Descuento" disabled>  
                                 <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -102,7 +103,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="descuentoafechavlr" class="form-control input-numero" placeholder="Descuento Fecta VLR">  
+                                <input type="text" id="descuentoafechavlr" class="form-control input-numero" placeholder="Descuento Fecta VLR" disabled>  
                                 <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                 </div> 
@@ -115,7 +116,7 @@
                                     <div class="input-group-prepend" data-target="#fechainvima" data-toggle="datetimepicker">
                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                       </div>
-                                  <input type="text" id="fechainvimas" class="form-control datetimepicker-input" data-target="#fechainvima"/>
+                                  <input type="text" id="fechainvimas" class="form-control datetimepicker-input" data-target="#fechainvima" disabled/>
                               </div>
                           </div>
             
@@ -135,7 +136,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group clearfix">
                                         <div class="form-check">
-                                          <input class="form-check-input" type="radio" name="radio1" id="serial">
+                                          <input class="form-check-input" type="radio" name="radio1" id="serial" disabled>
                                           <label class="form-check-label">Serial</label>
                                         </div>
                                     </div>
@@ -144,7 +145,7 @@
                                 <div class="col-sm-4">
                                   <div class="form-group clearfix">
                                         <div class="form-check">
-                                          <input class="form-check-input" type="radio" name="radio1" id="lote">
+                                          <input class="form-check-input" type="radio" name="radio1" id="lote" disabled>
                                           <label class="form-check-label">Lote</label>
                                         </div>
                                   </div>
@@ -154,7 +155,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group clearfix">
                                             <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="radio1" id="color">
+                                              <input class="form-check-input" type="radio" name="radio1" id="color" disabled>
                                               <label class="form-check-label">Color</label>
                                             </div>
                                         </div>
@@ -165,7 +166,7 @@
                               <div class="col-sm-4">
                                 <div class="form-group clearfix">
                                   <div class="icheck-primary d-inline">
-                                    <input type="checkbox" id="activo">
+                                    <input type="checkbox" id="activo" disabled>
                                     <label for="activo">
                                       Activo
                                     </label>
@@ -176,7 +177,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
-                                          <input type="checkbox" id="talla">
+                                          <input type="checkbox" id="talla" disabled>
                                           <label for="talla">
                                             Talla
                                           </label>
@@ -194,7 +195,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Codigo" required>  <code>&nbsp;*</code>
+                                <input type="text" id="codigo" class="form-control input-texto-alfanumerico" placeholder="Codigo" disabled>  <code>&nbsp;*</code>
                             </div> 
                         </div> 
                       
@@ -204,7 +205,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="nombre" class="form-control input-texto-alfanumerico" placeholder="Nombre" required>  <code>&nbsp;*</code>
+                                <input type="text" id="nombre" class="form-control input-texto-alfanumerico" placeholder="Nombre" disabled>  <code>&nbsp;*</code>
                             </div> 
                         </div> 
     
@@ -214,7 +215,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="costounitario" class="form-control input-numero" placeholder="Costo Unitario">  
+                               <input type="text" id="costounitario" class="form-control input-numero" placeholder="Costo Unitario" disabled>  
                             </div> 
                         </div> 
 
@@ -224,7 +225,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="costobarras" class="form-control input-numero" placeholder="Costo Barras">  
+                               <input type="text" id="costobarras" class="form-control input-numero" placeholder="Costo Barras" disabled>  
                             </div> 
                         </div> 
     
@@ -234,7 +235,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="posnombre" class="form-control input-numero" placeholder="Nombre POS">  
+                               <input type="text" id="posnombre" class="form-control input-numero" placeholder="Nombre POS" disabled>  
                             </div> 
                         </div> 
 
@@ -244,7 +245,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="reginvima" class="form-control input-numero" placeholder="REG INVIMA">  
+                               <input type="text" id="reginvima" class="form-control input-numero" placeholder="REG INVIMA" disabled>  
                             </div> 
                         </div>
                         
@@ -254,7 +255,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimal2" placeholder="Costos Promedio Bodegas" readonly>  
+                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimal2" placeholder="Costos Promedio Bodegas" disabled>  
                             </div> 
                         </div> 
 
@@ -264,7 +265,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Ultimo Costo" readonly>  
+                                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Ultimo Costo" disabled>  
                             </div> 
                         </div> 
 
@@ -274,7 +275,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="fechaultimacompra" class="form-control input-texto-alfanumerico" placeholder="Fecha Ultimacompra" readonly>  
+                                <input type="text" id="fechaultimacompra" class="form-control input-texto-alfanumerico" placeholder="Fecha Ultimacompra" disabled>  
                             </div> 
                         </div> 
     
@@ -290,7 +291,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <textarea id="descripcion" class="form-control" rows="2" placeholder="descripcion ..."></textarea>
+                                <textarea id="descripcion" class="form-control" rows="2" placeholder="descripcion ..." disabled></textarea>
             
                             </div> 
                         </div> 
@@ -300,7 +301,7 @@
     
                             <div class="form-group">
                                 <label for="exampleSelectRounded0">Marca Articulo </label>
-                                <select class="custom-select rounded-0" id="select-marcas" >
+                                <select class="custom-select rounded-0" id="select-marcas" disabled>
                                   <!-- <option>Value 1</option> -->
                 
                                 </select>
@@ -314,7 +315,7 @@
     
                         <div class="form-group">
                             <label for="exampleSelectRounded0">Grupo Inventario</label>
-                            <select class="custom-select rounded-0" id="select-grupoinventario" >
+                            <select class="custom-select rounded-0" id="select-grupoinventario" disabled>
                               <!-- <option>Value 1</option> -->
             
                             </select>
@@ -322,7 +323,7 @@
 
                           <div class="form-group">
                             <label for="exampleSelectRounded0">Sub-Grupo 2:</label>
-                            <select class="custom-select rounded-0" id="select-subgrupoinventario2" >
+                            <select class="custom-select rounded-0" id="select-subgrupoinventario2" disabled>
                               <!-- <option>Value 1</option> -->
             
                             </select>
@@ -335,7 +336,7 @@
 
                          <div class="form-group">
                             <label for="exampleSelectRounded0">Sub-Grupo 1:</label>
-                            <select class="custom-select rounded-0" id="select-subgrupoinventario1" >
+                            <select class="custom-select rounded-0" id="select-subgrupoinventario1" disabled>
                               <!-- <option>Value 1</option> -->
             
                             </select>
@@ -343,7 +344,7 @@
 
                         <div class="form-group">
                         <label for="exampleSelectRounded0">Sub-Grupo 3:</label>
-                            <select class="custom-select rounded-0" id="select-subgrupoinventario3" >
+                            <select class="custom-select rounded-0" id="select-subgrupoinventario3" disabled>
                                 <!-- <option>Value 1</option> -->
             
                             </select>
@@ -356,7 +357,7 @@
                 </div>
     
                 <div class="col-12 float-right">
-                    <button type="submit" class="btn btn-primary float-right">Crear</button>
+                    <!-- <button type="submit" class="btn btn-primary float-right">Actualizar</button> -->
                 </div> 
     
     
@@ -368,106 +369,115 @@
 
 <script>
 
+function obtenerArticulo(id){
+    var url = 'articulos/'+ id;
+    
+    $.ajax({
+        method: "GET",
+        url: url_back + url,
+        headers: { 
+                      Authorization: 'Bearer ' + localStorage.access_token
+                  },
+        dataType: "json",
+        success: function(respuesta) {
 
-$("#form").submit(function(e) {
-e.preventDefault();   
+            respuesta.data.activo == 1 ? $('#activo').prop( "checked", true ) : $('#activo').prop( "checked", false );
+            respuesta.data.lote == 1 ? $('#lote').prop( "checked", true ) : $('#lote').prop( "checked", false );
+            respuesta.data.serial == 1 ? $('#serial').prop( "checked", true ) : $('#serial').prop( "checked", false );
+            respuesta.data.talla == 1 ? $('#talla').prop( "checked", true ) : $('#talla').prop( "checked", false );
+            respuesta.data.color == 1 ? $('#color').prop( "checked", true ) : $('#color').prop( "checked", false );
 
-const form = document.getElementById('form');
-const formData = new FormData(form);
+            $('#codigo').val(respuesta.data.codigo);
+            $('#nombre').val(respuesta.data.nombre);
+            $('#costounitario').val(respuesta.data.costounitario);
+            $('#posnombre').val(respuesta.data.posnombre);
+            $('#descripcion').val(respuesta.data.descripcion);
+            $('#fechainvimas').val(respuesta.data.fechainvima);
+            $('#costobarras').val(respuesta.data.costobarras);
+            $('#referencia').val(respuesta.data.referencia);
+            $('#plu').val(respuesta.data.plu);
+            $('#pesovolumen').val(respuesta.data.pesovolumen);
+            $('#reginvima').val(respuesta.data.reginvima);
+            $('#existenciaminima').val(respuesta.data.existenciaminima);
+            $('#cantidadordenar').val(respuesta.data.cantidadordenar);
+            $('#descuento').val(respuesta.data.descuento * 100);
+            $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr * 100);
+            $('#costospromediobodegas').val(respuesta.data.costospromediobodegas);
+            $('#ultimocosto').val(respuesta.data.ultimocosto);
+            $('#fechaultimacompra').val(respuesta.data.fechaultimacompra);
 
-var codigo = $('#codigo').val();
-var nombre = $('#nombre').val();
-var costounitario = $('#costounitario').val();
-var posnombre = $('#posnombre').val();
-var descripcion = $('#descripcion').val();
-var fechainvima = $('#fechainvimas').val();
-var costobarras = $('#costobarras').val();
-var referencia = $('#referencia').val();
-var plu = $('#plu').val();
-var pesovolumen = $('#pesovolumen').val();
-var reginvima = $('#reginvima').val();
-var existenciaminima = $('#existenciaminima').val();
-var cantidadordenar = $('#cantidadordenar').val();
-var descuento = $('#descuento').val() / 100;
-var descuentoafechavlr = $('#descuentoafechavlr').val() / 100;
-var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
+            if(respuesta.data.imagen){
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_img + 'articulos/'+ respuesta.data.imagen;
+                ul.appendChild(imagen);
+              }else{
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_front + 'articulos/defecto.jpg';
+                ul.appendChild(imagen);
+              }
 
-var activo =$('#activo').is(':checked') ? 1 : 0; //
-var lote =$('#lote').is(':checked') ? 1 : 0; //
-var serial =$('#serial').is(':checked') ? 1 : 0;// 
-var talla =$('#talla').is(':checked') ? 1 : 0; //
-var color =$('#color').is(':checked') ? 1 : 0; //
+            if(respuesta.data.marca_id){
+                    obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
+            }else{
+                    obtenerSelects('marcas','#select-marcas');
+            }
 
-var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
-var grupoinventario_id = $('#id').val(); 
+            if(respuesta.data.grupoinventario_id){
+                    $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
+                    obtenerGrupoinventario(respuesta.data.grupoinventario_id);
+            }else{
+                 obtenerGrupoinventarios(); 
+            }
 
-formData.append("codigo", codigo);
-formData.append("nombre", nombre);
-formData.append("costounitario", costounitario);
-formData.append("posnombre", posnombre);
-formData.append("descripcion", descripcion);
-formData.append("costobarras", costobarras);
-formData.append("referencia", referencia);
-formData.append("plu", plu);
-formData.append("activo", activo);
-formData.append("lote", lote);
-formData.append("serial", serial);
-formData.append("talla", talla);
-formData.append("color", color);
-formData.append("pesovolumen", pesovolumen);
-formData.append("reginvima", reginvima);
-formData.append("fechainvima", fechainvima);
-formData.append("existenciaminima", existenciaminima);
-formData.append("cantidadordenar", cantidadordenar);
-formData.append("descuento", descuento);
-formData.append("descuentoafechavlr", descuentoafechavlr);
-formData.append("imagen", imagen);
-formData.append("marca_id", marca_id);
-formData.append("grupoinventario_id", grupoinventario_id);
-formData.append("creador_id", localStorage.id);
-
-$.ajax({
-    method: "POST",
-    url: url_back + "articulos",
-    headers: { 
-        Authorization: 'Bearer ' + localStorage.access_token
-    },
-    dataType: "json",
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function(respuesta) {
-
-            var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.descripcion;
-            sweetMessage('success', mensaje); 
-            $('#main_content').load(url_front + 'articulos/index.html');
-    },
-    error: function(respuesta) {
-        console.log(respuesta);
-
-        if(respuesta.responseJSON.error){
-            $.each(respuesta.responseJSON.error.message, function (key, item) {
-                var mensaje = item[0];
-                sweetMessage('error', mensaje);
-            });
-
-        }else{
+        },
+        error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
         }
-    }
-});
-});
-
-var defaultImagen = function(){
-        const ul = document.getElementById("mostrarImagen");
-        const imagen = document.createElement("img");
-        imagen.width = 200;
-        imagen.src = url_front + 'activosfijos/defecto.jpg';
-        ul.appendChild(imagen);
+      })  
     }
 
-function obtenerGrupoinventarios() { 
+function obtenerGrupoinventario(id) { 
+var url = 'grupoinventarios/'+id;
+
+  $.ajax({
+      method: "GET",
+      url: url_back + url,    headers: { 
+          Authorization: 'Bearer ' + localStorage.access_token
+      },
+      dataType: "json",
+      success: function(respuesta) {
+
+                if(respuesta.data.posicion == 3){
+                    $('#select-subgrupoinventario3').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+                    $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.grupoinventario.id)
+                }else if(respuesta.data.posicion == 2){
+                    $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.id)
+                }else if(respuesta.data.posicion == 1){
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.id)
+                }
+      },
+      error: function() {
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+          sweetMessage('error', mensaje);
+      }
+    })     
+  }
+
+
+function obtenerGrupoinventarios(id = null) { 
 var url = 'grupoinventarios';
 
 $.ajax({
@@ -500,130 +510,7 @@ $.ajax({
       return html;
   }
 
-
-  
-var recargarGrupoinventario = function(){ 
-  var grupoinventario_id = $(this).val();
-  var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
-  if(grupoinventario_id){
-      $.ajax({
-          type:"GET",
-          url: url_back + url_d,
-          headers: { 
-                Authorization: 'Bearer ' + localStorage.access_token
-          },
-          dataType: "json",
-          success:function(respuesta){
-
-              $('#id').val(grupoinventario_id);
-              //$('#posicion').val('grupoinventario');
-              if(respuesta.length != 0){
-                  $('#select-subgrupoinventario3').html('');
-                  $('#select-subgrupoinventario2').html('');
-                  $('#select-subgrupoinventario1').html(crearHtmlGrupo(respuesta));
-              }else{
-                  $('#select-subgrupoinventario3').html('');
-                  $('#select-subgrupoinventario2').html('');
-                  $('#select-subgrupoinventario1').html('');
-              }
-          }
-      }); 
-  }else if($(this).val() == ''){
-             $('#select-subgrupoinventario3').html('');
-             $('#select-subgrupoinventario2').html('');
-             $('#select-subgrupoinventario1').html('');
-  }
-}
-
-
-
-var recargarSubgrupoinventario1 = function(){ 
-  var grupoinventario_id = $(this).val();
-  var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
-
-  if(grupoinventario_id){
-      $.ajax({
-          type:"GET",
-          url: url_back + url_d,
-          headers: { 
-                Authorization: 'Bearer ' + localStorage.access_token
-          },
-          dataType: "json",
-          success:function(respuesta){
-
-            $('#id').val(grupoinventario_id);
-            //$('#posicion').val('subgrupoinventario1');
-            if(respuesta.length != 0){
-                  $('#select-subgrupoinventario3').html('');
-                  $('#select-subgrupoinventario2').html(crearHtmlGrupo(respuesta));
-              }else{
-                  $('#select-subgrupoinventario3').html('');
-                  $('#select-subgrupoinventario2').html('');
-              }
-          }
-      }); 
-  }else if($(this).val() == ''){
-    $('#select-subgrupoinventario3').html('');
-    $('#select-subgrupoinventario2').html('');
-  }
-};
-
-
-var recargarSubgrupoinventario2 = function(){ 
-  var grupoinventario_id = $(this).val();
-  var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
-  if(grupoinventario_id){
-      $.ajax({
-          type:"GET",
-          url: url_back + url_d,
-          headers: { 
-                Authorization: 'Bearer ' + localStorage.access_token
-          },
-          dataType: "json",
-          success:function(respuesta){
-
-              $('#id').val(grupoinventario_id);
-              //$('#posicion').val('subgrupoinventario2');
-              if(respuesta.length != 0){
-                  $('#select-subgrupoinventario3').html(crearHtmlGrupo(respuesta));
-              }else{
-                $('#select-subgrupoinventario3').html('');
-              }
-          }
-      }); 
-  }else if($(this).val() == ''){
-      $('#select-subgrupoinventario3').html('');
-  }
-};
-
-
-var recargarSubgrupoinventario3 = function(){ 
-  var grupoinventario_id = $(this).val();
-  if(grupoinventario_id){
-    $('#id').val(grupoinventario_id);
-    //$('#posicion').val('subgrupoinventario3');
-  }
-};
-
-
-
-$('.form-check-input').change(function(){    
-    if(!$('input[id=color]').is(':checked')){
-        $('#talla').prop( "checked", false);
-    }
-});
-
-$('#talla').change(function(){    
-    if(!$('input[id=color]').is(':checked')){
-        $('.form-check-input').prop( "checked", false);
-    }
-});
-
-$("#nombre").blur(function() {
-		 $("#posnombre").val($(this).val()); 
-        //  $(this).after( "<span> Introduce formato xxx-xxx-xxx </span>" );	
-	});
-
+ 
 
 
 
@@ -632,47 +519,12 @@ $("#nombre").blur(function() {
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
-    defaultImagen();
-    obtenerGrupoinventarios();
-
-    $("#select-grupoinventario").on("click",recargarGrupoinventario);
-    $("#select-subgrupoinventario1").on("click",recargarSubgrupoinventario1);
-    $("#select-subgrupoinventario2").on("click",recargarSubgrupoinventario2);
-    $("#select-subgrupoinventario3").on("click",recargarSubgrupoinventario3);
+    obtenerArticulo(localStorage.ver);
 
     $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
 });
 
-document.getElementById("imagen").onchange = function(e){
-        if(validarImagen(e)){
-            const ul = document.getElementById("mostrarImagen");
-            ul.innerHTML = '';
-            const imagen = document.createElement("img");
-            const read = new FileReader();
-            const file = this.files;
-            
-            read.onload = function(){
-                const result = this.result;
-                const url = result;
-                imagen.width = 200;
-                imagen.src = url;
-                ul.appendChild(imagen);
-            }
-            read.readAsDataURL(file[0]);
-        }
-    }
 
-    $(function() {
- $("#fechainvima").datetimepicker({
-        locale: "es",
-        format: "YYYY-MM-DD",  
-        maxDate: moment(),
-        minDate: moment().subtract(99, 'year'),
-        timepicker:false,
-        autoclose: true,
-        showButtonPanel: true
- });
-});
 
 
 </script>

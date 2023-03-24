@@ -4,13 +4,13 @@
     <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
     
-    <div class="card" id="content-activosfijos">
+    <div class="card" id="content-articulos">
         <div class="card-header">
             <div class="row">
                 <div class="col-12">
                     <h4>
                         <i class="nav-icon fas fa-user"></i>
-                        Nuevo Articulo                                  
+                        Editar Articulo                                  
                     </h4>
                 </div>
             </div>
@@ -18,7 +18,7 @@
     
         <div class="card-body">
             
-            <form method="POST" id="form" action="" enctype="multipart/form-data">
+            <form method="PUT" id="form" action="" enctype="multipart/form-data">
     
                 <div class="row">
                     <div class="col-sm-6">
@@ -356,7 +356,7 @@
                 </div>
     
                 <div class="col-12 float-right">
-                    <button type="submit" class="btn btn-primary float-right">Crear</button>
+                    <button type="submit" class="btn btn-primary float-right">Actualizar</button>
                 </div> 
     
     
@@ -424,11 +424,12 @@ formData.append("descuentoafechavlr", descuentoafechavlr);
 formData.append("imagen", imagen);
 formData.append("marca_id", marca_id);
 formData.append("grupoinventario_id", grupoinventario_id);
-formData.append("creador_id", localStorage.id);
+formData.append('_method', 'PUT');
+
 
 $.ajax({
     method: "POST",
-    url: url_back + "articulos",
+    url: url_back + "articulos/"+localStorage.editar,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -438,7 +439,7 @@ $.ajax({
     processData: false,
     success: function(respuesta) {
 
-            var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.descripcion;
+            var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.nombre;
             sweetMessage('success', mensaje); 
             $('#main_content').load(url_front + 'articulos/index.html');
     },
@@ -459,15 +460,116 @@ $.ajax({
 });
 });
 
-var defaultImagen = function(){
-        const ul = document.getElementById("mostrarImagen");
-        const imagen = document.createElement("img");
-        imagen.width = 200;
-        imagen.src = url_front + 'activosfijos/defecto.jpg';
-        ul.appendChild(imagen);
+
+function obtenerArticulo(id){
+    var url = 'articulos/'+ id;
+    
+    $.ajax({
+        method: "GET",
+        url: url_back + url,
+        headers: { 
+                      Authorization: 'Bearer ' + localStorage.access_token
+                  },
+        dataType: "json",
+        success: function(respuesta) {
+
+            respuesta.data.activo == 1 ? $('#activo').prop( "checked", true ) : $('#activo').prop( "checked", false );
+            respuesta.data.lote == 1 ? $('#lote').prop( "checked", true ) : $('#lote').prop( "checked", false );
+            respuesta.data.serial == 1 ? $('#serial').prop( "checked", true ) : $('#serial').prop( "checked", false );
+            respuesta.data.talla == 1 ? $('#talla').prop( "checked", true ) : $('#talla').prop( "checked", false );
+            respuesta.data.color == 1 ? $('#color').prop( "checked", true ) : $('#color').prop( "checked", false );
+
+            $('#codigo').val(respuesta.data.codigo);
+            $('#nombre').val(respuesta.data.nombre);
+            $('#costounitario').val(respuesta.data.costounitario);
+            $('#posnombre').val(respuesta.data.posnombre);
+            $('#descripcion').val(respuesta.data.descripcion);
+            $('#fechainvimas').val(respuesta.data.fechainvima);
+            $('#costobarras').val(respuesta.data.costobarras);
+            $('#referencia').val(respuesta.data.referencia);
+            $('#plu').val(respuesta.data.plu);
+            $('#pesovolumen').val(respuesta.data.pesovolumen);
+            $('#reginvima').val(respuesta.data.reginvima);
+            $('#existenciaminima').val(respuesta.data.existenciaminima);
+            $('#cantidadordenar').val(respuesta.data.cantidadordenar);
+            $('#descuento').val(respuesta.data.descuento * 100);
+            $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr * 100);
+            $('#costospromediobodegas').val(respuesta.data.costospromediobodegas);
+            $('#ultimocosto').val(respuesta.data.ultimocosto);
+            $('#fechaultimacompra').val(respuesta.data.fechaultimacompra);
+
+            if(respuesta.data.imagen){
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_img + 'articulos/'+ respuesta.data.imagen;
+                ul.appendChild(imagen);
+              }else{
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_front + 'articulos/defecto.jpg';
+                ul.appendChild(imagen);
+              }
+
+            if(respuesta.data.marca_id){
+                    obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
+            }else{
+                    obtenerSelects('marcas','#select-marcas');
+            }
+
+            if(respuesta.data.grupoinventario_id){
+                    $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
+                    obtenerGrupoinventario(respuesta.data.grupoinventario_id);
+            }else{
+                 obtenerGrupoinventarios(); 
+            }
+
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
     }
 
-function obtenerGrupoinventarios() { 
+function obtenerGrupoinventario(id) { 
+var url = 'grupoinventarios/'+id;
+
+  $.ajax({
+      method: "GET",
+      url: url_back + url,    headers: { 
+          Authorization: 'Bearer ' + localStorage.access_token
+      },
+      dataType: "json",
+      success: function(respuesta) {
+
+                if(respuesta.data.posicion == 3){
+                    $('#select-subgrupoinventario3').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+                    $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.grupoinventario.id)
+                }else if(respuesta.data.posicion == 2){
+                    $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.id)
+                }else if(respuesta.data.posicion == 1){
+                    $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.id)
+                }
+      },
+      error: function() {
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+          sweetMessage('error', mensaje);
+      }
+    })     
+  }
+
+
+function obtenerGrupoinventarios(id = null) { 
 var url = 'grupoinventarios';
 
 $.ajax({
@@ -500,8 +602,7 @@ $.ajax({
       return html;
   }
 
-
-  
+ 
 var recargarGrupoinventario = function(){ 
   var grupoinventario_id = $(this).val();
   var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
@@ -626,14 +727,10 @@ $("#nombre").blur(function() {
 
 
 
-
-
-
 $( document ).ready(function() {
     $('.preloader').hide("slow");
     validarLogin();
-    defaultImagen();
-    obtenerGrupoinventarios();
+    obtenerArticulo(localStorage.editar);
 
     $("#select-grupoinventario").on("click",recargarGrupoinventario);
     $("#select-subgrupoinventario1").on("click",recargarSubgrupoinventario1);
