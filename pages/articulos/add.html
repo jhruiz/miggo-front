@@ -399,7 +399,7 @@ var talla =$('#talla').is(':checked') ? 1 : 0; //
 var color =$('#color').is(':checked') ? 1 : 0; //
 
 var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
-var grupoinventario_id = $('#id').val(); 
+var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
 
 formData.append("codigo", codigo);
 formData.append("nombre", nombre);

@@ -49,7 +49,7 @@ $("#example1").DataTable({
 }
 
 var infoTable = function(){
-var url = 'cuentabancarias';
+var url = 'empresas/'+localStorage.empresa_id+'/cuentabancarias';
 
   $.ajax({
           method: "GET",

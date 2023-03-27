@@ -349,7 +349,7 @@
                             </select>
                         </div> 
 
-                            <input type="text" id="id" class="form-control" hidden>
+                            <input type="text" id="id" class="form-control">
                             <!-- <input type="text" id="posicion" class="form-control"> -->
     
                     </div>
@@ -399,7 +399,7 @@ var talla =$('#talla').is(':checked') ? 1 : 0; //
 var color =$('#color').is(':checked') ? 1 : 0; //
 
 var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
-var grupoinventario_id = $('#id').val(); 
+var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
 
 formData.append("codigo", codigo);
 formData.append("nombre", nombre);
@@ -535,6 +535,7 @@ function obtenerArticulo(id){
 
 function obtenerGrupoinventario(id) { 
 var url = 'grupoinventarios/'+id;
+var grupopadre= '';
 
   $.ajax({
       method: "GET",
@@ -549,16 +550,22 @@ var url = 'grupoinventarios/'+id;
                     $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
                     $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>');
 
-                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.grupoinventario.id)
+                    grupopadre = '<option value="'+ respuesta.data.grupoinventario.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.grupoinventario.descripcion+'</option>';
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.grupoinventario.id, grupopadre);
                 }else if(respuesta.data.posicion == 2){
                     $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
                     $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
 
-                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.id)
+                    grupopadre = '<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>';
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.id, grupopadre);
                 }else if(respuesta.data.posicion == 1){
                     $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
 
-                    obtenerGrupoinventarios(respuesta.data.grupoinventario.id)
+                    grupopadre = '<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>';
+
+                    obtenerGrupoinventarios(respuesta.data.grupoinventario.id, grupopadre);
                 }
       },
       error: function() {
@@ -569,7 +576,7 @@ var url = 'grupoinventarios/'+id;
   }
 
 
-function obtenerGrupoinventarios(id = null) { 
+function obtenerGrupoinventarios(id = null, grupopadre = null) { 
 var url = 'grupoinventarios';
 
 $.ajax({
@@ -580,7 +587,7 @@ $.ajax({
       dataType: "json",
       success: function(respuesta) {
 
-          $('#select-grupoinventario').html(crearHtmlGrupo(respuesta));
+          $('#select-grupoinventario').html(crearHtmlGrupo(respuesta, id, grupopadre));
       },
       error: function() {
           var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -589,10 +596,14 @@ $.ajax({
     })     
   }
   
-  var crearHtmlGrupo = function(data) {
-      var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+  var crearHtmlGrupo = function(data, id = null, grupopadre = null) {
+        if(grupopadre != null){
+            var html = grupopadre;
+        }else{
+            var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+        }
           $.each(data, function (key, item) {
-            if(localStorage.empresa_id == item.empresa_id){
+            if(localStorage.empresa_id == item.empresa_id && item.id != id){
               html += '<option value="'+ item.id+'">';
               html += item.codigo+'-'+item.descripcion;
               html += '</option>';
