@@ -1,4 +1,5 @@
-$("#form").submit(function(e) {
+$("#form").change(function(e) {
+    // $("#form").submit(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
@@ -70,7 +71,7 @@ $("#form").submit(function(e) {
     
                 var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.nombre;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'articulos/index.html');
+                // $('#main_content').load(url_front + 'articulos/index.html');
         },
         error: function(respuesta) {
             console.log(respuesta);
@@ -153,7 +154,7 @@ $("#form").submit(function(e) {
                 }else{
                      obtenerGrupoinventarios(); 
                 }
-    
+
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

@@ -6,27 +6,23 @@
     
     <div class="card" id="content-articulos">
 
+
             <div class="card-header text-center">
                 <h4>
                     Configuracion del Articulo                              
                 </h4>
-              <a class="btn btn-app bg-secondary">
-                <i class="fas fa-barcode"></i> Articulos
-              </a>
-              <a class="btn btn-app bg-success">
-                <i class="fas fa-edit"></i> Uni Med/List Prec
-              </a>
-              <a class="btn btn-app bg-danger">
-                <i class="fas fa-save"></i> Impuesto
-              </a>
-              <a class="btn btn-app bg-warning">
-                <i class="fas fa-bullhorn"></i> Cuentas PUC
-              </a>
-              <a class="btn btn-app bg-info">
-                <i class="fas fa-inbox"></i> Art/Equivalente
-              </a>
-            </div>
 
+                <!-- <div id="configuracion"></div> -->
+
+              <button class="btn btn-app bg-success" type="submit" onclick="editarListaprecio()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-barcode"></i> Uni Med/List Prec</button>
+
+              <button class="btn btn-app bg-danger" type="submit" onclick="verArticulo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
+
+              <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-edit"></i> Cuentas PUC</button>
+
+              <button class="btn btn-app bg-info" type="submit" onclick="verArticulo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-inbox"></i> Art/Equivalente</button>
+
+            </div>
 
         <div class="card-header">
             <div class="row">
@@ -39,7 +35,6 @@
             </div>
         </div>
     
-
 
         <div class="card-body">
             
@@ -381,17 +376,43 @@
                 </div>
     
                 <div class="col-12 float-right">
-                    <button type="submit" class="btn btn-primary float-right">Actualizar</button>
+                    <!-- <button type="submit" class="btn btn-primary float-right">Actualizar</button> -->
                 </div> 
     
     
             </form>
         </div>
-    
     </div>
+
+<div id="mymodal"></div>
 
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
 <script src="../../build/js/articulos/edit.js"></script>
 
+<script>
+
+    function editarListaprecio(){//TODO: crear en blanco
+      var url = 'articulos/listaprecios.html';
+    
+        $('#mymodal').html('');
+        //   localStorage.setItem('editar', id);
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong').modal({show:true});
+            });
+    }
+
+function editarCuentapuc(){//TODO: crear en blanco
+  var url_edit = 'articulos/cuentapucs.html';
+
+    $('#mymodal').html('');
+    //   localStorage.setItem('editar', id);
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong2').modal({show:true});
+        });
+}
+
+
+
+</script>

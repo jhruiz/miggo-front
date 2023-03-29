@@ -1,0 +1,524 @@
+<!-- Modal -->
+<div class="modal fade" id="ModalLong" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">
+            <i class="nav-icon fas fa-user"></i>
+            Unidad Medidas/Lista Precios </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+<!--  -->
+
+<div class="card">
+
+  <div class="card-body">
+        
+        
+        <form id="formPrecio"  method="PUT" action="" enctype="multipart/form-data">
+
+        <div class="row float-right">
+          <div class="col-sm-4" style="border-left-width: thin">
+
+
+            <div class="form-row">
+              <label for="exampleFormControlSelect1">Unidad de Medida Principal</label>
+              <div class="form-group col-md-6">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Kg</option>
+                  <option>Gr</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6"></div>
+            </div>
+
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">1.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 1">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">2.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 2">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">3.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 3">  
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                  </div>
+              </div> 
+          </div> 
+
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">4.</span>
+                </div> 
+                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 4">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+            </div> 
+        </div>
+
+        <div class="form-group col-md-9">
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">5.</span>
+              </div> 
+              <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 5">  
+              <div class="input-group-append">
+                <span class="input-group-text">$</span>
+              </div>
+          </div> 
+      </div>
+
+      <div class="form-group col-md-9">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">6.</span>
+            </div> 
+            <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 6">  
+            <div class="input-group-append">
+              <span class="input-group-text">$</span>
+            </div>
+        </div> 
+    </div>
+
+    <div class="form-group col-md-9">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text">7.</span>
+          </div> 
+          <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 7">  
+          <div class="input-group-append">
+            <span class="input-group-text">$</span>
+          </div>
+      </div> 
+  </div>
+
+  <div class="form-group col-md-9">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">8.</span>
+        </div> 
+        <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 8">  
+        <div class="input-group-append">
+          <span class="input-group-text">$</span>
+        </div>
+    </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+          <span class="input-group-text">9.</span>
+      </div> 
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 9">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <label> Precio E-commerce </label>
+  <div class="input-group mb-3">
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="E-commerce">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+
+          </div>
+          <div class="col-sm-4">
+
+
+            <div class="form-row">
+              <label for="exampleFormControlSelect1">Unidad de Medida Alterna 1</label>
+              <div class="form-group col-md-6">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Kg</option>
+                  <option>Gr</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6"></div>
+            </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">1.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 1">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">2.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 2">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">3.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 3">  
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                  </div>
+              </div> 
+          </div> 
+
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">4.</span>
+                </div> 
+                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 4">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+            </div> 
+        </div>
+
+        <div class="form-group col-md-9">
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">5.</span>
+              </div> 
+              <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 5">  
+              <div class="input-group-append">
+                <span class="input-group-text">$</span>
+              </div>
+          </div> 
+      </div>
+
+      <div class="form-group col-md-9">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">6.</span>
+            </div> 
+            <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 6">  
+            <div class="input-group-append">
+              <span class="input-group-text">$</span>
+            </div>
+        </div> 
+    </div>
+
+    <div class="form-group col-md-9">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text">7.</span>
+          </div> 
+          <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 7">  
+          <div class="input-group-append">
+            <span class="input-group-text">$</span>
+          </div>
+      </div> 
+  </div>
+
+  <div class="form-group col-md-9">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">8.</span>
+        </div> 
+        <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 8">  
+        <div class="input-group-append">
+          <span class="input-group-text">$</span>
+        </div>
+    </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+          <span class="input-group-text">9.</span>
+      </div> 
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 9">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">10.</span>
+  </div> 
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 10">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+            
+          </div>
+          <div class="col-sm-4">
+
+            <div class="form-row">
+              <label for="exampleFormControlSelect1">Unidad de Medida Alterna 2</label>
+              <div class="form-group col-md-6">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Kg</option>
+                  <option>Gr</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6"></div>
+            </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">1.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 1">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">2.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 2">  
+              </div> 
+          </div>
+
+            <div class="form-group col-md-9">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">3.</span>
+                  </div> 
+                  <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 3">  
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                  </div>
+              </div> 
+          </div> 
+
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">4.</span>
+                </div> 
+                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 4">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+            </div> 
+        </div>
+
+        <div class="form-group col-md-9">
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">5.</span>
+              </div> 
+              <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 5">  
+              <div class="input-group-append">
+                <span class="input-group-text">$</span>
+              </div>
+          </div> 
+      </div>
+
+      <div class="form-group col-md-9">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">6.</span>
+            </div> 
+            <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 6">  
+            <div class="input-group-append">
+              <span class="input-group-text">$</span>
+            </div>
+        </div> 
+    </div>
+
+    <div class="form-group col-md-9">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text">7.</span>
+          </div> 
+          <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 7">  
+          <div class="input-group-append">
+            <span class="input-group-text">$</span>
+          </div>
+      </div> 
+  </div>
+
+  <div class="form-group col-md-9">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">8.</span>
+        </div> 
+        <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 8">  
+        <div class="input-group-append">
+          <span class="input-group-text">$</span>
+        </div>
+    </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+          <span class="input-group-text">9.</span>
+      </div> 
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 9">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+
+<div class="form-group col-md-9">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">10.</span>
+  </div> 
+      <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Precio 10">  
+      <div class="input-group-append">
+        <span class="input-group-text">$</span>
+      </div>
+  </div> 
+</div>
+
+          </div>
+        </div>
+
+
+            <div class="col-12 float-right">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            </div> 
+
+        </form>
+
+    </div>
+
+</div>
+</div>
+
+
+
+
+<!--  -->
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+
+<script>
+
+
+$("#formPrecio").submit(function(e) {
+e.preventDefault();   
+
+const form = document.getElementById('form');
+const formData = new FormData(form);
+
+var cuentacosto_id = $('#cuentacosto_id').val();
+var articulo_id = localStorage.editar;
+
+formData.append("articulo_id", articulo_id);
+formData.append('_method', 'PUT');
+
+$.ajax({
+    method: "POST",
+    url: url_back + "unidadesmedidalistaprecios/"+localStorage.editar,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,//formData
+    processData: false,//formData
+    success: function(respuesta) {
+
+            $('#ModalLong').modal('hide');
+            $('ModalLong').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = 'Lista Precio Asociadas actualizado de forma correcta.: ';
+            sweetMessage('success', mensaje); 
+            
+            // $('#main_content').load(url_front + 'unidadesmedidalistaprecios/edit.html');
+    },
+    error: function(respuesta) {
+
+        if(respuesta.responseJSON.error){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
+            });
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    }
+});
+});
+
+
+function obtenerListaprecio(id){
+var url = 'articulos/'+ id;//TODO: articulo
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+                  Authorization: 'Bearer ' + localStorage.access_token
+              },
+    dataType: "json",
+    success: function(respuesta) {
+      
+      console.log(respuesta.data);
+
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+
+    
+
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+      validarLogin();
+      obtenerListaprecio(localStorage.editar);
+
+});
+
+</script>
+
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>

@@ -66,10 +66,19 @@ $("#form").submit(function(e) {
         contentType: false,
         processData: false,
         success: function(respuesta) {
+
+
     
                 var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.nombre;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'articulos/index.html');
+
+                if($('input[id=config]').is(':checked')){
+                    localStorage.setItem('editar', respuesta.data.id)
+                    $('#main_content').load(url_front + 'articulos/edit.html');
+                }else{
+                    $('#main_content').load(url_front + 'articulos/index.html');
+                }
+
         },
         error: function(respuesta) {
             console.log(respuesta);
