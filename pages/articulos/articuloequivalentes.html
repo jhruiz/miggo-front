@@ -1,0 +1,202 @@
+<!-- Modal -->
+<div class="modal fade" id="ModalLong4" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">
+            <i class="nav-icon fas fa-user"></i>
+            Editar Articulo Equivalente </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+<!--  -->
+
+<div class="card">
+
+  <div class="card-body">
+        
+        
+        <form id="formCuenta"  method="PUT" action="" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="responsable">Articulo Equivalente <code> &nbsp;*</code></label>
+                <input class="form-control input-texto-alfanumerico" id="artículoequivalente1" placeholder="Nombre Articulo" >
+            </div>
+                <input class="form-control input-texto-alfanumerico" id="artículoequivalente_id" hidden>
+
+
+       
+
+            <div class="col-12 float-right">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
+            </div> 
+
+        </form>
+
+    </div>
+
+</div>
+</div>
+
+
+
+
+<!--  -->
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+
+<script>
+
+
+$("#formCuenta").submit(function(e) {
+e.preventDefault();   
+
+const form = document.getElementById('formCuenta');
+const formData = new FormData(form);
+
+var artículoequivalente_id = $('#artículoequivalente_id').val();
+var articulo_id = localStorage.editar;
+
+formData.append("artículoequivalente_id", artículoequivalente_id);
+formData.append("articulo_id", articulo_id);
+formData.append('_method', 'PUT');
+
+$.ajax({
+    method: "POST",
+    url: url_back + "artículoequivalentes/"+localStorage.editar,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    data: formData,
+    contentType: false,//formData
+    processData: false,//formData
+    success: function(respuesta) {
+
+            $('#ModalLong2').modal('hide');
+            $('ModalLong2').removeClass('show');
+            $('.modal-backdrop').remove();
+            var mensaje = ' Cuentas Puc Asociadas actualizado de forma correcta.: ';
+            sweetMessage('success', mensaje); 
+            
+            // $('#main_content').load(url_front + 'articulos/edit.html');
+    },
+    error: function(respuesta) {
+
+        if(respuesta.responseJSON.error){
+            $.each(respuesta.responseJSON.error.message, function (key, item) {
+                var mensaje = item[0];
+                sweetMessage('error', mensaje);
+            });
+
+        }else{
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+    }
+});
+});
+
+
+function obtenerArticulocuenta(id){
+var url = 'articulos/'+ id;
+
+$.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+                  Authorization: 'Bearer ' + localStorage.access_token
+              },
+    dataType: "json",
+    success: function(respuesta) {
+      
+      console.log(respuesta.data);
+      if(respuesta.data.articulocuenta.artículoequivalente_id){
+        $('#artículoequivalente_id').val(respuesta.data.articulocuenta.artículoequivalente_id);
+        obtenerEquivalente('#artículoequivalente1', respuesta.data.articulocuenta.artículoequivalente_id);
+      }
+
+
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
+
+
+    //******************************************************************************************************************************************************************************
+    
+    var obtenerEquivalente = function(input ,id){
+      url_e= '' + id;
+        $.ajax({
+        method: "GET",
+        url: url_back + url_e,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+            // console.log()
+                $(input).val(respuesta.data.id+'-'+respuesta.data.descripcion);
+                $('#artículoequivalente_id').val(respuesta.data.id);
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    
+    //******************************************************************************************************************************************************************************
+    
+    $( "#artículoequivalente1" ).autocomplete({
+       source: function( request, response ) {
+          //  var url = '''; 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong4",
+       select: function (event, ui) {
+         // Set selection
+         $('#artículoequivalente1').val(ui.item.label); // display the selected text
+         $('#artículoequivalente_id').val(ui.item.value); // save selected id to input
+         return false;
+       }
+    });
+
+
+   
+
+
+$( document ).ready(function() {
+    $('.preloader').hide("slow");
+      validarLogin();
+      // obtenerArticulocuenta(localStorage.editar);
+
+});
+
+</script>
+
+<!-- validaciones -->
+<script src="../../build/js/validaciones.js"></script>

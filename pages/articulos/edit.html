@@ -20,7 +20,7 @@
 
               <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-edit"></i> Cuentas PUC</button>
 
-              <button class="btn btn-app bg-info" type="submit" onclick="verArticulo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-inbox"></i> Art/Equivalente</button>
+              <button class="btn btn-app bg-info" type="submit" onclick="editarEquivalente()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-inbox"></i> Art/Equivalente</button>
 
             </div>
 
@@ -393,26 +393,33 @@
 
 <script>
 
-    function editarListaprecio(){//TODO: crear en blanco
+    function editarListaprecio(){
       var url = 'articulos/listaprecios.html';
     
         $('#mymodal').html('');
-        //   localStorage.setItem('editar', id);
           $('#mymodal').load('../' + url ,function(){
                 $('#ModalLong').modal({show:true});
             });
     }
 
-function editarCuentapuc(){//TODO: crear en blanco
+function editarCuentapuc(){
   var url_edit = 'articulos/cuentapucs.html';
 
     $('#mymodal').html('');
-    //   localStorage.setItem('editar', id);
       $('#mymodal').load('../' + url_edit ,function(){
             $('#ModalLong2').modal({show:true});
         });
 }
 
+
+function editarEquivalente(){
+  var url_edit = 'articulos/articuloequivalentes.html';
+
+    $('#mymodal').html('');
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong4').modal({show:true});
+        });
+}
 
 
 </script>
