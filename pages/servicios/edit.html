@@ -4,7 +4,25 @@
     <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
     
+
     <div class="card" id="content-servicios">
+
+
+    <div class="card-header text-center">
+        <h4>
+            Configuracion del Articulo                              
+        </h4>
+
+      <button class="btn btn-app bg-success" type="submit" onclick="editarListaprecio()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-barcode"></i> Uni Med/List Prec</button>
+
+      <button class="btn btn-app bg-danger" type="submit" onclick="" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
+
+      <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-edit"></i> Cuentas PUC</button>
+
+    </div>
+
+
+ 
         <div class="card-header">
             <div class="row">
                 <div class="col-12">
@@ -200,7 +218,7 @@
                 </div>
     
                 <div class="col-12 float-right">
-                    <button type="submit" class="btn btn-primary float-right">Actualizar</button>
+                    <!-- <button type="submit" class="btn btn-primary float-right">Actualizar</button> -->
                 </div> 
     
             </form>
@@ -208,8 +226,29 @@
     
     </div>
 
+    <div id="mymodal"></div>
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
 <script src="../../build/js/servicios/edit.js"></script>
 
+
+
+<script>
+
+
+
+function editarCuentapuc(){
+
+  var url_edit = 'servicios/cuentapucs.html';
+
+    $('#mymodal').html('');
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong2').modal({show:true});
+        });
+}
+
+
+
+
+</script>

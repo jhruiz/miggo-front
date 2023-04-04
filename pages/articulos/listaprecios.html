@@ -603,6 +603,8 @@ function enviaLista(k, bool){
 
 
 var crearLista = function(e){
+e.preventDefault(); 
+
   const form = document.getElementById('formPrecio');
   const formData = new FormData(form);
 
@@ -660,7 +662,7 @@ var crearLista = function(e){
 
 function validarCostounitario(e){
 
-  if($(this).val() < $('#costounitario').val() && e.target.id != 'factorconversion2' && e.target.id != 'factorconversion1' && e.target.id != 'select-unidades1' && e.target.id != 'select-unidades2'){
+  if(parseInt($(this).val()) < parseInt($('#costounitario').val()) && e.target.id != 'factorconversion2' && e.target.id != 'factorconversion1' && e.target.id != 'select-unidades1' && e.target.id != 'select-unidades2'){
         var mensaje = 'el precio debe ser mayor al Costo Unitario.: ' + $('#costounitario').val();
         sweetMessage('info', mensaje);
         $(this).val('');
@@ -682,6 +684,7 @@ $.ajax({
 
       $('#costounitario').val(respuesta.data.costounitario);
       arre = respuesta.data.unidadesmedidalistaprecio;
+
       ordenarPrecio(arre);
 
       if(arre.length == 1){

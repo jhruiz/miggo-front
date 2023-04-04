@@ -12,13 +12,11 @@
                     Configuracion del Articulo                              
                 </h4>
 
-                <!-- <div id="configuracion"></div> -->
-
               <button class="btn btn-app bg-success" type="submit" onclick="editarListaprecio()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-barcode"></i> Uni Med/List Prec</button>
 
-              <button class="btn btn-app bg-danger" type="submit" onclick="verArticulo('+ element.id +')" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
+              <button class="btn btn-app bg-danger" type="submit" onclick="editarImpuesto()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
 
-              <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-edit"></i> Cuentas PUC</button>
+              <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="far fa-file-alt mr-1"></i> Cuentas PUC</button>
 
               <button class="btn btn-app bg-info" type="submit" onclick="editarEquivalente()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-inbox"></i> Art/Equivalente</button>
 
@@ -421,5 +419,14 @@ function editarEquivalente(){
         });
 }
 
+
+function editarImpuesto(){
+      var url = 'articulos/impuestos.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong3').modal({show:true});
+            });
+    }
 
 </script>

@@ -1,4 +1,4 @@
-$("#form").submit(function(e) {
+$("#form").change(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
@@ -43,7 +43,6 @@ $("#form").submit(function(e) {
     
                 var mensaje = 'Servicio creado de forma correcta.: '+ respuesta.data.nombre;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'servicios/index.html');
         },
         error: function(respuesta) {
             console.log(respuesta);

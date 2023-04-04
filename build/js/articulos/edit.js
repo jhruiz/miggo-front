@@ -93,7 +93,7 @@ $("#form").change(function(e) {
     
     function obtenerArticulo(id){
         var url = 'articulos/'+ id;
-        
+
         $.ajax({
             method: "GET",
             url: url_back + url,
