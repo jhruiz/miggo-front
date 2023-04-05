@@ -172,7 +172,7 @@ $.ajax({
         success: function(respuesta) {
             // console.log()
                 $(input).val(respuesta.data.id+'-'+respuesta.data.descripcion);
-                $('#puc_id').val(respuesta.data.id);
+                // $('#puc_id').val(respuesta.data.id);
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

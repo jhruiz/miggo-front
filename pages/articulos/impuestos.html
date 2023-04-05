@@ -28,14 +28,14 @@
             <div class="form-row">
               <div class="form-group col-md-6">
               <label for="select-tipoimpuestos">Tipo Impuesto </label>
-                <select class="form-control" id="select-tipoimpuestos"></select>
+                <select class="form-control" id="select-tipoimpuestocompras" required></select>
 
               </div>
 
               <div class="form-group col-md-4">
-                  <label for="inputZip">IVA</label>
+                  <label for="ivacompra">IVA</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" id="inputZip">
+                  <input type="text" class="form-control input-numero-decimal2" id="ivacompra" readonly>
                   <div class="input-group-append">
                     <span class="input-group-text">%</span>
                   </div>
@@ -47,15 +47,15 @@
 
               <div class="form-group col-md-10">
                 <label for="responsable">  IVA Compras (PUC) </label>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Nombre de la cuenta PUC de Ingreso">
+                <input class="form-control input-texto-alfanumerico" id="comprapuc" placeholder="cuenta PUC de Compra" required>
               </div>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso_id" hidden>
+                <input class="form-control input-numero" id="comprapuc_id" hidden>
 
 
                 <div class="form-group">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <input class="form-check-input" type="checkbox" id="adicionavalorcosto">
+                    <label class="form-check-label" for="adicionavalorcosto">
                       Adicionar valor al costo del articulo
                     </label>
                   </div>
@@ -69,14 +69,14 @@
             <div class="form-row">
               <div class="form-group col-md-6">
               <label for="select-tipoimpuestos">Tipo Impuesto </label>
-                <select class="form-control" id="select-tipoimpuestos"></select>
+                <select class="form-control" id="select-tipoimpuestoventas" required></select>
 
               </div>
 
               <div class="form-group col-md-4">
-                  <label for="inputZip">IVA</label>
+                  <label for="ivaventa">IVA</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" id="inputZip">
+                  <input type="text" class="form-control input-numero" id="ivaventa" readonly>
                   <div class="input-group-append">
                     <span class="input-group-text">%</span>
                   </div>
@@ -88,29 +88,25 @@
 
               <div class="form-group col-md-10">
                 <label for="responsable">  IVA Venta (PUC) </label>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Nombre de la cuenta PUC de Ingreso">
+                <input class="form-control input-texto-alfanumerico" id="ventapuc" placeholder="cuenta PUC de Venta" required>
               </div>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso_id" hidden>
-
-
-
-
+                <input class="form-control input-numero" id="ventapuc_id" hidden>
 
           </div>
           <div class="col-sm-4">
 
               <div class="form-group col-md-10">
                 <label for="responsable">  Impuesto Consumo (PUC) </label>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Nombre de la cuenta PUC de Ingreso">
+                <input class="form-control input-texto-alfanumerico" id="consumopuc" placeholder="cuenta PUC de Consumo">
               </div>
-                <input class="form-control input-texto-alfanumerico" id="cuentaingreso_id" hidden>
+                <input class="form-control input-numero" id="consumopuc_id" hidden>
 
 
                 <div class="form-row">
                   <div class="form-group col-md-4">
-                      <label for="inputZip">Impuesto</label>
+                      <label for="impuestoconsumo">Impuesto</label>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="inputZip">
+                      <input type="text" class="form-control input-numero" id="impuestoconsumo" readonly>
                       <div class="input-group-append">
                         <span class="input-group-text">%</span>
                       </div>
@@ -118,9 +114,9 @@
                   </div>
     
                   <div class="form-group col-md-6">
-                      <label for="inputZip">Valor Empaque</label>
+                      <label for="valorempaque">Valor Empaque</label>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="inputZip">
+                      <input type="text" class="form-control input-numero" id="valorempaque">
                       <div class="input-group-append">
                         <span class="input-group-text">$</span>
                       </div>
@@ -133,8 +129,8 @@
 
                 <div class="form-group col-md-6">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <input class="form-check-input" type="checkbox" id="aplicarconsumocompra">
+                    <label class="form-check-label" for="aplicarconsumocompra">
                       Aplicar en compra
                     </label>
                   </div>
@@ -142,8 +138,8 @@
           
                 <div class="form-group col-md-6">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <input class="form-check-input" type="checkbox" id="adicionaconsumocosto">
+                    <label class="form-check-label" for="adicionaconsumocosto">
                      Adicionar valor al costo 
                     </label>
                   </div>
@@ -163,16 +159,16 @@
 
             <div class="form-group col-md-10">
               <label for="responsable">Retefuente Compra (PUC) </label>
-              <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Cuenta PUC de Retefuente Compra">
+              <input class="form-control input-texto-alfanumerico" id="rtfcomprapuc" placeholder="Cuenta PUC de Retefuente Compra">
           </div>
-              <input class="form-control input-texto-alfanumerico" id="cuentaingreso_id" hidden>
+              <input class="form-control input-numero" id="rtfcomprapuc_id" hidden>
             
           
 
               <div class="form-group col-md-6">
                   <label for="retefuenteporcentaje">Retefuente</label>
                 <div class="input-group mb-3">
-                    <input type="text" id="retefuenteporcentaje" class="form-control input-numero-decimal2" placeholder="Retefuente">  
+                    <input type="text" id="rtfcompraimpuesto" class="form-control input-numero-decimal2" placeholder="Retefuente" readonly>  
                     <div class="input-group-append">
                       <span class="input-group-text">%</span>
                     </div>
@@ -187,16 +183,16 @@
 
             <div class="form-group col-md-10">
               <label for="responsable">Retefuente Venta (PUC) </label>
-              <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Cuenta PUC de Retefuente Venta">
+              <input class="form-control input-texto-alfanumerico" id="rtfventapuc" placeholder="Cuenta PUC de Retefuente Venta">
           </div>
-              <input class="form-control input-texto-alfanumerico" id="cuentaingreso_id" hidden>
+              <input class="form-control input-numero" id="rtfventapuc_id" hidden>
             
           
 
               <div class="form-group col-md-6">
                   <label for="retefuenteporcentaje">Retefuente</label>
                 <div class="input-group mb-3">
-                    <input type="text" id="retefuenteporcentaje" class="form-control input-numero-decimal2" placeholder="Retefuente">  
+                    <input type="text" id="rtfventaimpuesto" class="form-control input-numero" placeholder="Retefuente" readonly>  
                     <div class="input-group-append">
                       <span class="input-group-text">%</span>
                     </div>
@@ -212,7 +208,7 @@
               <label for="inputZip">Retencion ICA</label>
               <div class="form-group col-md-7">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text" class="form-control input-numero" id="ica">
                 <div class="input-group-append">
                   <span class="input-group-text">%</span>
                 </div>
@@ -222,8 +218,8 @@
             
             <div class="form-group">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
+                <input class="form-check-input" type="checkbox" id="basereteica">
+                <label class="form-check-label" for="basereteica">
                   Base Retencion ICA
                 </label>
               </div>
@@ -268,16 +264,52 @@ e.preventDefault();
   const form = document.getElementById('formImpuesto');
   const formData = new FormData(form);
 
-    var articulo_id = localStorage.editar;
+  var adicionavalorcosto =$('#adicionavalorcosto').is(':checked') ? 1 : 0;
+  var aplicarconsumocompra =$('#aplicarconsumocompra').is(':checked') ? 1 : 0;
+  var adicionaconsumocosto =$('#adicionaconsumocosto').is(':checked') ? 1 : 0;
+  var basereteica =$('#basereteica').is(':checked') ? 1 : 0;
+  
 
-    var precio0 = $('#precio' +k+0).val()? $('#precio' +k+0).val() : '';
+  var ivacompra = $('#ivacompra').val()? $('#ivacompra').val()/100 : '';
+  var ivaventa = $('#ivaventa').val()? $('#ivaventa').val()/100 : '';
+  var impuestoconsumo = $('#impuestoconsumo').val()? $('#impuestoconsumo').val()/100 : '';
+  var rtfcompraimpuesto = $('#rtfcompraimpuesto').val()? $('#rtfcompraimpuesto').val()/100 : '';
+  var rtfventaimpuesto = $('#rtfventaimpuesto').val()? $('#rtfventaimpuesto').val()/100 : '';
+  var ica = $('#ica').val()? $('#ica').val()/100 : '';
 
-    formData.append("articulo_id", articulo_id);
-    formData.append('_method', 'PUT');
+  var valorempaque = $('#valorempaque').val();
+  var comprapuc_id = $('#comprapuc_id').val();
+  var ventapuc_id = $('#ventapuc_id').val();
+  var consumopuc_id = $('#consumopuc_id').val();
+  var rtfcomprapuc_id = $('#rtfcomprapuc_id').val();
+  var rtfventapuc_id = $('#rtfventapuc_id').val();
+
+  var tipoimpuestocompra_id = $('#select-tipoimpuestocompras').val()? $('#select-tipoimpuestocompras').val() : '';
+  var tipoimpuestoventa_id = $('#select-tipoimpuestoventas').val()? $('#select-tipoimpuestoventas').val() : '';
+
+  formData.append("adicionavalorcosto", adicionavalorcosto);
+  formData.append("aplicarconsumocompra", aplicarconsumocompra);
+  formData.append("adicionaconsumocosto", adicionaconsumocosto);
+  formData.append("basereteica", basereteica);
+  formData.append("ivacompra", ivacompra);
+  formData.append("ivaventa", ivaventa);
+  formData.append("impuestoconsumo", impuestoconsumo);
+  formData.append("valorempaque", valorempaque);
+  formData.append("rtfcompraimpuesto", rtfcompraimpuesto);
+  formData.append("rtfventaimpuesto", rtfventaimpuesto);
+  formData.append("ica", ica);
+  formData.append("comprapuc_id", comprapuc_id);
+  formData.append("ventapuc_id", ventapuc_id);
+  formData.append("consumopuc_id", consumopuc_id);
+  formData.append("rtfcomprapuc_id", rtfcomprapuc_id);
+  formData.append("rtfventapuc_id", rtfventapuc_id);
+  formData.append("tipoimpuestocompra_id", tipoimpuestocompra_id);
+  formData.append("tipoimpuestoventa_id", tipoimpuestoventa_id);
+  formData.append('_method', 'PUT');
 
          $.ajax({
           method: "POST",
-          url: url_back + "impuestos/"+id,
+          url: url_back + "impuestos/"+ localStorage.editar,
           headers: { 
               Authorization: 'Bearer ' + localStorage.access_token
           },
@@ -287,9 +319,11 @@ e.preventDefault();
           processData: false,//formData
           success: function(respuesta) {
 
-                  var mensaje = 'Lista Precio Asociadas actualizado de forma correcta.: ';
+                  $('#ModalLong3').modal('hide');
+                  $('ModalLong3').removeClass('show');
+                  $('.modal-backdrop').remove();
+                  var mensaje = 'Impuesto Articulo actualizado de forma correcta.: ';
                   sweetMessage('success', mensaje); 
-                  regresa(true);
           },
           error: function(respuesta) {
 
@@ -303,7 +337,6 @@ e.preventDefault();
                   sweetMessage('error', mensaje);
               }
               
-              regresa(false);
           }
       });
 });
@@ -321,11 +354,58 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
 
+      console.log(respuesta.data.impuesto);
 
-      console.log(respuesta);
+      respuesta.data.impuesto.adicionavalorcosto == 1 ? $('#adicionavalorcosto').prop( "checked", true ) : $('#adicionavalorcosto').prop( "checked", false );
+      respuesta.data.impuesto.aplicarconsumocompra == 1 ? $('#aplicarconsumocompra').prop( "checked", true ) : $('#aplicarconsumocompra').prop( "checked", false );
+      respuesta.data.impuesto.adicionaconsumocosto == 1 ? $('#adicionaconsumocosto').prop( "checked", true ) : $('#adicionaconsumocosto').prop( "checked", false );
+      respuesta.data.impuesto.basereteica == 1 ? $('#basereteica').prop( "checked", true ) : $('#basereteica').prop( "checked", false );
 
+     // respuesta.data.impuesto.ivacompra ?  $('#ivacompra').val(respuesta.data.impuesto.ivacompra * 100) : $('#ivacompra').val('');
+     // respuesta.data.impuesto.ivaventa ?  $('#ivaventa').val(respuesta.data.impuesto.ivaventa * 100) : $('#ivaventa').val('');
+     // respuesta.data.impuesto.impuestoconsumo ?  $('#impuestoconsumo').val(respuesta.data.impuesto.impuestoconsumo * 100) : $('#impuestoconsumo').val('');
+     // respuesta.data.impuesto.rtfcompraimpuesto ?  $('#rtfcompraimpuesto').val(respuesta.data.impuesto.rtfcompraimpuesto * 100) : $('#rtfcompraimpuesto').val('');
+     // respuesta.data.impuesto.rtfventaimpuesto ?  $('#rtfventaimpuesto').val(respuesta.data.impuesto.rtfventaimpuesto * 100) : $('#rtfventaimpuesto').val('');
+      respuesta.data.impuesto.ica ?  $('#ica').val(respuesta.data.impuesto.ica * 100) : $('#ica').val(''); 
+      respuesta.data.impuesto.valorempaque ?  $('#valorempaque').val(respuesta.data.impuesto.valorempaque) : $('#valorempaque').val('');
+
+
+        if(respuesta.data.impuesto.tipoimpuestocompra_id){
+           obtenerSelect('tipoimpuestos', '#select-tipoimpuestocompras', respuesta.data.impuesto.tipoimpuestocompra_id);
+        }else{
+          obtenerSelects('tipoimpuestos', '#select-tipoimpuestocompras');
+        }
       
+        if(respuesta.data.impuesto.tipoimpuestoventa_id){
+           obtenerSelect('tipoimpuestos', '#select-tipoimpuestoventas', respuesta.data.impuesto.tipoimpuestoventa_id);
+        }else{
+           obtenerSelects('tipoimpuestos', '#select-tipoimpuestoventas');
+        }
 
+        if(respuesta.data.impuesto.comprapuc_id){
+           $('#comprapuc_id').val(respuesta.data.impuesto.comprapuc_id);
+           obtenerPuc('#comprapuc', respuesta.data.impuesto.comprapuc_id ,'#ivacompra');
+        }
+
+        if(respuesta.data.impuesto.ventapuc_id){
+           $('#ventapuc_id').val(respuesta.data.impuesto.ventapuc_id);
+           obtenerPuc('#ventapuc', respuesta.data.impuesto.ventapuc_id ,'#ivaventa');
+        }
+
+        if(respuesta.data.impuesto.consumopuc_id){
+           $('#consumopuc_id').val(respuesta.data.impuesto.consumopuc_id);
+           obtenerPuc('#consumopuc', respuesta.data.impuesto.consumopuc_id ,'#impuestoconsumo');
+        }
+
+        if(respuesta.data.impuesto.rtfcomprapuc_id){
+           $('#rtfcomprapuc_id').val(respuesta.data.impuesto.rtfcomprapuc_id);
+           obtenerPuc('#rtfcomprapuc', respuesta.data.impuesto.rtfcomprapuc_id ,'#rtfcompraimpuesto');
+        }
+
+        if(respuesta.data.impuesto.rtfventapuc_id){
+           $('#rtfventapuc_id').val(respuesta.data.impuesto.rtfventapuc_id);
+           obtenerPuc('#rtfventapuc', respuesta.data.impuesto.rtfventapuc_id ,'#rtfventaimpuesto');
+        }
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -336,6 +416,173 @@ $.ajax({
 
 
 
+  var obtenerPuc = function(input, id, impuesto = null){
+        url_p= 'pucs/' + id;
+        $.ajax({
+        method: "GET",
+        url: url_back + url_p,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+            // console.log()
+                $(input).val(respuesta.data.id+'-'+respuesta.data.descripcion);
+                // $(input+'_id').val(respuesta.data.id);
+                if(impuesto != null){
+                  $(impuesto).val(respuesta.data.impuesto);
+                }
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    
+    
+    $( "#comprapuc" ).autocomplete({
+       source: function( request, response ) {
+           var url_puc = 'levelallpucs/240820?level=3&search='+$('#comprapuc').val(); 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url_puc,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong3",
+       select: function (event, ui) {
+        //  $('#comprapuc').val(ui.item.label); // display the selected text
+         $('#comprapuc_id').val(ui.item.value); // save selected id to input
+         obtenerPuc('#comprapuc', ui.item.value ,'#ivacompra');
+
+         return false;
+       }
+    });
+
+
+    $( "#ventapuc" ).autocomplete({
+       source: function( request, response ) {
+           var url_puc = 'levelallpucs/240810?level=3&search='+$('#ventapuc').val(); 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url_puc,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong3",
+       select: function (event, ui) {
+        //  $('#ventapuc').val(ui.item.label); // display the selected text
+         $('#ventapuc_id').val(ui.item.value); // save selected id to input
+         obtenerPuc('#ventapuc', ui.item.value ,'#ivaventa');
+
+         return false;
+       }
+    });
+
+
+    $( "#consumopuc" ).autocomplete({
+       source: function( request, response ) {
+           var url_puc = 'levelallpucs/246205?level=3&search='+$('#consumopuc').val(); 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url_puc,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong3",
+       select: function (event, ui) {
+        //  $('#consumopuc').val(ui.item.label); // display the selected text
+         $('#consumopuc_id').val(ui.item.value); // save selected id to input
+         obtenerPuc('#consumopuc', ui.item.value ,'#impuestoconsumo');
+         return false;
+       }
+    });
+
+
+    $( "#rtfcomprapuc" ).autocomplete({
+       source: function( request, response ) {
+           var url_puc = 'levelallpucs/2365?level=2&search='+$('#rtfcomprapuc').val(); 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url_puc,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong3",
+       select: function (event, ui) {
+        //  $('#rtfcomprapuc').val(ui.item.label); // display the selected text
+         $('#rtfcomprapuc_id').val(ui.item.value); // save selected id to input
+         obtenerPuc('#rtfcomprapuc', ui.item.value ,'#rtfcompraimpuesto');
+
+         return false;
+       }
+    });
+
+
+    $( "#rtfventapuc" ).autocomplete({
+       source: function( request, response ) {
+           var url_puc = 'levelallpucs/1355?level=2&search='+$('#rtfventapuc').val(); 
+
+          $.ajax({
+            method: "GET",
+            url: url_back + url_puc,
+            headers: { 
+               Authorization: 'Bearer ' + localStorage.access_token
+           },
+            dataType: "json",
+            success: function(respuesta) {
+               response(respuesta);
+            }
+          });
+       },
+       autoFocus: true,
+       minLength: 2,
+       appendTo: "#ModalLong3",
+       select: function (event, ui) {
+        //  $('#rtfventapuc').val(ui.item.label); // display the selected text
+         $('#rtfventapuc_id').val(ui.item.value); // save selected id to input
+         obtenerPuc('#rtfventapuc', ui.item.value ,'#rtfventaimpuesto');
+
+         return false;
+       }
+    });
 
 
 $( document ).ready(function() {

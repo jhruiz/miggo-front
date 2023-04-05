@@ -209,7 +209,7 @@ var crearHtml = function(data, base = null, id = null) {
           });
       return html;
   } else {
-          var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+          var html = '<option value="" selected="true" disabled="disabled">Seleccione...</option>';
           $.each(data, function (key, item) {
               html += '<option value="'+ item.id+'">';
               html += item.descripcion;
