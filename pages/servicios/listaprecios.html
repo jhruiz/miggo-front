@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Unidad Medidas/Lista Precios </h5>
+            Lista Precio Servicio</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,18 +26,9 @@
 
 
             <div class="form-group col-md-12">
-                   Unidad de Medida Principal
+                   Lista Principal
             </div>
             <input type="text" id="lista0" hidden>  
-
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <select class="form-control" id="select-unidades0">
-
-                </select>
-              </div>
-              <div class="form-group col-md-6"></div>
-            </div>
 
 
             <div class="form-group col-md-9">
@@ -161,36 +152,22 @@
           </div>
           <div class="col-sm-4">
 
+            <div class="form-row text-center">
+              <div class="col-sm-6 form-group">
+                 Lista 1
+              </div>
+                <div class="col-sm-3">
 
-            <div class="form-row">
-              <div class="form-group col-md-9">
-              UND Alterna 1/Factor Conversion gr
-            </div>
+                  <div id="div1" class="form-group" style="display: none;" >
+                    <button class="btn btn-success btn-sm" type="button"  id="crear1">
+                      <i class="fas fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                  </div>
 
-            <div id="div1" class="form-group col-md-3" style="display: none;" >
-              <button class="btn btn-success btn-sm" type="button"  id="crear1">
-                <i class="fas fa fa-plus" aria-hidden="true"></i>
-              </button>
+                </div>
             </div>
 
             <input type="text" id="lista1" hidden>  
-
-            
-              <div class="form-group col-md-5">
-                <select class="form-control lista1" id="select-unidades1">
-
-                </select>
-              </div>
-              
-              <div class="form-group col-md-5">
-                <div class="input-group mb-3">
-                    <input type="text" id="factorconversion1" class="form-control input-numero-decimal2 lista1" placeholder="Factor Conversion">  
-                    <div class="input-group-append">
-                      <span class="input-group-text">gr</span>
-                    </div>
-                  </div>
-              </div>
-            </div>
 
             <div class="form-group col-md-9">
               <div class="input-group mb-3">
@@ -315,159 +292,142 @@
           </div>
           <div class="col-sm-4">
 
+            <div class="form-row text-center">
+              <div class="col-sm-6 form-group">
+                 Lista 2
+              </div>
+                <div class="col-sm-3">
 
-            <div class="form-row">
-              <div class="form-group col-md-9">
-              UND Alterna 2/Factor Conversion gr
+                  <div id="div2" class="form-group" style="display: none;" >
+                    <button class="btn btn-success btn-sm" type="button" id="crear2">
+                      <i class="fas fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                  </div>
+
+                </div>
             </div>
-
-            <div id="div2" class="form-group col-md-3" style="display: none;" >
-              <button class="btn btn-success btn-sm" type="button" id="crear2">
-                <i class="fas fa fa-plus" aria-hidden="true"></i>
-              </button>
-            </div>
-
             <input type="text" id="lista2" hidden>  
 
 
+                  <div class="form-group col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">1.</span>
+                        </div> 
+                        <input type="text" id="precio20" class="form-control input-numero-decimal2 lista2" placeholder="Precio 1">  
+                        <div class="input-group-append">
+                          <span class="input-group-text">$</span>
+                        </div>
+                    </div> 
+                </div>
 
+                  <div class="form-group col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">2.</span>
+                        </div> 
+                        <input type="text" id="precio21" class="form-control input-numero-decimal2 lista2" placeholder="Precio 2">  
+                        <div class="input-group-append">
+                          <span class="input-group-text">$</span>
+                        </div>
+                    </div> 
+                </div>
 
-              <div class="form-group col-md-5">
-                <select class="form-control lista2" id="select-unidades2">
+                  <div class="form-group col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">3.</span>
+                        </div> 
+                        <input type="text" id="precio22" class="form-control input-numero-decimal2 lista2" placeholder="Precio 3">  
+                        <div class="input-group-append">
+                          <span class="input-group-text">$</span>
+                        </div>
+                    </div> 
+                </div> 
 
-                </select>
+                <div class="form-group col-md-9">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text">4.</span>
+                      </div> 
+                      <input type="text" id="precio23" class="form-control input-numero-decimal2 lista2" placeholder="Precio 4">  
+                      <div class="input-group-append">
+                        <span class="input-group-text">$</span>
+                      </div>
+                  </div> 
               </div>
-              
-              <div class="form-group col-md-5">
+
+              <div class="form-group col-md-9">
                 <div class="input-group mb-3">
-                    <input type="text" id="factorconversion2" class="form-control input-numero-decimal2 lista2" placeholder="Factor Conversion">  
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">5.</span>
+                    </div> 
+                    <input type="text" id="precio24" class="form-control input-numero-decimal2 lista2" placeholder="Precio 5">  
                     <div class="input-group-append">
-                      <span class="input-group-text">gr</span>
+                      <span class="input-group-text">$</span>
                     </div>
-                  </div>
-              </div>
+                </div> 
             </div>
 
-
             <div class="form-group col-md-9">
               <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                      <span class="input-group-text">1.</span>
+                      <span class="input-group-text">6.</span>
                   </div> 
-                  <input type="text" id="precio20" class="form-control input-numero-decimal2 lista2" placeholder="Precio 1">  
+                  <input type="text" id="precio25" class="form-control input-numero-decimal2 lista2" placeholder="Precio 6">  
                   <div class="input-group-append">
                     <span class="input-group-text">$</span>
                   </div>
               </div> 
           </div>
-
-            <div class="form-group col-md-9">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">2.</span>
-                  </div> 
-                  <input type="text" id="precio21" class="form-control input-numero-decimal2 lista2" placeholder="Precio 2">  
-                  <div class="input-group-append">
-                    <span class="input-group-text">$</span>
-                  </div>
-              </div> 
-          </div>
-
-            <div class="form-group col-md-9">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">3.</span>
-                  </div> 
-                  <input type="text" id="precio22" class="form-control input-numero-decimal2 lista2" placeholder="Precio 3">  
-                  <div class="input-group-append">
-                    <span class="input-group-text">$</span>
-                  </div>
-              </div> 
-          </div> 
 
           <div class="form-group col-md-9">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">4.</span>
+                    <span class="input-group-text">7.</span>
                 </div> 
-                <input type="text" id="precio23" class="form-control input-numero-decimal2 lista2" placeholder="Precio 4">  
+                <input type="text" id="precio26" class="form-control input-numero-decimal2 lista2" placeholder="Precio 7">  
                 <div class="input-group-append">
                   <span class="input-group-text">$</span>
                 </div>
             </div> 
         </div>
 
-        <div class="form-group col-md-9">
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">5.</span>
-              </div> 
-              <input type="text" id="precio24" class="form-control input-numero-decimal2 lista2" placeholder="Precio 5">  
-              <div class="input-group-append">
-                <span class="input-group-text">$</span>
-              </div>
-          </div> 
-      </div>
-
-      <div class="form-group col-md-9">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">6.</span>
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">8.</span>
+                </div> 
+                <input type="text" id="precio27" class="form-control input-numero-decimal2 lista2" placeholder="Precio 8">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
             </div> 
-            <input type="text" id="precio25" class="form-control input-numero-decimal2 lista2" placeholder="Precio 6">  
-            <div class="input-group-append">
-              <span class="input-group-text">$</span>
-            </div>
-        </div> 
-    </div>
-
-    <div class="form-group col-md-9">
-      <div class="input-group mb-3">
-          <div class="input-group-prepend">
-              <span class="input-group-text">7.</span>
-          </div> 
-          <input type="text" id="precio26" class="form-control input-numero-decimal2 lista2" placeholder="Precio 7">  
-          <div class="input-group-append">
-            <span class="input-group-text">$</span>
           </div>
-      </div> 
-  </div>
 
-<div class="form-group col-md-9">
-  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text">8.</span>
-      </div> 
-      <input type="text" id="precio27" class="form-control input-numero-decimal2 lista2" placeholder="Precio 8">  
-      <div class="input-group-append">
-        <span class="input-group-text">$</span>
-      </div>
-  </div> 
-</div>
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">9.</span>
+                </div> 
+                <input type="text" id="precio28" class="form-control input-numero-decimal2 lista2" placeholder="Precio 9">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+            </div> 
+          </div>
 
-<div class="form-group col-md-9">
-  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-          <span class="input-group-text">9.</span>
-      </div> 
-      <input type="text" id="precio28" class="form-control input-numero-decimal2 lista2" placeholder="Precio 9">  
-      <div class="input-group-append">
-        <span class="input-group-text">$</span>
-      </div>
-  </div> 
-</div>
-
-<div class="form-group col-md-9">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">10.</span>
-  </div> 
-      <input type="text" id="precio29" class="form-control input-numero-decimal2 lista2" placeholder="Precio 10">  
-      <div class="input-group-append">
-        <span class="input-group-text">$</span>
-      </div>
-  </div> 
-</div>
+          <div class="form-group col-md-9">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">10.</span>
+            </div> 
+                <input type="text" id="precio29" class="form-control input-numero-decimal2 lista2" placeholder="Precio 10">  
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+            </div> 
+          </div>
 
           </div>
         </div>
@@ -528,8 +488,6 @@ function enviaLista(k){
     const formData = new FormData(form);
 
     var ecommerceprecio = $('#ecommerceprecio').val()? $('#ecommerceprecio').val() : '';
-    var factorconversion = $('#factorconversion' + k).val()? $('#factorconversion' + k).val() : '';
-    var unidadesmedida_id = $('#select-unidades' + k).val()? $('#select-unidades' + k).val() : '';
 
     var precio0 = $('#precio' +k+0).val()? $('#precio' +k+0).val() : '';
     var precio1 = $('#precio' +k+1).val()? $('#precio' +k+1).val() : '';
@@ -552,14 +510,12 @@ function enviaLista(k){
     formData.append("precio7", precio7);
     formData.append("precio8", precio8);
     formData.append("precio9", precio9);
-    formData.append("factorconversion", factorconversion);
     formData.append("ecommerceprecio", ecommerceprecio);
-    formData.append("unidadesmedida_id", unidadesmedida_id);
     formData.append('_method', 'PUT');
 
          $.ajax({
           method: "POST",
-          url: url_back + "unidadesmedidalistaprecios/"+lista,
+          url: url_back + "listaprecios/"+lista,
           headers: { 
               Authorization: 'Bearer ' + localStorage.access_token
           },
@@ -605,10 +561,10 @@ e.preventDefault();
   const form = document.getElementById('formPrecio');
   const formData = new FormData(form);
 
-  var articulo_id = localStorage.editar;
+  var servicio_id = localStorage.editar;
   var creador_id = localStorage.id;
 
-  formData.append("articulo_id", articulo_id);
+  formData.append("servicio_id", servicio_id);
   formData.append("creador_id", creador_id);
 
   if('crear2'== e.target.id){
@@ -625,7 +581,7 @@ e.preventDefault();
   
   $.ajax({
           method: "POST",
-          url: url_back + "unidadesmedidalistaprecios",
+          url: url_back + "listaprecios",
           headers: { 
               Authorization: 'Bearer ' + localStorage.access_token
           },
@@ -656,12 +612,11 @@ e.preventDefault();
               }
           }
       });
-
 }
 
 function validarCostounitario(e){
 
-  if(parseInt($(this).val()) < parseInt($('#costounitario').val()) && e.target.id != 'factorconversion2' && e.target.id != 'factorconversion1' && e.target.id != 'select-unidades1' && e.target.id != 'select-unidades2'){
+  if(parseInt($(this).val()) < parseInt($('#costounitario').val())){
         var mensaje = 'el precio debe ser mayor al Costo Unitario.: ' + $('#costounitario').val();
         sweetMessage('info', mensaje);
         $(this).val('');
@@ -670,7 +625,7 @@ function validarCostounitario(e){
 
 
 function obtenerListaprecio(id){
-var url = 'articulos/'+ id;
+var url = 'servicios/'+ id;
 
 $.ajax({
     method: "GET",
@@ -682,7 +637,7 @@ $.ajax({
     success: function(respuesta) {
 
       $('#costounitario').val(respuesta.data.costounitario);
-      arre = respuesta.data.unidadesmedidalistaprecio;
+      arre = respuesta.data.listaprecios;
 
       ordenarPrecio(arre);
 
@@ -729,16 +684,6 @@ arre.forEach(function callback(element, i) {
   
         if(element.ecommerceprecio){
           $('#ecommerceprecio').val(element.ecommerceprecio);
-        }
-
-        if(element.factorconversion){
-          $('#factorconversion'+i).val(element.factorconversion);
-        }
-
-        if(element.unidadesmedida_id){
-        obtenerSelect('unidadesmedidas','#select-unidades'+i, element.unidadesmedida_id );
-         }else{
-        obtenerSelects('unidadesmedidas','#select-unidades'+i);
         }
 
         k++;

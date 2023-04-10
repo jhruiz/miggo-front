@@ -10,12 +10,12 @@
 
     <div class="card-header text-center">
         <h4>
-            Configuracion del Articulo                              
+            Configuracion del Servicio                              
         </h4>
 
       <button class="btn btn-app bg-success" type="submit" onclick="editarListaprecio()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-barcode"></i> Uni Med/List Prec</button>
 
-      <button class="btn btn-app bg-danger" type="submit" onclick="" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
+      <button class="btn btn-app bg-danger" type="submit" onclick="editarImpuesto()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-save"></i> Impuesto</button>
 
       <button class="btn btn-app bg-secondary" type="submit" onclick="editarCuentapuc()" data-toggle="modal" data-target="#exampleModalLong"> <i class="fas fa-edit"></i> Cuentas PUC</button>
 
@@ -248,7 +248,23 @@ function editarCuentapuc(){
         });
 }
 
+function editarListaprecio(){
+      var url = 'servicios/listaprecios.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong').modal({show:true});
+            });
+    }
 
+function editarImpuesto(){
+      var url = 'servicios/impuestos.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong3').modal({show:true});
+            });
+    }
 
 
 </script>

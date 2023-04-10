@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Impuesto Articulo </h5>
+            Impuesto Servicio </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -56,7 +56,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="adicionavalorcosto">
                     <label class="form-check-label" for="adicionavalorcosto">
-                      Adicionar valor al costo del articulo
+                      Adicionar valor al costo del servicio
                     </label>
                   </div>
                 </div>
@@ -269,6 +269,7 @@ e.preventDefault();
   var adicionaconsumocosto =$('#adicionaconsumocosto').is(':checked') ? 1 : 0;
   var basereteica =$('#basereteica').is(':checked') ? 1 : 0;
   
+
   var ivacompra = $('#ivacompra').val()? $('#ivacompra').val()/100 : '';
   var ivaventa = $('#ivaventa').val()? $('#ivaventa').val()/100 : '';
   var impuestoconsumo = $('#impuestoconsumo').val()? $('#impuestoconsumo').val()/100 : '';
@@ -321,7 +322,7 @@ e.preventDefault();
                   $('#ModalLong3').modal('hide');
                   $('ModalLong3').removeClass('show');
                   $('.modal-backdrop').remove();
-                  var mensaje = 'Impuesto Articulo actualizado de forma correcta.: ';
+                  var mensaje = 'Impuesto servicio actualizado de forma correcta.: ';
                   sweetMessage('success', mensaje); 
           },
           error: function(respuesta) {
@@ -342,7 +343,7 @@ e.preventDefault();
 
 
 function obtenerImpuesto(id){ //TODO Porcentaje de Impuesto se trae desde las cuentas PUC, si se cambia alla al actualizar aqui cambia el valor 
-var url = 'articulos/'+ id;
+var url = 'servicios/'+ id;
 
 $.ajax({
     method: "GET",

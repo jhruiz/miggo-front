@@ -66,16 +66,14 @@ const formData = new FormData(form);
 
 var cuentaingreso_id = $('#cuentaingreso_id').val();
 var cuentacosto_id = $('#cuentacosto_id').val();
-var servicio_id = localStorage.editar;
 
 formData.append("cuentaingreso_id", cuentaingreso_id);
 formData.append("cuentacosto_id", cuentacosto_id);
-formData.append("servicio_id", servicio_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "serviciocuentas/"+localStorage.editar,
+    url: url_back + "serviciocuentas/"+localStorage.cuenta,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -90,8 +88,6 @@ $.ajax({
             $('.modal-backdrop').remove();
             var mensaje = ' Cuentas Puc Asociadas actualizado de forma correcta.: ';
             sweetMessage('success', mensaje); 
-            
-            // $('#main_content').load(url_front + 'articulos/edit.html');
     },
     error: function(respuesta) {
 
@@ -122,7 +118,7 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
       
-      console.log(respuesta.data);
+      localStorage.setItem('cuenta', respuesta.data.serviciocuenta.id);
 
       if(respuesta.data.serviciocuenta.cuentaingreso_id){
         $('#cuentaingreso_id').val(respuesta.data.serviciocuenta.cuentaingreso_id);

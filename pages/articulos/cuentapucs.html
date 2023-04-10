@@ -76,17 +76,15 @@ const formData = new FormData(form);
 var cuentainventario_id = $('#cuentainventario_id').val();
 var cuentaingreso_id = $('#cuentaingreso_id').val();
 var cuentacosto_id = $('#cuentacosto_id').val();
-var articulo_id = localStorage.editar;
 
 formData.append("cuentainventario_id", cuentainventario_id);
 formData.append("cuentaingreso_id", cuentaingreso_id);
 formData.append("cuentacosto_id", cuentacosto_id);
-formData.append("articulo_id", articulo_id);
 formData.append('_method', 'PUT');
 
 $.ajax({
     method: "POST",
-    url: url_back + "articulocuentas/"+localStorage.editar,
+    url: url_back + "articulocuentas/"+localStorage.cuenta,
     headers: { 
         Authorization: 'Bearer ' + localStorage.access_token
     },
@@ -101,8 +99,6 @@ $.ajax({
             $('.modal-backdrop').remove();
             var mensaje = ' Cuentas Puc Asociadas actualizado de forma correcta.: ';
             sweetMessage('success', mensaje); 
-            
-            // $('#main_content').load(url_front + 'articulos/edit.html');
     },
     error: function(respuesta) {
 
@@ -133,7 +129,8 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
       
-      console.log(respuesta.data);
+      localStorage.setItem('cuenta', respuesta.data.articulocuenta.id);
+
       if(respuesta.data.articulocuenta.cuentainventario_id){
         $('#cuentainventario_id').val(respuesta.data.articulocuenta.cuentainventario_id);
         obtenerPuc('#cuentainventario', respuesta.data.articulocuenta.cuentainventario_id);
