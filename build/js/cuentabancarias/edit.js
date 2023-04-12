@@ -9,10 +9,12 @@ $("#form").submit(function(e) {
     var oficinanumero = $('#oficinanumero').val();
     var titularcuenta = $('#titularcuenta').val();
     var mastercardyvisa_id = $('#select-mastercardyvisa').val()? $('#select-mastercardyvisa').val() : '';
+    var cuentapropiaempresa = $('#select-cuentapropiaempresa').val()? $('#select-cuentapropiaempresa').val() : '';
     var apertura = $('#aperturas').val();
     var vencimiento = $('#vencimientos').val();
     var cupo = $('#cupo').val();
     var tipocuenta_id = $('#select-tipocuentas').val();
+
     
     formData.append("numerocuenta", numerocuenta);
     formData.append("entidadfinanciera", entidadfinanciera);
@@ -23,6 +25,7 @@ $("#form").submit(function(e) {
     formData.append("vencimiento", vencimiento);
     formData.append("cupo", cupo);
     formData.append("tipocuenta_id", tipocuenta_id);
+    formData.append("cuentapropiaempresa", cuentapropiaempresa);
     formData.append('_method', 'PUT');
     
     $.ajax({
@@ -80,6 +83,7 @@ $("#form").submit(function(e) {
             $('#aperturas').val(respuesta.data.apertura);
             $('#vencimientos').val(respuesta.data.vencimiento);
             $('#cupo').val(respuesta.data.cupo);
+            $('#select-cuentapropiaempresa').val(respuesta.data.cuentapropiaempresa);
     
             if(respuesta.data.tipocuenta_id){
                 obtenerSelectCuenta('tipocuentas', '#select-tipocuentas', respuesta.data.tipocuenta_id);

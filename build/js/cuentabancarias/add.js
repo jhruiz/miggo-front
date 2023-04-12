@@ -9,6 +9,7 @@ $("#form").submit(function(e) {
     var oficinanumero = $('#oficinanumero').val();
     var titularcuenta = $('#titularcuenta').val();
     var mastercardyvisa_id = $('#select-mastercardyvisa').val()? $('#select-mastercardyvisa').val() : '';
+    var cuentapropiaempresa = $('#select-cuentapropiaempresa').val()? $('#select-cuentapropiaempresa').val() : '';
     var apertura = $('#aperturas').val();
     var vencimiento = $('#vencimientos').val();
     var cupo = $('#cupo').val();
@@ -23,6 +24,7 @@ $("#form").submit(function(e) {
     formData.append("vencimiento", vencimiento);
     formData.append("cupo", cupo);
     formData.append("tipocuenta_id", tipocuenta_id);
+    formData.append("cuentapropiaempresa", cuentapropiaempresa);
     formData.append("creador_id", localStorage.id);
     formData.append("empresa_id", localStorage.empresa_id);
     
