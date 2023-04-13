@@ -47,7 +47,7 @@ $("#example1").DataTable({
 
 
 var infoTable = function(){
-var url = 'metodospagos';
+var url = 'empresas/'+localStorage.empresa_id+'/metodospagos';
 
   $.ajax({
           method: "GET",

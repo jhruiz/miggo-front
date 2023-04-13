@@ -155,7 +155,7 @@ moment.locale("es", {
 //******************************************************************************************************************* */
 
 var obtenerSelect = function(url, select, id){
-  url_tipo= url+ '/' +id;
+  let url_tipo= url+ '/' +id;
   $.ajax({
   method: "GET",
   url: url_back + url_tipo,
@@ -198,23 +198,15 @@ $.ajax({
 }
 
 var crearHtml = function(data, base = null, id = null) {
-  if (base) {
-          var html = base;
-          $.each(data, function (key, item) {
-              if(id != item.id){
-                  html += '<option value="'+ item.id+'">';
-                  html += item.descripcion;
-                  html += '</option>';
-              }
-          });
-      return html;
-  } else {
-          var html = '<option value="" selected="true" disabled="disabled">Seleccione...</option>';
-          $.each(data, function (key, item) {
+  var html = base? base: '<option value="" selected="true" disabled="disabled">Seleccione...</option>';
+
+      $.each(data, function (key, item) {
+          if(id != item.id){
               html += '<option value="'+ item.id+'">';
               html += item.descripcion;
               html += '</option>';
-          });
+          }
+      });
+      
       return html;
-  }
 }
