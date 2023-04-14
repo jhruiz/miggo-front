@@ -1,11 +1,11 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalLong3" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="ModalLong2" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="ModalLongTitle">
             <i class="nav-icon fas fa-user"></i>
-            Crear Forma Pago</h5>
+            Editar Forma Pago</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,8 +18,9 @@
 
   <div class="card-body">
         
-        <form method="POST" id="form" action="" enctype="multipart/form-data">
-  
+        
+        <form id="form"  method="PUT" action="" enctype="multipart/form-data">
+
             <div class="form-group">
                 <label>Codigo <code> &nbsp;*</code></label>
                 <div class="input-group mb-3">
@@ -77,7 +78,7 @@
             </div>
 
             <div class="col-12 float-right">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
                 <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>
             </div> 
 
@@ -88,16 +89,14 @@
 </div>
 </div>
 
-
 <!--  -->
         </div>
         <div class="modal-footer">
         </div>
       </div>
     </div>
-  </div>
 
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
-<script src="../../build/js/formaspagos/add.js"></script>
+<script src="../../build/js/formaspagos/edit.js"></script>
