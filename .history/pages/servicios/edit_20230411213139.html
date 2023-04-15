@@ -233,3 +233,38 @@
 <script src="../../build/js/servicios/edit.js"></script>
 
 
+
+<script>
+
+
+
+function editarCuentapuc(){
+
+  var url_edit = 'servicios/cuentapucs.html';
+
+    $('#mymodal').html('');
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong2').modal({show:true});
+        });
+}
+
+function editarListaprecio(){
+      var url = 'servicios/listaprecios.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong').modal({show:true});
+            });
+    }
+
+function editarImpuesto(){
+      var url = 'servicios/impuestos.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong3').modal({show:true});
+            });
+    }
+
+
+</script>

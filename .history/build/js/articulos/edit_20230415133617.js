@@ -205,6 +205,7 @@ $("#form").change(function(e) {
         })     
       }
     
+    
     function obtenerGrupoinventarios(id = null, grupopadre = null) { 
     var url = 'grupoinventarios';
     
@@ -242,6 +243,7 @@ $("#form").change(function(e) {
           return html;
       }
     
+     
     var recargarGrupoinventario = function(){ 
       var grupoinventario_id = $(this).val();
       var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
@@ -334,6 +336,7 @@ $("#form").change(function(e) {
       }
     };
     
+    
     var recargarSubgrupoinventario3 = function(){ 
       var grupoinventario_id = $(this).val();
       if(grupoinventario_id){
@@ -341,6 +344,8 @@ $("#form").change(function(e) {
         //$('#posicion').val('subgrupoinventario3');
       }
     };
+    
+    
     
     $('.form-check-input').change(function(){    
         if(!$('input[id=color]').is(':checked')){
@@ -404,8 +409,10 @@ $("#form").change(function(e) {
     });
     
     //**********************************************************Configuracion */
-   function editarListaprecio(){
-       var url = 'articulos/listaprecios.html';
+
+    
+    function editarListaprecio(){
+        var url = 'articulos/listaprecios.html';
       
           $('#mymodal').html('');
             $('#mymodal').load('../' + url ,function(){
@@ -432,7 +439,7 @@ $("#form").change(function(e) {
   }
   
   function editarImpuesto(){
-    var url = 'articulos/impuestos.html';
+        var url = 'articulos/impuestos.html';
       
           $('#mymodal').html('');
             $('#mymodal').load('../' + url ,function(){

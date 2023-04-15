@@ -384,6 +384,49 @@
 
 <div id="mymodal"></div>
 
+
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
 <script src="../../build/js/articulos/edit.js"></script>
+
+<script>
+
+    function editarListaprecio(){
+      var url = 'articulos/listaprecios.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong').modal({show:true});
+            });
+    }
+
+function editarCuentapuc(){
+  var url_edit = 'articulos/cuentapucs.html';
+
+    $('#mymodal').html('');
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong2').modal({show:true});
+        });
+}
+
+
+function editarEquivalente(){
+  var url_edit = 'articulos/articuloequivalentes.html';
+
+    $('#mymodal').html('');
+      $('#mymodal').load('../' + url_edit ,function(){
+            $('#ModalLong4').modal({show:true});
+        });
+}
+
+
+function editarImpuesto(){
+      var url = 'articulos/impuestos.html';
+    
+        $('#mymodal').html('');
+          $('#mymodal').load('../' + url ,function(){
+                $('#ModalLong3').modal({show:true});
+            });
+    }
+
+</script>

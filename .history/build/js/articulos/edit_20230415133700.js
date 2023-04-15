@@ -205,6 +205,7 @@ $("#form").change(function(e) {
         })     
       }
     
+    
     function obtenerGrupoinventarios(id = null, grupopadre = null) { 
     var url = 'grupoinventarios';
     

@@ -22,6 +22,13 @@
         <form id="formCuenta"  method="PUT" action="" enctype="multipart/form-data">
 
             <div class="form-group">
+                <label for="responsable">Cuenta Inventario <code> &nbsp;*</code></label>
+                <input class="form-control input-texto-alfanumerico" id="cuentainventario" placeholder="Nombre de la cuenta PUC de Inventario" >
+            </div>
+                <input class="form-control input-texto-alfanumerico" id="cuentainventario_id" hidden>
+
+
+            <div class="form-group">
                 <label for="responsable">Cuenta Ingreso <code> &nbsp;*</code></label>
                 <input class="form-control input-texto-alfanumerico" id="cuentaingreso" placeholder="Nombre de la cuenta PUC de Ingreso" required>
             </div>
@@ -48,6 +55,8 @@
 </div>
 
 
+
+
 <!--  -->
         </div>
         <div class="modal-footer">
@@ -55,7 +64,11 @@
       </div>
     </div>
 
+<script>
+
+
+
+</script>
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>
-<script src="../../build/js/servicios/cuentapucs.js"></script>

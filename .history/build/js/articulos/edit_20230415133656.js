@@ -205,6 +205,7 @@ $("#form").change(function(e) {
         })     
       }
     
+    
     function obtenerGrupoinventarios(id = null, grupopadre = null) { 
     var url = 'grupoinventarios';
     
@@ -242,6 +243,7 @@ $("#form").change(function(e) {
           return html;
       }
     
+     
     var recargarGrupoinventario = function(){ 
       var grupoinventario_id = $(this).val();
       var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
