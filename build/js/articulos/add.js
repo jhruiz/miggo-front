@@ -1,9 +1,9 @@
-$("#form").submit(function(e) {
+var crearArticulo = function(e){
     e.preventDefault();   
-    
+
     const form = document.getElementById('form');
     const formData = new FormData(form);
-    
+
     var codigo = $('#codigo').val();
     var nombre = $('#nombre').val();
     var costounitario = $('#costounitario').val();
@@ -18,7 +18,6 @@ $("#form").submit(function(e) {
     var existenciaminima = $('#existenciaminima').val();
     var cantidadordenar = $('#cantidadordenar').val();
     var descuento = $('#descuento').val() / 100;
-    var descuentoafechavlr = $('#descuentoafechavlr').val() / 100;
     var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
     
     var activo =$('#activo').is(':checked') ? 1 : 0; //
@@ -49,7 +48,6 @@ $("#form").submit(function(e) {
     formData.append("existenciaminima", existenciaminima);
     formData.append("cantidadordenar", cantidadordenar);
     formData.append("descuento", descuento);
-    formData.append("descuentoafechavlr", descuentoafechavlr);
     formData.append("imagen", imagen);
     formData.append("marca_id", marca_id);
     formData.append("grupoinventario_id", grupoinventario_id);
@@ -67,17 +65,15 @@ $("#form").submit(function(e) {
         processData: false,
         success: function(respuesta) {
 
+            var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.nombre;
+            sweetMessage('success', mensaje); 
 
-    
-                var mensaje = 'Articulo creado de forma correcta.: '+ respuesta.data.nombre;
-                sweetMessage('success', mensaje); 
-
-                if($('input[id=config]').is(':checked')){
-                    localStorage.setItem('editar', respuesta.data.id)
-                    $('#main_content').load(url_front + 'articulos/edit.html');
-                }else{
-                    $('#main_content').load(url_front + 'articulos/index.html');
-                }
+            if(e.target.id == "configurar"){
+                localStorage.setItem('editar', respuesta.data.id)
+                $('#main_content').load(url_front + 'articulos/edit.html');
+            }else{
+                $('#main_content').load(url_front + 'articulos/index.html');
+            }
 
         },
         error: function(respuesta) {
@@ -95,7 +91,8 @@ $("#form").submit(function(e) {
             }
         }
     });
-    });
+    }
+
     
     var defaultImagen = function(){
             const ul = document.getElementById("mostrarImagen");
@@ -262,6 +259,9 @@ $("#form").submit(function(e) {
         defaultImagen();
         obtenerGrupoinventarios();
         obtenerSelects('marcas','#select-marcas');
+
+        $("#crear").on("click",crearArticulo);
+        $("#configurar").on("click",crearArticulo);
     
         $("#select-grupoinventario").on("click",recargarGrupoinventario);
         $("#select-subgrupoinventario1").on("click",recargarSubgrupoinventario1);

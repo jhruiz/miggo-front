@@ -19,7 +19,6 @@ $("#form").change(function(e) {
     var existenciaminima = $('#existenciaminima').val();
     var cantidadordenar = $('#cantidadordenar').val();
     var descuento = $('#descuento').val() / 100;
-    var descuentoafechavlr = $('#descuentoafechavlr').val() / 100;
     var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
     
     var activo =$('#activo').is(':checked') ? 1 : 0; //
@@ -27,9 +26,12 @@ $("#form").change(function(e) {
     var serial =$('#serial').is(':checked') ? 1 : 0;// 
     var talla =$('#talla').is(':checked') ? 1 : 0; //
     var color =$('#color').is(':checked') ? 1 : 0; //
+
+    var estatusdescuento = $('#estatusdescuento').is(':checked') ? 1 : 0; //
     
     var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
+    alert(grupoinventario_id);
     
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);
@@ -44,13 +46,13 @@ $("#form").change(function(e) {
     formData.append("serial", serial);
     formData.append("talla", talla);
     formData.append("color", color);
+    formData.append("estatusdescuento", estatusdescuento);
     formData.append("pesovolumen", pesovolumen);
     formData.append("reginvima", reginvima);
     formData.append("fechainvima", fechainvima);
     formData.append("existenciaminima", existenciaminima);
     formData.append("cantidadordenar", cantidadordenar);
     formData.append("descuento", descuento);
-    formData.append("descuentoafechavlr", descuentoafechavlr);
     formData.append("imagen", imagen);
     formData.append("marca_id", marca_id);
     formData.append("grupoinventario_id", grupoinventario_id);
@@ -108,6 +110,8 @@ $("#form").change(function(e) {
                 respuesta.data.serial == 1 ? $('#serial').prop( "checked", true ) : $('#serial').prop( "checked", false );
                 respuesta.data.talla == 1 ? $('#talla').prop( "checked", true ) : $('#talla').prop( "checked", false );
                 respuesta.data.color == 1 ? $('#color').prop( "checked", true ) : $('#color').prop( "checked", false );
+
+                respuesta.data.estatusdescuento == 1 ? $('#estatusdescuento').prop( "checked", true ) : $('#estatusdescuento').prop( "checked", false );
     
                 $('#codigo').val(respuesta.data.codigo);
                 $('#nombre').val(respuesta.data.nombre);
@@ -122,8 +126,11 @@ $("#form").change(function(e) {
                 $('#reginvima').val(respuesta.data.reginvima);
                 $('#existenciaminima').val(respuesta.data.existenciaminima);
                 $('#cantidadordenar').val(respuesta.data.cantidadordenar);
+
                 $('#descuento').val(respuesta.data.descuento * 100);
-                $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr * 100);
+                $('#descuentovlr').val(respuesta.data.descuentovlr);//TODO: descuento informativo
+                $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr);//TODO: descuento informativo fecha
+
                 $('#costospromediobodegas').val(respuesta.data.costospromediobodegas);
                 $('#ultimocosto').val(respuesta.data.ultimocosto);
                 $('#fechaultimacompra').val(respuesta.data.fechaultimacompra);
@@ -167,6 +174,7 @@ $("#form").change(function(e) {
     var url = 'grupoinventarios/'+id;
     var grupopadre= '';
     
+
       $.ajax({
           method: "GET",
           url: url_back + url,    headers: { 
@@ -175,7 +183,9 @@ $("#form").change(function(e) {
           dataType: "json",
           success: function(respuesta) {
     
-                    if(respuesta.data.posicion == 3){
+            let posicion = parseInt(respuesta.data.posicion);
+
+                    if(posicion == 3){
                         $('#select-subgrupoinventario3').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
                         $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
                         $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>');
@@ -183,19 +193,23 @@ $("#form").change(function(e) {
                         grupopadre = '<option value="'+ respuesta.data.grupoinventario.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.grupoinventario.descripcion+'</option>';
     
                         obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.grupoinventario.id, grupopadre);
-                    }else if(respuesta.data.posicion == 2){
+                    }else if(posicion == 2){
                         $('#select-subgrupoinventario2').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
                         $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>');
     
                         grupopadre = '<option value="'+ respuesta.data.grupoinventario.grupoinventario.id+'" >'+respuesta.data.grupoinventario.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.grupoinventario.descripcion+'</option>';
     
                         obtenerGrupoinventarios(respuesta.data.grupoinventario.grupoinventario.id, grupopadre);
-                    }else if(respuesta.data.posicion == 1){
+                    }else if(posicion == 1){
                         $('#select-subgrupoinventario1').html('<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>');
     
                         grupopadre = '<option value="'+ respuesta.data.grupoinventario.id+'" >'+respuesta.data.grupoinventario.codigo+'-'+respuesta.data.grupoinventario.descripcion+'</option>';
     
                         obtenerGrupoinventarios(respuesta.data.grupoinventario.id, grupopadre);
+                    }else if(posicion == 0){
+    
+                        grupopadre = '<option value="'+ respuesta.data.id+'" >'+respuesta.data.codigo+'-'+respuesta.data.descripcion+'</option>';
+                        obtenerGrupoinventarios(respuesta.data.id, grupopadre);
                     }
           },
           error: function() {
@@ -242,10 +256,12 @@ $("#form").change(function(e) {
           return html;
       }
     
-    var recargarGrupoinventario = function(){ 
-      var grupoinventario_id = $(this).val();
+    var recargarGrupoinventario = function(){  
+      var grupoinventario_id = $(this).val() ? $(this).val() : '';
+      $('#id').val(grupoinventario_id);
       var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
       if(grupoinventario_id){
+
           $.ajax({
               type:"GET",
               url: url_back + url_d,
@@ -255,7 +271,6 @@ $("#form").change(function(e) {
               dataType: "json",
               success:function(respuesta){
     
-                  $('#id').val(grupoinventario_id);
                   //$('#posicion').val('grupoinventario');
                   if(respuesta.length != 0){
                       $('#select-subgrupoinventario3').html('');
@@ -276,7 +291,8 @@ $("#form").change(function(e) {
     }
     
     var recargarSubgrupoinventario1 = function(){ 
-      var grupoinventario_id = $(this).val();
+      var grupoinventario_id = $(this).val() ? $(this).val() : '';
+      $('#id').val(grupoinventario_id);
       var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
     
       if(grupoinventario_id){
@@ -289,7 +305,6 @@ $("#form").change(function(e) {
               dataType: "json",
               success:function(respuesta){
     
-                $('#id').val(grupoinventario_id);
                 //$('#posicion').val('subgrupoinventario1');
                 if(respuesta.length != 0){
                       $('#select-subgrupoinventario3').html('');
@@ -308,7 +323,8 @@ $("#form").change(function(e) {
     
     
     var recargarSubgrupoinventario2 = function(){ 
-      var grupoinventario_id = $(this).val();
+      var grupoinventario_id = $(this).val() ? $(this).val() : '';
+      $('#id').val(grupoinventario_id);
       var url_d ='grupoinventariosdependientes/'+grupoinventario_id;
       if(grupoinventario_id){
           $.ajax({
@@ -335,11 +351,8 @@ $("#form").change(function(e) {
     };
     
     var recargarSubgrupoinventario3 = function(){ 
-      var grupoinventario_id = $(this).val();
-      if(grupoinventario_id){
-        $('#id').val(grupoinventario_id);
-        //$('#posicion').val('subgrupoinventario3');
-      }
+      var grupoinventario_id = $(this).val() ? $(this).val() : '';
+      $('#id').val(grupoinventario_id);
     };
     
     $('.form-check-input').change(function(){    
@@ -364,10 +377,10 @@ $("#form").change(function(e) {
         validarLogin();
         obtenerArticulo(localStorage.editar);
     
-        $("#select-grupoinventario").on("click",recargarGrupoinventario);
-        $("#select-subgrupoinventario1").on("click",recargarSubgrupoinventario1);
-        $("#select-subgrupoinventario2").on("click",recargarSubgrupoinventario2);
-        $("#select-subgrupoinventario3").on("click",recargarSubgrupoinventario3);
+        $("#select-grupoinventario").on("change",recargarGrupoinventario);
+        $("#select-subgrupoinventario1").on("change",recargarSubgrupoinventario1);
+        $("#select-subgrupoinventario2").on("change",recargarSubgrupoinventario2);
+        $("#select-subgrupoinventario3").on("change",recargarSubgrupoinventario3);
     
         $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });

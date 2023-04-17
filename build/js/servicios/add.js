@@ -1,5 +1,6 @@
 
-$("#form").submit(function(e) {
+var crearServicio = function(e){
+// $("#form").submit(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
@@ -11,7 +12,6 @@ $("#form").submit(function(e) {
     var posnombre = $('#posnombre').val();
     var descripcion = $('#descripcion').val();
     var descuento = $('#descuento').val() / 100;
-    var descuentoafectavlr = $('#descuentoafectavlr').val() / 100;
     var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : ''; //
     
     var activo =$('#activo').is(':checked') ? 1 : 0; //
@@ -25,7 +25,6 @@ $("#form").submit(function(e) {
     formData.append("descripcion", descripcion);
     formData.append("activo", activo);
     formData.append("descuento", descuento);
-    formData.append("descuentoafectavlr", descuentoafectavlr);
     formData.append("imagen", imagen);
     formData.append("grupoinventario_id", grupoinventario_id);
     formData.append("creador_id", localStorage.id);
@@ -45,13 +44,12 @@ $("#form").submit(function(e) {
                 var mensaje = 'Servicio creado de forma correcta.: '+ respuesta.data.nombre;
                 sweetMessage('success', mensaje); 
 
-                if($('input[id=config]').is(':checked')){
+                if(e.target.id == "configurar"){
                     localStorage.setItem('editar', respuesta.data.id)
                     $('#main_content').load(url_front + 'servicios/edit.html');
                 }else{
                     $('#main_content').load(url_front + 'servicios/index.html');
                 }
-
         },
         error: function(respuesta) {
             console.log(respuesta);
@@ -68,7 +66,7 @@ $("#form").submit(function(e) {
             }
         }
     });
-    });
+    }
     
     var defaultImagen = function(){
             const ul = document.getElementById("mostrarImagen");
@@ -237,6 +235,9 @@ $("#form").submit(function(e) {
         validarLogin();
         defaultImagen();
         obtenerGrupoinventarios();
+
+        $("#crear").on("click",crearServicio);
+        $("#configurar").on("click",crearServicio);
     
         $("#select-grupoinventario").on("click",recargarGrupoinventario);
         $("#select-subgrupoinventario1").on("click",recargarSubgrupoinventario1);

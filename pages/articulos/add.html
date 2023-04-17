@@ -58,7 +58,7 @@
                                 </div> 
                              <input type="text" id="pesovolumen" class="form-control input-numero" placeholder="Peso Volumen">  
                                 <div class="input-group-append">
-                                    <span class="input-group-text">Gr</span>
+                                    <span class="input-group-text">gr</span>
                                 </div>
                             </div> 
                         </div> 
@@ -96,29 +96,14 @@
                             </div> 
                         </div> 
 
-                        <div class="form-group">
-                            <label>Descuento Fecha VLR</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                                </div> 
-                                <input type="text" id="descuentoafechavlr" class="form-control input-numero" placeholder="Descuento Fecta VLR">  
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div> 
-                            </div> 
-                        </div> 
-
-                        <div class="form-group">
-                            <label>Fecha INVIMA:</label>
-                                <div class="input-group date" id="fechainvima" data-target-input="nearest">
-                                    <div class="input-group-prepend" data-target="#fechainvima" data-toggle="datetimepicker">
-                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                      </div>
-                                  <input type="text" id="fechainvimas" class="form-control datetimepicker-input" data-target="#fechainvima"/>
-                              </div>
-                          </div>
-            
+                        <div class="form-group clearfix">
+                            <div class="icheck-success d-inline">
+                              <input type="checkbox" id="estatusdescuento">
+                              <label for="estatusdescuento">
+                                Activar Descuento
+                              </label>
+                            </div>
+                          </div>         
     
                     </div>
     
@@ -224,7 +209,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="posnombre" class="form-control input-numero" placeholder="Nombre POS" required>  
+                               <input type="text" id="posnombre" class="form-control input-texto-alfanumerico" placeholder="Nombre POS" required>  
                             </div> 
                         </div> 
 
@@ -247,36 +232,16 @@
                                <input type="text" id="reginvima" class="form-control input-numero" placeholder="REG INVIMA">  
                             </div> 
                         </div>
-                        
-                        <div class="form-group">
-                            <label>Costos Promedio Bodegas</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                                </div> 
-                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimal2" placeholder="Costos Promedio Bodegas" readonly>  
-                            </div> 
-                        </div> 
 
                         <div class="form-group">
-                            <label>Ultimo Costo</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                                </div> 
-                                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Ultimo Costo" readonly>  
-                            </div> 
-                        </div> 
-
-                        <div class="form-group">
-                            <label>Fecha Ultimacompra</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                                </div> 
-                                <input type="text" id="fechaultimacompra" class="form-control input-texto-alfanumerico" placeholder="Fecha Ultimacompra" readonly>  
-                            </div> 
-                        </div> 
+                            <label>Fecha INVIMA:</label>
+                                <div class="input-group date" id="fechainvima" data-target-input="nearest">
+                                    <div class="input-group-prepend" data-target="#fechainvima" data-toggle="datetimepicker">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                      </div>
+                                  <input type="text" id="fechainvimas" class="form-control datetimepicker-input" data-target="#fechainvima"/>
+                              </div>
+                          </div>
     
                     </div>
     
@@ -355,21 +320,9 @@
                     </div>
                 </div>
 
-
-
-                <div class="col-sm-6 float-right">
-                    <div class="form-group clearfix">
-                        <div class="icheck-success d-inline">
-                          <input type="checkbox" id="config">
-                          <label for="config">
-                            Configurar Articulo luego de Guardar
-                          </label>
-                        </div>
-                      </div>
-                </div>
-    
                 <div class="col-12 float-right">
-                    <button type="submit" class="btn btn-primary float-right">Crear</button>
+                    <button class="btn btn-primary float-right">Crear</button>
+                    <button class="btn btn-info" id="configurar">Crear y Configurar</button>
                 </div> 
     
     
@@ -377,7 +330,6 @@
         </div>
     
     </div>
-
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>

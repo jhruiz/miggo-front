@@ -21,7 +21,11 @@ function obtenerUnidadesmedida(id){
         $('#codigo').val(respuesta.data.codigo);
         $('#descripcion').val(respuesta.data.descripcion);
         $('#factorgramos').val(respuesta.data.factorgramos);
-        $('#codigodian').val(respuesta.data.codigodian);//TODO deberia ser un select pero no tengo los codigos de la DIAN
+
+        if(respuesta.data.codigodianunidade_id){
+          $('#codigodianunidade_id').val(respuesta.data.codigodianunidade_id);
+          obtenerCodigodian(respuesta.data.codigodianunidade_id);
+        }
   
       },
       error: function() {
@@ -31,6 +35,27 @@ function obtenerUnidadesmedida(id){
     })  
   }
   
+
+  var obtenerCodigodian = function(id){
+    let url= 'codigodianunidades/' + id;
+
+    $.ajax({
+    method: "GET",
+    url: url_back + url,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $('#codigodianunidade').val(respuesta.data.codigo+'-'+respuesta.data.descripcion);
+            // $('#codigodianunidade_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+  })  
+}
   
   $( document ).ready(function() {
       $('.preloader').hide("slow");
