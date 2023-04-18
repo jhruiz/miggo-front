@@ -77,8 +77,7 @@ var crearArticulo = function(e){
 
         },
         error: function(respuesta) {
-            console.log(respuesta);
-    
+            // console.log(respuesta);
             if(respuesta.responseJSON.error){
                 $.each(respuesta.responseJSON.error.message, function (key, item) {
                     var mensaje = item[0];

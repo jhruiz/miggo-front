@@ -78,15 +78,15 @@ function validarImagen(datos) {
     var dataFI = $('#imagen').prop('files')[0];
 
     // valida el tamaño del archivo
-    if(dataFI.size > 1000000) {
-        var mensaje = 'El tamaño máximo del archivo es 1MB.';
+    if(dataFI.size > 2000000) {
+        var mensaje = 'El tamaño máximo del archivo es 2MB.';
         sweetMessage('warning', mensaje);
         $('#imagen').val('');
         return false;
     }
 
     // valida el formato del archivo
-    if((dataFI.name.split('.')['1'].toLowerCase() != 'jpg') && (dataFI.name.split('.')['1'].toLowerCase() != 'jpeg')) {
+    if((dataFI.name.split('.')['1'].toLowerCase() != 'jpg') && (dataFI.name.split('.')['1'].toLowerCase() != 'jpeg') && (dataFI.name.split('.')['1'].toLowerCase() != 'png') && (dataFI.name.split('.')['1'].toLowerCase() != 'gif') && (dataFI.name.split('.')['1'].toLowerCase() != 'svg')) {
         console.log(dataFI.name.split('.')['1'].toLowerCase());
         var mensaje = 'Solo se permiten archivos en formato jpg o jpeg';
         sweetMessage('warning', mensaje);

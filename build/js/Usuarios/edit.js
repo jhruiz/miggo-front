@@ -1,8 +1,230 @@
-
-
-function obtenerUsuario(id){
-
-    var url_edit = 'usuarios/edit.html';
+$("#form").submit(function(e) {
+    e.preventDefault();   
+    
+    const form = document.getElementById('form');
+    const formData = new FormData(form);
+    
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var perfile_id = $('#select-perfiles').val()? $('#select-perfiles').val(): ''; 
+    var tercero_id = $('#tercero_id').val();
+    var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
+    
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("perfile_id", perfile_id);
+    formData.append("tercero_id", tercero_id);
+    formData.append("imagen", imagen);
+    formData.append('_method', 'PUT');
+    
+    // const output = document.getElementById('output');
+    
+    // for (const [key, value] of formData) {
+    //   output.textContent += `${key}: ${value}\n`;
+    // }
+    
+    $.ajax({
+        method: "POST",
+        url: url_back + "users/"+localStorage.editar,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        data: formData,
+        contentType: false,//formData
+        processData: false,//formData
+        success: function(respuesta) {
+    
+            localStorage.editar = '';
+            if(respuesta){
+                var mensaje = 'Usuario actualizado de forma correcta nombres.: '+ respuesta.data.email;
+                sweetMessage('success', mensaje); 
+                $('#main_content').load(url_front + 'usuarios/index.html');
+            } else {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+                console.log(respuesta);               
+            }
+        },
+        error: function(respuesta) {
+    
+            if(respuesta.responseJSON){
+                if(respuesta.responseJSON.error){
+                    $.each(respuesta.responseJSON.error.message, function (key, item) {
+                        var mensaje = item[0];
+                        sweetMessage('error', mensaje);
+                    });
+                }
+            }else if(respuesta.responseJSON.exception){
+                var mensaje = 'El Correo no Parece Valido debe revisarlo, no le llegara el correo de verificacion';
+                sweetMessage('info', mensaje);
+                $('#main_content').load(url_front + 'usuarios/index.html');
+            }else {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+     
+    
+        }
+    });
+    });
+    
+    
+    //***************************************************autocompletar*******************
+    $( "#tercero" ).autocomplete({
+        source: function( request, auto ) {
+            var url_empl = 'empresas/'+ localStorage.empresa_id+ '/empleados?search='+$('#tercero').val();
+    
+           $.ajax({
+             method: "GET",
+             url: url_back + url_empl,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                auto(respuesta);
+             }
+           });
+        },
+        autoFocus: true,
+        minLength: 2,
+        appendTo: "#ModalLong2",
+        select: function (event, ui) {
+          // Set selection
+          $('#tercero').val(ui.item.label); // display the selected text
+          $('#tercero_id').val(ui.item.value); // save selected id to input
+          obtenerTercero(ui.item.value);
+          return false;
+        }
+     });
+    
+    
+     //*******************************************************************************************************
+     var obtenerTercero = function(id){
+        url_ter= 'terceros/' + id;
+        $.ajax({
+        method: "GET",
+        url: url_back + url_ter,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+                $('#tercero').val(respuesta.data.identificacion+'-'+respuesta.data.nombres);
+                $('#tercero_id').val(respuesta.data.id);
+    
+                $('#identificacion').val(respuesta.data.identificacion  );
+                $('#verificado').val(respuesta.data.digitoverificacion );
+                $('#apellidos').val(respuesta.data.apellidos );
+                $('#celular').val(respuesta.data.celular );
+                $('#direccion').val(respuesta.data.direccion );
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    //***************************************************trae valores de tercero y usuario si ya exiten (perfil,ciudad,tipodocumento)*******************
+    var obtenerCiudad = function(id){
+        url_ciu= 'ciudades/' + id;
+        $.ajax({
+        method: "GET",
+        url: url_back + url_ciu,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+                var htmlCiudades = '';
+                if (respuesta.data.id) {
+                    htmlCiudades += '<option value="'+ respuesta.data.id+'">';
+                    htmlCiudades += respuesta.data.descripcion;
+                    htmlCiudades += '</option>';
+                }
+                $('#select-ciudad').html(htmlCiudades);
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    
+    var obtenerPerfilSelect = function(url, select, id){
+        url_tipo= url+ '/' +id;
+        var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
+    
+        $.ajax({
+        method: "GET",
+        url: url_back + url_tipo,
+        headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+                var html = '';
+                html += '<option value="'+ respuesta.data.id+'">';
+                html += respuesta.data.descripcion+'-'+ arrayNivel[respuesta.data.nivel];
+                html += '</option>';
+                obtenerPerfilSelects(url, select, id, html);
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })  
+    }
+    
+    //***************************************************trae valores masivos de perfil,ciudad,tipodocumento*******************
+    function obtenerPerfilSelects(url, select, id = null,  base = null) {
+    
+        $.ajax({
+            method: "GET",
+            url: url_back + url,
+            headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+            dataType: "json",
+            success: function(respuesta) {
+        
+                $(select).html(crearPerfilHtml(respuesta.data, base, id));
+            },
+            error: function() {
+                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+                sweetMessage('error', mensaje);
+            }
+          })     
+        }
+        
+        var crearPerfilHtml = function(data, base = null, id = null) {
+             var arrayNivel = ['Ver (Nivel 0)', 'Crear y Editar (Nivel 1)', 'Eliminar (Nivel 2)'];
+    
+            if (base) {
+                    var html = base;
+                    $.each(data, function (key, item) {
+                        if(id != item.id){
+                            html += '<option value="'+ item.id+'">';
+                            html += item.descripcion+'-'+arrayNivel[item.nivel];
+                            html += '</option>';
+                        }
+                    });
+                return html;
+            } else {
+                    var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+                    $.each(data, function (key, item) {
+                        html += '<option value="'+ item.id+'">';
+                        html += item.descripcion+'-'+arrayNivel[item.nivel];
+                        html += '</option>';
+                    });
+                return html;
+            }
+        }
+    
+    //*************************************************************************************************************************************
+    function obtenerUsuario(id){
+    
     var url = 'users/'+ id;
     
     $.ajax({
@@ -13,269 +235,91 @@ function obtenerUsuario(id){
                   },
         dataType: "json",
         success: function(respuesta) {
-            console.log(respuesta);
-//              $('#select-ciudad').val('');
-
+    
+            $('#email').val(respuesta.data.email);
+    
+            if(respuesta.data.imagen){
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_img + 'users/'+ respuesta.data.imagen;
+                ul.appendChild(imagen);
+              }else{
+                const ul = document.getElementById("mostrarImagen");
+                const imagen = document.createElement("img");
+                imagen.width = 200;
+                imagen.src = url_front + 'usuarios/defecto.jpg';
+                ul.appendChild(imagen);
+              }
+    
+    
+            if(respuesta.data.perfile_id){
+                obtenerPerfilSelect('perfiles', '#select-perfiles', respuesta.data.perfile_id);
+            }else{
+                obtenerPerfilSelects('perfiles', '#select-perfiles');
+            }
+    
+            if(respuesta.data.tercero_id){
+                if(respuesta.data.tercero.ciudade_id){
+                  obtenerCiudad(respuesta.data.tercero.ciudade_id);
+                }
+              }
+    
+              if(respuesta.data.tercero_id){
+                obtenerTercero(respuesta.data.tercero_id);
+            }
+    
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
         }
       })  
-
-
-}
-
-
-/**
- * Obtiene los perfiles seleccionados
- */
- var perfilesSeleccionados = function() {
-    var perfiles = [];
-
-    $('.chk-perfiles').each(function() {
-        if ($(this).prop('checked') ) {
-            perfiles.push($(this).prop("id"));
-        }
-    });
-
-    return perfiles;
-}
-
-/**
- * Actualiza la información del usuario
- */
-// function actualizarUsuario() {
-//     var perfiles = perfilesSeleccionados();
-//     var estado = $('#estadosUsuario').val();
-//     var usuarioId = $('#usuarioId').val();
-//     var email = $('#email').val();
-
-//     $.ajax({
-//         method: "GET",
-//         async: false,
-//         url: urlC + "update-user",
-//         data: { id: usuarioId, estado: estado, perfiles: perfiles, email: email },
-//         success: function(respuesta) {       
-//             // Valida si la respuesta es correcta
-//             if ( respuesta.estado ) {
-//                 var mensaje = 'Usuario actualizado correctamente';
-//                 sweetMessage('success', mensaje);
-//             } else {
-//                 sweetMessage('warning', respuesta.mensaje);
-//             }
-            
-//         },
-//         error: function() {
-//             var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-//             sweetMessage('error', mensaje);
-//         }
-//     });    
-// }
-
-/**
- * Setea la información del usuario con los datos obtenidos desde API
- * @param {*} data 
- */
-var setDatosUsuario = function(data) {
-
-    $('#nombre').val(data['0'].nombre).prop("disabled", true);   
-    $('#identificacion').val(data['0'].identificacion).prop("disabled", true);
-    $('#email').val(data['0'].email).prop("disabled", true);   
-
-    data.forEach(element => {
-        $('#estadosUsuario').val(element.estado_id);
-        $('#' + element.perfile_id).prop('checked', true);
-    });
-}
-
-/**
- * Genera el html con los perfiles configurados en la base de datos
- */
- var crearCheckPerfiles = function(data) {
-    var htmlPerfiles = '';
+    }
     
-    data.forEach(element => {
-        htmlPerfiles += '<div>';
-        htmlPerfiles += '<input type="checkbox" id="' + element.id + '" class="chk-perfiles">';
-        htmlPerfiles += '<label for="' + element.id + '"> &nbsp; Perfil ' + element.descripcion.toLowerCase() + '</label>';
-        htmlPerfiles += '</div>';
-    });
-
-    $('#check-perfiles').html(htmlPerfiles);
-}
-
-/**
- * Crea el combo select con la info recibida por API
- */
-var crearSelectEstados = function(objEstados) {
     
-    var htmlSelStates = '<label for="estadosUsuario">Estados</label>';
-    htmlSelStates += '<select name="estadosUsuario" class="custom-select rounded-0" id="estadosUsuario">';
-
-    objEstados.forEach(element => {
-        htmlSelStates += '<option value="' + element.id + '">' + element.descripcion + '</option>';
-    });
-
-    htmlSelStates += '</select>';
-
-    $('#cmb-states').html(htmlSelStates);
-}
-
-/**
- * Se obtienen los estados por API
- */
-var obtenerEstados = function(){
-    $.ajax({
-        method: "GET",
-        async: false,
-        url: urlC + "get-states",
-        success: function(respuesta) {       
-            // Valida si la respuesta es correcta
-            if ( respuesta.estado ) {
-                crearSelectEstados(respuesta.data);
-            } else {
-                sweetMessage('warning', respuesta.mensaje);
-            }
-            
-        },
-        error: function() {
-            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-            sweetMessage('error', mensaje);
-        }
-    });
-}
-
-/**
- * Obtiene los perfiles configurados en la base de datos y setea en un listado
- */
-var obtenerPerfiles = function(){
-    $.ajax({
-        method: "GET",
-        async: false,
-        url: urlC + "get-profiles",
-        success: function(respuesta) {       
-            // Valida si la respuesta es correcta
-            if ( respuesta.estado ) {   
-                crearCheckPerfiles(respuesta.data);
-            } else {
-                sweetMessage('warning', respuesta.mensaje);
-            }
-            
-        },
-        error: function() {
-            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-            sweetMessage('error', mensaje);
-        }
-    })
-}
-
-// /**
-//  * Obtiene la informacion de un usuario específico
-//  */
-//  var obtenerUsuario = function() {
-//     var usuarioId = $('#usuarioId').val();
-
-//     $.ajax({
-//         method: "GET",
-//         url: urlC + "get-user",
-//         data: { usuarioId: usuarioId }, 
-//         success: function(respuesta) {  
-            
-//             $('.preloader').hide("slow");
-            
-//             // Valida si la respuesta es correcta para generar el data table
-//             if ( respuesta.estado ) {
-//                 setDatosUsuario(respuesta.data);
-//             } else {
-//                 sweetMessage('warning', respuesta.mensaje);
-//             }
-            
-//         },
-//         error: function() {
-//             var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-//             sweetMessage('error', mensaje);
-//         }
-//     })
-// }
-
-/**
- * Permite visualizar cada documento
- * @param {*} data 
- */
-function verDocumento(data) {
-
-    // Abre el visor del documento
-    var document = '<embed src="../../docs/assets/documents/' + data.value + '" type="application/pdf" width="100%" height="600px" />'
-    $('#view-documents').html(document);
+    //********************************************************************************************************************************
+    $( document ).ready(function() {
+        $('.preloader').hide("slow");
+          validarLogin();
     
-    // ajax para verificar documento
-    $.ajax({
-        method: "GET",
-        url: urlC + "check-user-documents",
-        data: { documentoUsuarioId: data.id }, 
-        success: function(respuesta) {       
-
-            // Valida si la respuesta es correcta para mostrar los documentos
-            if ( respuesta.estado ) {
-
-                var mensaje = 'El documento ha sido verificado correctamente';
-                sweetMessage('success', mensaje);
-
-            } else {
-                sweetMessage('warning', respuesta.mensaje);
-            }
+        obtenerUsuario(localStorage.editar);
+    
+        $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');
+        $('#direccion').validCampo('abcdefghijklmnopqrstuvwxyziou()"0123456789._-#°');
+    });
+    
+    $(function() {
+        //Date picker
+     $("#cumpleanio").datetimepicker({
+            locale: "es",
+            format: "YYYY-MM-DD",  
+            //  defaultDate:"2012/01/01",
+            maxDate: new Date("2010-01-01"),//TODO: fijar fecha automatica menos 15 años 
+            minDate: '1950-01-01',
+            timepicker:false,
+            autoclose: true,
+            showButtonPanel: true
+     });
+        // //Date and time picker
+        // $('#cumpleaniotime').datetimepicker({ icons: { time: 'far fa-clock' } });
+    });
+    
+    document.getElementById("imagen").onchange = function(e){
+        if(validarImagen(e)){
+            const ul = document.getElementById("mostrarImagen");
+            ul.innerHTML = '';
+            const imagen = document.createElement("img");
+            const read = new FileReader();
+            const file = this.files;
             
-        },
-        error: function() {
-            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-            sweetMessage('error', mensaje);
-        }
-    })        
-}
-
-/**
- * obtiene los documentos cargados por el usuario
- */
-var obtenerDocumentos = function() {
-    var usuarioId = $('#usuarioId').val();
-
-    $.ajax({
-        method: "GET",
-        url: urlC + "get-user-documents",
-        data: { usuarioId: usuarioId }, 
-        success: function(respuesta) {       
-            // Valida si la respuesta es correcta para mostrar los documentos
-            if ( respuesta.estado ) {
-
-                var radocumento = "";
-                respuesta.data.forEach(element => {
-                    var verificado = element.verificado ? ' (Verificado)' : '';
-                    var success = element.verificado ? 'text-success' : '';
-                    radocumento += '<div class="form-check">';
-                    radocumento += '<input class="form-check-input ' + success + '" type="radio" name="rd-documento" id="' + element.id + '" value="' + element.url + '" onclick="verDocumento(this)">';
-                    radocumento += '<label class="form-check-label ' + success + '"><b>' + element.descripcion + verificado + '</b></label>';
-                    radocumento += '</div>';
-                })
-
-                $('#radio-documentos').html(radocumento);
-
-            } else {
-                sweetMessage('warning', respuesta.mensaje);
+            read.onload = function(){
+                const result = this.result;
+                const url = result;
+                imagen.width = 200;
+                imagen.src = url;
+                ul.appendChild(imagen);
             }
-            
-        },
-        error: function() {
-            var mensaje = 'Se produjo un error. Por favor, inténtelo nuevamente'.
-            sweetMessage('error', mensaje);
+            read.readAsDataURL(file[0]);
         }
-    })    
-}
-
-$( document ).ready(function() {
-// //     // obtenerEstados();
-// //     // obtenerPerfiles();
-// //     // obtenerDocumentos();
-// //     // obtenerUsuario();
-// alert('edit'+ valor1);
-});
+    }
