@@ -24,6 +24,9 @@ function obtenerCuentabancaria(id){
     
                 if(respuesta.data.tipocuenta_id == 5){
                     $('#divF').show();
+                    $('#divA').show();
+                    $('#divFv').show();
+                    $('#divC').show();
                 }
             }
         },

@@ -19,6 +19,12 @@ $("#form").submit(function(e) {
     var puc_id = $('#puc_id').val();
     var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
     
+    var depreciaraniocompraniif = $('#depreciaraniocompraniif').val();
+    var depreciarmesescompraniif = $('#depreciarmesescompraniif').val();
+    var salvamentoniif = $('#salvamentoniif').val();
+    var vlrnrorazonable = $('#vlrnrorazonable').val();
+    var niif_id = $('#niif_id').val();
+
     var alquilable =$('#alquilable').val()? 1 : 0;
     var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
     var centrocosto_id = $('#select-nivelcentrocostos').val()? $('#select-nivelcentrocostos').val() : ''; 
@@ -58,6 +64,11 @@ $("#form").submit(function(e) {
     formData.append("responsable_id", responsable_id);
     formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
     formData.append("puc_id", puc_id);
+    formData.append("depreciaraniocompraniif", depreciaraniocompraniif);
+    formData.append("depreciarmesescompraniif", depreciarmesescompraniif);
+    formData.append("salvamentoniif", salvamentoniif);
+    formData.append("vlrnrorazonable", vlrnrorazonable);
+    formData.append("niif_id", niif_id);
     formData.append("imagen", imagen);
     
     $.ajax({
@@ -236,25 +247,25 @@ $("#form").submit(function(e) {
     
     }
     
-    function obtenerSelects(url, select, id = null,  base = null) {
+    // function obtenerSelects(url, select, id = null,  base = null) {
     
-    $.ajax({
-        method: "GET",
-        url: url_back + url,
-        headers: { 
-            Authorization: 'Bearer ' + localStorage.access_token
-        },
-        dataType: "json",
-        success: function(respuesta) {
+    // $.ajax({
+    //     method: "GET",
+    //     url: url_back + url,
+    //     headers: { 
+    //         Authorization: 'Bearer ' + localStorage.access_token
+    //     },
+    //     dataType: "json",
+    //     success: function(respuesta) {
     
-            $(select).html(crearHtml(respuesta.data, base, id));
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-      })     
-    }
+    //         $(select).html(crearHtml(respuesta.data, base, id));
+    //     },
+    //     error: function() {
+    //         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+    //         sweetMessage('error', mensaje);
+    //     }
+    //   })     
+    // }
     
     var crearHtmlCosto = function(data) {
         var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
@@ -266,15 +277,15 @@ $("#form").submit(function(e) {
             return html;
     }
     
-    var crearHtml = function(data) {
-        var html = '<option value="">Seleccione..</option>';
-            $.each(data, function (key, item) {
-                html += '<option value="'+ item.id+'">';
-                html += item.descripcion;
-                html += '</option>';
-            });
-        return html;
-    }
+    // var crearHtml = function(data) {
+    //     var html = '<option value="">Seleccione..</option>';
+    //         $.each(data, function (key, item) {
+    //             html += '<option value="'+ item.id+'">';
+    //             html += item.descripcion;
+    //             html += '</option>';
+    //         });
+    //     return html;
+    // }
     
     var defaultImagen = function(){
         const ul = document.getElementById("mostrarImagen");
@@ -311,6 +322,31 @@ $("#form").submit(function(e) {
             }
     });
     
+    
+    $( "#niif" ).autocomplete({
+        source: function( request, response ) {
+            var url_niif = 'niifsactivosfijos?search='+$('#niif').val(); //TODO: buscar en todas las 15 y 16
+
+           $.ajax({
+             method: "GET",
+             url: url_back + url_niif,
+             headers: { 
+                Authorization: 'Bearer ' + localStorage.access_token
+            },
+             dataType: "json",
+             success: function(respuesta) {
+                response(respuesta);
+             }
+           });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          // Set selection
+          $('#niif').val(ui.item.label); // display the selected text
+          $('#niif_id').val(ui.item.value); // save selected id to input
+          return false;
+        }
+     });
     
     //****************************************************************************************************************************************************************************
     

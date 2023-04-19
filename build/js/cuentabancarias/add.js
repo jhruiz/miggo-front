@@ -130,10 +130,19 @@ $("#form").submit(function(e) {
         var tipocuenta_id = $(this).val();
         if(tipocuenta_id == 5){
             $('#divF').show();
+            $('#divA').show();
+            $('#divFv').show();
+            $('#divC').show();
             obtenerMastercardyvisas('#select-mastercardyvisa');
         }else{
             $('#divF').hide();
+            $('#divA').hide();
+            $('#divFv').hide();
+            $('#divC').hide();
             $('#select-mastercardyvisa').val('');
+            $('#aperturas').val('');
+            $('#vencimientos').val('');
+            $('#cupo').val('');
         }
     }
     

@@ -15,7 +15,6 @@ $("#form").submit(function(e) {
     var cupo = $('#cupo').val();
     var tipocuenta_id = $('#select-tipocuentas').val();
 
-    
     formData.append("numerocuenta", numerocuenta);
     formData.append("entidadfinanciera", entidadfinanciera);
     formData.append("oficinanumero", oficinanumero);
@@ -90,6 +89,9 @@ $("#form").submit(function(e) {
     
                 if(respuesta.data.tipocuenta_id == 5){
                     $('#divF').show();
+                    $('#divA').show();
+                    $('#divFv').show();
+                    $('#divC').show();
                     if(respuesta.data.mastercardyvisa_id){
                         obtenerMastercardyvisa('#select-mastercardyvisa', respuesta.data.mastercardyvisa_id);
                     }else{
@@ -230,10 +232,19 @@ $("#form").submit(function(e) {
         var tipocuenta_id = $(this).val();
         if(tipocuenta_id == 5){
             $('#divF').show();
+            $('#divA').show();
+            $('#divFv').show();
+            $('#divC').show();
             obtenerMastercardyvisas('#select-mastercardyvisa');
         }else{
             $('#divF').hide();
+            $('#divA').hide();
+            $('#divFv').hide();
+            $('#divC').hide();
             $('#select-mastercardyvisa').val('');
+            $('#aperturas').val('');
+            $('#vencimientos').val('');
+            $('#cupo').val('');
         }
     }
     

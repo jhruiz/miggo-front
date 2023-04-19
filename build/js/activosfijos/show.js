@@ -68,32 +68,6 @@ var obtenerGrupo = function(id){
 })  
 }
 
-var obtenerSelect = function(url, select, id){
-  url_tipo= url+ '/' +id;
-  $.ajax({
-  method: "GET",
-  url: url_back + url_tipo,
-  headers: { 
-      Authorization: 'Bearer ' + localStorage.access_token
-  },
-  dataType: "json",
-  success: function(respuesta) {
-          var html = '';
-          html += '<option value="'+ respuesta.data.id+'">';
-          html += respuesta.data.descripcion;
-          html += '</option>';
-          $(select).html(html);
-  },
-  error: function() {
-      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-      sweetMessage('error', mensaje);
-  }
-})  
-}
-
-
-
-
 var nivelCentrocosto = function (select, nivel, id){
 
   if(localStorage.nivelgasto == 1 && nivel == 'divisiones'){
@@ -170,24 +144,24 @@ $.ajax({
 
 }
 
-var obtenerPuc = function(id){
-  url_p= 'pucs/' + id;
-  $.ajax({
-  method: "GET",
-  url: url_back + url_p,
-  headers: { 
-      Authorization: 'Bearer ' + localStorage.access_token
-  },
-  dataType: "json",
-  success: function(respuesta) {
-          $('#puc').val(respuesta.data.id+'-'+respuesta.data.descripcion);
-          $('#puc_id').val(respuesta.data.id);
-  },
-  error: function() {
-      var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-      sweetMessage('error', mensaje);
-  }
-})  
+var obtenerPuc = function(id , select, url){
+    let url_c = url +'/' + id;
+    $.ajax({
+    method: "GET",
+    url: url_back + url_c,
+    headers: { 
+        Authorization: 'Bearer ' + localStorage.access_token
+    },
+    dataType: "json",
+    success: function(respuesta) {
+            $(select).val(respuesta.data.id+'-'+respuesta.data.descripcion);
+            $(select+'_id').val(respuesta.data.id);
+    },
+    error: function() {
+        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+        sweetMessage('error', mensaje);
+    }
+    })  
 }
 
 
@@ -221,6 +195,11 @@ $.ajax({
       $('#residuo').val(respuesta.data.residuo);
       $('#observaciones').val(respuesta.data.observaciones);
       $('#costohora').val(respuesta.data.costohora);
+
+      $('#depreciaraniocompraniif').val(respuesta.data.depreciaraniocompraniif);
+      $('#depreciarmesescompraniif').val(respuesta.data.depreciarmesescompraniif);
+      $('#salvamentoniif').val(respuesta.data.salvamentoniif);
+      $('#vlrnrorazonable').val(respuesta.data.vlrnrorazonable);
 
       if(respuesta.data.imagen){
           const ul = document.getElementById("mostrarImagen");
@@ -256,7 +235,11 @@ $.ajax({
       }
 
       if(respuesta.data.puc_id){
-          obtenerPuc(respuesta.data.puc_id);
+         obtenerPuc(respuesta.data.puc_id, '#puc', 'pucs');
+      }
+
+      if(respuesta.data.niif_id){
+         obtenerPuc(respuesta.data.niif_id, '#niif', 'niifs');
       }
   },
   error: function() {

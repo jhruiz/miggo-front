@@ -3,22 +3,27 @@
 <img class="animation__shake" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 </div>
 
-<div class="card" id="content-Activosfijoss">
+<div class="card">
+
+<form id="form"  method="PUT" action="" enctype="multipart/form-data">
+
+<div class="card card-default">
+
     <div class="card-header">
-        <div class="row">
-            <div class="col-12">
-                <h4>
-                    <i class="nav-icon fas fa-user"></i>
-                    Editar Activo Fijo                           
-                </h4>
-            </div>
-        </div>
-    </div>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+
+        <h4 class="title">
+            <i class="nav-icon fas fa-user"></i>
+            Editar Activo Fijo  </h4>
+      </div>
 
     <div class="card-body">
         
         
-        <form id="form"  method="PUT" action="" enctype="multipart/form-data">
 
           <div class="row">
                 <div class="col-sm-6">
@@ -35,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="responsable">Responsable: </label>
+                        <label for="responsable">Responsable: (Empleado Registrado)</label>
                         <input class="form-control input-texto-alfanumerico" id="responsable" placeholder="El nombre o identificacion Empleado">
                     </div>
                     <input type="text" id='tercero_id' hidden>
@@ -95,6 +100,9 @@
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div> 
                             <input type="text" id="costohora" class="form-control input-numero-decimal2" placeholder="Costo Hora">  
+                            <div class="input-group-append">
+                                <span class="input-group-text monedaSimbolo"> </span>
+                              </div>
                         </div> 
                     </div> 
 
@@ -217,7 +225,7 @@
                         <label>Dirección </label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                <span class="input-group-text"><i class="fas fa-lg fa-building"></i></span>
                             </div> 
                             <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección ..."></textarea>
                         </div> 
@@ -225,17 +233,89 @@
 
                 </div>
             </div>
+        </div>
+</div>
 
+
+    <div class="card card-default">
+
+        <div class="card-header">
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+    
+            <h4 class="title">
+                <i class="nav-icon far fa-file-alt"></i>
+                Configuracion NIIF Activo Fijo  </h4>
+        </div>
+
+        <div class="card-body">
+
+        <div class="row">
+            <div class="col-sm-6">
+
+                <div class="form-group">
+                    <label for="responsable">Cuenta NIIF </label>
+                    <input class="form-control input-texto-alfanumerico" id="niif" placeholder="Nombre o codigo NIIF">
+                </div>
+                    <input class="form-control input-texto-alfanumerico" id="niif_id" hidden>
+
+
+                <div class="form-group">
+                    <label>Depreciar año Compra NIIF</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div> 
+                        <input type="text" id="depreciaraniocompraniif" class="form-control input-numero" placeholder="Depreciar año Compra NIIF" >  
+                    </div> 
+                </div>
+
+                <div class="form-group">
+                    <label>Depreciar meses Compra NIIF </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div> 
+                        <input type="text" id="depreciarmesescompraniif" class="form-control input-numero" placeholder="Depreciar meses Compra NIIF" >  
+                    </div> 
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+
+                <div class="form-group">
+                    <label>Salvamento NIIF </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div> 
+                        <input type="text" id="salvamentoniif" class="form-control input-texto-alfanumerico" placeholder="Salvamento NIIF" >  
+                    </div> 
+                </div> 
+
+                <div class="form-group">
+                    <label>Valor Neto Razonable </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        </div> 
+                        <input type="text" id="vlrnrorazonable" class="form-control input-numero" placeholder="Valor Neto Razonable" >  
+                    </div> 
+                </div> 
+
+                </div>
+            </div>
+        </div>
+    </div>
 
             <div class="col-12 float-right">
-                <button type="submit" class="btn btn-primary float-right">Actualizar</button>
             </div> 
 
         </form>
-
     </div>
-
-</div>
 
 <!-- validaciones -->
 <script src="../../build/js/validaciones.js"></script>

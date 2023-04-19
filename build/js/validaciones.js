@@ -210,3 +210,7 @@ var crearHtml = function(data, base = null, id = null) {
       
       return html;
 }
+
+var actualizarmoneda = function (){
+  $('.monedaSimbolo').text(localStorage.moneda);
+}

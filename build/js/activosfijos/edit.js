@@ -1,4 +1,4 @@
-$("#form").submit(function(e) {
+$("#form").change(function(e) {
     e.preventDefault();   
     
     const form = document.getElementById('form');
@@ -18,6 +18,12 @@ $("#form").submit(function(e) {
     var costohora = $('#costohora').val();
     var imagen = $('#imagen')[0].files[0] ? $('#imagen')[0].files[0] : '';
     var puc_id = $('#puc_id').val();
+
+    var depreciaraniocompraniif = $('#depreciaraniocompraniif').val();
+    var depreciarmesescompraniif = $('#depreciarmesescompraniif').val();
+    var salvamentoniif = $('#salvamentoniif').val();
+    var vlrnrorazonable = $('#vlrnrorazonable').val();
+    var niif_id = $('#niif_id').val();
     
     var alquilable =$('#alquilable').val()? 1 : 0;
     var ciudade_id = $('#select-ciudad').val()? $('#select-ciudad').val() : '';
@@ -56,14 +62,20 @@ $("#form").submit(function(e) {
     formData.append("gruposactivosfijo_id", gruposactivosfijo_id);
     formData.append("puc_id", puc_id);
     formData.append("imagen", imagen);
+    formData.append("depreciaraniocompraniif", depreciaraniocompraniif);
+    formData.append("depreciarmesescompraniif", depreciarmesescompraniif);
+    formData.append("salvamentoniif", salvamentoniif);
+    formData.append("vlrnrorazonable", vlrnrorazonable);
+    formData.append("niif_id", niif_id);
     formData.append('_method', 'PUT');
-    
+
     // const output = document.getElementById('output');
     
     // for (const [key, value] of formData) {
     //   output.textContent += `${key}: ${value}\n`;
     // }
-    
+
+
     $.ajax({
         method: "POST",
         url: url_back + "activosfijos/"+localStorage.editar,
@@ -77,15 +89,8 @@ $("#form").submit(function(e) {
         // async: false,
         success: function(respuesta) {
     
-            localStorage.editar = '';
-            if(respuesta){
                 var mensaje = 'Activo fijo actualizado de forma correcta.: '+ respuesta.data.nombre + ' del grupo.: ' + respuesta.data.gruposactivosfijo.descripcion;
                 sweetMessage('success', mensaje); 
-                $('#main_content').load(url_front + 'activosfijos/index.html');
-            } else {
-                var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-                sweetMessage('error', mensaje);
-            }
         },
         error: function(respuesta) {
     
@@ -131,32 +136,6 @@ $("#form").submit(function(e) {
               return false;
             }
          });
-    
-    //****************************************************************************************************************************************************************
-    
-    var obtenerSelect = function(url, select, id){
-        url_tipo= url+ '/' +id;
-        $.ajax({
-        method: "GET",
-        url: url_back + url_tipo,
-        headers: { 
-            Authorization: 'Bearer ' + localStorage.access_token
-        },
-        dataType: "json",
-        success: function(respuesta) {
-                var html = '';
-                html += '<option value="'+ respuesta.data.id+'">';
-                html += respuesta.data.descripcion;
-                html += '</option>';
-                obtenerSelects(url, select, id, html);
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-      })  
-    }
-    
     
     //***************************************************trae valores de tercero y Activosfijos si ya exiten (grupo,ciudad,tipoactivo,estadoactivo)*******************
     
@@ -254,7 +233,6 @@ $("#form").submit(function(e) {
     }
     
     function obtenerDepartamentos() {
-    
     url = 'paises/'+ 170 +'/departamentos';
     
     $.ajax({
@@ -275,51 +253,8 @@ $("#form").submit(function(e) {
       })     
     }
     
-    function obtenerSelects(url, select, id = null,  base = null) {
-    
-    $.ajax({
-        method: "GET",
-        url: url_back + url,
-        headers: { 
-            Authorization: 'Bearer ' + localStorage.access_token
-        },
-        dataType: "json",
-        success: function(respuesta) {
-    
-            $(select).html(crearHtml(respuesta.data, base, id));
-        },
-        error: function() {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
-      })     
-    }
-    
-    var crearHtml = function(data, base = null, id = null) {
-        if (base) {
-                var html = base;
-                $.each(data, function (key, item) {
-                    if(id != item.id){
-                        html += '<option value="'+ item.id+'">';
-                        html += item.descripcion;
-                        html += '</option>';
-                    }
-                });
-            return html;
-        } else {
-                var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
-                $.each(data, function (key, item) {
-                    html += '<option value="'+ item.id+'">';
-                    html += item.descripcion;
-                    html += '</option>';
-                });
-            return html;
-        }
-    }
-    
     
     function obtenerActivosfijos(id){
-    
     var url = 'activosfijos/'+ id;
     
     $.ajax({
@@ -330,7 +265,6 @@ $("#form").submit(function(e) {
                   },
         dataType: "json",
         success: function(respuesta) {
-    
     
             respuesta.data.alquilable == 1 ? $('#alquilable').prop( "checked", true ) : $('#alquilable').prop( "checked", false );
     
@@ -346,7 +280,12 @@ $("#form").submit(function(e) {
             $('#residuo').val(respuesta.data.residuo);
             $('#observaciones').val(respuesta.data.observaciones);
             $('#costohora').val(respuesta.data.costohora);
-    
+
+            $('#depreciaraniocompraniif').val(respuesta.data.depreciaraniocompraniif);
+            $('#depreciarmesescompraniif').val(respuesta.data.depreciarmesescompraniif);
+            $('#salvamentoniif').val(respuesta.data.salvamentoniif);
+            $('#vlrnrorazonable').val(respuesta.data.vlrnrorazonable);
+
             if(respuesta.data.imagen){
                 const ul = document.getElementById("mostrarImagen");
                 const imagen = document.createElement("img");
@@ -388,10 +327,12 @@ $("#form").submit(function(e) {
             }
     
             if(respuesta.data.puc_id){
-                obtenerPuc(respuesta.data.puc_id);
+                obtenerPuc(respuesta.data.puc_id, '#puc', 'pucs');
             }
-    
-    
+
+            if(respuesta.data.niif_id){
+                obtenerPuc(respuesta.data.niif_id, '#niif', 'niifs');
+            }
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -547,41 +488,31 @@ $("#form").submit(function(e) {
     }
     
     var crearHtmlCosto = function(data, base = null, id = null) {
-        if (base) {
-                var html = base;
-                $.each(data, function (key, item) {
-                    if(id != item.id){
-                        html += '<option value="'+ item.id+'">';
-                        html += item.codigo+'-'+item.nombre;
-                        html += '</option>';
-                    }
-                });
-            return html;
-        } else {
-                var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
-                $.each(data, function (key, item) {
+        var html = base? base: '<option value="" selected="true" disabled="disabled">Selecione...</option>' ;
+            $.each(data, function (key, item) {
+                if(id != item.id){
                     html += '<option value="'+ item.id+'">';
                     html += item.codigo+'-'+item.nombre;
                     html += '</option>';
-                });
-            return html;
-        }
+                }
+            });
+        return html;
     }
     
     //******************************************************************************************************************************************************************************
     
-    var obtenerPuc = function(id){
-        url_p= 'pucs/' + id;
+    var obtenerPuc = function(id , select, url){
+        let url_c = url +'/' + id;
         $.ajax({
         method: "GET",
-        url: url_back + url_p,
+        url: url_back + url_c,
         headers: { 
             Authorization: 'Bearer ' + localStorage.access_token
         },
         dataType: "json",
         success: function(respuesta) {
-                $('#puc').val(respuesta.data.id+'-'+respuesta.data.descripcion);
-                $('#puc_id').val(respuesta.data.id);
+                $(select).val(respuesta.data.id+'-'+respuesta.data.descripcion);
+                $(select+'_id').val(respuesta.data.id);
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -616,6 +547,31 @@ $("#form").submit(function(e) {
               return false;
             }
          });
+
+         $( "#niif" ).autocomplete({
+            source: function( request, response ) {
+                var url_niif = 'niifsactivosfijos?search='+$('#niif').val(); //TODO: buscar en todas las 15 y 16
+    
+               $.ajax({
+                 method: "GET",
+                 url: url_back + url_niif,
+                 headers: { 
+                    Authorization: 'Bearer ' + localStorage.access_token
+                },
+                 dataType: "json",
+                 success: function(respuesta) {
+                    response(respuesta);
+                 }
+               });
+            },
+            minLength: 2,
+            select: function (event, ui) {
+              // Set selection
+              $('#niif').val(ui.item.label); // display the selected text
+              $('#niif_id').val(ui.item.value); // save selected id to input
+              return false;
+            }
+         });
     
     //********************************************************************************************************************************************************************
     
@@ -644,7 +600,8 @@ $("#form").submit(function(e) {
     $( document ).ready(function() {
         $('.preloader').hide("slow");
           validarLogin();
-    
+          actualizarmoneda();
+
         obtenerActivosfijos(localStorage.editar);
         obtenerDepartamentos();
     
