@@ -1,5 +1,4 @@
 function obtenerNumeracionfacturaventa(id){
-
     var url = 'numeracionfacturaventas/'+ id;
     
     $.ajax({
@@ -18,6 +17,10 @@ function obtenerNumeracionfacturaventa(id){
             $('#consecutivohasta').val(respuesta.data.consecutivohasta);
             $('#vigenciameses').val(respuesta.data.vigenciameses);
             $('#alertaconsecutiva').val(respuesta.data.alertaconsecutiva);
+
+            if(respuesta.data.tipofacturacione_id){
+                obtenerSelect('tipofacturaciones','#select-tipofacturaciones',respuesta.data.tipofacturacione_id);
+            }
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

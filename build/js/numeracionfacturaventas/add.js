@@ -11,6 +11,7 @@ $("#form").submit(function(e) {
     var consecutivohasta = $('#consecutivohasta').val();
     var vigenciameses = $('#vigenciameses').val();
     var alertaconsecutiva = $('#alertaconsecutiva').val();
+    var tipofacturacione_id = $('#select-tipofacturaciones').val()? $('#select-tipofacturaciones').val() : '';
     
     formData.append("numeroresolucion", numeroresolucion);
     formData.append("fecharesolucion", fecharesolucion);
@@ -19,9 +20,9 @@ $("#form").submit(function(e) {
     formData.append("consecutivohasta", consecutivohasta);
     formData.append("vigenciameses", vigenciameses);
     formData.append("alertaconsecutiva", alertaconsecutiva);
+    formData.append("tipofacturacione_id", tipofacturacione_id);
     formData.append("empresa_id", localStorage.empresa_id);
     formData.append("creador_id", localStorage.id);
-    
     
     $.ajax({
         method: "POST",
@@ -44,17 +45,11 @@ $("#form").submit(function(e) {
         },
         error: function(respuesta) {
     
-            if(respuesta.responseJSON){
-                if(respuesta.responseJSON.error.message[1] =! ''){
+            if(respuesta.responseJSON.error){
                         $.each(respuesta.responseJSON.error.message, function (key, item) {
                         var mensaje = item[0];
-                        console.log(key + item[0]);
                         sweetMessage('error', mensaje);
                     });
-                }else{
-                    var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.' + respuesta.responseJSON.error.message;
-                    sweetMessage('error',  mensaje);
-                }
             }else{
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                 sweetMessage('error', mensaje);
@@ -80,6 +75,7 @@ $("#form").submit(function(e) {
     $( document ).ready(function() {
         $('.preloader').hide("slow");
         validarLogin();
+        obtenerSelects('tipofacturaciones','#select-tipofacturaciones');
     
         $('#numeroresolucion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');
     });

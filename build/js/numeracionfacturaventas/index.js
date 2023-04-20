@@ -31,7 +31,7 @@ var generarDataTable = function( dataSet ) {
 
   $("#example1").DataTable({
     data: dataSet,
-    detroy: true,
+    destroy: true,
     columns: [
             { title: "Numero Resolución" },
             { title: "Prefijo" },
@@ -53,8 +53,9 @@ var generarDataTable = function( dataSet ) {
           dom: 'Bfrtip',
          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
   }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  
+  }
 
-}
 
 var infoTable = function(){
 var url = 'empresas/'+ localStorage.empresa_id +'/numeracionfacturaventas';
@@ -76,7 +77,6 @@ var url = 'empresas/'+ localStorage.empresa_id +'/numeracionfacturaventas';
         }) 
 
 }
-
 
 
 function desactivar(id){

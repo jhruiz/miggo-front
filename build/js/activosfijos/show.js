@@ -254,6 +254,7 @@ $.ajax({
 $( document ).ready(function() {
   $('.preloader').hide("slow");
   validarLogin();
+  actualizarmoneda();
 
   obtenerActivosfijos(localStorage.ver);
 });

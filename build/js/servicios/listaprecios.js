@@ -234,6 +234,7 @@ $("#formPrecio").submit(function(e) {
         $('.preloader').hide("slow");
           validarLogin();
           obtenerListaprecio(localStorage.editar);
+          actualizarmoneda();
     
           $("#crear1").on("click",crearLista);
           $("#crear2").on("click",crearLista);

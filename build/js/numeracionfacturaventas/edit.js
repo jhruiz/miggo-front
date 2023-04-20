@@ -11,6 +11,7 @@ $("#form").submit(function(e) {
     var consecutivohasta = $('#consecutivohasta').val();
     var vigenciameses = $('#vigenciameses').val();
     var alertaconsecutiva = $('#alertaconsecutiva').val();
+    var tipofacturacione_id = $('#select-tipofacturaciones').val();
     
     formData.append("numeroresolucion", numeroresolucion);
     formData.append("fecharesolucion", fecharesolucion);
@@ -19,6 +20,7 @@ $("#form").submit(function(e) {
     formData.append("consecutivohasta", consecutivohasta);
     formData.append("vigenciameses", vigenciameses);
     formData.append("alertaconsecutiva", alertaconsecutiva);
+    formData.append("tipofacturacione_id", tipofacturacione_id);
     formData.append('_method', 'PUT');
     
     $.ajax({
@@ -77,6 +79,12 @@ $("#form").submit(function(e) {
             $('#consecutivohasta').val(respuesta.data.consecutivohasta);
             $('#vigenciameses').val(respuesta.data.vigenciameses);
             $('#alertaconsecutiva').val(respuesta.data.alertaconsecutiva);
+
+            if(respuesta.data.tipofacturacione_id){
+                obtenerSelect('tipofacturaciones','#select-tipofacturaciones',respuesta.data.tipofacturacione_id);
+            }else{
+                obtenerSelects('tipofacturaciones','#select-tipofacturaciones');
+            }
         },
         error: function() {
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';

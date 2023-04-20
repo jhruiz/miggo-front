@@ -376,6 +376,7 @@ $("#form").submit(function(e) {
         $('.preloader').hide("slow");
         validarLogin();
         defaultImagen();
+        actualizarmoneda();
     
         obtenerDepartamentos();
         obtenerGruposactivosfijos();

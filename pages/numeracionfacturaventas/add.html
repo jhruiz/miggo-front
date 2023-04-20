@@ -19,6 +19,16 @@
   <div class="card-body">
         
         <form method="POST" id="form" action="" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="exampleSelectBorder">Tipo Facturacion <code>&nbsp;*</code></label>
+                    <select class="custom-select form-control-border" id="select-tipofacturaciones" >
+                    <!-- <option>Value 1</option> -->
+    
+                    </select>
+                </div>
+                </div>
   
             <div class="form-group">
                 <label>Numero Resolucion <code> &nbsp;*</code></label>
@@ -26,7 +36,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                     </div> 
-                    <input type="text" id="numeroresolucion" class="form-control input-texto-alfanumerico" placeholder="Numero Resolucion" required>  
+                    <input type="text" id="numeroresolucion" class="form-control input-texto-alfanumerico" placeholder="Numero Resolucion" >  
                 </div> 
             </div> 
 
@@ -36,7 +46,7 @@
                     <div class="input-group-prepend" data-target="#fecharesolucion" data-toggle="datetimepicker">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                         </div>
-                    <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesolucion" required/>
+                    <input type="text" id="fecharesoluciones" class="form-control datetimepicker-input" data-target="#fecharesolucion" />
                 </div>
             </div>
 
@@ -46,7 +56,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div> 
-                <input type="text" id="prefijo" class="form-control input-texto-alfanumerico" placeholder="Prefijo" required>  
+                <input type="text" id="prefijo" class="form-control input-texto-alfanumerico" placeholder="Prefijo" >  
             </div> 
         </div> 
 
@@ -56,7 +66,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div> 
-                <input type="text" id="consecutivodesde" class="form-control input-texto-alfanumerico" placeholder="Consecutivo Desde" required>  
+                <input type="text" id="consecutivodesde" class="form-control input-numero" placeholder="Consecutivo Desde" >  
             </div> 
         </div> 
 
@@ -66,10 +76,9 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div> 
-                <input type="text" id="consecutivohasta" class="form-control input-texto-alfanumerico" placeholder="Consecutivo Hasta" required>  
+                <input type="text" id="consecutivohasta" class="form-control input-numero" placeholder="Consecutivo Hasta" >  
             </div> 
         </div> 
-
 
         <div class="form-group">
             <label>Vigencia Meses <code> &nbsp;*</code></label>
@@ -77,7 +86,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div> 
-                <input type="text" id="vigenciameses" class="form-control input-texto-alfanumerico" placeholder="Vigencia Meses" required>  
+                <input type="text" id="vigenciameses" class="form-control input-numero" placeholder="Vigencia Meses" >  
             </div> 
         </div> 
 
@@ -88,10 +97,9 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                 </div> 
-                <input type="text" id="alertaconsecutiva" class="form-control input-texto-alfanumerico" placeholder="Alerta Consecutiva" required>  
+                <input type="text" id="alertaconsecutiva" class="form-control input-numero" placeholder="Alerta Consecutiva" >  
             </div> 
         </div> 
-
 
             <div class="col-12 float-right">
                 <button type="submit" class="btn btn-primary">Crear</button>

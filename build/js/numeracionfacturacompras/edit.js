@@ -48,7 +48,6 @@ $("#form").submit(function(e) {
                     var mensaje = item[0];
                     sweetMessage('error', mensaje);
                 });
-    
             }else{
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                 sweetMessage('error', mensaje);

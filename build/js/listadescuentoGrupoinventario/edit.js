@@ -18,7 +18,6 @@ var obtenerListadescuento = function(){
 }
 
 function obtenerGrupoinventario() {
-
 url = 'allgrupoinventarios';
 
 $.ajax({
@@ -30,7 +29,6 @@ $.ajax({
     dataType: "json",
     success: function(respuesta) {
         $('#select-grupoinventario').html(crearHtml(respuesta));
-
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -96,7 +94,7 @@ var crearHtml = function(data) {
   
   var infoTable = function(){
   
-  var url = 'listadescuentos/'+ localStorage.editar +'/grupoinventarios';
+  var url = 'empresas/'+ localStorage.editar +'/listadescuentos';
   
       $.ajax({
               method: "GET",

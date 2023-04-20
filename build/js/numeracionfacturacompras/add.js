@@ -44,17 +44,11 @@ $("#form").submit(function(e) {
         },
         error: function(respuesta) {
     
-            if(respuesta.responseJSON){
-                if(respuesta.responseJSON.error.message[1] =! ''){
+            if(respuesta.responseJSON.error){
                         $.each(respuesta.responseJSON.error.message, function (key, item) {
                         var mensaje = item[0];
-                        console.log(key + item[0]);
                         sweetMessage('error', mensaje);
                     });
-                }else{
-                    var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.' + respuesta.responseJSON.error.message;
-                    sweetMessage('error',  mensaje);
-                }
             }else{
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                 sweetMessage('error', mensaje);
