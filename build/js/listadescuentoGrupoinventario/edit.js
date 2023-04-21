@@ -8,7 +8,7 @@ var obtenerListadescuento = function(){
     },
     dataType: "json",
     success: function(respuesta) {
-      $('#listadescuento').text("Lista descuento "+respuesta.data.descripcion +" Grupo Inventario :");
+      $('#listadescuento').text("Descuento: "+respuesta.data.descripcion);
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -17,8 +17,95 @@ var obtenerListadescuento = function(){
   })  
 }
 
+
+function obtenerServicio() {
+  url = 'servicios';
+  
+  $.ajax({
+      method: "GET",
+      url: url_back + url,  
+       headers: { 
+          Authorization: 'Bearer ' + localStorage.access_token
+      },
+      dataType: "json",
+      success: function(respuesta) {
+          $('#select-servicios').html(crearHtmlSerArt(respuesta.data));
+      },
+      error: function() {
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+          sweetMessage('error', mensaje);
+      }
+    })     
+  }
+
+
+  function obtenerArticulo() {
+    url = 'articulos';
+    
+    $.ajax({
+        method: "GET",
+        url: url_back + url,  
+         headers: { 
+            Authorization: 'Bearer ' + localStorage.access_token
+        },
+        dataType: "json",
+        success: function(respuesta) {
+            $('#select-articulos').html(crearHtmlSerArt(respuesta.data));
+        },
+        error: function() {
+            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+            sweetMessage('error', mensaje);
+        }
+      })     
+    }
+
+
+  var crearHtmlSerArt = function(data) {
+    var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+      $.each(data, function (key, item) {
+          html += '<option value="'+ item.id+'">';
+          html += item.codigo+'-'+item.nombre;
+          html += '</option>';
+      });
+    return html;
+  }
+
+
+
+function obtenerCliente() {
+  url = 'allclientes/'+ localStorage.empresa_id;
+  
+  $.ajax({
+      method: "GET",
+      url: url_back + url,  
+       headers: { 
+          Authorization: 'Bearer ' + localStorage.access_token
+      },
+      dataType: "json",
+      success: function(respuesta) {
+          $('#select-clientes').html(crearHtmlCliente(respuesta.data));
+      },
+      error: function() {
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+          sweetMessage('error', mensaje);
+      }
+    })     
+  }
+
+
+  var crearHtmlCliente = function(data) {
+    var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
+      $.each(data, function (key, item) {
+          html += '<option value="'+ item.id+'">';
+          html += item.tercero.identificacion+'-'+item.tercero.nombres;
+          html += '</option>';
+      });
+    return html;
+  }
+
+
 function obtenerGrupoinventario() {
-url = 'allgrupoinventarios';
+url = 'allgrupoinventarios/'+ localStorage.empresa_id;
 
 $.ajax({
     method: "GET",
@@ -28,7 +115,7 @@ $.ajax({
     },
     dataType: "json",
     success: function(respuesta) {
-        $('#select-grupoinventario').html(crearHtml(respuesta));
+        $('#select-grupoinventario').html(crearHtml(respuesta.data));
     },
     error: function() {
         var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -36,6 +123,26 @@ $.ajax({
     }
   })     
 }
+
+function obteneraZonaventas() {
+  url = 'allzonaventas/'+ localStorage.empresa_id;
+  
+  $.ajax({
+      method: "GET",
+      url: url_back + url,  
+       headers: { 
+          Authorization: 'Bearer ' + localStorage.access_token
+      },
+      dataType: "json",
+      success: function(respuesta) {
+          $('#select-zonaventas').html(crearHtml(respuesta.data));
+      },
+      error: function() {
+          var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
+          sweetMessage('error', mensaje);
+      }
+    })     
+  }
 
 var crearHtml = function(data) {
       var html = '<option value="" selected="true" disabled="disabled">Selecione...</option>';
@@ -48,9 +155,21 @@ var crearHtml = function(data) {
 }
 
   var organizarDatos = function( data ) {  
-      var arrListadescuentos = [];
-      var i = 0;
-      data.forEach(element => {
+      let arrListadescuentos = [];
+      let i = 0;
+      let evaluar = $('#aplicable').val();
+
+  switch (evaluar) { 
+    case 'grupoinventarios': 
+
+
+        $('#divC').hide();
+        $('#divG').show();
+        $('#divZ').hide();
+        $('#divS').hide();
+        $('#divA').hide();
+
+          data.grupoinventarios.forEach(element => {
           arrListadescuento = [
               element.codigo,
               element.descripcion,
@@ -61,18 +180,139 @@ var crearHtml = function(data) {
   
           arrListadescuentos.push(arrListadescuento);
       });
-  
+
       return arrListadescuentos;
+
+
+      break;
+    case 'zonaventas': 
+
+        $('#divC').hide();
+        $('#divG').hide();
+        $('#divZ').show();
+        $('#divS').hide();
+        $('#divA').hide();
+
+          data.zonaventas.forEach(element => {
+            arrListadescuento = [
+                element.codigo,
+                element.descripcion,
+            ];
+
+            i++;
+            arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+
+            arrListadescuentos.push(arrListadescuento);
+        });
+
+      return arrListadescuentos;
+
+      break;
+    case 'servicios': 
+
+        $('#divC').hide();
+        $('#divG').hide();
+        $('#divZ').hide();
+        $('#divS').show();
+        $('#divA').hide();
+
+          data.servicios.forEach(element => {
+            arrListadescuento = [
+                element.codigo,
+                element.nombre,
+            ];
+
+            i++;
+            arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+
+            arrListadescuentos.push(arrListadescuento);
+        });
+
+       return arrListadescuentos;
+
+      break;		
+    case 'articulos': 
+
+          $('#divC').hide();
+          $('#divG').hide();
+          $('#divZ').hide();
+          $('#divS').hide();
+          $('#divA').show();
+
+          data.articulos.forEach(element => {
+            arrListadescuento = [
+                element.codigo,
+                element.nombre,
+            ];
+
+            i++;
+            arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+
+            arrListadescuentos.push(arrListadescuento);
+        });
+
+        return arrListadescuentos;
+
+      break;
+    case 'clientes': 
+
+          $('#divC').show();
+          $('#divG').hide();
+          $('#divZ').hide();
+          $('#divS').hide();
+          $('#divA').hide();
+
+          data.clientes.forEach(element => {
+            arrListadescuento = [
+                element.tercero.identificacion,
+                element.tercero.nombres,
+            ];
+
+            i++;
+            arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+
+            arrListadescuentos.push(arrListadescuento);
+        });
+
+       return arrListadescuentos;
+
+      break;
+    default:
+
+            $('#divC').hide();
+            $('#divG').show();
+            $('#divZ').hide();
+            $('#divS').hide();
+            $('#divA').hide();
+            $('#aplicable').val('grupoinventarios'); 
+
+            data.grupoinventarios.forEach(element => {
+              arrListadescuento = [
+                  element.codigo,
+                  element.descripcion,
+              ];
+
+              i++;
+              arrListadescuento.push('<div class="col text-center">  <button class="btn btn-danger btn-sm" type="submit" onclick="eliminarListadescuentoG('+ element.id +')"><i class="nav-icon fa fa-times" aria-hidden="true"></i></button> </div>'); 
+
+              arrListadescuentos.push(arrListadescuento);
+          });
+
+          $('#select-aplicables option[value="grupoinventarios"]').attr("selected",true);
+          return arrListadescuentos;
+        }
+
   }
-  
+
   
   var generarDataTable = function( dataSet ) {
   
-    $("#example1").DataTable({
+    $("#example2").DataTable({
       data: dataSet,
+      destroy: true,
       columns: [
               { title: "Codigo" },
-              { title: "Descripcion" },
+              { title: "Nombre" },
               { title: "Acciones" },
               ],
       "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -86,15 +326,14 @@ var crearHtml = function(data) {
             },
           dom: 'Bfrtip',
           "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
   
   }
   
   
   
-  var infoTable = function(){
-  
-  var url = 'empresas/'+ localStorage.editar +'/listadescuentos';
+  var infoTable2 = function(){
+  var url = 'listadescuentos/'+ localStorage.editar;
   
       $.ajax({
               method: "GET",
@@ -111,16 +350,14 @@ var crearHtml = function(data) {
                   sweetMessage('error', mensaje);
               }
           }) 
-  
   }
   
   
   
   
   function eliminarListadescuentoG(id){
-  var url_eliminar = 'listadescuentos/' + localStorage.editar +'/grupoinventarios/'+id;
-  var url_edit = 'listadescuentoGrupoinventario/edit.html';
-  
+    let evaluar = $('#aplicable').val() ? $('#aplicable').val() : 'grupoinventarios';
+    let url_eliminar = 'listadescuentos/' + localStorage.editar +'/aplicables/'+id+'?aplicar='+ evaluar; 
 
   if(localStorage.nivelperfil == 2){
 
@@ -137,8 +374,7 @@ var crearHtml = function(data) {
 
                   var mensaje = 'se borro exitosamente la parte: ' + respuesta.data.descripcion;
                   sweetMessage('success', mensaje);
-                  
-                  $('#main_content').load(url_front + url_edit);
+                  infoTable2();
               },
               error: function() {
                   var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -159,9 +395,16 @@ var crearHtml = function(data) {
 
   $("#vincular").on('click',function(e){
 
-    var grupo = $('#select-grupoinventario').val();
-    var url = 'listadescuentos/'+ localStorage.editar +'/grupoinventarios/'+grupo;
-    var url_edit = 'listadescuentoGrupoinventario/edit.html';
+    let evaluar = $('#aplicable').val() ? $('#aplicable').val(): '';
+    let id = $('#id').val() ? $('#id').val(): '';
+    let url = 'listadescuentos/'+ localStorage.editar +'/aplicables/'+id+'?aplicar='+ evaluar; 
+
+    if(evaluar == '' || id == ''){
+        var mensaje = 'debe selecionar un Valor'; 
+        sweetMessage('info', mensaje);
+        return false;
+    }
+
   
   $.ajax({
           method: "PUT",
@@ -171,9 +414,9 @@ var crearHtml = function(data) {
           },
           dataType: 'json',
           success: function(respuesta) {
-            var mensaje = 'se agrego exitosamente el grupo: ' + respuesta.data.descripcion;
-            sweetMessage('success', mensaje);
-            $('#main_content').load(url_front + url_edit);    
+              var mensaje = 'se agrego exitosamente a la lista de descuento ' + respuesta.data.descripcion;
+              sweetMessage('success', mensaje);
+              infoTable2();
           },
           error: function() {
               var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde o la tabla esta vacia';
@@ -187,8 +430,13 @@ var crearHtml = function(data) {
     $('.preloader').hide("slow");
     validarLogin();
   
-    infoTable(); 
+    infoTable2(); 
     obtenerGrupoinventario();
+    obteneraZonaventas();
+    obtenerCliente();
+    obtenerArticulo();
+    obtenerServicio();
+
     obtenerListadescuento();
 
     var saludos = 'Hola '+ localStorage.nombres;

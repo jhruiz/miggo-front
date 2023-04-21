@@ -1,21 +1,25 @@
-
 var organizarDatos = function( data ) {  
   var arrListadescuentos = [];
 var i = 0;
+console.log(data);
   // se recorre la respuesta y se genera un array de arrays.
   data.data.forEach(element => {
       arrListadescuento = [
           element.descripcion,
-          data.count[i],
+          data.grupoinventarios[i],
+          data.zonaventas[i],
+          data.servicios[i],
+          data.articulos[i],
+          data.clientes[i],
 
       ];
 
 
       if(localStorage.nivelperfil >= 1){
-        arrListadescuento.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verListadecuentoGrupo('+ element.id+ ','+ data.count[i] +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarListadecuentoGrupo('+ element.id + ')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> </div>'); 
+        arrListadescuento.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verListadecuentoGrupo('+ element.id+ ')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; <button class="btn btn-info btn-sm" type="submit" onclick="editarListadecuentoGrupo('+ element.id + ')"><i class="nav-icon fa fa-pencil-alt" aria-hidden="true"></i></button> </div>'); 
 
       }else if(localStorage.nivelperfil == 0){
-        arrListadescuento.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verListadecuentoGrupo('+ element.id+ ','+ data.count[i] +')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; </div>'); 
+        arrListadescuento.push('<div class="col text-center">  <button class="btn btn-success btn-sm" type="submit" onclick="verListadecuentoGrupo('+ element.id+ ')" data-toggle="modal" data-target="#exampleModalLong"><i class="nav-icon fas fa-search" aria-hidden="true"></i></button> &nbsp; </div>'); 
 
       }
 
@@ -33,7 +37,11 @@ $("#example1").DataTable({
   data: dataSet,
   columns: [
           { title: "Lista Descuentos" },
-          { title: "Cantidad Grupo de Inventario" },
+          { title: "N° Grupos Inv." },
+          { title: "N° Zona ventas" },
+          { title: "N° Servicios" },
+          { title: "N° Articulos" },
+          { title: "N° Clientes" },
           { title: "Acciones" },
           ],
   "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -54,7 +62,6 @@ $("#example1").DataTable({
 
 
 var infoTable = function(){
-
 var url = 'todaslistadescuentos';
 
   $.ajax({
@@ -82,28 +89,22 @@ $('#main_content').load(url_front + url_edit);
   localStorage.setItem('editar', id);
 }
 
-function verListadecuentoGrupo(id, count){
-if(count){
-    $('#mymodal').html('');
-    localStorage.setItem('ver', id);
-    $('#mymodal').load('../listadescuentoGrupoinventario/show.html',function(){
-          $('#exampleModalLong').modal({show:true});
-      });
-}else{
-    var mensaje = 'No tiene partes asignadas, inténtelo mas tarde.';
-    sweetMessage('info', mensaje);
-}
-
+function verListadecuentoGrupo(id){
+        $('#mymodal').html('');
+        localStorage.setItem('ver', id);
+        $('#mymodal').load('../listadescuentos/show.html',function(){
+              $('#exampleModalLong').modal({show:true});
+          });
 }
 
 
 $( document ).ready(function() {
-$('.preloader').hide("slow");
-validarLogin();
+  $('.preloader').hide("slow");
+  validarLogin();
 
-infoTable(); 
+  infoTable(); 
 
-var saludos = 'Hola '+ localStorage.nombres;
-$('#saludos').text(saludos);
+  var saludos = 'Hola '+ localStorage.nombres;
+  $('#saludos').text(saludos);
 
 });
