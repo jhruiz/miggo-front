@@ -404,7 +404,7 @@ $("#form").change(function(e) {
             }
         }
     
-        $(function() {
+    $(function() {
      $("#fechainvima").datetimepicker({
             locale: "es",
             format: "YYYY-MM-DD",  

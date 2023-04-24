@@ -17,6 +17,10 @@ $('.input-numero-negativo').on('input', function () {
     $('.input-numero-negativo').numeric({ negative : true });
 });
 
+$('.input-numero-decimal1').on('input', function () { 
+  $('.input-numero-decimal1').numeric({ decimal: ",", decimalPlaces : 1, negative : false });
+});
+
 $('.input-numero-decimal2').on('input', function () { 
     $('.input-numero-decimal2').numeric({ decimal: ",", decimalPlaces : 2, negative : false });
 });

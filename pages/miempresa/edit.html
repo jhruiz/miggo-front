@@ -21,7 +21,6 @@
         <form id="formEmpresa"  method="PUT" action="" enctype="multipart/form-data">
 
 
-             <!--  -->
              <div class="col-12">
                 <div class="row">
     
@@ -134,22 +133,15 @@
             </div>
 
         </div>
-        <!--  -->
 
 
-            <!--  -->
-
-                        <!-- iCheck -->
                         <div class="card card-info">
                             <div class="card-header">
                               <h3 class="card-title">Marque las casillas con que cumple la Empresa</h3>
                             </div>
-                            <!-- <div class="card-body"> -->
-                              <!-- Minimal style -->
                               <div class="row">
 
                                 <div class="col-sm-3">
-                                  <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
                                       <input type="checkbox" id="autoretenedor">
@@ -162,7 +154,6 @@
 
                                 <div class="col-sm-3">
 
-                                  <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-success d-inline">
                                       <input type="checkbox" id="autoretenedorica">
@@ -175,7 +166,6 @@
                                 </div>
 
                                 <div class="col-sm-3">
-                                    <!-- checkbox -->
                                     <div class="form-group clearfix">
                                       <div class="icheck-danger d-inline">
                                         <input type="checkbox" id="autoretenedorrenta">
@@ -201,7 +191,6 @@
 
                               <div class="row">
                                 <div class="col-sm-12">
-                                  <!-- checkbox -->
                                   <div class="form-group clearfix">
                                     <div class="icheck-success d-inline">
                                         <input type="checkbox" id="pucedit">
@@ -213,7 +202,6 @@
                                 </div>
                               </div>
                           </div>
-                          <!-- /.card -->
             
                           <div class="col-12">
                             <div class="row">
@@ -243,7 +231,6 @@
                             </div> 
                         </div> 
 
-            <!--  -->
             <div class="col-12">
                 <div class="row">
   
@@ -262,7 +249,6 @@
                         <label for="exampleSelectRounded0">Tipo Contribuyente </label>
                         <select class="custom-select rounded-0" id="select-tipocontribuyentes" >
                           <!-- <option>Value 1</option> -->
-        
                         </select>
                       </div> 
                   </div>
@@ -272,7 +258,6 @@
                         <label for="exampleSelectRounded0">Regimen </label>
                         <select class="custom-select rounded-0" id="select-regimenes">
                           <!-- <option>Value 1</option> -->
-        
                         </select>
                       </div>
                   </div>
@@ -282,16 +267,13 @@
                         <label for="exampleSelectRounded0">Personeria </label>
                         <select class="custom-select rounded-0" id="select-personerias">
                           <!-- <option>Value 1</option> -->
-        
                         </select>
                       </div>
                   </div>
   
             </div>
         </div>
-        <!--  -->
 
-         <!--  -->
          <div class="col-12">
             <div class="row">
 
@@ -324,7 +306,6 @@
                     <label for="exampleSelectRounded0">Departamento</label>
                     <select class="custom-select rounded-0" id="select-departamento">
                       <!-- <option>Value 1</option> -->
-    
                     </select>
                   </div>
               </div>
@@ -334,17 +315,13 @@
                     <label for="exampleSelectRounded0">Ciudad</label>
                     <select class="custom-select rounded-0" id="select-ciudad">
                       <!-- <option>Value 1</option> -->
-    
                     </select>
                   </div>
               </div>
 
         </div>
     </div>
-    <!--  -->
 
-
-             <!--  -->
              <div class="col-12">
                 <div class="row">
     
@@ -356,14 +333,34 @@
                   </div>
                   </div>
     
+
                   <div class="col-sm-6">
+
+
+
+                    <div class="bg-gray py-2 px-3 mt-4">
+                        <div class="card-tools">
+                            <a id="editarDecimal" href="#" class="btn btn-tool btn-sm float-right">
+                              <i class="fas fa-edit"></i>
+                            </a>
+                          </div>
+                        <h4 class="mt-0">
+                            <small id="decimalMoneda"> </small>
+                        </h4>
+                        <h4 class="mt-0">
+                            <small id="decimalPeso"> </small>
+                        </h4>
+                        <input type="text" id="decimale" hidden>
+                      </div>  
+
+
                     <div class="form-group">
                         <label>Direccion</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                             </div>
-                            <textarea id="direccion" class="form-control" rows="4" placeholder="Dirección ..."></textarea>
+                            <textarea id="direccion" class="form-control" rows="2" placeholder="Dirección ..."></textarea>
                         </div> 
                     </div>
 
@@ -389,15 +386,11 @@
                         <input type="text" id="idica" hidden>
 
                         <div class="col-sm-2">
-                            <!-- <ol class="float-sm-right"> -->
                                 <ol class="breadcrumb" style="background: rgba(128, 128, 128, 0);">
                                     <li class="breadcrumb-item active">
-                                            <!-- <li class="breadcrumb-item active"> -->
                                     <button class="btn btn-success btn-sm" id="crearica" data-toggle="modal" data-target="#ModalLong3">
-                                        <!-- <button class="btn btn-success btn-sm" id="crearica" onclick="crearRetencionica()" data-toggle="modal" data-target="#ModalLong3"> -->
                                         <i class="fas fa fa-plus" aria-hidden="true" id="crear"></i>
                                     </button>
-                                    <!-- <div class="col text-center"></div> -->
                                     <button class="btn btn-success btn-sm" id="verica" data-toggle="modal" data-target="#ModalLong">
                                         <i class="nav-icon fas fa-search" aria-hidden="true"></i>
                                     </button>
@@ -417,7 +410,6 @@
 
 
                     <div class="form-group">
-                        <!-- <label>Retencion ICA</label> -->
                         <select multiple class="form-control" id="select-retencionicas">
                           <!-- <option>option 1</option> -->
                         </select>
@@ -449,7 +441,6 @@
                             <label for="exampleSelectRounded0">Tipo Sociedades</label>
                             <select class="custom-select rounded-0" id="select-tiposociedades">
                               <!-- <option>Value 1</option> -->
-            
                             </select>
                     </div>
 
@@ -460,13 +451,7 @@
 
 
         </div>
-        <!--  -->
 
-
-
-
-
-<!--  -->
 
 <div class="card">
     <div class="card-header border-0">
@@ -486,9 +471,6 @@
       </table>
     </div>
   </div>
-  <!-- /.card -->
-<!--  -->
-
 
 
       <div class="col-12">
@@ -552,7 +534,6 @@
 
 
             <div class="col-12 float-right">
-                <!-- <button type="submit" id="actualizar" class="btn btn-primary float-right">Actualizar</button> -->
             </div> 
 
         </form>
@@ -662,15 +643,8 @@ $.ajax({
     // async: false,
     success: function(respuesta) {
 
-        if(respuesta){
             var mensaje = 'Empresa actualizado de forma correcta nombre.: '+ respuesta.data.nombre;
             sweetMessage('success', mensaje); 
-            // localStorage.editar = '';
-            // $('#main_content').load(url_front + 'empresas/index.html');
-        } else {
-            var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-            sweetMessage('error', mensaje);
-        }
     },
     error: function(respuesta) {
 
@@ -685,8 +659,6 @@ $.ajax({
             var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
             sweetMessage('error', mensaje);
         }
- 
-
     }
 });
 });
@@ -795,14 +767,13 @@ var crearRetencionica = function(e){ //TODO: error se debe crear con la empresa 
     });
 }
 
-
-
 //*****************************************************Socios ***************************************************************
 
 var generarDataTable = function( dataSet ) {
 
 $("#socios").DataTable({
   data: dataSet,
+  destroy: true,
   columns: [
           { title: "Nombre" },
           { title: "Apellidos" },
@@ -1155,10 +1126,23 @@ var url_index = 'miempresa/edit.html';
   }
 };
 
+
+var editarDecimal = function() {
+event.preventDefault();
+
+let id = $('#decimale').val();
+  $('#mymodal').html('');
+  localStorage.setItem('editardecimale', id);
+
+  $('#mymodal').load('../miempresa/decimale/edit.html',function(){
+        $('#ModalLong2').modal({show:true});
+  });
+};
+
+
 //***************************************************trae valores*******************
 
 function obtenerEmpresa(id){
-
 var url = 'empresas/'+ id;
 
 $.ajax({
@@ -1190,6 +1174,14 @@ $.ajax({
         $('#contactonombre').val(respuesta.data.contactonombre);
         $('#contactocelular').val(respuesta.data.contactocelular);
 
+        $('#decimale').val(respuesta.data.decimale.id);
+
+        let decimalMoneda = 'Cantidad decimales para la Moneda son: '+ respuesta.data.decimale.decimalMoneda;
+        $('#decimalMoneda').text(decimalMoneda);
+
+        let decimalPeso = 'Cantidad decimales para el Peso son: '+ respuesta.data.decimale.decimalPeso;
+        $('#decimalPeso').text(decimalPeso);
+
         respuesta.data.autoretenedor == 1 ? $('#autoretenedor').prop( "checked", true ) : $('#autoretenedor').prop( "checked", false );
         respuesta.data.autoretenedorica == 1 ? $('#autoretenedorica').prop( "checked", true ) : $('#autoretenedorica').prop( "checked", false );
         respuesta.data.autoretenedorrenta == 1 ? $('#autoretenedorrenta').prop( "checked", true ) : $('#autoretenedorrenta').prop( "checked", false );
@@ -1210,7 +1202,6 @@ $.ajax({
             $('#verica').prop('disabled', true);
             $('#editarica').prop('disabled', true);
             $('#eliminarica').prop('disabled', true);
-
         }else{
             $('#autoretenedorica').prop('disabled', true);
             $('#crearica').prop('disabled', false);
@@ -1337,9 +1328,9 @@ var recargarDepartamento = function(){
 
 $( document ).ready(function() {  
     // TODO: agregar resolucion CRUD
-    // controlador de cuentas puc mejorar la busqueda 
     $('.preloader').hide("slow");
       validarLogin();
+
 
     $("#identificacion").on("change",calcularDigito); // Digito de verificacion
 
@@ -1352,6 +1343,7 @@ $( document ).ready(function() {
     obtenerEmpresa(localStorage.empresa_id);
     obtenerDepartamentos();
 
+    $('#editarDecimal').on("click",editarDecimal);
     $("#select-departamento").on("change",recargarDepartamento); 
 
     $('#email').validCampo('abcdefghijklmnopqrstuvwxyziou@0123456789._-');

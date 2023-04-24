@@ -29,6 +29,8 @@ var loginFunction = function() {
                 localStorage.setItem('perfile_id', respuesta.data.perfile_id);
                 localStorage.setItem('nivelperfil', respuesta.data.perfile.nivel);
                 localStorage.setItem('perfile', respuesta.data.perfile.descripcion);
+                localStorage.setItem('decimalPeso', respuesta.data.empresa.decimale.decimalPeso);
+                localStorage.setItem('decimalMoneda', respuesta.data.empresa.decimale.decimalMoneda);
                 localStorage.setItem('date', new Date());            
 
                 sweetMessage('success', 'login correcto'); 
