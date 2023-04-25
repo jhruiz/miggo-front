@@ -12,7 +12,6 @@
       </div>
 
       <div class="modal-body">
-<!--  -->
 
         <div class="form-group">
           <label>Tarifa</label>
@@ -20,7 +19,10 @@
               <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-id-card"></i></span>
               </div>
-              <input type="text" id="tarifa" class="form-control input-texto-alfanumerico" placeholder="Tarifa" disabled>  
+              <input type="text" id="tarifa" class="form-control input-numero-decimalM" placeholder="Tarifa" disabled>  
+              <div class="input-group-append">
+                <span class="input-group-text monedaSimbolo"></span>
+              </div>
           </div>
         </div>
 
@@ -38,7 +40,6 @@
               <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cerrar</button>&nbsp; 
           </div>
 
-<!--  -->
       </div>
       <div class="modal-footer">
       </div>
@@ -47,36 +48,4 @@
 </div>
 
 
-<script>
-
-function obtenerRetencionica(id){
-
-var url = 'icas/'+ id;
-
-$.ajax({
-    method: "GET",
-    url: url_back + url,
-    headers: { 
-                  Authorization: 'Bearer ' + localStorage.access_token
-              },
-    dataType: "json",
-    success: function(respuesta) {
-        $('#tarifa').val(respuesta.data.tarifa);
-        $('#actividad').val(respuesta.data.actividad);
-
-    },
-    error: function() {
-        var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
-        sweetMessage('error', mensaje);
-    }
-  })  
-}
-
-$(document).ready(function() {
-  $('.preloader').hide("slow");
-    validarLogin();
-    obtenerRetencionica(localStorage.verica);
-
-});
-
-</script>
+<script src="../../build/js/empresas/retencionicas/show.js"></script>

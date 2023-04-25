@@ -17,8 +17,12 @@ $('.input-numero-negativo').on('input', function () {
     $('.input-numero-negativo').numeric({ negative : true });
 });
 
-$('.input-numero-decimal1').on('input', function () { 
-  $('.input-numero-decimal1').numeric({ decimal: ",", decimalPlaces : 1, negative : false });
+$('.input-numero-decimalM').on('input', function () { 
+  $('.input-numero-decimalM').numeric({ decimal: ".", decimalPlaces : parseInt(localStorage.decimalMoneda), negative : false });
+});
+
+$('.input-numero-decimalP').on('input', function () { 
+  $('.input-numero-decimalP').numeric({ decimal: ".", decimalPlaces : parseInt(localStorage.decimalPeso), negative : false });
 });
 
 $('.input-numero-decimal2').on('input', function () { 
