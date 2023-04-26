@@ -28,7 +28,12 @@ var crearArticulo = function(e){
     
     var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
-    
+
+    costounitario = costounitario.indexOf(",") > -1 ? costounitario.toString().replace(',', '.') : 0;
+    costobarras = costobarras.indexOf(",") > -1 ? costobarras.toString().replace(',', '.') : 0;
+    pesovolumen = pesovolumen.indexOf(",") > -1 ? pesovolumen.toString().replace(',', '.') : 0;
+
+
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);
     formData.append("costounitario", costounitario);

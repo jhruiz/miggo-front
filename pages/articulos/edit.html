@@ -74,7 +74,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                             <input type="text" id="pesovolumen" class="form-control input-numero" placeholder="Peso Volumen">  
+                             <input type="text" id="pesovolumen" class="form-control input-numero-decimalP" placeholder="Peso Volumen">  
                                 <div class="input-group-append">
                                     <span class="input-group-text">gr</span>
                                 </div>
@@ -241,7 +241,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="costounitario" class="form-control input-numero" placeholder="Costo Unitario" required>  
+                               <input type="text" id="costounitario" class="form-control input-numero-decimalM" placeholder="Costo Unitario" required>  
+                               <div class="input-group-append">
+                                <span class="input-group-text monedaSimbolo"></span>
+                              </div>
                             </div> 
                         </div> 
 
@@ -261,7 +264,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                               <input type="text" id="costobarras" class="form-control input-numero" placeholder="Costo Barras">  
+                               <input type="text" id="costobarras" class="form-control input-numero-decimalM" placeholder="Costo Barras">  
+                               <div class="input-group-append">
+                                <span class="input-group-text monedaSimbolo"></span>
+                              </div>
                             </div> 
                         </div> 
 
@@ -281,7 +287,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimal2" placeholder="Costos Promedio Bodegas" readonly>  
+                                <input type="text" id="costospromediobodegas" class="form-control input-numero-decimalM" placeholder="Costos Promedio Bodegas" readonly> 
+                                <div class="input-group-append">
+                                    <span class="input-group-text monedaSimbolo"></span>
+                                  </div> 
                             </div> 
                         </div> 
 
@@ -291,7 +300,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                                 </div> 
-                                <input type="text" id="ultimocosto" class="form-control input-numero-decimal2" placeholder="Ultimo Costo" readonly>  
+                                <input type="text" id="ultimocosto" class="form-control input-numero-decimalM" placeholder="Ultimo Costo" readonly>  
+                                <div class="input-group-append">
+                                    <span class="input-group-text monedaSimbolo"></span>
+                                  </div>
                             </div> 
                         </div> 
 

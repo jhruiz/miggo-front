@@ -18,11 +18,11 @@ $('.input-numero-negativo').on('input', function () {
 });
 
 $('.input-numero-decimalM').on('input', function () { 
-  $('.input-numero-decimalM').numeric({ decimal: ".", decimalPlaces : parseInt(localStorage.decimalMoneda), negative : false });
+  $('.input-numero-decimalM').numeric({ decimal: ",", decimalPlaces : parseInt(localStorage.decimalMoneda), negative : false });
 });
 
 $('.input-numero-decimalP').on('input', function () { 
-  $('.input-numero-decimalP').numeric({ decimal: ".", decimalPlaces : parseInt(localStorage.decimalPeso), negative : false });
+  $('.input-numero-decimalP').numeric({ decimal: ",", decimalPlaces : parseInt(localStorage.decimalPeso), negative : false });
 });
 
 $('.input-numero-decimal2').on('input', function () { 

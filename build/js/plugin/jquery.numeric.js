@@ -206,6 +206,7 @@ $.fn.numeric.keyup = function(e)
 
 		// if pasted in, only allow the following characters
 		var validChars = [0,1,2,3,4,5,6,7,8,9,'-',decimal];
+		// var validChars = [0,1,2,3,4,5,6,7,8,9,'-','.',decimal];
 		// get length of the value (to loop through)
 		var length = val.length;
 		// loop backwards (to prevent going out of bounds)
