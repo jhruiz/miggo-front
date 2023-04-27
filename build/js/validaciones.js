@@ -222,3 +222,22 @@ var crearHtml = function(data, base = null, id = null) {
 var actualizarmoneda = function (){
   $('.monedaSimbolo').text(localStorage.moneda);
 }
+
+function isEmpty( el ){
+  return !$.trim(el.html())
+}
+
+function decimalLatinoShow(d){
+   // console.log('type'+ jQuery.type(d));
+ //console.log(d);
+  var decimalLatino = d.toString();
+  decimalLatino = decimalLatino.indexOf(".") > -1  ? decimalLatino.toString().replace('.', ',') : decimalLatino;
+  return decimalLatino;
+}
+
+function decimalLatinoSave(valor){
+  //console.log('type'+ jQuery.type(valor));
+ // console.log(valor);
+  var decimalLatino = valor.indexOf(",") > -1 ? valor.toString().replace(',', '.') : valor;
+  return decimalLatino;
+}

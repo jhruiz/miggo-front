@@ -26,28 +26,28 @@ $("#formPrecio").submit(function(e) {
     
         var ecommerceprecio = $('#ecommerceprecio').val()? $('#ecommerceprecio').val() : '';
     
-        var precio0 = $('#precio' +k+0).val()? $('#precio' +k+0).val() : '';
-        var precio1 = $('#precio' +k+1).val()? $('#precio' +k+1).val() : '';
-        var precio2 = $('#precio' +k+2).val()? $('#precio' +k+2).val() : '';
-        var precio3 = $('#precio' +k+3).val()? $('#precio' +k+3).val() : '';
-        var precio4 = $('#precio' +k+4).val()? $('#precio' +k+4).val() : '';
-        var precio5 = $('#precio' +k+5).val()? $('#precio' +k+5).val() : '';
-        var precio6 = $('#precio' +k+6).val()? $('#precio' +k+6).val() : '';
-        var precio7 = $('#precio' +k+7).val()? $('#precio' +k+7).val() : '';
-        var precio8 = $('#precio' +k+8).val()? $('#precio' +k+8).val() : '';
-        var precio9 = $('#precio' +k+9).val()? $('#precio' +k+9).val() : '';
+        var precio0 = $('#precio' +k+0).val()? $('#precio' +k+0).val() : '0';
+        var precio1 = $('#precio' +k+1).val()? $('#precio' +k+1).val() : '0';
+        var precio2 = $('#precio' +k+2).val()? $('#precio' +k+2).val() : '0';
+        var precio3 = $('#precio' +k+3).val()? $('#precio' +k+3).val() : '0';
+        var precio4 = $('#precio' +k+4).val()? $('#precio' +k+4).val() : '0';
+        var precio5 = $('#precio' +k+5).val()? $('#precio' +k+5).val() : '0';
+        var precio6 = $('#precio' +k+6).val()? $('#precio' +k+6).val() : '0';
+        var precio7 = $('#precio' +k+7).val()? $('#precio' +k+7).val() : '0';
+        var precio8 = $('#precio' +k+8).val()? $('#precio' +k+8).val() : '0';
+        var precio9 = $('#precio' +k+9).val()? $('#precio' +k+9).val() : '0';
     
-        formData.append("precio0", precio0);
-        formData.append("precio1", precio1);
-        formData.append("precio2", precio2);
-        formData.append("precio3", precio3);
-        formData.append("precio4", precio4);
-        formData.append("precio5", precio5);
-        formData.append("precio6", precio6);
-        formData.append("precio7", precio7);
-        formData.append("precio8", precio8);
-        formData.append("precio9", precio9);
-        formData.append("ecommerceprecio", ecommerceprecio);
+        formData.append("precio0", decimalLatinoSave(precio0));
+        formData.append("precio1", decimalLatinoSave(precio1));
+        formData.append("precio2", decimalLatinoSave(precio2));
+        formData.append("precio3", decimalLatinoSave(precio3));
+        formData.append("precio4", decimalLatinoSave(precio4));
+        formData.append("precio5", decimalLatinoSave(precio5));
+        formData.append("precio6", decimalLatinoSave(precio6));
+        formData.append("precio7", decimalLatinoSave(precio7));
+        formData.append("precio8", decimalLatinoSave(precio8));
+        formData.append("precio9", k != 0? decimalLatinoSave(precio9): 0);
+        formData.append("ecommerceprecio", k == 0? decimalLatinoSave(precio9): 0);
         formData.append('_method', 'PUT');
     
              $.ajax({
@@ -208,20 +208,21 @@ $("#formPrecio").submit(function(e) {
     
       element.id ? $('#lista' + k).val(element.id): '';
     
-      element.precio0 ? $('#precio'+ k + 0).val(element.precio0): '';
-      element.precio1 ? $('#precio'+ k + 1).val(element.precio1): '';
-      element.precio2 ? $('#precio'+ k + 2).val(element.precio2): '';
-      element.precio3 ? $('#precio'+ k + 3).val(element.precio3): '';
-      element.precio4 ? $('#precio'+ k + 4).val(element.precio4): '';
-      element.precio5 ? $('#precio'+ k + 5).val(element.precio5): '';
-      element.precio6 ? $('#precio'+ k + 6).val(element.precio6): '';
-      element.precio7 ? $('#precio'+ k + 7).val(element.precio7): '';
-      element.precio8 ? $('#precio'+ k + 8).val(element.precio8): '';
-      element.precio9 ? $('#precio'+ k + 9).val(element.precio9): '';
-      
-            if(element.ecommerceprecio){
-              $('#ecommerceprecio').val(element.ecommerceprecio);
-            }
+      $('#precio'+ k + 0).val(decimalLatinoShow(element.precio0));
+      $('#precio'+ k + 1).val(decimalLatinoShow(element.precio1));
+      $('#precio'+ k + 2).val(decimalLatinoShow(element.precio2));
+      $('#precio'+ k + 3).val(decimalLatinoShow(element.precio3));
+      $('#precio'+ k + 4).val(decimalLatinoShow(element.precio4));
+      $('#precio'+ k + 5).val(decimalLatinoShow(element.precio5));
+      $('#precio'+ k + 6).val(decimalLatinoShow(element.precio6));
+      $('#precio'+ k + 7).val(decimalLatinoShow(element.precio7));
+      $('#precio'+ k + 8).val(decimalLatinoShow(element.precio8));
+
+      if(k == 0){
+        $('#precio09').val(decimalLatinoShow(element.ecommerceprecio));
+      }else{
+        $('#precio'+ k + 9).val(decimalLatinoShow(element.precio9));
+      }
     
             k++;
           });
@@ -233,8 +234,8 @@ $("#formPrecio").submit(function(e) {
     $( document ).ready(function() {
         $('.preloader').hide("slow");
           validarLogin();
-          obtenerListaprecio(localStorage.editar);
           actualizarmoneda();
+          obtenerListaprecio(localStorage.editar);
     
           $("#crear1").on("click",crearLista);
           $("#crear2").on("click",crearLista);

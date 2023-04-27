@@ -7,14 +7,11 @@ $("#form").change(function(e) {
     
     var codigo = $('#codigo').val();
     var nombre = $('#nombre').val();
-    var costounitario = $('#costounitario').val();
     var posnombre = $('#posnombre').val();
     var descripcion = $('#descripcion').val();
     var fechainvima = $('#fechainvimas').val();
-    var costobarras = $('#costobarras').val();
     var referencia = $('#referencia').val();
     var plu = $('#plu').val();
-    var pesovolumen = $('#pesovolumen').val();
     var reginvima = $('#reginvima').val();
     var existenciaminima = $('#existenciaminima').val();
     var cantidadordenar = $('#cantidadordenar').val();
@@ -26,12 +23,18 @@ $("#form").change(function(e) {
     var serial =$('#serial').is(':checked') ? 1 : 0;// 
     var talla =$('#talla').is(':checked') ? 1 : 0; //
     var color =$('#color').is(':checked') ? 1 : 0; //
-
     var estatusdescuento = $('#estatusdescuento').is(':checked') ? 1 : 0; //
     
     var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
-    alert(grupoinventario_id);
+
+    var costounitario = $('#costounitario').val();
+    var pesovolumen = !isEmpty($('#pesovolumen')) ?  $('#pesovolumen').val().toString() : '0';
+    var costobarras = !isEmpty($('#costobarras')) ?  $('#costobarras').val().toString() : '0';
+    
+    costounitario = decimalLatinoSave(costounitario);//no es vacio
+    costobarras = decimalLatinoSave(costobarras);
+    pesovolumen = decimalLatinoSave(pesovolumen);
     
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);
@@ -115,14 +118,11 @@ $("#form").change(function(e) {
     
                 $('#codigo').val(respuesta.data.codigo);
                 $('#nombre').val(respuesta.data.nombre);
-                $('#costounitario').val(respuesta.data.costounitario);
                 $('#posnombre').val(respuesta.data.posnombre);
                 $('#descripcion').val(respuesta.data.descripcion);
                 $('#fechainvimas').val(respuesta.data.fechainvima);
-                $('#costobarras').val(respuesta.data.costobarras);
                 $('#referencia').val(respuesta.data.referencia);
                 $('#plu').val(respuesta.data.plu);
-                $('#pesovolumen').val(respuesta.data.pesovolumen);
                 $('#reginvima').val(respuesta.data.reginvima);
                 $('#existenciaminima').val(respuesta.data.existenciaminima);
                 $('#cantidadordenar').val(respuesta.data.cantidadordenar);
@@ -141,34 +141,38 @@ $("#form").change(function(e) {
                     imagen.width = 200;
                     imagen.src = url_img + 'articulos/'+ respuesta.data.imagen;
                     ul.appendChild(imagen);
-                  }else{
+                }else{
                     const ul = document.getElementById("mostrarImagen");
                     const imagen = document.createElement("img");
                     imagen.width = 200;
                     imagen.src = url_front + 'articulos/defecto.jpg';
                     ul.appendChild(imagen);
-                  }
-    
+                }
+                
                 if(respuesta.data.marca_id){
-                        obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
+                    obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
                 }else{
-                        obtenerSelects('marcas','#select-marcas');
+                    obtenerSelects('marcas','#select-marcas');
                 }
-    
+                
                 if(respuesta.data.grupoinventario_id){
-                        $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
-                        obtenerGrupoinventario(respuesta.data.grupoinventario_id);
+                    $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
+                    obtenerGrupoinventario(respuesta.data.grupoinventario_id);
                 }else{
-                     obtenerGrupoinventarios(); 
+                    obtenerGrupoinventarios(); 
                 }
+                
+                $('#costounitario').val(decimalLatinoShow(respuesta.data.costounitario));
+                $('#costobarras').val(decimalLatinoShow(respuesta.data.costobarras));
+                $('#pesovolumen').val(decimalLatinoShow(respuesta.data.pesovolumen));
 
             },
             error: function() {
                 var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
                 sweetMessage('error', mensaje);
             }
-          })  
-        }
+        })  
+    }
     
     function obtenerGrupoinventario(id) { 
     var url = 'grupoinventarios/'+id;
@@ -375,8 +379,10 @@ $("#form").change(function(e) {
     $( document ).ready(function() {
         $('.preloader').hide("slow");
         validarLogin();
+        actualizarmoneda();
         obtenerArticulo(localStorage.editar);
-    
+
+        
         $("#select-grupoinventario").on("change",recargarGrupoinventario);
         $("#select-subgrupoinventario1").on("change",recargarSubgrupoinventario1);
         $("#select-subgrupoinventario2").on("change",recargarSubgrupoinventario2);

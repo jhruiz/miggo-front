@@ -6,7 +6,6 @@ $("#form").change(function(e) {
     
     var codigo = $('#codigo').val();
     var nombre = $('#nombre').val();
-    var costounitario = $('#costounitario').val();
     var posnombre = $('#posnombre').val();
     var descripcion = $('#descripcion').val();
     var descuento = $('#descuento').val() / 100;
@@ -17,6 +16,9 @@ $("#form").change(function(e) {
 
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
     
+    var costounitario = $('#costounitario').val();
+    costounitario = decimalLatinoSave(costounitario);//no es vacio
+
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);
     formData.append("costounitario", costounitario);
@@ -78,7 +80,6 @@ $("#form").change(function(e) {
     
                 $('#codigo').val(respuesta.data.codigo);
                 $('#nombre').val(respuesta.data.nombre);
-                $('#costounitario').val(respuesta.data.costounitario);
                 $('#posnombre').val(respuesta.data.posnombre);
                 $('#descripcion').val(respuesta.data.descripcion);
                 $('#descuento').val(respuesta.data.descuento * 100);
@@ -108,6 +109,8 @@ $("#form").change(function(e) {
                 }else{
                      obtenerGrupoinventarios(); 
                 }
+
+                $('#costounitario').val(decimalLatinoShow(respuesta.data.costounitario));
     
             },
             error: function() {

@@ -6,14 +6,11 @@ var crearArticulo = function(e){
 
     var codigo = $('#codigo').val();
     var nombre = $('#nombre').val();
-    var costounitario = $('#costounitario').val();
     var posnombre = $('#posnombre').val();
     var descripcion = $('#descripcion').val();
     var fechainvima = $('#fechainvimas').val();
-    var costobarras = $('#costobarras').val();
     var referencia = $('#referencia').val();
     var plu = $('#plu').val();
-    var pesovolumen = $('#pesovolumen').val();
     var reginvima = $('#reginvima').val();
     var existenciaminima = $('#existenciaminima').val();
     var cantidadordenar = $('#cantidadordenar').val();
@@ -28,11 +25,14 @@ var crearArticulo = function(e){
     
     var marca_id = $('#select-marcas').val()? $('#select-marcas').val() : '';
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
+    
+    var costounitario = $('#costounitario').val();
+    var pesovolumen = !isEmpty($('#pesovolumen')) ?  $('#pesovolumen').val().toString() : '0';
+    var costobarras = !isEmpty($('#costobarras')) ?  $('#costobarras').val().toString() : '0';
 
-    costounitario = costounitario.indexOf(",") > -1 ? costounitario.toString().replace(',', '.') : 0;
-    costobarras = costobarras.indexOf(",") > -1 ? costobarras.toString().replace(',', '.') : 0;
-    pesovolumen = pesovolumen.indexOf(",") > -1 ? pesovolumen.toString().replace(',', '.') : 0;
-
+    costounitario = decimalLatinoSave(costounitario);//no es vacio
+    costobarras = decimalLatinoSave(costobarras); // save en 0
+    pesovolumen = decimalLatinoSave(pesovolumen); // save en 0
 
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);

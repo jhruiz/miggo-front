@@ -8,7 +8,6 @@ var crearServicio = function(e){
     
     var codigo = $('#codigo').val();
     var nombre = $('#nombre').val();
-    var costounitario = $('#costounitario').val();
     var posnombre = $('#posnombre').val();
     var descripcion = $('#descripcion').val();
     var descuento = $('#descuento').val() / 100;
@@ -18,6 +17,9 @@ var crearServicio = function(e){
     
     var grupoinventario_id = $('#id').val()? $('#id').val() : ''; 
     
+    var costounitario = $('#costounitario').val();
+    costounitario = decimalLatinoSave(costounitario);//no es vacio
+
     formData.append("codigo", codigo);
     formData.append("nombre", nombre);
     formData.append("costounitario", costounitario);
