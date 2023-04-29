@@ -10,58 +10,64 @@ function obtenerArticulo(id){
       dataType: "json",
       success: function(respuesta) {
 
-          respuesta.data.activo == 1 ? $('#activo').prop( "checked", true ) : $('#activo').prop( "checked", false );
-          respuesta.data.lote == 1 ? $('#lote').prop( "checked", true ) : $('#lote').prop( "checked", false );
-          respuesta.data.serial == 1 ? $('#serial').prop( "checked", true ) : $('#serial').prop( "checked", false );
-          respuesta.data.talla == 1 ? $('#talla').prop( "checked", true ) : $('#talla').prop( "checked", false );
-          respuesta.data.color == 1 ? $('#color').prop( "checked", true ) : $('#color').prop( "checked", false );
+            
+        respuesta.data.activo == 1 ? $('#activo').prop( "checked", true ) : $('#activo').prop( "checked", false );
+        respuesta.data.lote == 1 ? $('#lote').prop( "checked", true ) : $('#lote').prop( "checked", false );
+        respuesta.data.serial == 1 ? $('#serial').prop( "checked", true ) : $('#serial').prop( "checked", false );
+        respuesta.data.talla == 1 ? $('#talla').prop( "checked", true ) : $('#talla').prop( "checked", false );
+        respuesta.data.color == 1 ? $('#color').prop( "checked", true ) : $('#color').prop( "checked", false );
 
-          $('#codigo').val(respuesta.data.codigo);
-          $('#nombre').val(respuesta.data.nombre);
-          $('#costounitario').val(respuesta.data.costounitario);
-          $('#posnombre').val(respuesta.data.posnombre);
-          $('#descripcion').val(respuesta.data.descripcion);
-          $('#fechainvimas').val(respuesta.data.fechainvima);
-          $('#costobarras').val(respuesta.data.costobarras);
-          $('#referencia').val(respuesta.data.referencia);
-          $('#plu').val(respuesta.data.plu);
-          $('#pesovolumen').val(respuesta.data.pesovolumen);
-          $('#reginvima').val(respuesta.data.reginvima);
-          $('#existenciaminima').val(respuesta.data.existenciaminima);
-          $('#cantidadordenar').val(respuesta.data.cantidadordenar);
-          $('#descuento').val(respuesta.data.descuento * 100);
-          $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr * 100);
-          $('#costospromediobodegas').val(respuesta.data.costospromediobodegas);
-          $('#ultimocosto').val(respuesta.data.ultimocosto);
-          $('#fechaultimacompra').val(respuesta.data.fechaultimacompra);
+        respuesta.data.estatusdescuento == 1 ? $('#estatusdescuento').prop( "checked", true ) : $('#estatusdescuento').prop( "checked", false );
 
-          if(respuesta.data.imagen){
-              const ul = document.getElementById("mostrarImagen");
-              const imagen = document.createElement("img");
-              imagen.width = 200;
-              imagen.src = url_img + 'articulos/'+ respuesta.data.imagen;
-              ul.appendChild(imagen);
-            }else{
-              const ul = document.getElementById("mostrarImagen");
-              const imagen = document.createElement("img");
-              imagen.width = 200;
-              imagen.src = url_front + 'articulos/defecto.jpg';
-              ul.appendChild(imagen);
-            }
+        $('#codigo').val(respuesta.data.codigo);
+        $('#nombre').val(respuesta.data.nombre);
+        $('#posnombre').val(respuesta.data.posnombre);
+        $('#descripcion').val(respuesta.data.descripcion);
+        $('#fechainvimas').val(respuesta.data.fechainvima);
+        $('#referencia').val(respuesta.data.referencia);
+        $('#plu').val(respuesta.data.plu);
+        $('#reginvima').val(respuesta.data.reginvima);
+        $('#existenciaminima').val(respuesta.data.existenciaminima);
+        $('#cantidadordenar').val(respuesta.data.cantidadordenar);
 
-          if(respuesta.data.marca_id){
-                  obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
-          }else{
-                  obtenerSelects('marcas','#select-marcas');
-          }
+        $('#descuento').val(respuesta.data.descuento * 100);
+        $('#descuentovlr').val(respuesta.data.descuentovlr);//TODO: descuento informativo
+        $('#descuentoafechavlr').val(respuesta.data.descuentoafechavlr);//TODO: descuento informativo fecha
 
-          if(respuesta.data.grupoinventario_id){
-                  $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
-                  obtenerGrupoinventario(respuesta.data.grupoinventario_id);
-          }else{
-               obtenerGrupoinventarios(); 
-          }
+        $('#costospromediobodegas').val(respuesta.data.costospromediobodegas);
+        $('#ultimocosto').val(respuesta.data.ultimocosto);
+        $('#fechaultimacompra').val(respuesta.data.fechaultimacompra);
 
+        if(respuesta.data.imagen){
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_img + 'articulos/'+ respuesta.data.imagen;
+            ul.appendChild(imagen);
+        }else{
+            const ul = document.getElementById("mostrarImagen");
+            const imagen = document.createElement("img");
+            imagen.width = 200;
+            imagen.src = url_front + 'articulos/defecto.jpg';
+            ul.appendChild(imagen);
+        }
+        
+        if(respuesta.data.marca_id){
+            obtenerSelect('marcas','#select-marcas',respuesta.data.marca_id);
+        }else{
+            obtenerSelects('marcas','#select-marcas');
+        }
+        
+        if(respuesta.data.grupoinventario_id){
+            $('#id').val(respuesta.data.grupoinventario_id);//TODO: metodo para recargar todo los grupos 
+            obtenerGrupoinventario(respuesta.data.grupoinventario_id);
+        }else{
+            obtenerGrupoinventarios(); 
+        }
+        
+        $('#costounitario').val(decimalLatinoShow(respuesta.data.costounitario));
+        $('#costobarras').val(decimalLatinoShow(respuesta.data.costobarras));
+        $('#pesovolumen').val(decimalLatinoShow(respuesta.data.pesovolumen));
       },
       error: function() {
           var mensaje = 'Se presentó un error. Por favor, inténtelo mas tarde.';
@@ -154,6 +160,7 @@ var crearHtmlGrupo = function(data, id = null, grupopadre = null) {
 $( document ).ready(function() {
   $('.preloader').hide("slow");
   validarLogin();
+  actualizarmoneda();
   obtenerArticulo(localStorage.ver);
 
   $('#descripcion').validCampo('abcdefghijklmnopqrstuvwxyziou 0123456789-');

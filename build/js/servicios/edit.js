@@ -323,6 +323,7 @@ $("#form").change(function(e) {
     $( document ).ready(function() {
         $('.preloader').hide("slow");
         validarLogin();
+        actualizarmoneda();
         obtenerServicio(localStorage.editar);
     
         $("#select-grupoinventario").on("change",recargarGrupoinventario);
